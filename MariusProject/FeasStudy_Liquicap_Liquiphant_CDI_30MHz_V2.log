@@ -1,0 +1,51 @@
+Microarchitecure Suite Version 3.20.20
+UAC Compiler Version 2.5 @ 16.12.2022 15:14:30
+
+==========================C-Compiler===========================
+Selected Strategy: backlog,1 - Additional Option: -l
+Compiling C:\Users\i40014121\Desktop\MicroarchitectureSuite\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.ll
+
+Optimization:
+          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+          |||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Parallelization:
+          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+          |||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Info: Selected path: path1676; VLIW count: 1499
+
+Compilation successful in 347,212 s
+
+===========================Assembler===========================
+Analyzing ASM finished.
+Note: Variable "UA_INIT_ADC_CONVERSION_CONF" declared but not used.
+Note: Variable "electronicType" declared but not used.
+Note: Variable "ua_tmp_202" declared but not used.
+Note: Variable "ua_tmp_5" declared but not used.
+Start creating output files...
+ - Warning: PID File doesn't exist, use 0xFFFFFFFF for whole PID Table!
+ - Warning: SMEM File doesn't exist, use 0xFFFFFFFF for whole SMEM!
+ - Warning: ENPMEM File doesn't exist, use 0xFFFFFFFF for whole ENPMEM!
+ - Warning: Bluetooth Password File doesn't exist, use 0xFFFFFFFF for whole Bluetooth Password!
+ - Warning: PID File doesn't exist, use 0xFFFFFFFF for whole PID Table!
+ - Warning: SMEM File doesn't exist, use 0xFFFFFFFF for whole SMEM!
+ - Warning: ENPMEM File doesn't exist, use 0xFFFFFFFF for whole ENPMEM!
+ - Warning: Bluetooth Password File doesn't exist, use 0xFFFFFFFF for whole Bluetooth Password!
+	- BIN Files
+	- MAP Files
+	- TXT Files
+
+All files generated successfully.
+
+-------------Memory usage:-------------------------------------
+IMEM:	1499 of 2048
+DMEM:	459 of 1024	(197 checked param. + 1 CRC)
+---------------------------------------------------------------
+Workload AU: 31,0%; LU: 19,3%; LD/ST: 90,9% (Concurr.: 20,6%)
+
+
+===================Longest Path Analyzation====================
+Info: The Path analyzer couldn't finish. This error can occur if there is an (endless) loop.
