@@ -26,281 +26,166 @@ Addresse 24 / 0x0018: Variable: ua_const_14 Wert: 31 / 0x0000001F / 4,34402524E-
 Addresse 25 / 0x0019: Variable: ua_const_15 Wert: 16384 / 0x00004000 / 2,2958874E-41f (CRC checked parameter)
 Addresse 26 / 0x001A: Variable: ua_const_16 Wert: 32 / 0x00000020 / 4,48415509E-44f (CRC checked parameter)
 Addresse 27 / 0x001B: Variable: ua_const_17 Wert: 2490985 / 0x00260269 / 3,49061346E-39f (CRC checked parameter)
-Addresse 28 / 0x001C: Variable: ua_const_18 Wert: 536870912 / 0x20000000 / 1,08420217E-19f (CRC checked parameter)
-Addresse 29 / 0x001D: Variable: ua_const_1 Wert: 0 / 0x00000000 / 0f (CRC checked parameter)
-Addresse 30 / 0x001E: Variable: ua_const_123 Wert: 2259 / 0x000008D3 / 3,16553323E-42f (CRC checked parameter)
-Addresse 31 / 0x001F: Variable: ua_const_122 Wert: 64 / 0x00000040 / 8,96831017E-44f (CRC checked parameter)
-Addresse 32 / 0x0020: Variable: ua_const_95 Wert: 1073741824 / 0x40000000 / 2f (CRC checked parameter)
-Addresse 33 / 0x0021: Variable: ua_const_64 Wert: 16 / 0x00000010 / 2,24207754E-44f (CRC checked parameter)
-Addresse 34 / 0x0022: Variable: ua_const_43 Wert: 1023 / 0x000003FF / 1,43352833E-42f (CRC checked parameter)
-Addresse 35 / 0x0023: Variable: UA_ADC_MEM_regptr Wert: 1024 / 0x00000400 / 1,43492963E-42f (CRC checked parameter)
-Addresse 36 / 0x0024: Variable: ua_const_96 Wert: 1031798784 / 0x3D800000 / 0,0625f (CRC checked parameter)
-Addresse 37 / 0x0025: Variable: f_VIRTUAL_SINE Wert: 0 / 0x00000000 / 0f (CRC checked parameter)
-Addresse 38 / 0x0026: Variable: f_VIRTUAL_SINE[1] Wert: 1053028117 / 0x3EC3EF15 / 0,382683426f (CRC checked parameter)
-Addresse 39 / 0x0027: Variable: f_VIRTUAL_SINE[2] Wert: 1060439283 / 0x3F3504F3 / 0,707106769f (CRC checked parameter)
-Addresse 40 / 0x0028: Variable: f_VIRTUAL_SINE[3] Wert: 1064076126 / 0x3F6C835E / 0,923879504f (CRC checked parameter)
-Addresse 41 / 0x0029: Variable: f_VIRTUAL_SINE[4] Wert: 1065353216 / 0x3F800000 / 1f (CRC checked parameter)
-Addresse 42 / 0x002A: Variable: f_VIRTUAL_SINE[5] Wert: 1064076126 / 0x3F6C835E / 0,923879504f (CRC checked parameter)
-Addresse 43 / 0x002B: Variable: f_VIRTUAL_SINE[6] Wert: 1060439283 / 0x3F3504F3 / 0,707106769f (CRC checked parameter)
-Addresse 44 / 0x002C: Variable: f_VIRTUAL_SINE[7] Wert: 1053028117 / 0x3EC3EF15 / 0,382683426f (CRC checked parameter)
-Addresse 45 / 0x002D: Variable: f_VIRTUAL_SINE[8] Wert: 0 / 0x00000000 / 0f (CRC checked parameter)
-Addresse 46 / 0x002E: Variable: f_VIRTUAL_SINE[9] Wert: 3200511765 / 0xBEC3EF15 / -0,382683426f (CRC checked parameter)
-Addresse 47 / 0x002F: Variable: f_VIRTUAL_SINE[10] Wert: 3207922931 / 0xBF3504F3 / -0,707106769f (CRC checked parameter)
-Addresse 48 / 0x0030: Variable: f_VIRTUAL_SINE[11] Wert: 3211559774 / 0xBF6C835E / -0,923879504f (CRC checked parameter)
-Addresse 49 / 0x0031: Variable: f_VIRTUAL_SINE[12] Wert: 3212836864 / 0xBF800000 / -1f (CRC checked parameter)
-Addresse 50 / 0x0032: Variable: f_VIRTUAL_SINE[13] Wert: 3211559774 / 0xBF6C835E / -0,923879504f (CRC checked parameter)
-Addresse 51 / 0x0033: Variable: f_VIRTUAL_SINE[14] Wert: 3207922931 / 0xBF3504F3 / -0,707106769f (CRC checked parameter)
-Addresse 52 / 0x0034: Variable: f_VIRTUAL_SINE[15] Wert: 3200511765 / 0xBEC3EF15 / -0,382683426f (CRC checked parameter)
-Addresse 53 / 0x0035: Variable: ua_const_97 Wert: 15 / 0x0000000F / 2,1019477E-44f (CRC checked parameter)
-Addresse 54 / 0x0036: Variable: ua_const_98 Wert: 1040187392 / 0x3E000000 / 0,125f (CRC checked parameter)
-Addresse 55 / 0x0037: Variable: ua_const_93 Wert: 1056964608 / 0x3F000000 / 0,5f (CRC checked parameter)
-Addresse 56 / 0x0038: Variable: ua_const_99 Wert: 65535 / 0x0000FFFF / 9,18340949E-41f (CRC checked parameter)
-Addresse 57 / 0x0039: Variable: ua_const_100 Wert: 2147418112 / 0x7FFF0000 / NaNf (CRC checked parameter)
-Addresse 58 / 0x003A: Variable: ua_const_101 Wert: 23007 / 0x000059DF / 3,22396738E-41f (CRC checked parameter)
-Addresse 59 / 0x003B: Variable: ua_const_102 Wert: 24375 / 0x00005F37 / 3,41566501E-41f (CRC checked parameter)
-Addresse 60 / 0x003C: Variable: ua_const_103 Wert: 1069547520 / 0x3FC00000 / 1,5f (CRC checked parameter)
-Addresse 61 / 0x003D: Variable: ua_const_104 Wert: 8388607 / 0x007FFFFF / 1,17549421E-38f (CRC checked parameter)
-Addresse 62 / 0x003E: Variable: ua_const_105 Wert: 1056964608 / 0x3F000000 / 0,5f (CRC checked parameter)
-Addresse 63 / 0x003F: Variable: ua_const_106 Wert: 1072754929 / 0x3FF0F0F1 / 1,88235295f (CRC checked parameter)
-Addresse 64 / 0x0040: Variable: ua_const_107 Wert: 1077195957 / 0x4034B4B5 / 2,82352948f (CRC checked parameter)
-Addresse 65 / 0x0041: Variable: ua_const_56 Wert: 1073741824 / 0x40000000 / 2f (CRC checked parameter)
-Addresse 66 / 0x0042: Variable: ua_const_78 Wert: 4294967295 / 0xFFFFFFFF / NaNf (CRC checked parameter)
-Addresse 67 / 0x0043: Variable: ua_const_108 Wert: 4286578688 / 0xFF800000 / -∞f (CRC checked parameter)
-Addresse 68 / 0x0044: Variable: ua_const_109 Wert: 3196059648 / 0xBE800000 / -0,25f (CRC checked parameter)
-Addresse 69 / 0x0045: Variable: ua_const_47 Wert: 0 / 0x00000000 / 0f (CRC checked parameter)
-Addresse 70 / 0x0046: Variable: ua_const_28 Wert: 1065353216 / 0x3F800000 / 1f (CRC checked parameter)
-Addresse 71 / 0x0047: Variable: ua_const_110 Wert: 993431619 / 0x3B369043 / 0,00278569828f (CRC checked parameter)
-Addresse 72 / 0x0048: Variable: ua_const_111 Wert: 3162634614 / 0xBC81F976 / -0,0158660226f (CRC checked parameter)
-Addresse 73 / 0x0049: Variable: ua_const_112 Wert: 1026422621 / 0x3D2DF75D / 0,0424722321f (CRC checked parameter)
-Addresse 74 / 0x004A: Variable: ua_const_113 Wert: 3180956839 / 0xBD998CA7 / -0,0749753043f (CRC checked parameter)
-Addresse 75 / 0x004B: Variable: ua_const_114 Wert: 1037697492 / 0x3DDA01D4 / 0,106448799f (CRC checked parameter)
-Addresse 76 / 0x004C: Variable: ua_const_115 Wert: 3188816609 / 0xBE117AE1 / -0,142070308f (CRC checked parameter)
-Addresse 77 / 0x004D: Variable: ua_const_116 Wert: 1045216164 / 0x3E4CBBA4 / 0,199934542f (CRC checked parameter)
-Addresse 78 / 0x004E: Variable: ua_const_117 Wert: 3198855788 / 0xBEAAAA6C / -0,333331466f (CRC checked parameter)
-Addresse 79 / 0x004F: Variable: ua_const_118 Wert: 1070141403 / 0x3FC90FDB / 1,57079637f (CRC checked parameter)
-Addresse 80 / 0x0050: Variable: ua_const_119 Wert: 1078530011 / 0x40490FDB / 3,14159274f (CRC checked parameter)
-Addresse 81 / 0x0051: Variable: ua_const_120 Wert: 3216160959 / 0xBFB2B8BF / -1,396263f (CRC checked parameter)
-Addresse 82 / 0x0052: Variable: OneOn_WR Wert: 1082795972 / 0x408A27C4 / 4,3173542f (CRC checked parameter)
-Addresse 83 / 0x0053: Variable: OneOn_WR[1] Wert: 1091174094 / 0x4109FECE / 8,62470818f (CRC checked parameter)
-Addresse 84 / 0x0054: Variable: OneOn_WR[2] Wert: 1099579087 / 0x418A3ECF / 17,2806683f (CRC checked parameter)
-Addresse 85 / 0x0055: Variable: OneOn_WR[3] Wert: 1107960227 / 0x420A21A3 / 34,5328484f (CRC checked parameter)
-Addresse 86 / 0x0056: Variable: OneOn_WR[4] Wert: 1116366150 / 0x428A6546 / 69,1977997f (CRC checked parameter)
-Addresse 87 / 0x0057: Variable: OneOn_WR[5] Wert: 1124754758 / 0x430A6546 / 138,395599f (CRC checked parameter)
-Addresse 88 / 0x0058: Variable: OneOn_WR[6] Wert: 1133127620 / 0x438A27C4 / 276,310669f (CRC checked parameter)
-Addresse 89 / 0x0059: Variable: OneOn_WR[7] Wert: 1141516228 / 0x440A27C4 / 552,621338f (CRC checked parameter)
-Addresse 90 / 0x005A: Variable: OneOn_WR[8] Wert: 1149904836 / 0x448A27C4 / 1105,24268f (CRC checked parameter)
-Addresse 91 / 0x005B: Variable: ua_const_121 Wert: 9 / 0x00000009 / 1,26116862E-44f (CRC checked parameter)
-Addresse 92 / 0x005C: Variable: ua_const_69 Wert: 4096 / 0x00001000 / 5,73971851E-42f (CRC checked parameter)
-Addresse 93 / 0x005D: Variable: ua_const_80 Wert: 231 / 0x000000E7 / 3,23699945E-43f (CRC checked parameter)
-Addresse 94 / 0x005E: Variable: ua_const_81 Wert: 230 / 0x000000E6 / 3,22298647E-43f (CRC checked parameter)
-Addresse 95 / 0x005F: Variable: ua_const_82 Wert: 1047552 / 0x000FFC00 / 1,46793301E-39f (CRC checked parameter)
-Addresse 96 / 0x0060: Variable: ua_const_84 Wert: 229 / 0x000000E5 / 3,20897348E-43f (CRC checked parameter)
-Addresse 97 / 0x0061: Variable: ua_const_85 Wert: 1072693248 / 0x3FF00000 / 1,875f (CRC checked parameter)
-Addresse 98 / 0x0062: Variable: ua_const_87 Wert: 228 / 0x000000E4 / 3,1949605E-43f (CRC checked parameter)
-Addresse 99 / 0x0063: Variable: ua_const_88 Wert: 227 / 0x000000E3 / 3,18094751E-43f (CRC checked parameter)
-Addresse 100 / 0x0064: Variable: ua_const_89 Wert: 226 / 0x000000E2 / 3,16693453E-43f (CRC checked parameter)
-Addresse 101 / 0x0065: Variable: ua_const_90 Wert: 225 / 0x000000E1 / 3,15292154E-43f (CRC checked parameter)
-Addresse 102 / 0x0066: Variable: ua_const_4 Wert: 8 / 0x00000008 / 1,12103877E-44f (CRC checked parameter)
-Addresse 103 / 0x0067: Variable: Increment_Table Wert: 33554432 / 0x02000000 / 9,40395481E-38f (CRC checked parameter)
-Addresse 104 / 0x0068: Variable: Increment_Table[1] Wert: 16777216 / 0x01000000 / 2,3509887E-38f (CRC checked parameter)
-Addresse 105 / 0x0069: Variable: Increment_Table[2] Wert: 8388608 / 0x00800000 / 1,17549435E-38f (CRC checked parameter)
-Addresse 106 / 0x006A: Variable: Increment_Table[3] Wert: 4194304 / 0x00400000 / 5,87747175E-39f (CRC checked parameter)
-Addresse 107 / 0x006B: Variable: Increment_Table[4] Wert: 2097152 / 0x00200000 / 2,93873588E-39f (CRC checked parameter)
-Addresse 108 / 0x006C: Variable: Increment_Table[5] Wert: 1048576 / 0x00100000 / 1,46936794E-39f (CRC checked parameter)
-Addresse 109 / 0x006D: Variable: Increment_Table[6] Wert: 524288 / 0x00080000 / 7,34683969E-40f (CRC checked parameter)
-Addresse 110 / 0x006E: Variable: Increment_Table[7] Wert: 262144 / 0x00040000 / 3,67341985E-40f (CRC checked parameter)
-Addresse 111 / 0x006F: Variable: Increment_Table[8] Wert: 131072 / 0x00020000 / 1,83670992E-40f (CRC checked parameter)
-Addresse 112 / 0x0070: Variable: ua_const_91 Wert: 2147483648 / 0x80000000 / 0f (CRC checked parameter)
-Addresse 113 / 0x0071: Variable: ADC_divider Wert: 6 / 0x00000006 / 8,40779079E-45f (CRC checked parameter)
-Addresse 114 / 0x0072: Variable: ADC_divider[1] Wert: 6 / 0x00000006 / 8,40779079E-45f (CRC checked parameter)
-Addresse 115 / 0x0073: Variable: ADC_divider[2] Wert: 6 / 0x00000006 / 8,40779079E-45f (CRC checked parameter)
-Addresse 116 / 0x0074: Variable: ADC_divider[3] Wert: 40 / 0x00000028 / 5,60519386E-44f (CRC checked parameter)
-Addresse 117 / 0x0075: Variable: ADC_divider[4] Wert: 108 / 0x0000006C / 1,51340234E-43f (CRC checked parameter)
-Addresse 118 / 0x0076: Variable: ADC_divider[5] Wert: 244 / 0x000000F4 / 3,41916825E-43f (CRC checked parameter)
-Addresse 119 / 0x0077: Variable: ADC_divider[6] Wert: 4 / 0x00000004 / 5,60519386E-45f (CRC checked parameter)
-Addresse 120 / 0x0078: Variable: ADC_divider[7] Wert: 36 / 0x00000024 / 5,04467447E-44f (CRC checked parameter)
-Addresse 121 / 0x0079: Variable: ADC_divider[8] Wert: 100 / 0x00000064 / 1,40129846E-43f (CRC checked parameter)
-Addresse 122 / 0x007A: Variable: ua_const_92 Wert: 1105199104 / 0x41E00000 / 28f (CRC checked parameter)
-Addresse 123 / 0x007B: Variable: ua_const_94 Wert: 1065353215 / 0x3F7FFFFF / 0,99999994f (CRC checked parameter)
-Addresse 124 / 0x007C: Variable: ua_const_23 Wert: 2048 / 0x00000800 / 2,86985925E-42f (CRC checked parameter)
-Addresse 125 / 0x007D: Variable: ua_const_19 Wert: 167 / 0x000000A7 / 2,34016844E-43f (CRC checked parameter)
-Addresse 126 / 0x007E: Variable: ua_const_20 Wert: 100 / 0x00000064 / 1,40129846E-43f (CRC checked parameter)
-Addresse 127 / 0x007F: Variable: ua_const_21 Wert: 2049 / 0x00000801 / 2,87126055E-42f (CRC checked parameter)
-Addresse 128 / 0x0080: Variable: ua_const_22 Wert: 128 / 0x00000080 / 1,79366203E-43f (CRC checked parameter)
-Addresse 129 / 0x0081: Variable: ua_const_24 Wert: 23 / 0x00000017 / 3,22298647E-44f (CRC checked parameter)
-Addresse 130 / 0x0082: Variable: ua_const_25 Wert: 255 / 0x000000FF / 3,57331108E-43f (CRC checked parameter)
-Addresse 131 / 0x0083: Variable: ua_const_26 Wert: 29088 / 0x000071A0 / 4,07609697E-41f (CRC checked parameter)
-Addresse 132 / 0x0084: Variable: ua_const_27 Wert: 28512 / 0x00006F60 / 3,99538218E-41f (CRC checked parameter)
-Addresse 133 / 0x0085: Variable: ua_const_29 Wert: 905905025 / 0x35FF0381 / 1,90000003E-06f (CRC checked parameter)
-Addresse 134 / 0x0086: Variable: ua_const_30 Wert: 984147518 / 0x3AA8E63E / 0,00128860003f (CRC checked parameter)
-Addresse 135 / 0x0087: Variable: ua_const_31 Wert: 992239343 / 0x3B245EEF / 0,00250809989f (CRC checked parameter)
-Addresse 136 / 0x0088: Variable: ua_const_32 Wert: 994451681 / 0x3B4620E1 / 0,00302319997f (CRC checked parameter)
-Addresse 137 / 0x0089: Variable: ua_const_33 Wert: 3098922602 / 0xB8B5CE6A / -8,66920018E-05f (CRC checked parameter)
-Addresse 138 / 0x008A: Variable: ua_const_34 Wert: 869045232 / 0x33CC93F0 / 9,52639994E-08f (CRC checked parameter)
-Addresse 139 / 0x008B: Variable: ua_const_35 Wert: 1052281416 / 0x3EB88A48 / 0,360430002f (CRC checked parameter)
-Addresse 140 / 0x008C: Variable: ua_const_36 Wert: 1014145395 / 0x3C72A173 / 0,0148090003f (CRC checked parameter)
-Addresse 141 / 0x008D: Variable: ua_const_37 Wert: 1142947840 / 0x44200000 / 640f (CRC checked parameter)
-Addresse 142 / 0x008E: Variable: n_calc Wert: 1095237632 / 0x41480000 / 12,5f (CRC checked parameter)
-Addresse 143 / 0x008F: Variable: ua_const_41 Wert: 1127481344 / 0x43340000 / 180f (CRC checked parameter)
-Addresse 144 / 0x0090: Variable: ua_const_42 Wert: 3212836864 / 0xBF800000 / -1f (CRC checked parameter)
-Addresse 145 / 0x0091: Variable: ua_const_44 Wert: 1157619712 / 0x44FFE000 / 2047f (CRC checked parameter)
-Addresse 146 / 0x0092: Variable: ua_const_45 Wert: 1065185444 / 0x3F7D70A4 / 0,99000001f (CRC checked parameter)
-Addresse 147 / 0x0093: Variable: ua_const_46 Wert: 1008981770 / 0x3C23D70A / 0,00999999978f (CRC checked parameter)
-Addresse 148 / 0x0094: Variable: par_phase_LP_1 Wert: 1169422336 / 0x45B3F800 / 5759f (CRC checked parameter)
-Addresse 149 / 0x0095: Variable: par_phase_LP_0 Wert: 959841098 / 0x3936034A / 0,000173580978f (CRC checked parameter)
-Addresse 150 / 0x0096: Variable: par_phase_I Wert: 1050253722 / 0x3E99999A / 0,300000012f (CRC checked parameter)
-Addresse 151 / 0x0097: Variable: par_phase_P Wert: 1120403456 / 0x42C80000 / 100f (CRC checked parameter)
-Addresse 152 / 0x0098: Variable: par_phase_min_wind Wert: 1142292480 / 0x44160000 / 600f (CRC checked parameter)
-Addresse 153 / 0x0099: Variable: par_phase_max_wind Wert: 1150681088 / 0x44960000 / 1200f (CRC checked parameter)
-Addresse 154 / 0x009A: Variable: par_phase_startFreq Wert: 1143930880 / 0x442F0000 / 700f (CRC checked parameter)
-Addresse 155 / 0x009B: Variable: ua_const_48 Wert: 21792 / 0x00005520 / 3,05370961E-41f (CRC checked parameter)
-Addresse 156 / 0x009C: Variable: ua_const_49 Wert: 2000 / 0x000007D0 / 2,80259693E-42f (CRC checked parameter)
-Addresse 157 / 0x009D: Variable: ua_const_50 Wert: 1065336439 / 0x3F7FBE77 / 0,999000013f (CRC checked parameter)
-Addresse 158 / 0x009E: Variable: ua_const_51 Wert: 981668463 / 0x3A83126F / 0,00100000005f (CRC checked parameter)
-Addresse 159 / 0x009F: Variable: ua_const_52 Wert: 853589985 / 0x32E0BFE1 / 2,61642885E-08f (CRC checked parameter)
-Addresse 160 / 0x00A0: Variable: ua_const_53 Wert: 908130065 / 0x3620F711 / 2,39856695E-06f (CRC checked parameter)
-Addresse 161 / 0x00A1: Variable: ua_const_54 Wert: 1086922108 / 0x40C91D7C / 6,28484917f (CRC checked parameter)
-Addresse 162 / 0x00A2: Variable: ua_const_55 Wert: 1053346043 / 0x3EC8C8FB / 0,392158359f (CRC checked parameter)
-Addresse 163 / 0x00A3: Variable: par_res_c1_A Wert: 816165742 / 0x30A5B36E / 1,2056327E-09f (CRC checked parameter)
-Addresse 164 / 0x00A4: Variable: ua_const_57 Wert: 1090519040 / 0x41000000 / 8f (CRC checked parameter)
-Addresse 165 / 0x00A5: Variable: par_res_c6_A Wert: 1023410176 / 0x3D000000 / 0,03125f (CRC checked parameter)
-Addresse 166 / 0x00A6: Variable: par_res_c2_A Wert: 907125428 / 0x3611A2B4 / 2,17013894E-06f (CRC checked parameter)
-Addresse 167 / 0x00A7: Variable: ua_const_58 Wert: 1082130432 / 0x40800000 / 4f (CRC checked parameter)
-Addresse 168 / 0x00A8: Variable: ua_const_59 Wert: 1048576000 / 0x3E800000 / 0,25f (CRC checked parameter)
-Addresse 169 / 0x00A9: Variable: ua_const_60 Wert: 4095 / 0x00000FFF / 5,73831721E-42f (CRC checked parameter)
-Addresse 170 / 0x00AA: Variable: par_amp_reset Wert: 1117782016 / 0x42A00000 / 80f (CRC checked parameter)
-Addresse 171 / 0x00AB: Variable: par_amp_reset_max Wert: 1000 / 0x000003E8 / 1,40129846E-42f (CRC checked parameter)
-Addresse 172 / 0x00AC: Variable: ua_const_61 Wert: 21793 / 0x00005521 / 3,05384974E-41f (CRC checked parameter)
-Addresse 173 / 0x00AD: Variable: par_amp_stepFreq Wert: 1101004800 / 0x41A00000 / 20f (CRC checked parameter)
-Addresse 174 / 0x00AE: Variable: par_amp_endFreq Wert: 1150681088 / 0x44960000 / 1200f (CRC checked parameter)
-Addresse 175 / 0x00AF: Variable: par_amp_startFreq Wert: 1143930880 / 0x442F0000 / 700f (CRC checked parameter)
-Addresse 176 / 0x00B0: Variable: ua_const_62 Wert: 2147516416 / 0x80008000 / -4,59177481E-41f (CRC checked parameter)
-Addresse 177 / 0x00B1: Variable: ua_const_63 Wert: 32767 / 0x00007FFF / 4,59163468E-41f (CRC checked parameter)
-Addresse 178 / 0x00B2: Variable: ua_const_65 Wert: 953267991 / 0x38D1B717 / 9,99999975E-05f (CRC checked parameter)
-Addresse 179 / 0x00B3: Variable: ua_const_66 Wert: 1064011039 / 0x3F6B851F / 0,920000017f (CRC checked parameter)
-Addresse 180 / 0x00B4: Variable: ua_const_67 Wert: 1034147594 / 0x3DA3D70A / 0,0799999982f (CRC checked parameter)
-Addresse 181 / 0x00B5: Variable: par_time_min Wert: 12 / 0x0000000C / 1,68155816E-44f (CRC checked parameter)
-Addresse 182 / 0x00B6: Variable: par_time_max Wert: 24 / 0x00000018 / 3,36311631E-44f (CRC checked parameter)
-Addresse 183 / 0x00B7: Variable: ua_const_68 Wert: 1024 / 0x00000400 / 1,43492963E-42f (CRC checked parameter)
-Addresse 184 / 0x00B8: Variable: ua_const_70 Wert: 4660 / 0x00001234 / 6,53005084E-42f (CRC checked parameter)
-Addresse 185 / 0x00B9: Variable: ua_const_71 Wert: 1152 / 0x00000480 / 1,61429583E-42f (CRC checked parameter)
-Addresse 186 / 0x00BA: Variable: ua_const_72 Wert: 28800 / 0x00007080 / 4,03573958E-41f (CRC checked parameter)
-Addresse 187 / 0x00BB: Variable: ua_const_73 Wert: 65536 / 0x00010000 / 9,18354962E-41f (CRC checked parameter)
-Addresse 188 / 0x00BC: Variable: ua_const_74 Wert: 96 / 0x00000060 / 1,34524653E-43f (CRC checked parameter)
-Addresse 189 / 0x00BD: Variable: ua_const_75 Wert: 8192 / 0x00002000 / 1,1479437E-41f (CRC checked parameter)
-Addresse 190 / 0x00BE: Variable: ua_const_77 Wert: 33 / 0x00000021 / 4,62428493E-44f (CRC checked parameter)
-Addresse 191 / 0x00BF: Variable: ua_const_76 Wert: 63 / 0x0000003F / 8,82818033E-44f (CRC checked parameter)
-Addresse 192 / 0x00C0: Variable: ua_const_79 Wert: 39 / 0x00000027 / 5,46506401E-44f (CRC checked parameter)
-Addresse 193 / 0x00C1: Variable: UA_INIT_ADC_CONVERSION_CONF Wert: 0 / 0x00000000 / 0f (CRC checked parameter)
-Addresse 194 / 0x00C2: Variable: electronicType Wert: 2 / 0x00000002 / 2,80259693E-45f (CRC checked parameter)
-Addresse 195 / 0x00C3: Variable: #_CRC_pmem_# Wert: 64951 / 0x0000FDB7 / 9,10157366E-41f (CRC checked parameter)
-Addresse 507 / 0x01FB: Variable: ua_tmp_229 Wert: 0 / 0x00000000 / 0f
-Addresse 508 / 0x01FC: Variable: ua_tmp_220 Wert: 0 / 0x00000000 / 0f
-Addresse 509 / 0x01FD: Variable: ua_tmp_198 Wert: 0 / 0x00000000 / 0f
-Addresse 510 / 0x01FE: Variable: ua_tmp_504 Wert: 0 / 0x00000000 / 0f
-Addresse 511 / 0x01FF: Variable: ua_tmp_500 Wert: 0 / 0x00000000 / 0f
-Addresse 512 / 0x0200: Variable: ua_tmp_436 Wert: 0 / 0x00000000 / 0f
-Addresse 513 / 0x0201: Variable: ua_tmp_433 Wert: 0 / 0x00000000 / 0f
-Addresse 514 / 0x0202: Variable: ua_tmp_607 Wert: 0 / 0x00000000 / 0f
-Addresse 515 / 0x0203: Variable: ua_tmp_603 Wert: 0 / 0x00000000 / 0f
-Addresse 516 / 0x0204: Variable: ua_tmp_539 Wert: 0 / 0x00000000 / 0f
-Addresse 517 / 0x0205: Variable: ua_tmp_536 Wert: 0 / 0x00000000 / 0f
-Addresse 518 / 0x0206: Variable: ua_tmp_5 Wert: 0 / 0x00000000 / 0f
-Addresse 519 / 0x0207: Variable: ua_loc_bit Wert: 0 / 0x00000000 / 0f
-Addresse 520 / 0x0208: Variable: ua_loc_pin5Val Wert: 0 / 0x00000000 / 0f
-Addresse 521 / 0x0209: Variable: ua_loc_outval Wert: 0 / 0x00000000 / 0f
-Addresse 522 / 0x020A: Variable: ua_loc_wantedOutVal Wert: 0 / 0x00000000 / 0f
-Addresse 523 / 0x020B: Variable: ua_loc_pin6Val Wert: 0 / 0x00000000 / 0f
-Addresse 524 / 0x020C: Variable: ua_loc_rc2 Wert: 0 / 0x00000000 / 0f
-Addresse 525 / 0x020D: Variable: ua_loc_newOutput Wert: 0 / 0x00000000 / 0f
-Addresse 526 / 0x020E: Variable: ua_loc_res2_n_A Wert: 0 / 0x00000000 / 0f
-Addresse 527 / 0x020F: Variable: ua_loc_a2_neg_A Wert: 0 / 0x00000000 / 0f
-Addresse 528 / 0x0210: Variable: ua_loc_b0_A Wert: 0 / 0x00000000 / 0f
-Addresse 529 / 0x0211: Variable: ua_loc_a1_neg_A Wert: 0 / 0x00000000 / 0f
-Addresse 530 / 0x0212: Variable: ua_loc_tmp_A Wert: 0 / 0x00000000 / 0f
-Addresse 531 / 0x0213: Variable: ua_loc_f_preWarp_A Wert: 0 / 0x00000000 / 0f
-Addresse 532 / 0x0214: Variable: ua_loc_phase_LP_output Wert: 0 / 0x00000000 / 0f
-Addresse 533 / 0x0215: Variable: ua_loc_phase_input Wert: 0 / 0x00000000 / 0f
-Addresse 534 / 0x0216: Variable: ua_loc_phi_RS Wert: 0 / 0x00000000 / 0f
-Addresse 535 / 0x0217: Variable: ua_loc_c_p Wert: 0 / 0x00000000 / 0f
-Addresse 536 / 0x0218: Variable: ua_loc_data_invalid Wert: 0 / 0x00000000 / 0f
-Addresse 537 / 0x0219: Variable: ua_loc_x.i720 Wert: 0 / 0x00000000 / 0f
-Addresse 538 / 0x021A: Variable: ua_loc_in.addr.i718 Wert: 0 / 0x00000000 / 0f
-Addresse 539 / 0x021B: Variable: ua_loc_y.i749 Wert: 0 / 0x00000000 / 0f
-Addresse 540 / 0x021C: Variable: ua_loc_i_hi.i747 Wert: 0 / 0x00000000 / 0f
-Addresse 541 / 0x021D: Variable: ua_loc_i_lo.i746 Wert: 0 / 0x00000000 / 0f
-Addresse 542 / 0x021E: Variable: ua_loc_x2.i748 Wert: 0 / 0x00000000 / 0f
-Addresse 543 / 0x021F: Variable: ua_loc_number.addr.i744 Wert: 0 / 0x00000000 / 0f
-Addresse 544 / 0x0220: Variable: ua_loc_x.i786 Wert: 0 / 0x00000000 / 0f
-Addresse 545 / 0x0221: Variable: ua_loc_in.addr.i784 Wert: 0 / 0x00000000 / 0f
-Addresse 546 / 0x0222: Variable: ua_loc_x.i Wert: 0 / 0x00000000 / 0f
-Addresse 547 / 0x0223: Variable: ua_loc_in.addr.i680 Wert: 0 / 0x00000000 / 0f
-Addresse 548 / 0x0224: Variable: ua_loc_y.i Wert: 0 / 0x00000000 / 0f
-Addresse 549 / 0x0225: Variable: ua_loc_i_hi.i Wert: 0 / 0x00000000 / 0f
-Addresse 550 / 0x0226: Variable: ua_loc_i_lo.i Wert: 0 / 0x00000000 / 0f
-Addresse 551 / 0x0227: Variable: ua_loc_x2.i Wert: 0 / 0x00000000 / 0f
-Addresse 552 / 0x0228: Variable: ua_loc_number.addr.i Wert: 0 / 0x00000000 / 0f
-Addresse 553 / 0x0229: Variable: ua_loc_x.i694 Wert: 0 / 0x00000000 / 0f
-Addresse 554 / 0x022A: Variable: ua_loc_in.addr.i692 Wert: 0 / 0x00000000 / 0f
-Addresse 555 / 0x022B: Variable: ua_loc_s.i Wert: 0 / 0x00000000 / 0f
-Addresse 556 / 0x022C: Variable: ua_loc_x.i.i Wert: 0 / 0x00000000 / 0f
-Addresse 557 / 0x022D: Variable: ua_loc_in.addr.i.i Wert: 0 / 0x00000000 / 0f
-Addresse 558 / 0x022E: Variable: ua_loc_r.i Wert: 0 / 0x00000000 / 0f
-Addresse 559 / 0x022F: Variable: ua_loc_t.i Wert: 0 / 0x00000000 / 0f
-Addresse 560 / 0x0230: Variable: ua_loc_x.addr.i Wert: 0 / 0x00000000 / 0f
-Addresse 561 / 0x0231: Variable: ua_loc_x.i824 Wert: 0 / 0x00000000 / 0f
-Addresse 562 / 0x0232: Variable: ua_loc_in.addr.i822 Wert: 0 / 0x00000000 / 0f
-Addresse 563 / 0x0233: Variable: ua_loc_y.i853 Wert: 0 / 0x00000000 / 0f
-Addresse 564 / 0x0234: Variable: ua_loc_i_hi.i851 Wert: 0 / 0x00000000 / 0f
-Addresse 565 / 0x0235: Variable: ua_loc_i_lo.i850 Wert: 0 / 0x00000000 / 0f
-Addresse 566 / 0x0236: Variable: ua_loc_x2.i852 Wert: 0 / 0x00000000 / 0f
-Addresse 567 / 0x0237: Variable: ua_loc_number.addr.i848 Wert: 0 / 0x00000000 / 0f
-Addresse 568 / 0x0238: Variable: ua_loc_Zeroline_Temp Wert: 0 / 0x00000000 / 0f
-Addresse 569 / 0x0239: Variable: ua_loc_pin2Val Wert: 0 / 0x00000000 / 0f
-Addresse 570 / 0x023A: Variable: ua_loc_pin1Val Wert: 0 / 0x00000000 / 0f
-Addresse 571 / 0x023B: Variable: last_coreCheck_challenge Wert: 0 / 0x00000000 / 0f
-Addresse 572 / 0x023C: Variable: last_coreCheck_crc Wert: 0 / 0x00000000 / 0f
-Addresse 573 / 0x023D: Variable: coreCheck_crc Wert: 0 / 0x00000000 / 0f
-Addresse 574 / 0x023E: Variable: coreCheck_challenge Wert: 0 / 0x00000000 / 0f
-Addresse 575 / 0x023F: Variable: coreCheckCtr Wert: 1 / 0x00000001 / 1,40129846E-45f
-Addresse 576 / 0x0240: Variable: lastOutputSignal Wert: 0 / 0x00000000 / 0f
-Addresse 577 / 0x0241: Variable: timeCtr Wert: 0 / 0x00000000 / 0f
-Addresse 578 / 0x0242: Variable: deviceOutputState Wert: 1 / 0x00000001 / 1,40129846E-45f
-Addresse 579 / 0x0243: Variable: deviceSwitchState Wert: 2 / 0x00000002 / 2,80259693E-45f
-Addresse 580 / 0x0244: Variable: lastDAC_val Wert: 0 / 0x00000000 / 0f
-Addresse 581 / 0x0245: Variable: time_ctr Wert: 0 / 0x00000000 / 0f
-Addresse 582 / 0x0246: Variable: rc_proportion Wert: 0 / 0x00000000 / 0f
-Addresse 583 / 0x0247: Variable: rc1_inv Wert: 0 / 0x00000000 / 0f
-Addresse 584 / 0x0248: Variable: amp_actFreq Wert: 1143930880 / 0x442F0000 / 700f
-Addresse 585 / 0x0249: Variable: capWert Wert: 0 / 0x00000000 / 0f
-Addresse 586 / 0x024A: Variable: amp_last_max Wert: 0 / 0x00000000 / 0f
-Addresse 587 / 0x024B: Variable: amp_n_1 Wert: 0 / 0x00000000 / 0f
-Addresse 588 / 0x024C: Variable: amp_act_max Wert: 0 / 0x00000000 / 0f
-Addresse 589 / 0x024D: Variable: amp_reset_ctr Wert: 0 / 0x00000000 / 0f
-Addresse 590 / 0x024E: Variable: res2_n_2_A Wert: 0 / 0x00000000 / 0f
-Addresse 591 / 0x024F: Variable: res2_n_1_A Wert: 0 / 0x00000000 / 0f
-Addresse 592 / 0x0250: Variable: res1_n_2_A Wert: 0 / 0x00000000 / 0f
-Addresse 593 / 0x0251: Variable: res1_n_1_A Wert: 0 / 0x00000000 / 0f
-Addresse 594 / 0x0252: Variable: a0_inv_A Wert: 0 / 0x00000000 / 0f
-Addresse 595 / 0x0253: Variable: f_mean_A Wert: 1143930880 / 0x442F0000 / 700f
-Addresse 596 / 0x0254: Variable: errCtr Wert: 0 / 0x00000000 / 0f
-Addresse 597 / 0x0255: Variable: phase_n_1 Wert: 0 / 0x00000000 / 0f
-Addresse 598 / 0x0256: Variable: phase_P Wert: 0 / 0x00000000 / 0f
-Addresse 599 / 0x0257: Variable: phase_I Wert: 0 / 0x00000000 / 0f
-Addresse 600 / 0x0258: Variable: phase_LP_n_1 Wert: 0 / 0x00000000 / 0f
-Addresse 601 / 0x0259: Variable: adc_z1 Wert: 0 / 0x00000000 / 0f
-Addresse 602 / 0x025A: Variable: res_output_A Wert: 0 / 0x00000000 / 0f
-Addresse 603 / 0x025B: Variable: res_output_TP Wert: 0 / 0x00000000 / 0f
-Addresse 604 / 0x025C: Variable: adc_value Wert: 0 / 0x00000000 / 0f
-Addresse 605 / 0x025D: Variable: mult Wert: 1065353216 / 0x3F800000 / 1f
-Addresse 606 / 0x025E: Variable: phase Wert: 1119092736 / 0x42B40000 / 90f
-Addresse 607 / 0x025F: Variable: rc_proportion_mean Wert: 0 / 0x00000000 / 0f
-Addresse 608 / 0x0260: Variable: f_A Wert: 0 / 0x00000000 / 0f
-Addresse 609 / 0x0261: Variable: f_inv_A Wert: 985349863 / 0x3ABB3EE7 / 0,00142857141f
-Addresse 610 / 0x0262: Variable: currentDiagnostic Wert: 0 / 0x00000000 / 0f
-Addresse 611 / 0x0263: Variable: currentDiagTimeStampMSB Wert: 0 / 0x00000000 / 0f
-Addresse 612 / 0x0264: Variable: currentDiagTimeStampLSB Wert: 0 / 0x00000000 / 0f
-Addresse 613 / 0x0265: Variable: nextDAC Wert: 0 / 0x00000000 / 0f
+Addresse 28 / 0x001C: Variable: ua_const_1 Wert: 0 / 0x00000000 / 0f (CRC checked parameter)
+Addresse 29 / 0x001D: Variable: ua_const_68 Wert: 2259 / 0x000008D3 / 3,16553323E-42f (CRC checked parameter)
+Addresse 30 / 0x001E: Variable: ua_const_67 Wert: 64 / 0x00000040 / 8,96831017E-44f (CRC checked parameter)
+Addresse 31 / 0x001F: Variable: ua_const_35 Wert: 1073741824 / 0x40000000 / 2f (CRC checked parameter)
+Addresse 32 / 0x0020: Variable: ua_const_36 Wert: 16 / 0x00000010 / 2,24207754E-44f (CRC checked parameter)
+Addresse 33 / 0x0021: Variable: ua_const_20 Wert: 1023 / 0x000003FF / 1,43352833E-42f (CRC checked parameter)
+Addresse 34 / 0x0022: Variable: UA_ADC_MEM_regptr Wert: 1024 / 0x00000400 / 1,43492963E-42f (CRC checked parameter)
+Addresse 35 / 0x0023: Variable: ua_const_37 Wert: 1031798784 / 0x3D800000 / 0,0625f (CRC checked parameter)
+Addresse 36 / 0x0024: Variable: f_VIRTUAL_SINE Wert: 0 / 0x00000000 / 0f (CRC checked parameter)
+Addresse 37 / 0x0025: Variable: f_VIRTUAL_SINE[1] Wert: 1053028117 / 0x3EC3EF15 / 0,382683426f (CRC checked parameter)
+Addresse 38 / 0x0026: Variable: f_VIRTUAL_SINE[2] Wert: 1060439283 / 0x3F3504F3 / 0,707106769f (CRC checked parameter)
+Addresse 39 / 0x0027: Variable: f_VIRTUAL_SINE[3] Wert: 1064076126 / 0x3F6C835E / 0,923879504f (CRC checked parameter)
+Addresse 40 / 0x0028: Variable: f_VIRTUAL_SINE[4] Wert: 1065353216 / 0x3F800000 / 1f (CRC checked parameter)
+Addresse 41 / 0x0029: Variable: f_VIRTUAL_SINE[5] Wert: 1064076126 / 0x3F6C835E / 0,923879504f (CRC checked parameter)
+Addresse 42 / 0x002A: Variable: f_VIRTUAL_SINE[6] Wert: 1060439283 / 0x3F3504F3 / 0,707106769f (CRC checked parameter)
+Addresse 43 / 0x002B: Variable: f_VIRTUAL_SINE[7] Wert: 1053028117 / 0x3EC3EF15 / 0,382683426f (CRC checked parameter)
+Addresse 44 / 0x002C: Variable: f_VIRTUAL_SINE[8] Wert: 0 / 0x00000000 / 0f (CRC checked parameter)
+Addresse 45 / 0x002D: Variable: f_VIRTUAL_SINE[9] Wert: 3200511765 / 0xBEC3EF15 / -0,382683426f (CRC checked parameter)
+Addresse 46 / 0x002E: Variable: f_VIRTUAL_SINE[10] Wert: 3207922931 / 0xBF3504F3 / -0,707106769f (CRC checked parameter)
+Addresse 47 / 0x002F: Variable: f_VIRTUAL_SINE[11] Wert: 3211559774 / 0xBF6C835E / -0,923879504f (CRC checked parameter)
+Addresse 48 / 0x0030: Variable: f_VIRTUAL_SINE[12] Wert: 3212836864 / 0xBF800000 / -1f (CRC checked parameter)
+Addresse 49 / 0x0031: Variable: f_VIRTUAL_SINE[13] Wert: 3211559774 / 0xBF6C835E / -0,923879504f (CRC checked parameter)
+Addresse 50 / 0x0032: Variable: f_VIRTUAL_SINE[14] Wert: 3207922931 / 0xBF3504F3 / -0,707106769f (CRC checked parameter)
+Addresse 51 / 0x0033: Variable: f_VIRTUAL_SINE[15] Wert: 3200511765 / 0xBEC3EF15 / -0,382683426f (CRC checked parameter)
+Addresse 52 / 0x0034: Variable: ua_const_39 Wert: 15 / 0x0000000F / 2,1019477E-44f (CRC checked parameter)
+Addresse 53 / 0x0035: Variable: ua_const_40 Wert: 1040187392 / 0x3E000000 / 0,125f (CRC checked parameter)
+Addresse 54 / 0x0036: Variable: ua_const_33 Wert: 1056964608 / 0x3F000000 / 0,5f (CRC checked parameter)
+Addresse 55 / 0x0037: Variable: ua_const_41 Wert: 65535 / 0x0000FFFF / 9,18340949E-41f (CRC checked parameter)
+Addresse 56 / 0x0038: Variable: ua_const_42 Wert: 2147418112 / 0x7FFF0000 / NaNf (CRC checked parameter)
+Addresse 57 / 0x0039: Variable: ua_const_43 Wert: 23007 / 0x000059DF / 3,22396738E-41f (CRC checked parameter)
+Addresse 58 / 0x003A: Variable: ua_const_44 Wert: 24375 / 0x00005F37 / 3,41566501E-41f (CRC checked parameter)
+Addresse 59 / 0x003B: Variable: ua_const_45 Wert: 1069547520 / 0x3FC00000 / 1,5f (CRC checked parameter)
+Addresse 60 / 0x003C: Variable: ua_const_46 Wert: 8388607 / 0x007FFFFF / 1,17549421E-38f (CRC checked parameter)
+Addresse 61 / 0x003D: Variable: ua_const_47 Wert: 1056964608 / 0x3F000000 / 0,5f (CRC checked parameter)
+Addresse 62 / 0x003E: Variable: ua_const_48 Wert: 1072754929 / 0x3FF0F0F1 / 1,88235295f (CRC checked parameter)
+Addresse 63 / 0x003F: Variable: ua_const_49 Wert: 1077195957 / 0x4034B4B5 / 2,82352948f (CRC checked parameter)
+Addresse 64 / 0x0040: Variable: ua_const_50 Wert: 1073741824 / 0x40000000 / 2f (CRC checked parameter)
+Addresse 65 / 0x0041: Variable: ua_const_51 Wert: 4294967295 / 0xFFFFFFFF / NaNf (CRC checked parameter)
+Addresse 66 / 0x0042: Variable: ua_const_52 Wert: 4286578688 / 0xFF800000 / -∞f (CRC checked parameter)
+Addresse 67 / 0x0043: Variable: ua_const_53 Wert: 3196059648 / 0xBE800000 / -0,25f (CRC checked parameter)
+Addresse 68 / 0x0044: Variable: ua_const_38 Wert: 0 / 0x00000000 / 0f (CRC checked parameter)
+Addresse 69 / 0x0045: Variable: ua_const_54 Wert: 1065353216 / 0x3F800000 / 1f (CRC checked parameter)
+Addresse 70 / 0x0046: Variable: ua_const_55 Wert: 993431619 / 0x3B369043 / 0,00278569828f (CRC checked parameter)
+Addresse 71 / 0x0047: Variable: ua_const_56 Wert: 3162634614 / 0xBC81F976 / -0,0158660226f (CRC checked parameter)
+Addresse 72 / 0x0048: Variable: ua_const_57 Wert: 1026422621 / 0x3D2DF75D / 0,0424722321f (CRC checked parameter)
+Addresse 73 / 0x0049: Variable: ua_const_58 Wert: 3180956839 / 0xBD998CA7 / -0,0749753043f (CRC checked parameter)
+Addresse 74 / 0x004A: Variable: ua_const_59 Wert: 1037697492 / 0x3DDA01D4 / 0,106448799f (CRC checked parameter)
+Addresse 75 / 0x004B: Variable: ua_const_60 Wert: 3188816609 / 0xBE117AE1 / -0,142070308f (CRC checked parameter)
+Addresse 76 / 0x004C: Variable: ua_const_61 Wert: 1045216164 / 0x3E4CBBA4 / 0,199934542f (CRC checked parameter)
+Addresse 77 / 0x004D: Variable: ua_const_62 Wert: 3198855788 / 0xBEAAAA6C / -0,333331466f (CRC checked parameter)
+Addresse 78 / 0x004E: Variable: ua_const_63 Wert: 1070141403 / 0x3FC90FDB / 1,57079637f (CRC checked parameter)
+Addresse 79 / 0x004F: Variable: ua_const_64 Wert: 1078530011 / 0x40490FDB / 3,14159274f (CRC checked parameter)
+Addresse 80 / 0x0050: Variable: ua_const_65 Wert: 3216160959 / 0xBFB2B8BF / -1,396263f (CRC checked parameter)
+Addresse 81 / 0x0051: Variable: OneOn_WR Wert: 1082795972 / 0x408A27C4 / 4,3173542f (CRC checked parameter)
+Addresse 82 / 0x0052: Variable: OneOn_WR[1] Wert: 1091174094 / 0x4109FECE / 8,62470818f (CRC checked parameter)
+Addresse 83 / 0x0053: Variable: OneOn_WR[2] Wert: 1099579087 / 0x418A3ECF / 17,2806683f (CRC checked parameter)
+Addresse 84 / 0x0054: Variable: OneOn_WR[3] Wert: 1107960227 / 0x420A21A3 / 34,5328484f (CRC checked parameter)
+Addresse 85 / 0x0055: Variable: OneOn_WR[4] Wert: 1116366150 / 0x428A6546 / 69,1977997f (CRC checked parameter)
+Addresse 86 / 0x0056: Variable: OneOn_WR[5] Wert: 1124754758 / 0x430A6546 / 138,395599f (CRC checked parameter)
+Addresse 87 / 0x0057: Variable: OneOn_WR[6] Wert: 1133127620 / 0x438A27C4 / 276,310669f (CRC checked parameter)
+Addresse 88 / 0x0058: Variable: OneOn_WR[7] Wert: 1141516228 / 0x440A27C4 / 552,621338f (CRC checked parameter)
+Addresse 89 / 0x0059: Variable: OneOn_WR[8] Wert: 1149904836 / 0x448A27C4 / 1105,24268f (CRC checked parameter)
+Addresse 90 / 0x005A: Variable: ua_const_66 Wert: 9 / 0x00000009 / 1,26116862E-44f (CRC checked parameter)
+Addresse 91 / 0x005B: Variable: ua_const_18 Wert: 4096 / 0x00001000 / 5,73971851E-42f (CRC checked parameter)
+Addresse 92 / 0x005C: Variable: ua_const_19 Wert: 231 / 0x000000E7 / 3,23699945E-43f (CRC checked parameter)
+Addresse 93 / 0x005D: Variable: ua_const_21 Wert: 230 / 0x000000E6 / 3,22298647E-43f (CRC checked parameter)
+Addresse 94 / 0x005E: Variable: ua_const_22 Wert: 1047552 / 0x000FFC00 / 1,46793301E-39f (CRC checked parameter)
+Addresse 95 / 0x005F: Variable: ua_const_24 Wert: 229 / 0x000000E5 / 3,20897348E-43f (CRC checked parameter)
+Addresse 96 / 0x0060: Variable: ua_const_25 Wert: 1072693248 / 0x3FF00000 / 1,875f (CRC checked parameter)
+Addresse 97 / 0x0061: Variable: ua_const_27 Wert: 228 / 0x000000E4 / 3,1949605E-43f (CRC checked parameter)
+Addresse 98 / 0x0062: Variable: ua_const_28 Wert: 227 / 0x000000E3 / 3,18094751E-43f (CRC checked parameter)
+Addresse 99 / 0x0063: Variable: ua_const_29 Wert: 226 / 0x000000E2 / 3,16693453E-43f (CRC checked parameter)
+Addresse 100 / 0x0064: Variable: ua_const_30 Wert: 225 / 0x000000E1 / 3,15292154E-43f (CRC checked parameter)
+Addresse 101 / 0x0065: Variable: ua_const_4 Wert: 8 / 0x00000008 / 1,12103877E-44f (CRC checked parameter)
+Addresse 102 / 0x0066: Variable: Increment_Table Wert: 33554432 / 0x02000000 / 9,40395481E-38f (CRC checked parameter)
+Addresse 103 / 0x0067: Variable: Increment_Table[1] Wert: 16777216 / 0x01000000 / 2,3509887E-38f (CRC checked parameter)
+Addresse 104 / 0x0068: Variable: Increment_Table[2] Wert: 8388608 / 0x00800000 / 1,17549435E-38f (CRC checked parameter)
+Addresse 105 / 0x0069: Variable: Increment_Table[3] Wert: 4194304 / 0x00400000 / 5,87747175E-39f (CRC checked parameter)
+Addresse 106 / 0x006A: Variable: Increment_Table[4] Wert: 2097152 / 0x00200000 / 2,93873588E-39f (CRC checked parameter)
+Addresse 107 / 0x006B: Variable: Increment_Table[5] Wert: 1048576 / 0x00100000 / 1,46936794E-39f (CRC checked parameter)
+Addresse 108 / 0x006C: Variable: Increment_Table[6] Wert: 524288 / 0x00080000 / 7,34683969E-40f (CRC checked parameter)
+Addresse 109 / 0x006D: Variable: Increment_Table[7] Wert: 262144 / 0x00040000 / 3,67341985E-40f (CRC checked parameter)
+Addresse 110 / 0x006E: Variable: Increment_Table[8] Wert: 131072 / 0x00020000 / 1,83670992E-40f (CRC checked parameter)
+Addresse 111 / 0x006F: Variable: ua_const_31 Wert: 2147483648 / 0x80000000 / 0f (CRC checked parameter)
+Addresse 112 / 0x0070: Variable: ADC_divider Wert: 6 / 0x00000006 / 8,40779079E-45f (CRC checked parameter)
+Addresse 113 / 0x0071: Variable: ADC_divider[1] Wert: 6 / 0x00000006 / 8,40779079E-45f (CRC checked parameter)
+Addresse 114 / 0x0072: Variable: ADC_divider[2] Wert: 6 / 0x00000006 / 8,40779079E-45f (CRC checked parameter)
+Addresse 115 / 0x0073: Variable: ADC_divider[3] Wert: 40 / 0x00000028 / 5,60519386E-44f (CRC checked parameter)
+Addresse 116 / 0x0074: Variable: ADC_divider[4] Wert: 108 / 0x0000006C / 1,51340234E-43f (CRC checked parameter)
+Addresse 117 / 0x0075: Variable: ADC_divider[5] Wert: 244 / 0x000000F4 / 3,41916825E-43f (CRC checked parameter)
+Addresse 118 / 0x0076: Variable: ADC_divider[6] Wert: 4 / 0x00000004 / 5,60519386E-45f (CRC checked parameter)
+Addresse 119 / 0x0077: Variable: ADC_divider[7] Wert: 36 / 0x00000024 / 5,04467447E-44f (CRC checked parameter)
+Addresse 120 / 0x0078: Variable: ADC_divider[8] Wert: 100 / 0x00000064 / 1,40129846E-43f (CRC checked parameter)
+Addresse 121 / 0x0079: Variable: ua_const_32 Wert: 1105199104 / 0x41E00000 / 28f (CRC checked parameter)
+Addresse 122 / 0x007A: Variable: ua_const_34 Wert: 1065353215 / 0x3F7FFFFF / 0,99999994f (CRC checked parameter)
+Addresse 123 / 0x007B: Variable: ua_const_69 Wert: 2048 / 0x00000800 / 2,86985925E-42f (CRC checked parameter)
+Addresse 124 / 0x007C: Variable: n_calc Wert: 1095237632 / 0x41480000 / 12,5f (CRC checked parameter)
+Addresse 125 / 0x007D: Variable: UA_INIT_ADC_CONVERSION_CONF Wert: 0 / 0x00000000 / 0f (CRC checked parameter)
+Addresse 126 / 0x007E: Variable: par_phase_LP_0 Wert: 959841098 / 0x3936034A / 0,000173580978f (CRC checked parameter)
+Addresse 127 / 0x007F: Variable: par_phase_LP_1 Wert: 1169422336 / 0x45B3F800 / 5759f (CRC checked parameter)
+Addresse 128 / 0x0080: Variable: par_phase_P Wert: 1120403456 / 0x42C80000 / 100f (CRC checked parameter)
+Addresse 129 / 0x0081: Variable: par_phase_I Wert: 1050253722 / 0x3E99999A / 0,300000012f (CRC checked parameter)
+Addresse 130 / 0x0082: Variable: par_phase_min_wind Wert: 1142292480 / 0x44160000 / 600f (CRC checked parameter)
+Addresse 131 / 0x0083: Variable: par_phase_max_wind Wert: 1150681088 / 0x44960000 / 1200f (CRC checked parameter)
+Addresse 132 / 0x0084: Variable: par_phase_startFreq Wert: 1143930880 / 0x442F0000 / 700f (CRC checked parameter)
+Addresse 133 / 0x0085: Variable: par_res_c1_A Wert: 816165742 / 0x30A5B36E / 1,2056327E-09f (CRC checked parameter)
+Addresse 134 / 0x0086: Variable: par_res_c2_A Wert: 907125428 / 0x3611A2B4 / 2,17013894E-06f (CRC checked parameter)
+Addresse 135 / 0x0087: Variable: par_res_c6_A Wert: 1023410176 / 0x3D000000 / 0,03125f (CRC checked parameter)
+Addresse 136 / 0x0088: Variable: par_amp_reset Wert: 1117782016 / 0x42A00000 / 80f (CRC checked parameter)
+Addresse 137 / 0x0089: Variable: par_amp_reset_max Wert: 1000 / 0x000003E8 / 1,40129846E-42f (CRC checked parameter)
+Addresse 138 / 0x008A: Variable: par_amp_startFreq Wert: 1143930880 / 0x442F0000 / 700f (CRC checked parameter)
+Addresse 139 / 0x008B: Variable: par_amp_endFreq Wert: 1150681088 / 0x44960000 / 1200f (CRC checked parameter)
+Addresse 140 / 0x008C: Variable: par_amp_stepFreq Wert: 1101004800 / 0x41A00000 / 20f (CRC checked parameter)
+Addresse 141 / 0x008D: Variable: par_time_min Wert: 12 / 0x0000000C / 1,68155816E-44f (CRC checked parameter)
+Addresse 142 / 0x008E: Variable: par_time_max Wert: 24 / 0x00000018 / 3,36311631E-44f (CRC checked parameter)
+Addresse 143 / 0x008F: Variable: electronicType Wert: 2 / 0x00000002 / 2,80259693E-45f (CRC checked parameter)
+Addresse 144 / 0x0090: Variable: #_CRC_pmem_# Wert: 16216 / 0x00003F58 / 2,27234559E-41f (CRC checked parameter)
+Addresse 571 / 0x023B: Variable: ua_tmp_307 Wert: 0 / 0x00000000 / 0f
+Addresse 572 / 0x023C: Variable: ua_tmp_303 Wert: 0 / 0x00000000 / 0f
+Addresse 573 / 0x023D: Variable: ua_tmp_239 Wert: 0 / 0x00000000 / 0f
+Addresse 574 / 0x023E: Variable: ua_tmp_236 Wert: 0 / 0x00000000 / 0f
+Addresse 575 / 0x023F: Variable: ua_tmp_410 Wert: 0 / 0x00000000 / 0f
+Addresse 576 / 0x0240: Variable: ua_tmp_406 Wert: 0 / 0x00000000 / 0f
+Addresse 577 / 0x0241: Variable: ua_tmp_342 Wert: 0 / 0x00000000 / 0f
+Addresse 578 / 0x0242: Variable: ua_tmp_339 Wert: 0 / 0x00000000 / 0f
+Addresse 579 / 0x0243: Variable: ua_tmp_5 Wert: 0 / 0x00000000 / 0f
+Addresse 580 / 0x0244: Variable: ua_loc_x.i355 Wert: 0 / 0x00000000 / 0f
+Addresse 581 / 0x0245: Variable: ua_loc_in.addr.i353 Wert: 0 / 0x00000000 / 0f
+Addresse 582 / 0x0246: Variable: ua_loc_y.i384 Wert: 0 / 0x00000000 / 0f
+Addresse 583 / 0x0247: Variable: ua_loc_i_hi.i382 Wert: 0 / 0x00000000 / 0f
+Addresse 584 / 0x0248: Variable: ua_loc_i_lo.i381 Wert: 0 / 0x00000000 / 0f
+Addresse 585 / 0x0249: Variable: ua_loc_x2.i383 Wert: 0 / 0x00000000 / 0f
+Addresse 586 / 0x024A: Variable: ua_loc_number.addr.i379 Wert: 0 / 0x00000000 / 0f
+Addresse 587 / 0x024B: Variable: ua_loc_x.i421 Wert: 0 / 0x00000000 / 0f
+Addresse 588 / 0x024C: Variable: ua_loc_in.addr.i419 Wert: 0 / 0x00000000 / 0f
+Addresse 589 / 0x024D: Variable: ua_loc_x.i Wert: 0 / 0x00000000 / 0f
+Addresse 590 / 0x024E: Variable: ua_loc_in.addr.i315 Wert: 0 / 0x00000000 / 0f
+Addresse 591 / 0x024F: Variable: ua_loc_y.i Wert: 0 / 0x00000000 / 0f
+Addresse 592 / 0x0250: Variable: ua_loc_i_hi.i Wert: 0 / 0x00000000 / 0f
+Addresse 593 / 0x0251: Variable: ua_loc_i_lo.i Wert: 0 / 0x00000000 / 0f
+Addresse 594 / 0x0252: Variable: ua_loc_x2.i Wert: 0 / 0x00000000 / 0f
+Addresse 595 / 0x0253: Variable: ua_loc_number.addr.i Wert: 0 / 0x00000000 / 0f
+Addresse 596 / 0x0254: Variable: ua_loc_x.i329 Wert: 0 / 0x00000000 / 0f
+Addresse 597 / 0x0255: Variable: ua_loc_in.addr.i327 Wert: 0 / 0x00000000 / 0f
+Addresse 598 / 0x0256: Variable: ua_loc_s.i Wert: 0 / 0x00000000 / 0f
+Addresse 599 / 0x0257: Variable: ua_loc_x.i.i Wert: 0 / 0x00000000 / 0f
+Addresse 600 / 0x0258: Variable: ua_loc_in.addr.i.i Wert: 0 / 0x00000000 / 0f
+Addresse 601 / 0x0259: Variable: ua_loc_r.i Wert: 0 / 0x00000000 / 0f
+Addresse 602 / 0x025A: Variable: ua_loc_t.i Wert: 0 / 0x00000000 / 0f
+Addresse 603 / 0x025B: Variable: ua_loc_x.addr.i Wert: 0 / 0x00000000 / 0f
+Addresse 604 / 0x025C: Variable: ua_loc_x.i459 Wert: 0 / 0x00000000 / 0f
+Addresse 605 / 0x025D: Variable: ua_loc_in.addr.i457 Wert: 0 / 0x00000000 / 0f
+Addresse 606 / 0x025E: Variable: ua_loc_y.i488 Wert: 0 / 0x00000000 / 0f
+Addresse 607 / 0x025F: Variable: ua_loc_i_hi.i486 Wert: 0 / 0x00000000 / 0f
+Addresse 608 / 0x0260: Variable: ua_loc_i_lo.i485 Wert: 0 / 0x00000000 / 0f
+Addresse 609 / 0x0261: Variable: ua_loc_x2.i487 Wert: 0 / 0x00000000 / 0f
+Addresse 610 / 0x0262: Variable: ua_loc_number.addr.i483 Wert: 0 / 0x00000000 / 0f
+Addresse 611 / 0x0263: Variable: ua_loc_Zeroline_Temp Wert: 0 / 0x00000000 / 0f
+Addresse 612 / 0x0264: Variable: ua_loc_pin2Val Wert: 0 / 0x00000000 / 0f
+Addresse 613 / 0x0265: Variable: ua_loc_pin1Val Wert: 0 / 0x00000000 / 0f
 Addresse 614 / 0x0266: Variable: Current_ADC_divider Wert: 0 / 0x00000000 / 0f
 Addresse 615 / 0x0267: Variable: DDS_Amplitude Wert: 975079329 / 0x3A1E87A1 / 0,000604743196f
 Addresse 616 / 0x0268: Variable: DDS_Amplitude[1] Wert: 975079329 / 0x3A1E87A1 / 0,000604743196f
@@ -456,4 +341,4 @@ Addresse 765 / 0x02FD: Variable: sv_status Wert: 0 / 0x00000000 / 0f
 Addresse 766 / 0x02FE: Variable: pv_status Wert: 0 / 0x00000000 / 0f
 Addresse 767 / 0x02FF: Variable: sensorState_flag Wert: 1 / 0x00000001 / 1,40129846E-45f
 
-Amount of checked parameter variables/words: 195
+Amount of checked parameter variables/words: 144
