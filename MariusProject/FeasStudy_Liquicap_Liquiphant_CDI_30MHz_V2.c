@@ -372,24 +372,24 @@ void ua_main()
     UA_PFM_PWM_ENABLE_REG = UA_PFM_PWM_ENABLE;
 
     //assign data according to SMEM and dip sitches
-    if(EEPROM_TYPE != 0x00000001)
-    {
-        UA_ERROR_LOG_CODE = ERROR_SMEM_DATA_INVALID;
-        UA_WRITE_STA = UA_WRITE_STA_FAILURE;
-        while(1)
-        {
-            UA_SLEEP;
-            TOGGLE_WATCHDOG;
+    // if(EEPROM_TYPE != 0x00000001)
+    // {
+    //     UA_ERROR_LOG_CODE = ERROR_SMEM_DATA_INVALID;
+    //     UA_WRITE_STA = UA_WRITE_STA_FAILURE;
+    //     while(1)
+    //     {
+    //         UA_SLEEP;
+    //         TOGGLE_WATCHDOG;
             
-            //toggle red LED
-            timeCtr++;
-            if(timeCtr == 14400)
-            {
-                TOGGLE_LED_RED;
-                timeCtr = 0;
-            }
-        }
-    }
+    //         //toggle red LED
+    //         timeCtr++;
+    //         if(timeCtr == 14400)
+    //         {
+    //             TOGGLE_LED_RED;
+    //             timeCtr = 0;
+    //         }
+    //     }
+    // }
     
     pin1Val = (UA_GPIO_IN & 0x01) | ((UA_GPIO_IN_INV & 0x01) << 8); 
     if(pin1Val == 0x0001) //high -> Density 0.7
