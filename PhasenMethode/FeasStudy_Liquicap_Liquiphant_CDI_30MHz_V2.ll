@@ -1,4 +1,4 @@
-; ModuleID = 'C:\Users\i40014121\Desktop\Bachelorarbeit_Code\MariusProject\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.c'
+; ModuleID = 'C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.c'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-pc-windows-gnu"
 
@@ -226,7 +226,6 @@ target triple = "x86_64-pc-windows-gnu"
 @f_Phase_sig = global [9 x float] zeroinitializer, align 16
 @f_Phase_ref = global [9 x float] zeroinitializer, align 16
 @DDS_Amplitude = global [3 x i128] [i128 975079329, i128 975079329, i128 975079329], align 16
-@Previous_mode = global i32 1, align 4
 @Current_ADC_divider = common global i32 0, align 4
 @Last_ADC_Pointer = common global i32 0, align 4
 @MAX_UA_Cycle = common global i32 0, align 4
@@ -1986,7 +1985,6 @@ if.end29:                                         ; preds = %if.end28, %if.then2
   br label %while.body
 
 while.body:                                       ; preds = %if.end29, %if.end314
-  store i32 1, i32* @Previous_mode, align 4
   %43 = load i32* @Cycle_Number, align 4
   %cmp30 = icmp eq i32 %43, 0
   br i1 %cmp30, label %land.lhs.true, label %if.else102

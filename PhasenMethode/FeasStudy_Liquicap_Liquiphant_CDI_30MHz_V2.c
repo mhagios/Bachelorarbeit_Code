@@ -340,8 +340,6 @@ ua_float_t 		f_Phase_ref[9]  = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 
 ua_word_t        DDS_Amplitude[3] = {975079329, 975079329, 975079329};
 ua_float_t 		f_KapazitiverAnteil2;
 
-ua_int_t		Previous_mode = LIQUICAP;
-
 
 void ua_main()
 {
@@ -370,26 +368,6 @@ void ua_main()
     //setup PWM
     UA_PFM_PWM_TIMINGS = UA_PFM_PWM_HIGH_STATE(SET_PFM_PWM_HIGH_STATE(1.0f/60000.0f)) | UA_PFM_PWM_PERIOD(SET_PFM_PWM_PERIOD(1.0f/30000.0f));
     UA_PFM_PWM_ENABLE_REG = UA_PFM_PWM_ENABLE;
-
-    //assign data according to SMEM and dip sitches
-    // if(EEPROM_TYPE != 0x00000001)
-    // {
-    //     UA_ERROR_LOG_CODE = ERROR_SMEM_DATA_INVALID;
-    //     UA_WRITE_STA = UA_WRITE_STA_FAILURE;
-    //     while(1)
-    //     {
-    //         UA_SLEEP;
-    //         TOGGLE_WATCHDOG;
-            
-    //         //toggle red LED
-    //         timeCtr++;
-    //         if(timeCtr == 14400)
-    //         {
-    //             TOGGLE_LED_RED;
-    //             timeCtr = 0;
-    //         }
-    //     }
-    // }
     
     pin1Val = (UA_GPIO_IN & 0x01) | ((UA_GPIO_IN_INV & 0x01) << 8); 
     if(pin1Val == 0x0001) //high -> Density 0.7
@@ -446,11 +424,9 @@ void ua_main()
     //start main routine
 	while(1)
 	{
-		Previous_mode = LIQUICAP;
-
 		if ((Cycle_Number == 0) && (Current_state == ST_MEASURE))						// Cycle_Number: 0..15 Abtastpunkte pro "Periode"
 		{	
-			
+			// Switch für AnalogSwitch. --> Abwechselnd Messen von Cp und Cr 
 			if (s25_Switch_CP_CR == 0)				// 0=CP  1=CR
 			{
 				s25_Switch_CP_CR = 1;
@@ -464,8 +440,7 @@ void ua_main()
 				
 			}
 			
-			
-			
+			//Switch für alternierendes Messen von Uref und Rmess
 			if (Current_signal == 0)				
 			{
 				UA_GPIO_OUT_SET = 0x1000;
@@ -478,7 +453,7 @@ void ua_main()
 
 			// ============================================================================
 			// Adjust correct Amplitude per Frequency =====================================
-			if ( Frequency_number==0 ) 			// 0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k
+			if (Frequency_number==0 ) 			// 0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k
 			{
 				//if ( (DDS_Amplitude[0]&0x00003FF) > 0)
 				{
@@ -491,8 +466,7 @@ void ua_main()
 					// Frequency_number=1;
 				// }
 			}
-
-			if ( Frequency_number==1) 			// 0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k  		
+			if (Frequency_number==1) 			// 0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k  		
 			{
 				//if ( ((DDS_Amplitude[0]&0x000FFC00)>>10) > 0)
 				{
@@ -504,10 +478,8 @@ void ua_main()
 				// {
 					// Frequency_number=2;
 				// }
-			}
-
-			
-			if ( Frequency_number==2) 			// 0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k 
+			}		
+			if (Frequency_number==2) 			// 0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k 
 			{
 				//if ( ((DDS_Amplitude[0]&0x3FF00000)>>20) > 0)
 				{
@@ -519,9 +491,7 @@ void ua_main()
 				// {
 					// Frequency_number=3;
 				// }
-			}
-
-			
+			}	
 			if (Frequency_number==3) 			// 0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k  
 			{
 				//if ((DDS_Amplitude[1]&0x00003FF) > 0)
@@ -535,8 +505,6 @@ void ua_main()
 					// Frequency_number=4;
 				// }
 			}
-			
-			
 			if (Frequency_number==4) 			// 0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k  
 			{
 				//if (((DDS_Amplitude[1]&0x000FFC00)>>10) > 0)
@@ -549,8 +517,7 @@ void ua_main()
 				// {
 					// Frequency_number=5;
 				// }
-			}	
-				
+			}					
 			if (Frequency_number==5) 			// 0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k 
 			{
 				//if (((DDS_Amplitude[1]&0x3FF00000)>>20) > 0)
@@ -564,9 +531,6 @@ void ua_main()
 					// Frequency_number=6;
 				// }
 			}
-			
-			
-			
 			if (Frequency_number==6) 			// 0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k 
 			{
 				//if ((DDS_Amplitude[2]&0x00003FF) > 0)
@@ -580,10 +544,6 @@ void ua_main()
 					// Frequency_number=7;
 				// }
 			}
-			
-			
-			
-			
 			if (Frequency_number==7) 			// 0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k  
 			{
 				//if (((DDS_Amplitude[2]&0x000FFC00)>>10) > 0)
@@ -597,10 +557,6 @@ void ua_main()
 					// Frequency_number=8;
 				// }
 			}
-			
-			
-			
-			
 			if (Frequency_number==8) 			// 0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k 
 			{
 				//if (((DDS_Amplitude[2]&0x3FF00000)>>20) > 0)
@@ -614,12 +570,7 @@ void ua_main()
 					// Frequency_number=0;
 				// }
 			}
-
-			
-
 			// ============================================================================
-			
-			
 			
 			UA_INCREMENT1_DDS = Increment_Table[Frequency_number];
 			// position is very important!! DDS must be started at least 9 CLK periods before ADC enable, to solve the problem of transient behaviour at start of the DDS.
@@ -642,15 +593,15 @@ void ua_main()
 
 			ua_int_t	Zeroline_Temp = 0;			
 			
-			for (Value_index = 0; Value_index < c_SAMPLE_POINTS; Value_index++)
+			for (Value_index = 0; Value_index < c_SAMPLE_POINTS; Value_index++) //Auslesen des ADCs
 			{
 				Temp = 0;
-				
+				//Auslesen des ADC Memories
 				for (period = 0; period < 16; period++)
 				{
 						Temp = UA_ADC_MEM[(Last_ADC_Pointer - period * c_SAMPLE_POINTS - Value_index) & 0x3FF] + Temp;
 				}
-				
+				//Zuweisung: Entweder Referenz-/ oder Signalvariable
 				if (Current_signal == EN_SIGNAL)
 				{	
 					ADC_values_sig[Value_index] = Temp;
@@ -835,14 +786,14 @@ void ua_main()
 			Current_signal ^= 1; // Toggle between EN_SIGNAL <> EN_REFERENCE
 			
 		}
-		else if ((Cycle_Number >= SLEEP_CYCLES) && (Current_state == ST_SLEEP))
+		else if ((Cycle_Number >= SLEEP_CYCLES) && (Current_state == ST_SLEEP)) //Aufwachen aus Sleep mode
 		{
 			Current_state = ST_STARTUP;
 			Cycle_Number = 0;
 			UA_DAC_CONFIG_SET = UA_DAC_CONFIG_PDN_DISABLE;
 			
 		}
-		else if (Current_state == ST_STARTUP)
+		else if (Current_state == ST_STARTUP) //Übergang in den Messzustand
 		{
 			Current_state = ST_MEASURE;
 			Cycle_Number = 0;
