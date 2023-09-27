@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This file has been created with UACCompiler V2.5
 ; Used Strategy: backlog,1 - Additional Option: -l
-; Creation: 25.09.2023 10:35:32
+; Creation: 27.09.2023 11:35:48
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .param
@@ -127,7 +127,6 @@ setCoveredFrequ:                .float        0.000000
 corrosionFrequ:                 .float        0.000000
 ledOutValFree:                  .word         4096
 ledOutValCovered:               .word         512
-Previous_mode:                  .int          1
 Cycle_Number:                   .int          0
 MAX_UA_Cycle:                   .int          0
 Current_state:                  .int          2
@@ -216,7 +215,7 @@ ua_tmp_239:                     .word         0x0
 ua_tmp_303:                     .word         0x0
 ua_tmp_307:                     .word         0x0
 
-; VLIW count: 900
+; VLIW count: 898
 .code
 	INC | HOLD | HOLD | LOAD ua_const_0 LD
 	INC | HOLD | HOLD | STOR sensorState_flag LD
@@ -333,8 +332,6 @@ if.end29:
 	INC | HOLD | HOLD | STOR 0x448 LD
 	INC | HOLD | HOLD | CLR 0x405
 while.body:
-	INC | HOLD | HOLD | LOAD ua_const_0 LD
-	INC | HOLD | HOLD | STOR Previous_mode LD
 	INC | HOLD | HOLD | LOAD Cycle_Number LD
 	INC | HOLD | MOV LD R0 | LOAD ua_const_1 LD
 	JE R0 LD | HOLD | HOLD | LOAD @land.lhs.true LD

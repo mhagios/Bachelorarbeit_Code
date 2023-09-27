@@ -266,7 +266,7 @@ ua_param ua_word_t Increment_Table[9] = {
 										262144,
 										131072,
 										};
-	
+/*	
 ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
 	4.31735414203f,
 	8.62470828406f,
@@ -278,7 +278,19 @@ ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Freq
 	552.621330180f,
 	1105.24266036f
 };
-
+*/
+// R = 1k
+ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+	4.74318692362f,
+	9.48637384724f,
+	18.9727476945f,
+	37.9454953890f,
+	75.8909907779f,
+	151.781981556f,
+	303.563963112f,
+	607.127926223f,
+	1214.25585245f
+};
 
 
 ua_param ua_float_t f_VIRTUAL_SINE[16] = {	0.0f,	0.382683432f,	0.707106781f,	0.923879533f,

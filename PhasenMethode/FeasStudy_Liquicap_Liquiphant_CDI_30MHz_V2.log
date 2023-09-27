@@ -1,6 +1,24 @@
 Microarchitecure Suite Version 3.20.20
 UAC Compiler Version 2.5 @ 16.12.2022 15:14:30
 
+==========================C-Compiler===========================
+Selected Strategy: backlog,1 - Additional Option: -l
+Compiling C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.ll
+
+Optimization:
+          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+          |||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Parallelization:
+          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+          |||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Info: Selected path: path1130; VLIW count: 898
+
+Compilation successful in 43,669 s
+
 ===========================Assembler===========================
 Analyzing ASM finished.
 Note: Variable "n_calc" declared but not used.
@@ -40,10 +58,10 @@ Start creating output files...
 All files generated successfully.
 
 -------------Memory usage:-------------------------------------
-IMEM:	900 of 2048
-DMEM:	342 of 1024	(144 checked param. + 1 CRC)
+IMEM:	898 of 2048
+DMEM:	341 of 1024	(144 checked param. + 1 CRC)
 ---------------------------------------------------------------
-Workload AU: 33,7%; LU: 20,2%; LD/ST: 90,0% (Concurr.: 21,9%)
+Workload AU: 33,7%; LU: 20,3%; LD/ST: 90,0% (Concurr.: 22,0%)
 
 
 ===================Longest Path Analyzation====================
@@ -273,7 +291,7 @@ Verifying Memory ...Successful
 
 
 Programming of:
-C:\Users\i40014121\Desktop\Bachelorarbeit_Code\MariusProject\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.bin
-successful in 50533 ms
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.bin
+successful in 37249 ms
 Disconnecting Programmer...Done
 
