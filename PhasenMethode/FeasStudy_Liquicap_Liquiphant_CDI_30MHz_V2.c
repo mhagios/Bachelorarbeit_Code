@@ -291,6 +291,20 @@ ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Freq
 	607.127926223f,
 	1214.25585245f
 };
+/*	
+// R = 24k
+ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+	0.19763278848f,
+	0.39526557697f,
+	0.79053115394f,
+	1.58106230787f,
+	3.16212461575f,
+	6.32424923149f,
+	12.6484984630f,
+	25.2969969230f,
+	50.5939938519f
+};
+*/
 
 
 ua_param ua_float_t f_VIRTUAL_SINE[16] = {	0.0f,	0.382683432f,	0.707106781f,	0.923879533f,
