@@ -1979,7 +1979,7 @@ if.end29:                                         ; preds = %if.end28, %if.then2
   %40 = load i128** @UA_OUTPUT_SET_regptr, align 8
   store i128 32, i128* %40, align 16
   %41 = load i128** @UA_LPSI_DMA_regptr, align 8
-  store i128 5112427, i128* %41, align 16
+  store i128 2490987, i128* %41, align 16
   %42 = load i128** @UA_ENABLE_regptr, align 8
   store i128 0, i128* %42, align 16
   br label %while.body
