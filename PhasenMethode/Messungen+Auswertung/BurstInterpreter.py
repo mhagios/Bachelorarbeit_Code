@@ -8,9 +8,11 @@ import copy
 from locale import atof
 locale.setlocale(locale.LC_ALL, 'de_DE')
 
-RESISTANCE = 1 #kOhm
-CSTM_TITLE = "Nach ein paar Sekunden anfassen und dann mit leichtem Druck"
-#sys.path.append()
+RESISTANCE = 1024.5 #kOhm
+CSTM_TITLE = "\t10s:p=0 20s:p>0, 30s:p=0"
+
+LEGEND_POS_X = 1.005
+LEGEND_POS_Y = 1.04
 
 Cr_A = [0]*9
 Cr_P = [0]*9
@@ -22,7 +24,13 @@ Cr_P_m = []
 Cp_A_m = []
 Cp_P_m = []
 
-fileName = 'Messungen/17_10_Homeoffice/r1k.csv'
+fileName = 'Messungen/17_10_Homeoffice/r1M0245.csv'
+filePath = 'Auswertung/' + fileName.rsplit('/')[-2] + '/' + fileName.rsplit('/')[-1].replace('csv', 'png')
+directory = os.path.dirname(filePath)
+if not os.path.exists(directory):
+    os.makedirs(directory)
+
+
 with open(fileName,'r', newline='') as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
     next(reader)
@@ -44,20 +52,21 @@ with open(fileName,'r', newline='') as csvfile:
 
 ## Plotting
 frequencies = [36864, 18432, 921, 461, 230, 115, 57.6, 28.8, 14.4]
-fig, ax = plt.subplots(nrows=5, ncols=2, layout='constrained')
-fig.suptitle("Amplitude Computation, R = " + str(RESISTANCE) + "$ \mathrm{k\Omega}$, "+ CSTM_TITLE, fontsize=20)
+xticks = [x / 16.1 for x in range(len(Cr_A_m[0]))]
+fig1, ax = plt.subplots(nrows=5, ncols=2, layout='constrained')
+fig1.suptitle("Amplitude Computation, R = " + str(RESISTANCE) + "$ \mathrm{k\Omega}$, "+ CSTM_TITLE, fontsize=20)
 i=0
 for row in ax:
     for col in row:
         if i >= 9:
             break
-        col.plot(Cr_A_m[i], label="$C_R\ /\ \mathrm{pF}$")
-        col.plot(Cp_A_m[i], label="$C_P\ /\ \mathrm{pF}$")
+        col.plot(xticks, Cr_A_m[i], label="$C_\mathrm{R}\ /\ \mathrm{pF}$")
+        col.plot(xticks, Cp_A_m[i], label="$C_\mathrm{P}\ /\ \mathrm{pF}$")
  
-        col.set_xlabel('n')
+        col.set_xlabel('t / s')
         col.xaxis.set_label_coords(1.0, -0.05)
         
-        col.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
+        col.legend(loc='upper right', bbox_to_anchor=(LEGEND_POS_X, LEGEND_POS_Y),
                    ncol=3, fancybox=True, shadow=True)
         col.set_title("   " + str(frequencies[i]) + " kHz",
                       loc="left", y=1.0, pad=-14)
@@ -70,6 +79,7 @@ for row in ax:
 manager = plt.get_current_fig_manager()
 manager.window.showMaximized()
 
+
 fig2, ax2 = plt.subplots(nrows=5, ncols=2, layout='constrained')
 fig2.suptitle("Phase Computation, R = " + str(RESISTANCE) + "$ \mathrm{k\Omega}$, "+ CSTM_TITLE, fontsize=20)
 i=0
@@ -77,13 +87,13 @@ for row in ax2:
     for col in row:
         if i >= 9:
             break
-        col.plot(Cr_P_m[i],  label="$C_R\ /\ \mathrm{pF}$")
-        col.plot(Cp_P_m[i], label="$C_P\ /\ \mathrm{pF}$")
+        col.plot(xticks, Cr_P_m[i],  label="$C_\mathrm{R}\ /\ \mathrm{pF}$")
+        col.plot(xticks, Cp_P_m[i], label="$C_\mathrm{P}\ /\ \mathrm{pF}$")
         
-        col.set_xlabel('n')
+        col.set_xlabel('t / s')
         col.xaxis.set_label_coords(1.0, -0.05)
         
-        col.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
+        col.legend(loc='upper right', bbox_to_anchor=(LEGEND_POS_X, LEGEND_POS_Y),
           ncol=3, fancybox=True, shadow=True)
         col.set_title("   " + str(frequencies[i]) + " kHz",
                       loc="left", y=1.0, pad=-14)
@@ -95,16 +105,13 @@ for row in ax2:
 # Fullscreen
 manager = plt.get_current_fig_manager()
 manager.window.showMaximized()
-        
-
 
 ## Save to file
-filePath = 'Auswertung/' + fileName.rsplit('/')[-2] + '/' + fileName.rsplit('/')[-1].replace('csv', 'png')
-directory = os.path.dirname(filePath)
-if not os.path.exists(directory):
-    os.makedirs(directory)
 
-figure = plt.gcf()  # get current figure
-    figure.set_size_inches(32,18)
 plt.show()
-plt.savefig(filePath)
+
+filePathAmplitude = filePath.replace('.', '_Amplitude.')
+filePathPhase = filePath.replace('.', '_Phase.')
+
+fig1.savefig(filePathAmplitude, dpi=500)
+fig2.savefig(filePathPhase, dpi=500)

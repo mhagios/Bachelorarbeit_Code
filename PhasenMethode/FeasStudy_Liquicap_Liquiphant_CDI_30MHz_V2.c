@@ -234,8 +234,6 @@ ua_word_t currentDiagnostic = 0; // CDI ParamID = UIDP_LS_CURRENTSYSCONDITIONUNI
 #define  ST_MEASURE   1   
 #define  ST_SLEEP   0   
 #define  SLEEP_CYCLES   2259
-#define	 LIQUIPHANT	  0
-#define	 LIQUICAP	  1   
 
 //constants
 
@@ -268,18 +266,69 @@ ua_param ua_word_t Increment_Table[9] = {
 										};
 
 //1kOhm
-ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
-	43.1735414203f,
-	86.2470828406f,
-	172.806677002f,
-	345.328488268f,
-	691.978013443f,
-	1383.95602688f,
-	2763.10665090f,
-	5526.21330180f,
-	11052.4266036f
-};
+// ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+// 	43.1735414203f,
+// 	86.2470828406f,
+// 	172.806677002f,
+// 	345.328488268f,
+// 	691.978013443f,
+// 	1383.95602688f,
+// 	2763.10665090f,
+// 	5526.21330180f,
+// 	11052.4266036f
+// };
 
+//0.9932kOhm
+// ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+// 	47.7566142128f,
+// 	95.5132284257f,
+// 	191.026456851f,
+// 	382.052913703f,
+// 	764.105827406f,
+// 	1528.21165481f,
+// 	3056.42330962f,
+// 	6112.84661924f,
+// 	12225.6932385f
+// };
+
+//9.957kOhm
+// ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+// 	4.76367070766f,
+// 	9.52734141533f,
+// 	19.0546828307f,
+// 	38.1093656613f,
+// 	76.2187313226f,
+// 	152.437462645f,
+// 	304.874925290f,
+// 	609.749850581f,
+// 	1219.49970116f
+// };
+
+//99.78kOhm
+// ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+// 	0.47536449425f,
+// 	0.95072898850f,
+// 	1.90145797700f,
+// 	3.80291595399f,
+// 	7.60583190799f,
+// 	15.2116638160f,
+// 	30.4233276320f,
+// 	60.8466552639f,
+// 	121.693310527f
+// };
+
+//1.0245MOhm
+ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+	0.04629757856f,
+	0.09259515712f,
+	0.18519031425f,
+	0.37038062849f,
+	0.74076125698f,
+	1.48152251397f,
+	2.96304502793f,
+	5.92609005586f,
+	11.8521801117f
+};
 
 ua_param ua_float_t f_VIRTUAL_SINE[16] = {	0.0f,	0.382683432f,	0.707106781f,	0.923879533f,
 										1.0f,	0.923879533f,	0.707106781f,	0.382683432f,
