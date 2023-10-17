@@ -8,6 +8,8 @@ import copy
 from locale import atof
 locale.setlocale(locale.LC_ALL, 'de_DE')
 
+RESISTANCE = 1 #kOhm
+CSTM_TITLE = "Nach ein paar Sekunden anfassen und dann mit leichtem Druck"
 #sys.path.append()
 
 Cr_A = [0]*9
@@ -20,10 +22,11 @@ Cr_P_m = []
 Cp_A_m = []
 Cp_P_m = []
 
-fileName = 'Messungen/16_10_Schreibtisch/1kOhm_p0_t10s.csv'
+fileName = 'Messungen/17_10_Homeoffice/r1k.csv'
 with open(fileName,'r', newline='') as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
     next(reader)
+    
     for row in reader:
         for i in range(0,9): 
             Cp_P[i] = atof(row[4 * (i + 1)]) #+1 because there is the first word
@@ -41,32 +44,52 @@ with open(fileName,'r', newline='') as csvfile:
 
 ## Plotting
 frequencies = [36864, 18432, 921, 461, 230, 115, 57.6, 28.8, 14.4]
-fig, ax = plt.subplots(nrows=4, ncols=2, layout='constrained')
-fig.suptitle("Amplitude Computation")
+fig, ax = plt.subplots(nrows=5, ncols=2, layout='constrained')
+fig.suptitle("Amplitude Computation, R = " + str(RESISTANCE) + "$ \mathrm{k\Omega}$, "+ CSTM_TITLE, fontsize=20)
 i=0
 for row in ax:
     for col in row:
-        col.plot(Cr_A_m[i], label="C_r")
-        col.plot(Cp_A_m[i], label="C_p")
+        if i >= 9:
+            break
+        col.plot(Cr_A_m[i], label="$C_R\ /\ \mathrm{pF}$")
+        col.plot(Cp_A_m[i], label="$C_P\ /\ \mathrm{pF}$")
+ 
+        col.set_xlabel('n')
+        col.xaxis.set_label_coords(1.0, -0.05)
+        
         col.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
-          ncol=3, fancybox=True, shadow=True)
-        col.set_title("   " + str(frequencies[i]) + " kHz", y=1.0, pad=-14)
+                   ncol=3, fancybox=True, shadow=True)
+        col.set_title("   " + str(frequencies[i]) + " kHz",
+                      loc="left", y=1.0, pad=-14)
+        col.grid()
+        col.minorticks_on()
+        col.grid(which='minor', alpha=0.3)  
         i = i + 1
 
 # Fullscreen
 manager = plt.get_current_fig_manager()
 manager.window.showMaximized()
 
-fig2, ax2 = plt.subplots(nrows=4, ncols=2, layout='constrained')
-fig2.suptitle("Phase Computation")
+fig2, ax2 = plt.subplots(nrows=5, ncols=2, layout='constrained')
+fig2.suptitle("Phase Computation, R = " + str(RESISTANCE) + "$ \mathrm{k\Omega}$, "+ CSTM_TITLE, fontsize=20)
 i=0
 for row in ax2:
     for col in row:
-        col.plot(Cr_P_m[i], label="C_r")
-        col.plot(Cp_P_m[i], label="C_p")
+        if i >= 9:
+            break
+        col.plot(Cr_P_m[i],  label="$C_R\ /\ \mathrm{pF}$")
+        col.plot(Cp_P_m[i], label="$C_P\ /\ \mathrm{pF}$")
+        
+        col.set_xlabel('n')
+        col.xaxis.set_label_coords(1.0, -0.05)
+        
         col.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
           ncol=3, fancybox=True, shadow=True)
-        col.set_title("   " + str(frequencies[i]) + " kHz", loc="left", y=1.0, pad=-14)
+        col.set_title("   " + str(frequencies[i]) + " kHz",
+                      loc="left", y=1.0, pad=-14)
+        col.grid()
+        col.minorticks_on()
+        col.grid(which='minor', alpha=0.3)  
         i = i + 1
 
 # Fullscreen
@@ -80,5 +103,8 @@ filePath = 'Auswertung/' + fileName.rsplit('/')[-2] + '/' + fileName.rsplit('/')
 directory = os.path.dirname(filePath)
 if not os.path.exists(directory):
     os.makedirs(directory)
-plt.savefig(filePath)
+
+figure = plt.gcf()  # get current figure
+    figure.set_size_inches(32,18)
 plt.show()
+plt.savefig(filePath)
