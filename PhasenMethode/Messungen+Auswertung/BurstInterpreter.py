@@ -8,8 +8,8 @@ import copy
 from locale import atof
 locale.setlocale(locale.LC_ALL, 'de_DE')
 
-RESISTANCE = 1024.5 #kOhm
-CSTM_TITLE = "\t10s:p=0 20s:p>0, 30s:p=0"
+RESISTANCE = 0.9932 #kOhm
+CSTM_TITLE = "\tT=2min, step=1bar/10s, 0-10bar"
 
 LEGEND_POS_X = 1.005
 LEGEND_POS_Y = 1.04
@@ -24,7 +24,7 @@ Cr_P_m = []
 Cp_A_m = []
 Cp_P_m = []
 
-fileName = 'Messungen/17_10_Homeoffice/r1M0245.csv'
+fileName = 'Messungen/18_10_Messplatz/r993R2.csv'
 filePath = 'Auswertung/' + fileName.rsplit('/')[-2] + '/' + fileName.rsplit('/')[-1].replace('csv', 'png')
 directory = os.path.dirname(filePath)
 if not os.path.exists(directory):

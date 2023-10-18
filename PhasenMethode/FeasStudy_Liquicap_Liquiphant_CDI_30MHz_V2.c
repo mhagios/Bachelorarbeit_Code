@@ -279,17 +279,17 @@ ua_param ua_word_t Increment_Table[9] = {
 // };
 
 //0.9932kOhm
-// ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
-// 	47.7566142128f,
-// 	95.5132284257f,
-// 	191.026456851f,
-// 	382.052913703f,
-// 	764.105827406f,
-// 	1528.21165481f,
-// 	3056.42330962f,
-// 	6112.84661924f,
-// 	12225.6932385f
-// };
+ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+	47.7566142128f,
+	95.5132284257f,
+	191.026456851f,
+	382.052913703f,
+	764.105827406f,
+	1528.21165481f,
+	3056.42330962f,
+	6112.84661924f,
+	12225.6932385f
+};
 
 //9.957kOhm
 // ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
@@ -318,17 +318,17 @@ ua_param ua_word_t Increment_Table[9] = {
 // };
 
 //1.0245MOhm
-ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
-	0.04629757856f,
-	0.09259515712f,
-	0.18519031425f,
-	0.37038062849f,
-	0.74076125698f,
-	1.48152251397f,
-	2.96304502793f,
-	5.92609005586f,
-	11.8521801117f
-};
+// ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+// 	0.04629757856f,
+// 	0.09259515712f,
+// 	0.18519031425f,
+// 	0.37038062849f,
+// 	0.74076125698f,
+// 	1.48152251397f,
+// 	2.96304502793f,
+// 	5.92609005586f,
+// 	11.8521801117f
+// };
 
 ua_param ua_float_t f_VIRTUAL_SINE[16] = {	0.0f,	0.382683432f,	0.707106781f,	0.923879533f,
 										1.0f,	0.923879533f,	0.707106781f,	0.382683432f,
