@@ -279,17 +279,17 @@ ua_param ua_word_t Increment_Table[9] = {
 // };
 
 //0.9932kOhm
-ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
-	47.7566142128f,
-	95.5132284257f,
-	191.026456851f,
-	382.052913703f,
-	764.105827406f,
-	1528.21165481f,
-	3056.42330962f,
-	6112.84661924f,
-	12225.6932385f
-};
+// ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+// 	47.7566142128f,
+// 	95.5132284257f,
+// 	191.026456851f,
+// 	382.052913703f,
+// 	764.105827406f,
+// 	1528.21165481f,
+// 	3056.42330962f,
+// 	6112.84661924f,
+// 	12225.6932385f
+// };
 
 //9.957kOhm
 // ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
@@ -475,19 +475,6 @@ void ua_main()
 	{
 		if ((Cycle_Number == 0) && (Current_state == ST_MEASURE))						// Cycle_Number: 0..15 Abtastpunkte pro "Periode"
 		{	
-			// Switch für AnalogSwitch. --> Abwechselnd Messen von Cp und Cr 
-			if (s25_Switch_CP_CR == 0)				// 0=CP  1=CR
-			{
-				s25_Switch_CP_CR = 1;
-				UA_GPIO_OUT_RESET = 0x0020;									//GPIO entsprechend fuer AnalogSwitch setzen  
-				
-			}
-			else
-			{
-				s25_Switch_CP_CR = 0;
-				UA_GPIO_OUT_SET = 0x0020;									//GPIO entsprechend fuer AnalogSwitch setzen 
-				
-			}
 			
 			//Switch für alternierendes Messen von Uref und Rmess
 			if (Current_signal == 0)				
@@ -758,7 +745,7 @@ void ua_main()
 					UA_GPIO_OUT_SET = 0x4000;
 					f_Kapazitaet_CP_A[Frequency_number] = C_GainAmp_pF * (OneOn_WR[Frequency_number] * UA_sqrt(Amplitude[1] * Amplitude[1] * FloatInverse(Amplitude[0] * Amplitude[0]) - 1) - C_OffsetAmp_pF);
 					f_Kapazitaet_CP_P[Frequency_number] = C_GainPhase_pF * (OneOn_WR[Frequency_number] * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) - C_OffsetPhase_pF);
-					s25_Switch_CP_CR = 1; //Umschalten des Switches fuer CR-Messung
+					s25_Switch_CP_CR = 1; //Umschalten des Switches fuer CP-Messung
 				}	
 				else
 				{
@@ -771,7 +758,6 @@ void ua_main()
 				
 				
 				// UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet[Frequency_number];
-				
 				//Serielle Ausgabe der Werte mit der entsprechenden Frequenzzuweisung
 					UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CP_A[0];
 					UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CR_A[0];
