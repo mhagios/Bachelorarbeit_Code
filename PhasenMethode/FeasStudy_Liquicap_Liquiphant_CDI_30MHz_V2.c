@@ -305,17 +305,17 @@ ua_param ua_word_t Increment_Table[9] = {
 // };
 
 //99.78kOhm
-// ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
-// 	0.47536449425f,
-// 	0.95072898850f,
-// 	1.90145797700f,
-// 	3.80291595399f,
-// 	7.60583190799f,
-// 	15.2116638160f,
-// 	30.4233276320f,
-// 	60.8466552639f,
-// 	121.693310527f
-// };
+ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+	0.47536449425f,
+	0.95072898850f,
+	1.90145797700f,
+	3.80291595399f,
+	7.60583190799f,
+	15.2116638160f,
+	30.4233276320f,
+	60.8466552639f,
+	121.693310527f
+};
 
 //1.0245MOhm
 // ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
