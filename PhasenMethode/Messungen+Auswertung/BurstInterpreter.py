@@ -50,68 +50,68 @@ with open(fileName,'r', newline='') as csvfile:
     Cp_A_m = np.array(Cp_A_m).T.tolist()
     Cp_P_m = np.array(Cp_P_m).T.tolist()
 
-## Plotting
-frequencies = [36864, 18432, 921, 461, 230, 115, 57.6, 28.8, 14.4]
-xticks = [x / 16.1 for x in range(len(Cr_A_m[0]))]
-fig1, ax = plt.subplots(nrows=5, ncols=2, layout='constrained')
-fig1.suptitle("Amplitude Computation, R = " + str(RESISTANCE) + "$ \mathrm{k\Omega}$, "+ CSTM_TITLE, fontsize=20)
-i=0
-for row in ax:
-    for col in row:
-        if i >= 9:
-            break
-        col.plot(xticks, Cr_A_m[i], label="$C_\mathrm{R}\ /\ \mathrm{pF}$")
-        col.plot(xticks, Cp_A_m[i], label="$C_\mathrm{P}\ /\ \mathrm{pF}$")
- 
-        col.set_xlabel('t / s')
-        col.xaxis.set_label_coords(1.0, -0.05)
-        
-        col.legend(loc='upper right', bbox_to_anchor=(LEGEND_POS_X, LEGEND_POS_Y),
-                   ncol=3, fancybox=True, shadow=True)
-        col.set_title("   " + str(frequencies[i]) + " kHz",
-                      loc="left", y=1.0, pad=-14)
-        col.grid()
-        col.minorticks_on()
-        col.grid(which='minor', alpha=0.3)  
-        i = i + 1
+    ## Plotting
+    frequencies = [36864, 18432, 921, 461, 230, 115, 57.6, 28.8, 14.4]
+    xticks = [x / 16.1 for x in range(len(Cr_A_m[0]))]
+    fig1, ax = plt.subplots(nrows=5, ncols=2, layout='constrained')
+    fig1.suptitle("Amplitude Computation, R = " + str(RESISTANCE) + "$ \mathrm{k\Omega}$, "+ CSTM_TITLE, fontsize=20)
+    i=0
+    for row in ax:
+        for col in row:
+            if i >= 9:
+                break
+            col.plot(xticks, Cr_A_m[i], label="$C_\mathrm{R}\ /\ \mathrm{pF}$")
+            col.plot(xticks, Cp_A_m[i], label="$C_\mathrm{P}\ /\ \mathrm{pF}$")
+    
+            col.set_xlabel('t / s')
+            col.xaxis.set_label_coords(1.0, -0.05)
+            
+            col.legend(loc='upper right', bbox_to_anchor=(LEGEND_POS_X, LEGEND_POS_Y),
+                    ncol=3, fancybox=True, shadow=True)
+            col.set_title("   " + str(frequencies[i]) + " kHz",
+                        loc="left", y=1.0, pad=-14)
+            col.grid()
+            col.minorticks_on()
+            col.grid(which='minor', alpha=0.3)  
+            i = i + 1
 
-# Fullscreen
-manager = plt.get_current_fig_manager()
-manager.window.showMaximized()
+    # Fullscreen
+    manager = plt.get_current_fig_manager()
+    manager.window.showMaximized()
 
 
-fig2, ax2 = plt.subplots(nrows=5, ncols=2, layout='constrained')
-fig2.suptitle("Phase Computation, R = " + str(RESISTANCE) + "$ \mathrm{k\Omega}$, "+ CSTM_TITLE, fontsize=20)
-i=0
-for row in ax2:
-    for col in row:
-        if i >= 9:
-            break
-        col.plot(xticks, Cr_P_m[i],  label="$C_\mathrm{R}\ /\ \mathrm{pF}$")
-        col.plot(xticks, Cp_P_m[i], label="$C_\mathrm{P}\ /\ \mathrm{pF}$")
-        
-        col.set_xlabel('t / s')
-        col.xaxis.set_label_coords(1.0, -0.05)
-        
-        col.legend(loc='upper right', bbox_to_anchor=(LEGEND_POS_X, LEGEND_POS_Y),
-          ncol=3, fancybox=True, shadow=True)
-        col.set_title("   " + str(frequencies[i]) + " kHz",
-                      loc="left", y=1.0, pad=-14)
-        col.grid()
-        col.minorticks_on()
-        col.grid(which='minor', alpha=0.3)  
-        i = i + 1
+    fig2, ax2 = plt.subplots(nrows=5, ncols=2, layout='constrained')
+    fig2.suptitle("Phase Computation, R = " + str(RESISTANCE) + "$ \mathrm{k\Omega}$, "+ CSTM_TITLE, fontsize=20)
+    i=0
+    for row in ax2:
+        for col in row:
+            if i >= 9:
+                break
+            col.plot(xticks, Cr_P_m[i],  label="$C_\mathrm{R}\ /\ \mathrm{pF}$")
+            col.plot(xticks, Cp_P_m[i], label="$C_\mathrm{P}\ /\ \mathrm{pF}$")
+            
+            col.set_xlabel('t / s')
+            col.xaxis.set_label_coords(1.0, -0.05)
+            
+            col.legend(loc='upper right', bbox_to_anchor=(LEGEND_POS_X, LEGEND_POS_Y),
+            ncol=3, fancybox=True, shadow=True)
+            col.set_title("   " + str(frequencies[i]) + " kHz",
+                        loc="left", y=1.0, pad=-14)
+            col.grid()
+            col.minorticks_on()
+            col.grid(which='minor', alpha=0.3)  
+            i = i + 1
 
-# Fullscreen
-manager = plt.get_current_fig_manager()
-manager.window.showMaximized()
+    # Fullscreen
+    manager = plt.get_current_fig_manager()
+    manager.window.showMaximized()
 
-## Save to file
+    ## Save to file
 
-plt.show()
+    plt.show()
 
-filePathAmplitude = filePath.replace('.', '_Amplitude.')
-filePathPhase = filePath.replace('.', '_Phase.')
+    filePathAmplitude = filePath.replace('.', '_Amplitude.')
+    filePathPhase = filePath.replace('.', '_Phase.')
 
-fig1.savefig(filePathAmplitude, dpi=500)
-fig2.savefig(filePathPhase, dpi=500)
+    fig1.savefig(filePathAmplitude, dpi=500)
+    fig2.savefig(filePathPhase, dpi=500)
