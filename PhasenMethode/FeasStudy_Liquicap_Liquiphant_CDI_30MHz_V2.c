@@ -434,7 +434,8 @@ void ua_main()
 	UA_PHASE_OFFSET2_DDS = 0;
 	UA_INCREMENT2_DDS = 1;
 
-	UA_GPIO_OUT_SET = 0x4000;
+	UA_GPIO_OUT_SET = 0x1000; //Uref<-->Umess
+	UA_GPIO_OUT_SET = 0x2000; //CP	<-->CR
 	UA_GPIO_OUT_SET = 0x0020;
 
 	UA_LPSI_DMA = UA_LPSI_DMA_ADDRESS(0x26B) | UA_LPSI_DMA_LENGTH(38); //0x26B bis 0x2B8
@@ -450,11 +451,11 @@ void ua_main()
 			//Switch für alternierendes Messen von Uref und Rmess
 			if (Current_signal == 0)				
 			{
-				UA_GPIO_OUT_SET = 0x1000;
+				UA_GPIO_OUT_SET = 0x1000; //GPIO12
 			}
 			else
 			{
-				UA_GPIO_OUT_RESET = 0x1000;
+				UA_GPIO_OUT_RESET = 0x1000; //GPIO12
 			}
 			
 
@@ -711,26 +712,24 @@ void ua_main()
 				
 				
 				
-				if (s25_Switch_CP_CR == 0)  //Steuerung des GPIO Ports und Zuweisung der gemessenen Werte an die jeweilige Variable
-				{
-					UA_GPIO_OUT_SET = 0x2000; //Neues Board
-					//UA_GPIO_OUT_SET = 0x4000; //Altes Board
+				if (s25_Switch_CP_CR == 0)  //Toggle of Switch N6 on GPIO13 and assignment of capacity variables
+				{//CP
+					UA_GPIO_OUT_SET = 0x2000; //New Board: GPIO13 for Switch
+					//UA_GPIO_OUT_SET = 0x4000; //Old Board
 					f_Kapazitaet_CP_A[Frequency_number] = C_GainAmp_pF * (OneOn_WR[Frequency_number] * UA_sqrt(Amplitude[1] * Amplitude[1] * FloatInverse(Amplitude[0] * Amplitude[0]) - 1) - C_OffsetAmp_pF);
 					f_Kapazitaet_CP_P[Frequency_number] = C_GainPhase_pF * (OneOn_WR[Frequency_number] * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) - C_OffsetPhase_pF);
 					s25_Switch_CP_CR = 1; //Umschalten des Switches fuer CP-Messung
 				}	
 				else
-				{
-					UA_GPIO_OUT_SET = 0x2000; //Neues Board
-					//UA_GPIO_OUT_SET = 0x4000; //Altes Board
+				{//CR
+					UA_GPIO_OUT_RESET = 0x2000; //New Board: GPIO13 for Switch
+					//UA_GPIO_OUT_RESET = 0x4000; //Old Board
 					f_Kapazitaet_CR_A[Frequency_number] = C_GainAmp_pF * (OneOn_WR[Frequency_number] * UA_sqrt(Amplitude[1] * Amplitude[1] * FloatInverse(Amplitude[0] * Amplitude[0]) - 1) - C_OffsetAmp_pF);
 					f_Kapazitaet_CR_P[Frequency_number]= C_GainPhase_pF * (OneOn_WR[Frequency_number] * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) - C_OffsetPhase_pF);
 					s25_Switch_CP_CR = 0; //Umschalten des Switches fuer CR-Messung
+					Frequency_number++; //Inkrement of the Frequency
 				}
 				
-				
-				
-				// UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet[Frequency_number];
 				//Serielle Ausgabe der Werte mit der entsprechenden Frequenzzuweisung
 					UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CP_A[0];
 					UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CR_A[0];
@@ -775,17 +774,11 @@ void ua_main()
 					// CLEAR_LED_YELLOW;
 				// }
 
-
-
-
-				if (++Frequency_number >= 9)// ==> next Frequency
+				if (Frequency_number >= 9)// ==> Reset Frequency
 				{
-					// // UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet[0];
-					// // UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet[1];
-					// // UA_SERIAL_OUT3 = 1;
 					Frequency_number = 0;
 					Current_state = ST_SLEEP;
-					UA_DAC_CONFIG_RESET = UA_DAC_CONFIG_PDN_DISABLE;
+					UA_DAC_CONFIG_RESET = UA_DAC_CONFIG_PDN_DISABLE;// PoweDowN (Set Vout Tree-State)
 					
 					CLEAR_LED_GREEN;
 				}
@@ -797,7 +790,7 @@ void ua_main()
 		{
 			Current_state = ST_STARTUP;
 			Cycle_Number = 0;
-			UA_DAC_CONFIG_SET = UA_DAC_CONFIG_PDN_DISABLE;
+			UA_DAC_CONFIG_SET = UA_DAC_CONFIG_PDN_DISABLE; //Wake up from PDN(Power Down bzw. Tree-State)
 			
 		}
 		else if (Current_state == ST_STARTUP) //Übergang in den Messzustand

@@ -1,28 +1,28 @@
 Microarchitecure Suite Version 3.20.20
 UAC Compiler Version 2.5 @ 16.12.2022 15:14:30
 
+==========================C-Compiler===========================
+Selected Strategy: backlog,1 - Additional Option: -l
+Compiling C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.ll
+
+Optimization:
+          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+          |||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Parallelization:
+          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+          |||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Info: Selected path: path1130; VLIW count: 891
+
+Compilation successful in 41,676 s
+
 ===========================Assembler===========================
 Analyzing ASM finished.
 Note: Variable "n_calc" declared but not used.
 Note: Variable "UA_INIT_ADC_CONVERSION_CONF" declared but not used.
-Note: Variable "par_phase_LP_0" declared but not used.
-Note: Variable "par_phase_LP_1" declared but not used.
-Note: Variable "par_phase_P" declared but not used.
-Note: Variable "par_phase_I" declared but not used.
-Note: Variable "par_phase_min_wind" declared but not used.
-Note: Variable "par_phase_max_wind" declared but not used.
-Note: Variable "par_phase_startFreq" declared but not used.
-Note: Variable "par_res_c1_A" declared but not used.
-Note: Variable "par_res_c2_A" declared but not used.
-Note: Variable "par_res_c6_A" declared but not used.
-Note: Variable "par_amp_reset" declared but not used.
-Note: Variable "par_amp_reset_max" declared but not used.
-Note: Variable "par_amp_startFreq" declared but not used.
-Note: Variable "par_amp_endFreq" declared but not used.
-Note: Variable "par_amp_stepFreq" declared but not used.
-Note: Variable "par_time_min" declared but not used.
-Note: Variable "par_time_max" declared but not used.
-Note: Variable "electronicType" declared but not used.
 Note: Variable "ua_tmp_5" declared but not used.
 Start creating output files...
  - Warning: PID File doesn't exist, use 0xFFFFFFFF for whole PID Table!
@@ -40,10 +40,10 @@ Start creating output files...
 All files generated successfully.
 
 -------------Memory usage:-------------------------------------
-IMEM:	887 of 2048
-DMEM:	342 of 1024	(145 checked param. + 1 CRC)
+IMEM:	891 of 2048
+DMEM:	323 of 1024	(126 checked param. + 1 CRC)
 ---------------------------------------------------------------
-Workload AU: 34,2%; LU: 20,4%; LD/ST: 89,9% (Concurr.: 22,2%)
+Workload AU: 34,0%; LU: 20,3%; LD/ST: 89,8% (Concurr.: 22,1%)
 
 
 ===================Longest Path Analyzation====================
@@ -274,6 +274,6 @@ Verifying Memory ...Successful
 
 Programming of:
 C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.bin
-successful in 36001 ms
+successful in 36327 ms
 Disconnecting Programmer...Done
 

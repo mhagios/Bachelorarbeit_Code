@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This file has been created with UACCompiler V2.5
 ; Used Strategy: backlog,1 - Additional Option: -l
-; Creation: 31.10.2023 14:53:16
+; Creation: 31.10.2023 16:04:59
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .param
@@ -20,12 +20,13 @@ ua_const_11:                    .word         3
 ua_const_12:                    .word         2
 ua_const_13:                    .word         512
 ua_const_14:                    .word         31
-ua_const_15:                    .word         16384
-ua_const_16:                    .word         32
-ua_const_17:                    .word         2490987
+ua_const_15:                    .word         4096
+ua_const_16:                    .word         8192
+ua_const_17:                    .word         32
+ua_const_18:                    .word         2490987
 ua_const_1:                     .word         0
-ua_const_69:                    .word         2259
-ua_const_68:                    .word         64
+ua_const_68:                    .word         2259
+ua_const_67:                    .word         64
 ua_const_35:                    .word         1073741824
 ua_const_36:                    .word         16
 ua_const_20:                    .word         1023
@@ -61,10 +62,8 @@ ua_const_62:                    .float        -0.33333146572113
 ua_const_63:                    .float        1.57079637050629
 ua_const_64:                    .float        3.14159274101257
 ua_const_65:                    .float        -1.3962630033493
-ua_const_66:                    .word         8192
 OneOn_WR:                       .array_float  {43.1735420227051,86.2470855712891,172.806671142578,345.328491210938,691.97802734375,1383.9560546875,2763.10668945313,5526.21337890625,11052.4267578125}
-ua_const_67:                    .word         9
-ua_const_18:                    .word         4096
+ua_const_66:                    .word         9
 ua_const_19:                    .word         231
 ua_const_21:                    .word         230
 ua_const_22:                    .word         1047552
@@ -80,7 +79,7 @@ ua_const_31:                    .word         2147483648
 ADC_divider:                    .array_int    {6,6,6,40,108,244,4,36,100}
 ua_const_32:                    .float        28.00000
 ua_const_34:                    .float        0.999999940395355
-ua_const_70:                    .word         2048
+ua_const_69:                    .word         2048
 UA_INIT_REGS_CCU_CONTROL:       .word         49255046
 UA_INIT_REGS_FIRMWARE_REV:      .word         10000
 UA_INIT_REGS_ENP_FIRMWARE_REV_MSB: .word         808333616
@@ -93,24 +92,6 @@ UA_INIT_REGS_GPIO_DIRECTION:    .word         65408
 UA_INIT_REGS_GPIO_FUNCTION:     .word         268369920
 n_calc:                         .float        12.50000
 UA_INIT_ADC_CONVERSION_CONF:    .word         0
-par_phase_LP_0:                 .float        0.00017358097829856
-par_phase_LP_1:                 .float        5759.000
-par_phase_P:                    .float        100.0000
-par_phase_I:                    .float        0.300000011920929
-par_phase_min_wind:             .float        600.0000
-par_phase_max_wind:             .float        1200.000
-par_phase_startFreq:            .float        700.0000
-par_res_c1_A:                   .float        1.20563270478158E-09
-par_res_c2_A:                   .float        2.17013894143747E-06
-par_res_c6_A:                   .float        0.03125000
-par_amp_reset:                  .float        80.00000
-par_amp_reset_max:              .int          1000
-par_amp_startFreq:              .float        700.0000
-par_amp_endFreq:                .float        1200.000
-par_amp_stepFreq:               .float        20.00000
-par_time_min:                   .int          12
-par_time_max:                   .int          24
-electronicType:                 .word         2
 
 .data
 ; Globals
@@ -216,7 +197,7 @@ ua_tmp_239:                     .word         0x0
 ua_tmp_303:                     .word         0x0
 ua_tmp_307:                     .word         0x0
 
-; VLIW count: 887
+; VLIW count: 891
 .code
 	INC | HOLD | HOLD | LOAD ua_const_0 LD
 	INC | HOLD | HOLD | STOR sensorState_flag LD
@@ -330,6 +311,8 @@ if.end29:
 	INC | HOLD | HOLD | LOAD ua_const_16 LD
 	INC | HOLD | HOLD | STOR 0x409 LD
 	INC | HOLD | HOLD | LOAD ua_const_17 LD
+	INC | HOLD | HOLD | STOR 0x409 LD
+	INC | HOLD | HOLD | LOAD ua_const_18 LD
 	INC | HOLD | HOLD | STOR 0x448 LD
 	INC | HOLD | HOLD | CLR 0x405
 while.body:
@@ -342,7 +325,7 @@ if.else97:
 	JGE R0 LD | HOLD | HOLD | LOAD @land.lhs.true100 LD
 if.else293:
 	INC | HOLD | HOLD | LOAD Cycle_Number LD
-	INC | HOLD | MOV LD R0 | LOAD ua_const_69 LD
+	INC | HOLD | MOV LD R0 | LOAD ua_const_68 LD
 	JGE R0 LD | HOLD | HOLD | LOAD @land.lhs.true296 LD
 if.else300:
 	INC | HOLD | HOLD | LOAD Current_state LD
@@ -367,7 +350,7 @@ if.then299:
 	INC | HOLD | HOLD | LOAD ua_const_12 LD
 	INC | HOLD | HOLD | STOR Current_state LD
 	INC | HOLD | HOLD | CLR Cycle_Number
-	INC | HOLD | HOLD | LOAD ua_const_68 LD
+	INC | HOLD | HOLD | LOAD ua_const_67 LD
 	INC | HOLD | HOLD | STOR 0x432 LD
 if.end307:
 	JMP | HOLD | HOLD | LOAD @if.end308 LD
@@ -686,8 +669,8 @@ if.end208:
 	INC | HOLD | HOLD | LOAD s25_Switch_CP_CR LD
 	INC | HOLD | MOV LD R0 | LOAD ua_const_1 LD
 	JE R0 LD | HOLD | HOLD | LOAD @if.then211 LD
-	INC | HOLD | HOLD | LOAD ua_const_66 LD
-	INC | HOLD | HOLD | STOR 0x409 LD
+	INC | HOLD | HOLD | LOAD ua_const_16 LD
+	INC | HOLD | HOLD | STOR 0x40A LD
 	INC | HOLD | HOLD | LOAD Frequency_number LD
 	INC | HOLD | HOLD | LOFF OneOn_WR LD LD
 	INC | HOLD | HOLD | STOR ua_tmp_339 LD
@@ -815,9 +798,12 @@ UA_sqrt.exit:
 	INC | MOV LD ACC | MOV ACC R0 | HOLD
 	INC | HOLD | HOLD | SOFF f_Kapazitaet_CR_P ACC R0
 	INC | HOLD | HOLD | CLR s25_Switch_CP_CR
-	JMP | HOLD | HOLD | LOAD @if.end269 LD
+	INC | HOLD | HOLD | LOAD Frequency_number LD
+	INC | INC LD ACC | HOLD | HOLD
+	INC | HOLD | HOLD | STOR Frequency_number ACC
+	JMP | HOLD | HOLD | LOAD @if.end270 LD
 if.then211:
-	INC | HOLD | HOLD | LOAD ua_const_66 LD
+	INC | HOLD | HOLD | LOAD ua_const_16 LD
 	INC | HOLD | HOLD | STOR 0x409 LD
 	INC | HOLD | HOLD | LOAD Frequency_number LD
 	INC | HOLD | HOLD | LOFF OneOn_WR LD LD
@@ -946,7 +932,7 @@ UA_sqrt.exit413:
 	INC | MOV LD ACC | MOV ACC R0 | LOAD ua_const_0 LD
 	INC | HOLD | HOLD | SOFF f_Kapazitaet_CP_P ACC R0
 	INC | HOLD | HOLD | STOR s25_Switch_CP_CR LD
-if.end269:
+if.end270:
 	INC | HOLD | HOLD | LOFF f_Kapazitaet_CP_A 0 LD
 	INC | HOLD | HOLD | STOR 0x404 LD
 	INC | HOLD | HOLD | LOFF f_Kapazitaet_CR_A 0 LD
@@ -970,12 +956,11 @@ if.end269:
 	INC | HOLD | HOLD | LOAD Frequency_number LD
 	INC | HOLD | HOLD | STOR 0x428 LD
 	INC | HOLD | HOLD | LOAD Frequency_number LD
-	INC | INC LD ACC | HOLD | LOAD ua_const_67 LD
-	INC | HOLD | MOV ACC R0 | STOR Frequency_number ACC
+	INC | HOLD | MOV LD R0 | LOAD ua_const_66 LD
 	JL R0 LD | HOLD | HOLD | LOAD @if.end292 LD
 	INC | HOLD | HOLD | CLR Frequency_number
 	INC | HOLD | HOLD | CLR Current_state
-	INC | HOLD | HOLD | LOAD ua_const_68 LD
+	INC | HOLD | HOLD | LOAD ua_const_67 LD
 	INC | HOLD | HOLD | STOR 0x433 LD
 	INC | HOLD | HOLD | LOAD ua_const_7 LD
 	INC | HOLD | HOLD | STOR 0x40A LD
@@ -995,11 +980,11 @@ if.then34:
 	INC | HOLD | HOLD | LOAD Current_signal LD
 	INC | HOLD | MOV LD R0 | LOAD ua_const_1 LD
 	JE R0 LD | HOLD | HOLD | LOAD @if.then37 LD
-	INC | HOLD | HOLD | LOAD ua_const_18 LD
+	INC | HOLD | HOLD | LOAD ua_const_15 LD
 	INC | HOLD | HOLD | STOR 0x40A LD
 	JMP | HOLD | HOLD | LOAD @if.end39 LD
 if.then37:
-	INC | HOLD | HOLD | LOAD ua_const_18 LD
+	INC | HOLD | HOLD | LOAD ua_const_15 LD
 	INC | HOLD | HOLD | STOR 0x409 LD
 if.end39:
 	INC | HOLD | HOLD | LOAD Frequency_number LD
@@ -1161,7 +1146,7 @@ if.end89:
 	INC | F2P ACC  ACC | HOLD | HOLD
 	INC | HOLD | HOLD | STOR MAX_UA_Cycle ACC
 if.end309:
-	INC | HOLD | HOLD | LOAD ua_const_70 LD
+	INC | HOLD | HOLD | LOAD ua_const_69 LD
 	INC | HOLD | HOLD | STOR 0x40B LD
 	INC | HOLD | HOLD | CLR 0x405
 	JMP | HOLD | HOLD | LOAD @while.body LD
