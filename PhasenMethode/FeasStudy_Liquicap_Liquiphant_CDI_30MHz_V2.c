@@ -52,7 +52,6 @@
 #define ERROR_SENSOR_FORCED_FREQUENCY_HIGH      (0x5522)
 #define ERROR_SENSOR_FORCED_FREQUENCY_LOW       (0x5522)
 
-#define EEPROM_TYPE     (UA_SMEM[0])
 #define SP_CORROSION    ((ua_float_t)UA_SMEM[3])
 #define SP_HIGH_0_7     ((ua_float_t)UA_SMEM[4])
 #define SP_LOW_0_7      ((ua_float_t)UA_SMEM[5])
@@ -266,7 +265,7 @@ ua_param ua_word_t Increment_Table[9] = {
 										};
 
 //1kOhm
-ua_param ua_float_t OneOn_WR[10] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
 	43.1735414203f,
 	86.2470828406f,
 	172.806677002f,
@@ -275,8 +274,7 @@ ua_param ua_float_t OneOn_WR[10] = { //Aenderungsfaktoren fuer Parameter pro Fre
 	1383.95602688f,
 	2763.10665090f,
 	5526.21330180f,
-	11052.4266036f,
-	100
+	11052.4266036f
 };
 
 //0.9932kOhm

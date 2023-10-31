@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<!--This file is created by the Address Constraint File (ACF) Editor-->
-<Constraints>
-  <Constraint Variable="f_Kapazitaet_CP_P" Address="0x26B" />
-  <Constraint Variable="f_Kapazitaet_CP_A" Address="0x274" />
-  <Constraint Variable="f_Kapazitaet_CR_P" Address="0x27D" />
-  <Constraint Variable="f_Kapazitaet_CR_A" Address="0x288" />
-</Constraints>

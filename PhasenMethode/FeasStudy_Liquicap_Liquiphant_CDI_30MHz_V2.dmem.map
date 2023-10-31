@@ -89,7 +89,7 @@ Addresse 87 / 0x0057: Variable: OneOn_WR[5] Wert: 1152188056 / 0x44ACFE98 / 1383
 Addresse 88 / 0x0058: Variable: OneOn_WR[6] Wert: 1160556981 / 0x452CB1B5 / 2763,10669f (CRC checked parameter)
 Addresse 89 / 0x0059: Variable: OneOn_WR[7] Wert: 1168945589 / 0x45ACB1B5 / 5526,21338f (CRC checked parameter)
 Addresse 90 / 0x005A: Variable: OneOn_WR[8] Wert: 1177334197 / 0x462CB1B5 / 11052,4268f (CRC checked parameter)
-Addresse 91 / 0x005B: Variable: OneOn_WR[9] Wert: 1120403456 / 0x42C80000 / 100f (CRC checked parameter)
+Addresse 91 / 0x005B: Variable: OneOn_WR[9] Wert: 0 / 0x00000000 / 0f (CRC checked parameter)
 Addresse 92 / 0x005C: Variable: ua_const_67 Wert: 9 / 0x00000009 / 1,26116862E-44f (CRC checked parameter)
 Addresse 93 / 0x005D: Variable: ua_const_18 Wert: 4096 / 0x00001000 / 5,73971851E-42f (CRC checked parameter)
 Addresse 94 / 0x005E: Variable: ua_const_19 Wert: 231 / 0x000000E7 / 3,23699945E-43f (CRC checked parameter)
@@ -144,7 +144,7 @@ Addresse 142 / 0x008E: Variable: par_amp_stepFreq Wert: 1101004800 / 0x41A00000 
 Addresse 143 / 0x008F: Variable: par_time_min Wert: 12 / 0x0000000C / 1,68155816E-44f (CRC checked parameter)
 Addresse 144 / 0x0090: Variable: par_time_max Wert: 24 / 0x00000018 / 3,36311631E-44f (CRC checked parameter)
 Addresse 145 / 0x0091: Variable: electronicType Wert: 2 / 0x00000002 / 2,80259693E-45f (CRC checked parameter)
-Addresse 146 / 0x0092: Variable: #_CRC_pmem_# Wert: 30795 / 0x0000784B / 4,31529862E-41f (CRC checked parameter)
+Addresse 146 / 0x0092: Variable: #_CRC_pmem_# Wert: 55724 / 0x0000D9AC / 7,80859556E-41f (CRC checked parameter)
 Addresse 572 / 0x023C: Variable: ua_tmp_307 Wert: 0 / 0x00000000 / 0f
 Addresse 573 / 0x023D: Variable: ua_tmp_303 Wert: 0 / 0x00000000 / 0f
 Addresse 574 / 0x023E: Variable: ua_tmp_239 Wert: 0 / 0x00000000 / 0f

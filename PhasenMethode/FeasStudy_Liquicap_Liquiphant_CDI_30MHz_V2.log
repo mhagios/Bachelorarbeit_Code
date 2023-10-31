@@ -25,9 +25,11 @@ Note: Variable "par_time_max" declared but not used.
 Note: Variable "electronicType" declared but not used.
 Note: Variable "ua_tmp_5" declared but not used.
 Start creating output files...
+ - Warning: PID File doesn't exist, use 0xFFFFFFFF for whole PID Table!
  - Warning: SMEM File doesn't exist, use 0xFFFFFFFF for whole SMEM!
  - Warning: ENPMEM File doesn't exist, use 0xFFFFFFFF for whole ENPMEM!
  - Warning: Bluetooth Password File doesn't exist, use 0xFFFFFFFF for whole Bluetooth Password!
+ - Warning: PID File doesn't exist, use 0xFFFFFFFF for whole PID Table!
  - Warning: SMEM File doesn't exist, use 0xFFFFFFFF for whole SMEM!
  - Warning: ENPMEM File doesn't exist, use 0xFFFFFFFF for whole ENPMEM!
  - Warning: Bluetooth Password File doesn't exist, use 0xFFFFFFFF for whole Bluetooth Password!
@@ -272,6 +274,6 @@ Verifying Memory ...Successful
 
 Programming of:
 C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.bin
-successful in 36561 ms
+successful in 36542 ms
 Disconnecting Programmer...Done
 
