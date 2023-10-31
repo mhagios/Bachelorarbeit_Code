@@ -15,9 +15,9 @@ Parallelization:
           |----|----|----|----|----|----|----|----|----|----|
           |||||||||||||||||||||||||||||||||||||||||||||||||||
 
-Info: Selected path: path1130; VLIW count: 891
+Info: Selected path: path1130; VLIW count: 883
 
-Compilation successful in 41,676 s
+Compilation successful in 43,016 s
 
 ===========================Assembler===========================
 Analyzing ASM finished.
@@ -40,10 +40,10 @@ Start creating output files...
 All files generated successfully.
 
 -------------Memory usage:-------------------------------------
-IMEM:	891 of 2048
+IMEM:	883 of 2048
 DMEM:	323 of 1024	(126 checked param. + 1 CRC)
 ---------------------------------------------------------------
-Workload AU: 34,0%; LU: 20,3%; LD/ST: 89,8% (Concurr.: 22,1%)
+Workload AU: 34,3%; LU: 20,5%; LD/ST: 89,7% (Concurr.: 22,3%)
 
 
 ===================Longest Path Analyzation====================
@@ -274,6 +274,6 @@ Verifying Memory ...Successful
 
 Programming of:
 C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.bin
-successful in 36327 ms
+successful in 34798 ms
 Disconnecting Programmer...Done
 

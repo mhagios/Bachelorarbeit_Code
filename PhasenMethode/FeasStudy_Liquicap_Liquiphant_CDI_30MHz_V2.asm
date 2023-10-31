@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This file has been created with UACCompiler V2.5
 ; Used Strategy: backlog,1 - Additional Option: -l
-; Creation: 31.10.2023 16:04:59
+; Creation: 31.10.2023 16:42:40
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .param
@@ -154,37 +154,37 @@ Current_ADC_divider:            .int          0
 ua_loc_pin1Val:                 .word         0x0
 ua_loc_pin2Val:                 .word         0x0
 ua_loc_Zeroline_Temp:           .int          0x0
-ua_loc_number.addr.i478:        .float        0.0
-ua_loc_x2.i482:                 .float        0.0
-ua_loc_i_lo.i480:               .int          0x0
-ua_loc_i_hi.i481:               .int          0x0
-ua_loc_y.i483:                  .float        0.0
-ua_loc_in.addr.i452:            .float        0.0
-ua_loc_x.i454:                  .float        0.0
+ua_loc_number.addr.i474:        .float        0.0
+ua_loc_x2.i478:                 .float        0.0
+ua_loc_i_lo.i476:               .int          0x0
+ua_loc_i_hi.i477:               .int          0x0
+ua_loc_y.i479:                  .float        0.0
+ua_loc_in.addr.i448:            .float        0.0
+ua_loc_x.i450:                  .float        0.0
 ua_loc_x.addr.i:                .float        0.0
 ua_loc_t.i:                     .float        0.0
 ua_loc_r.i:                     .float        0.0
 ua_loc_in.addr.i.i:             .float        0.0
 ua_loc_x.i.i:                   .float        0.0
 ua_loc_s.i:                     .float        0.0
-ua_loc_in.addr.i322:            .float        0.0
-ua_loc_x.i324:                  .float        0.0
+ua_loc_in.addr.i318:            .float        0.0
+ua_loc_x.i320:                  .float        0.0
 ua_loc_number.addr.i:           .float        0.0
 ua_loc_x2.i:                    .float        0.0
 ua_loc_i_lo.i:                  .int          0x0
 ua_loc_i_hi.i:                  .int          0x0
 ua_loc_y.i:                     .float        0.0
-ua_loc_in.addr.i310:            .float        0.0
+ua_loc_in.addr.i306:            .float        0.0
 ua_loc_x.i:                     .float        0.0
-ua_loc_in.addr.i414:            .float        0.0
-ua_loc_x.i416:                  .float        0.0
-ua_loc_number.addr.i374:        .float        0.0
-ua_loc_x2.i378:                 .float        0.0
-ua_loc_i_lo.i376:               .int          0x0
-ua_loc_i_hi.i377:               .int          0x0
-ua_loc_y.i379:                  .float        0.0
-ua_loc_in.addr.i348:            .float        0.0
-ua_loc_x.i350:                  .float        0.0
+ua_loc_in.addr.i410:            .float        0.0
+ua_loc_x.i412:                  .float        0.0
+ua_loc_number.addr.i370:        .float        0.0
+ua_loc_x2.i374:                 .float        0.0
+ua_loc_i_lo.i372:               .int          0x0
+ua_loc_i_hi.i373:               .int          0x0
+ua_loc_y.i375:                  .float        0.0
+ua_loc_in.addr.i344:            .float        0.0
+ua_loc_x.i346:                  .float        0.0
 
 ; Temporaries
 ua_tmp_5:                       .word         0x0
@@ -197,7 +197,7 @@ ua_tmp_239:                     .word         0x0
 ua_tmp_303:                     .word         0x0
 ua_tmp_307:                     .word         0x0
 
-; VLIW count: 891
+; VLIW count: 883
 .code
 	INC | HOLD | HOLD | LOAD ua_const_0 LD
 	INC | HOLD | HOLD | STOR sensorState_flag LD
@@ -323,42 +323,42 @@ if.else97:
 	INC | HOLD | HOLD | LOAD Cycle_Number LD
 	INC | HOLD | MOV LD R0 | LOAD MAX_UA_Cycle LD
 	JGE R0 LD | HOLD | HOLD | LOAD @land.lhs.true100 LD
-if.else293:
+if.else289:
 	INC | HOLD | HOLD | LOAD Cycle_Number LD
 	INC | HOLD | MOV LD R0 | LOAD ua_const_68 LD
-	JGE R0 LD | HOLD | HOLD | LOAD @land.lhs.true296 LD
-if.else300:
+	JGE R0 LD | HOLD | HOLD | LOAD @land.lhs.true292 LD
+if.else296:
 	INC | HOLD | HOLD | LOAD Current_state LD
 	INC | HOLD | MOV LD R0 | LOAD ua_const_12 LD
-	JE R0 LD | HOLD | HOLD | LOAD @if.then303 LD
+	JE R0 LD | HOLD | HOLD | LOAD @if.then299 LD
 	INC | HOLD | HOLD | LOAD Cycle_Number LD
 	INC | INC LD ACC | HOLD | HOLD
 	INC | HOLD | HOLD | STOR Cycle_Number ACC
-	JMP | HOLD | HOLD | LOAD @if.end306 LD
-if.then303:
+	JMP | HOLD | HOLD | LOAD @if.end302 LD
+if.then299:
 	INC | HOLD | HOLD | LOAD ua_const_0 LD
 	INC | HOLD | HOLD | STOR Current_state LD
 	INC | HOLD | HOLD | CLR Cycle_Number
-if.end306:
-	JMP | HOLD | HOLD | LOAD @if.end307 LD
-land.lhs.true296:
+if.end302:
+	JMP | HOLD | HOLD | LOAD @if.end303 LD
+land.lhs.true292:
 	INC | HOLD | HOLD | LOAD Current_state LD
 	INC | HOLD | MOV LD R0 | LOAD ua_const_1 LD
-	JE R0 LD | HOLD | HOLD | LOAD @if.then299 LD
-	JMP | HOLD | HOLD | LOAD @if.else300 LD
-if.then299:
+	JE R0 LD | HOLD | HOLD | LOAD @if.then295 LD
+	JMP | HOLD | HOLD | LOAD @if.else296 LD
+if.then295:
 	INC | HOLD | HOLD | LOAD ua_const_12 LD
 	INC | HOLD | HOLD | STOR Current_state LD
 	INC | HOLD | HOLD | CLR Cycle_Number
 	INC | HOLD | HOLD | LOAD ua_const_67 LD
 	INC | HOLD | HOLD | STOR 0x432 LD
-if.end307:
-	JMP | HOLD | HOLD | LOAD @if.end308 LD
+if.end303:
+	JMP | HOLD | HOLD | LOAD @if.end304 LD
 land.lhs.true100:
 	INC | HOLD | HOLD | LOAD Current_state LD
 	INC | HOLD | MOV LD R0 | LOAD ua_const_0 LD
 	JE R0 LD | HOLD | HOLD | LOAD @if.then103 LD
-	JMP | HOLD | HOLD | LOAD @if.else293 LD
+	JMP | HOLD | HOLD | LOAD @if.else289 LD
 if.then103:
 	INC | HOLD | HOLD | CLR Cycle_Number
 	INC | HOLD | HOLD | CLR 0x429
@@ -485,73 +485,73 @@ if.end177:
 	INC | HOLD | HOLD | LOAD f_Amplitude_Temp LD
 	INC | MOV LD ACC | HOLD | LOAD ua_const_40 LD
 	INC | FMUL ACC LD ACC | HOLD | LOAD ua_const_33 LD
-	INC | FMUL ACC LD ACC | HOLD | STOR ua_loc_number.addr.i478 ACC
-	INC | HOLD | HOLD | STOR ua_loc_x2.i482 ACC
-	INC | HOLD | HOLD | LOAD ua_loc_number.addr.i478 LD
+	INC | FMUL ACC LD ACC | HOLD | STOR ua_loc_number.addr.i474 ACC
+	INC | HOLD | HOLD | STOR ua_loc_x2.i478 ACC
+	INC | HOLD | HOLD | LOAD ua_loc_number.addr.i474 LD
 	INC | HOLD | SR LD 1 R0 | LOAD ua_const_41 LD
 	INC | MOV R0 ACC | AND R0 LD R0 | LOAD ua_const_42 LD
-	INC | HOLD | AND ACC LD R0 | STOR ua_loc_i_lo.i480 R0
+	INC | HOLD | AND ACC LD R0 | STOR ua_loc_i_lo.i476 R0
 	INC | HOLD | HOLD | LOAD ua_const_43 LD
-	INC | MOV LD ACC | SR R0 8 R0 | LOAD ua_loc_i_lo.i480 LD
+	INC | MOV LD ACC | SR R0 8 R0 | LOAD ua_loc_i_lo.i476 LD
 	INC | SUB ACC LD ACC | SR R0 8 R0 | LOAD ua_const_1 LD
-	INC | HOLD | MOV ACC R0 | STOR ua_loc_i_hi.i481 R0
-	INC | HOLD | HOLD | STOR ua_loc_i_lo.i480 ACC
-	JL R0 LD | HOLD | HOLD | LOAD @if.then.i497 LD
+	INC | HOLD | MOV ACC R0 | STOR ua_loc_i_hi.i477 R0
+	INC | HOLD | HOLD | STOR ua_loc_i_lo.i476 ACC
+	JL R0 LD | HOLD | HOLD | LOAD @if.then.i493 LD
 	INC | HOLD | HOLD | LOAD ua_const_44 LD
-	INC | MOV LD ACC | HOLD | LOAD ua_loc_i_hi.i481 LD
+	INC | MOV LD ACC | HOLD | LOAD ua_loc_i_hi.i477 LD
 	INC | SUB ACC LD ACC | HOLD | HOLD
-	INC | HOLD | HOLD | STOR ua_loc_i_hi.i481 ACC
-	JMP | HOLD | HOLD | LOAD @UA_sqrt.exit518 LD
-if.then.i497:
+	INC | HOLD | HOLD | STOR ua_loc_i_hi.i477 ACC
+	JMP | HOLD | HOLD | LOAD @UA_sqrt.exit514 LD
+if.then.i493:
 	INC | HOLD | HOLD | LOAD ua_const_44 LD
-	INC | MOV LD ACC | HOLD | LOAD ua_loc_i_hi.i481 LD
-	INC | SUB ACC LD ACC | HOLD | LOAD ua_loc_i_lo.i480 LD
+	INC | MOV LD ACC | HOLD | LOAD ua_loc_i_hi.i477 LD
+	INC | SUB ACC LD ACC | HOLD | LOAD ua_loc_i_lo.i476 LD
 	INC | DEC ACC ACC | HOLD | HOLD
-	INC | MOV LD ACC | HOLD | STOR ua_loc_i_hi.i481 ACC
+	INC | MOV LD ACC | HOLD | STOR ua_loc_i_hi.i477 ACC
 	INC | HOLD | HOLD | LOAD ua_const_41 LD
 	INC | HOLD | AND ACC LD R0 | HOLD
-	INC | HOLD | HOLD | STOR ua_loc_i_lo.i480 R0
-UA_sqrt.exit518:
-	INC | HOLD | HOLD | LOAD ua_loc_i_hi.i481 LD
-	INC | HOLD | SL LD 8 R0 | LOAD ua_loc_i_lo.i480 LD
+	INC | HOLD | HOLD | STOR ua_loc_i_lo.i476 R0
+UA_sqrt.exit514:
+	INC | HOLD | HOLD | LOAD ua_loc_i_hi.i477 LD
+	INC | HOLD | SL LD 8 R0 | LOAD ua_loc_i_lo.i476 LD
 	INC | HOLD | SL R0 8 R0 | HOLD
-	INC | HOLD | OR R0 LD R0 | LOAD ua_loc_x2.i482 LD
-	INC | FMUL LD R0 ACC | HOLD | STOR ua_loc_y.i483 R0
+	INC | HOLD | OR R0 LD R0 | LOAD ua_loc_x2.i478 LD
+	INC | FMUL LD R0 ACC | HOLD | STOR ua_loc_y.i479 R0
 	INC | HOLD | HOLD | LOAD ua_const_45 LD
 	INC | FMUL ACC R0 ACC | HOLD | HOLD
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x2.i482 LD
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x2.i478 LD
 	INC | FMUL R0 ACC ACC | HOLD | HOLD
-	INC | FMUL LD ACC ACC | HOLD | STOR ua_loc_y.i483 ACC
-	INC | HOLD | HOLD | LOAD ua_loc_y.i483 LD
+	INC | FMUL LD ACC ACC | HOLD | STOR ua_loc_y.i479 ACC
+	INC | HOLD | HOLD | LOAD ua_loc_y.i479 LD
 	INC | FMUL ACC LD ACC | HOLD | LOAD ua_const_45 LD
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_y.i483 LD
-	INC | FMUL LD ACC ACC | HOLD | LOAD ua_loc_x2.i482 LD
-	INC | FMUL LD ACC ACC | HOLD | STOR ua_loc_y.i483 ACC
-	INC | HOLD | HOLD | LOAD ua_loc_y.i483 LD
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_y.i479 LD
+	INC | FMUL LD ACC ACC | HOLD | LOAD ua_loc_x2.i478 LD
+	INC | FMUL LD ACC ACC | HOLD | STOR ua_loc_y.i479 ACC
+	INC | HOLD | HOLD | LOAD ua_loc_y.i479 LD
 	INC | FMUL ACC LD ACC | HOLD | LOAD ua_const_45 LD
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_y.i483 LD
-	INC | FMUL LD ACC ACC | HOLD | LOAD ua_loc_number.addr.i478 LD
-	INC | FMUL ACC LD ACC | HOLD | STOR ua_loc_y.i483 ACC
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_y.i479 LD
+	INC | FMUL LD ACC ACC | HOLD | LOAD ua_loc_number.addr.i474 LD
+	INC | FMUL ACC LD ACC | HOLD | STOR ua_loc_y.i479 ACC
 	INC | HOLD | MOV ACC R0 | LOAD Current_signal LD
 	INC | MOV LD ACC | HOLD | LOAD f_Q1m LD
 	INC | MOV LD ACC | HOLD | SOFF Amplitude ACC R0
-	INC | HOLD | HOLD | STOR ua_loc_in.addr.i452 LD
+	INC | HOLD | HOLD | STOR ua_loc_in.addr.i448 LD
 	INC | HOLD | HOLD | LOAD ua_const_46 LD
 	INC | HOLD | AND ACC LD R0 | LOAD ua_const_47 LD
 	INC | HOLD | OR R0 LD R0 | LOAD ua_const_48 LD
 	INC | FMUL LD R0 ACC | HOLD | LOAD ua_const_49 LD
 	INC | FSUB LD ACC ACC | HOLD | LOAD ua_const_50 LD
-	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i454 ACC
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i454 LD
+	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i450 ACC
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i450 LD
 	INC | FMUL LD ACC ACC | HOLD | LOAD ua_const_50 LD
-	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i454 ACC
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i454 LD
+	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i450 ACC
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i450 LD
 	INC | FMUL LD ACC ACC | HOLD | LOAD ua_const_50 LD
-	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i454 ACC
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i454 LD
+	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i450 ACC
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i450 LD
 	INC | FMUL LD ACC ACC | HOLD | LOAD ua_const_46 LD
-	INC | HOLD | AND ACC LD R0 | STOR ua_loc_x.i454 ACC
-	INC | MOV R0 ACC | HOLD | LOAD ua_loc_in.addr.i452 LD
+	INC | HOLD | AND ACC LD R0 | STOR ua_loc_x.i450 ACC
+	INC | MOV R0 ACC | HOLD | LOAD ua_loc_in.addr.i448 LD
 	INC | HOLD | MOV LD R0 | LOAD ua_const_51 LD
 	INC | HOLD | XOR R0 LD R0 | LOAD ua_const_52 LD
 	INC | HOLD | AND R0 LD R0 | LOAD ua_const_53 LD
@@ -637,7 +637,7 @@ UA_atan.exit:
 	INC | MOV LD ACC | MOV ACC R0 | LOAD Current_signal LD
 	INC | HOLD | MOV LD R0 | SOFF Phase ACC R0
 	INC | HOLD | HOLD | LOAD ua_const_1 LD
-	JE R0 LD | HOLD | HOLD | LOAD @if.end292 LD
+	JE R0 LD | HOLD | HOLD | LOAD @if.end288 LD
 	INC | HOLD | HOLD | LOFF Phase 1 LD
 	INC | HOLD | MOV LD R0 | LOAD Frequency_number LD
 	INC | MOV LD ACC | HOLD | LOFF Phase 0 LD
@@ -680,22 +680,22 @@ if.end208:
 	INC | HOLD | MOV LD R0 | STOR ua_tmp_342 ACC
 	INC | HOLD | HOLD | LOFF Amplitude 0 LD
 	INC | FMUL R0 LD ACC | HOLD | LOAD ua_const_46 LD
-	INC | HOLD | AND ACC LD R0 | STOR ua_loc_in.addr.i322 ACC
+	INC | HOLD | AND ACC LD R0 | STOR ua_loc_in.addr.i318 ACC
 	INC | HOLD | HOLD | LOAD ua_const_47 LD
 	INC | HOLD | OR R0 LD R0 | LOAD ua_const_48 LD
 	INC | FMUL LD R0 ACC | HOLD | LOAD ua_const_49 LD
 	INC | FSUB LD ACC ACC | HOLD | LOAD ua_const_50 LD
-	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i324 ACC
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i324 LD
+	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i320 ACC
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i320 LD
 	INC | FMUL LD ACC ACC | HOLD | LOAD ua_const_50 LD
-	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i324 ACC
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i324 LD
+	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i320 ACC
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i320 LD
 	INC | FMUL LD ACC ACC | HOLD | LOAD ua_const_50 LD
-	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i324 ACC
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i324 LD
+	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i320 ACC
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i320 LD
 	INC | FMUL LD ACC ACC | HOLD | LOAD ua_const_46 LD
-	INC | HOLD | AND ACC LD R0 | STOR ua_loc_x.i324 ACC
-	INC | MOV R0 ACC | HOLD | LOAD ua_loc_in.addr.i322 LD
+	INC | HOLD | AND ACC LD R0 | STOR ua_loc_x.i320 ACC
+	INC | MOV R0 ACC | HOLD | LOAD ua_loc_in.addr.i318 LD
 	INC | HOLD | MOV LD R0 | LOAD ua_const_51 LD
 	INC | HOLD | XOR R0 LD R0 | LOAD ua_const_52 LD
 	INC | HOLD | AND R0 LD R0 | LOAD ua_const_53 LD
@@ -771,7 +771,7 @@ UA_sqrt.exit:
 	INC | MOV LD ACC | MOV ACC R0 | LOAD Q2mRef LD
 	INC | FMUL ACC LD ACC | HOLD | LOAD ua_const_46 LD
 	INC | FADD R0 ACC ACC | HOLD | HOLD
-	INC | HOLD | AND ACC LD R0 | STOR ua_loc_in.addr.i310 ACC
+	INC | HOLD | AND ACC LD R0 | STOR ua_loc_in.addr.i306 ACC
 	INC | HOLD | HOLD | LOAD ua_const_47 LD
 	INC | HOLD | OR R0 LD R0 | LOAD ua_const_48 LD
 	INC | FMUL LD R0 ACC | HOLD | LOAD ua_const_49 LD
@@ -786,7 +786,7 @@ UA_sqrt.exit:
 	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i LD
 	INC | FMUL LD ACC ACC | HOLD | LOAD ua_const_46 LD
 	INC | HOLD | AND ACC LD R0 | STOR ua_loc_x.i ACC
-	INC | MOV R0 ACC | HOLD | LOAD ua_loc_in.addr.i310 LD
+	INC | MOV R0 ACC | HOLD | LOAD ua_loc_in.addr.i306 LD
 	INC | HOLD | MOV LD R0 | LOAD ua_const_51 LD
 	INC | HOLD | XOR R0 LD R0 | LOAD ua_const_52 LD
 	INC | HOLD | AND R0 LD R0 | LOAD ua_const_53 LD
@@ -799,9 +799,23 @@ UA_sqrt.exit:
 	INC | HOLD | HOLD | SOFF f_Kapazitaet_CR_P ACC R0
 	INC | HOLD | HOLD | CLR s25_Switch_CP_CR
 	INC | HOLD | HOLD | LOAD Frequency_number LD
+	INC | HOLD | HOLD | LOFF f_Kapazitaet_CP_A LD LD
+	INC | HOLD | HOLD | STOR 0x427 LD
+	INC | HOLD | HOLD | LOAD Frequency_number LD
+	INC | HOLD | HOLD | LOFF f_Kapazitaet_CR_A LD LD
+	INC | HOLD | HOLD | STOR 0x427 LD
+	INC | HOLD | HOLD | LOAD Frequency_number LD
+	INC | HOLD | HOLD | LOFF f_Kapazitaet_CP_P LD LD
+	INC | HOLD | HOLD | STOR 0x427 LD
+	INC | HOLD | HOLD | LOAD Frequency_number LD
+	INC | HOLD | HOLD | LOFF f_Kapazitaet_CR_P LD LD
+	INC | HOLD | HOLD | STOR 0x427 LD
+	INC | HOLD | HOLD | LOAD Frequency_number LD
+	INC | HOLD | HOLD | STOR 0x428 LD
+	INC | HOLD | HOLD | LOAD Frequency_number LD
 	INC | INC LD ACC | HOLD | HOLD
 	INC | HOLD | HOLD | STOR Frequency_number ACC
-	JMP | HOLD | HOLD | LOAD @if.end270 LD
+	JMP | HOLD | HOLD | LOAD @if.end283 LD
 if.then211:
 	INC | HOLD | HOLD | LOAD ua_const_16 LD
 	INC | HOLD | HOLD | STOR 0x409 LD
@@ -814,22 +828,22 @@ if.then211:
 	INC | HOLD | MOV LD R0 | STOR ua_tmp_239 ACC
 	INC | HOLD | HOLD | LOFF Amplitude 0 LD
 	INC | FMUL R0 LD ACC | HOLD | LOAD ua_const_46 LD
-	INC | HOLD | AND ACC LD R0 | STOR ua_loc_in.addr.i414 ACC
+	INC | HOLD | AND ACC LD R0 | STOR ua_loc_in.addr.i410 ACC
 	INC | HOLD | HOLD | LOAD ua_const_47 LD
 	INC | HOLD | OR R0 LD R0 | LOAD ua_const_48 LD
 	INC | FMUL LD R0 ACC | HOLD | LOAD ua_const_49 LD
 	INC | FSUB LD ACC ACC | HOLD | LOAD ua_const_50 LD
-	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i416 ACC
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i416 LD
+	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i412 ACC
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i412 LD
 	INC | FMUL LD ACC ACC | HOLD | LOAD ua_const_50 LD
-	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i416 ACC
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i416 LD
+	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i412 ACC
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i412 LD
 	INC | FMUL LD ACC ACC | HOLD | LOAD ua_const_50 LD
-	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i416 ACC
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i416 LD
+	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i412 ACC
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i412 LD
 	INC | FMUL LD ACC ACC | HOLD | LOAD ua_const_46 LD
-	INC | HOLD | AND ACC LD R0 | STOR ua_loc_x.i416 ACC
-	INC | MOV R0 ACC | HOLD | LOAD ua_loc_in.addr.i414 LD
+	INC | HOLD | AND ACC LD R0 | STOR ua_loc_x.i412 ACC
+	INC | MOV R0 ACC | HOLD | LOAD ua_loc_in.addr.i410 LD
 	INC | HOLD | MOV LD R0 | LOAD ua_const_51 LD
 	INC | HOLD | XOR R0 LD R0 | LOAD ua_const_52 LD
 	INC | HOLD | AND R0 LD R0 | LOAD ua_const_53 LD
@@ -837,53 +851,53 @@ if.then211:
 	INC | FMUL R0 LD ACC | HOLD | LOAD ua_tmp_239 LD
 	INC | FMUL LD ACC ACC | HOLD | LOAD ua_const_54 LD
 	INC | FSUB ACC LD ACC | HOLD | LOAD ua_const_33 LD
-	INC | FMUL ACC LD ACC | HOLD | STOR ua_loc_number.addr.i374 ACC
-	INC | HOLD | HOLD | STOR ua_loc_x2.i378 ACC
-	INC | HOLD | HOLD | LOAD ua_loc_number.addr.i374 LD
+	INC | FMUL ACC LD ACC | HOLD | STOR ua_loc_number.addr.i370 ACC
+	INC | HOLD | HOLD | STOR ua_loc_x2.i374 ACC
+	INC | HOLD | HOLD | LOAD ua_loc_number.addr.i370 LD
 	INC | HOLD | SR LD 1 R0 | LOAD ua_const_41 LD
 	INC | MOV R0 ACC | AND R0 LD R0 | LOAD ua_const_42 LD
-	INC | HOLD | AND ACC LD R0 | STOR ua_loc_i_lo.i376 R0
+	INC | HOLD | AND ACC LD R0 | STOR ua_loc_i_lo.i372 R0
 	INC | HOLD | HOLD | LOAD ua_const_43 LD
-	INC | MOV LD ACC | SR R0 8 R0 | LOAD ua_loc_i_lo.i376 LD
+	INC | MOV LD ACC | SR R0 8 R0 | LOAD ua_loc_i_lo.i372 LD
 	INC | SUB ACC LD ACC | SR R0 8 R0 | LOAD ua_const_1 LD
-	INC | HOLD | MOV ACC R0 | STOR ua_loc_i_hi.i377 R0
-	INC | HOLD | HOLD | STOR ua_loc_i_lo.i376 ACC
-	JL R0 LD | HOLD | HOLD | LOAD @if.then.i393 LD
+	INC | HOLD | MOV ACC R0 | STOR ua_loc_i_hi.i373 R0
+	INC | HOLD | HOLD | STOR ua_loc_i_lo.i372 ACC
+	JL R0 LD | HOLD | HOLD | LOAD @if.then.i389 LD
 	INC | HOLD | HOLD | LOAD ua_const_44 LD
-	INC | MOV LD ACC | HOLD | LOAD ua_loc_i_hi.i377 LD
+	INC | MOV LD ACC | HOLD | LOAD ua_loc_i_hi.i373 LD
 	INC | SUB ACC LD ACC | HOLD | HOLD
-	INC | HOLD | HOLD | STOR ua_loc_i_hi.i377 ACC
-	JMP | HOLD | HOLD | LOAD @UA_sqrt.exit413 LD
-if.then.i393:
+	INC | HOLD | HOLD | STOR ua_loc_i_hi.i373 ACC
+	JMP | HOLD | HOLD | LOAD @UA_sqrt.exit409 LD
+if.then.i389:
 	INC | HOLD | HOLD | LOAD ua_const_44 LD
-	INC | MOV LD ACC | HOLD | LOAD ua_loc_i_hi.i377 LD
-	INC | SUB ACC LD ACC | HOLD | LOAD ua_loc_i_lo.i376 LD
+	INC | MOV LD ACC | HOLD | LOAD ua_loc_i_hi.i373 LD
+	INC | SUB ACC LD ACC | HOLD | LOAD ua_loc_i_lo.i372 LD
 	INC | DEC ACC ACC | HOLD | HOLD
-	INC | MOV LD ACC | HOLD | STOR ua_loc_i_hi.i377 ACC
+	INC | MOV LD ACC | HOLD | STOR ua_loc_i_hi.i373 ACC
 	INC | HOLD | HOLD | LOAD ua_const_41 LD
 	INC | HOLD | AND ACC LD R0 | HOLD
-	INC | HOLD | HOLD | STOR ua_loc_i_lo.i376 R0
-UA_sqrt.exit413:
-	INC | HOLD | HOLD | LOAD ua_loc_i_hi.i377 LD
-	INC | HOLD | SL LD 8 R0 | LOAD ua_loc_i_lo.i376 LD
+	INC | HOLD | HOLD | STOR ua_loc_i_lo.i372 R0
+UA_sqrt.exit409:
+	INC | HOLD | HOLD | LOAD ua_loc_i_hi.i373 LD
+	INC | HOLD | SL LD 8 R0 | LOAD ua_loc_i_lo.i372 LD
 	INC | HOLD | SL R0 8 R0 | HOLD
-	INC | HOLD | OR R0 LD R0 | LOAD ua_loc_x2.i378 LD
-	INC | FMUL LD R0 ACC | HOLD | STOR ua_loc_y.i379 R0
+	INC | HOLD | OR R0 LD R0 | LOAD ua_loc_x2.i374 LD
+	INC | FMUL LD R0 ACC | HOLD | STOR ua_loc_y.i375 R0
 	INC | HOLD | HOLD | LOAD ua_const_45 LD
 	INC | FMUL ACC R0 ACC | HOLD | HOLD
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x2.i378 LD
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x2.i374 LD
 	INC | FMUL R0 ACC ACC | HOLD | HOLD
-	INC | FMUL LD ACC ACC | HOLD | STOR ua_loc_y.i379 ACC
-	INC | HOLD | HOLD | LOAD ua_loc_y.i379 LD
+	INC | FMUL LD ACC ACC | HOLD | STOR ua_loc_y.i375 ACC
+	INC | HOLD | HOLD | LOAD ua_loc_y.i375 LD
 	INC | FMUL ACC LD ACC | HOLD | LOAD ua_const_45 LD
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_y.i379 LD
-	INC | FMUL LD ACC ACC | HOLD | LOAD ua_loc_x2.i378 LD
-	INC | FMUL LD ACC ACC | HOLD | STOR ua_loc_y.i379 ACC
-	INC | HOLD | HOLD | LOAD ua_loc_y.i379 LD
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_y.i375 LD
+	INC | FMUL LD ACC ACC | HOLD | LOAD ua_loc_x2.i374 LD
+	INC | FMUL LD ACC ACC | HOLD | STOR ua_loc_y.i375 ACC
+	INC | HOLD | HOLD | LOAD ua_loc_y.i375 LD
 	INC | FMUL ACC LD ACC | HOLD | LOAD ua_const_45 LD
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_y.i379 LD
-	INC | FMUL LD ACC ACC | HOLD | LOAD ua_loc_number.addr.i374 LD
-	INC | FMUL ACC LD ACC | HOLD | STOR ua_loc_y.i379 ACC
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_y.i375 LD
+	INC | FMUL LD ACC ACC | HOLD | LOAD ua_loc_number.addr.i370 LD
+	INC | FMUL ACC LD ACC | HOLD | STOR ua_loc_y.i375 ACC
 	INC | HOLD | HOLD | LOAD ua_tmp_236 LD
 	INC | FMUL LD ACC ACC | HOLD | LOAD C_OffsetAmp_pF LD
 	INC | FSUB ACC LD ACC | HOLD | LOAD C_GainAmp_pF LD
@@ -905,22 +919,22 @@ UA_sqrt.exit413:
 	INC | MOV LD ACC | MOV ACC R0 | LOAD Q2mRef LD
 	INC | FMUL ACC LD ACC | HOLD | LOAD ua_const_46 LD
 	INC | FADD R0 ACC ACC | HOLD | HOLD
-	INC | HOLD | AND ACC LD R0 | STOR ua_loc_in.addr.i348 ACC
+	INC | HOLD | AND ACC LD R0 | STOR ua_loc_in.addr.i344 ACC
 	INC | HOLD | HOLD | LOAD ua_const_47 LD
 	INC | HOLD | OR R0 LD R0 | LOAD ua_const_48 LD
 	INC | FMUL LD R0 ACC | HOLD | LOAD ua_const_49 LD
 	INC | FSUB LD ACC ACC | HOLD | LOAD ua_const_50 LD
-	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i350 ACC
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i350 LD
+	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i346 ACC
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i346 LD
 	INC | FMUL LD ACC ACC | HOLD | LOAD ua_const_50 LD
-	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i350 ACC
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i350 LD
+	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i346 ACC
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i346 LD
 	INC | FMUL LD ACC ACC | HOLD | LOAD ua_const_50 LD
-	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i350 ACC
-	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i350 LD
+	INC | FMUL R0 ACC ACC | HOLD | STOR ua_loc_x.i346 ACC
+	INC | FSUB LD ACC ACC | HOLD | LOAD ua_loc_x.i346 LD
 	INC | FMUL LD ACC ACC | HOLD | LOAD ua_const_46 LD
-	INC | HOLD | AND ACC LD R0 | STOR ua_loc_x.i350 ACC
-	INC | MOV R0 ACC | HOLD | LOAD ua_loc_in.addr.i348 LD
+	INC | HOLD | AND ACC LD R0 | STOR ua_loc_x.i346 ACC
+	INC | MOV R0 ACC | HOLD | LOAD ua_loc_in.addr.i344 LD
 	INC | HOLD | MOV LD R0 | LOAD ua_const_51 LD
 	INC | HOLD | XOR R0 LD R0 | LOAD ua_const_52 LD
 	INC | HOLD | AND R0 LD R0 | LOAD ua_const_53 LD
@@ -932,45 +946,23 @@ UA_sqrt.exit413:
 	INC | MOV LD ACC | MOV ACC R0 | LOAD ua_const_0 LD
 	INC | HOLD | HOLD | SOFF f_Kapazitaet_CP_P ACC R0
 	INC | HOLD | HOLD | STOR s25_Switch_CP_CR LD
-if.end270:
-	INC | HOLD | HOLD | LOFF f_Kapazitaet_CP_A 0 LD
-	INC | HOLD | HOLD | STOR 0x404 LD
-	INC | HOLD | HOLD | LOFF f_Kapazitaet_CR_A 0 LD
-	INC | HOLD | HOLD | STOR 0x404 LD
-	INC | HOLD | HOLD | LOFF f_Kapazitaet_CP_P 0 LD
-	INC | HOLD | HOLD | STOR 0x404 LD
-	INC | HOLD | HOLD | LOFF f_Kapazitaet_CR_P 0 LD
-	INC | HOLD | HOLD | STOR 0x404 LD
-	INC | HOLD | HOLD | LOAD Frequency_number LD
-	INC | HOLD | HOLD | LOFF f_Kapazitaet_CP_A LD LD
-	INC | HOLD | HOLD | STOR 0x427 LD
-	INC | HOLD | HOLD | LOAD Frequency_number LD
-	INC | HOLD | HOLD | LOFF f_Kapazitaet_CR_A LD LD
-	INC | HOLD | HOLD | STOR 0x427 LD
-	INC | HOLD | HOLD | LOAD Frequency_number LD
-	INC | HOLD | HOLD | LOFF f_Kapazitaet_CP_P LD LD
-	INC | HOLD | HOLD | STOR 0x427 LD
-	INC | HOLD | HOLD | LOAD Frequency_number LD
-	INC | HOLD | HOLD | LOFF f_Kapazitaet_CR_P LD LD
-	INC | HOLD | HOLD | STOR 0x427 LD
-	INC | HOLD | HOLD | LOAD Frequency_number LD
-	INC | HOLD | HOLD | STOR 0x428 LD
+if.end283:
 	INC | HOLD | HOLD | LOAD Frequency_number LD
 	INC | HOLD | MOV LD R0 | LOAD ua_const_66 LD
-	JL R0 LD | HOLD | HOLD | LOAD @if.end292 LD
+	JL R0 LD | HOLD | HOLD | LOAD @if.end288 LD
 	INC | HOLD | HOLD | CLR Frequency_number
 	INC | HOLD | HOLD | CLR Current_state
 	INC | HOLD | HOLD | LOAD ua_const_67 LD
 	INC | HOLD | HOLD | STOR 0x433 LD
 	INC | HOLD | HOLD | LOAD ua_const_7 LD
 	INC | HOLD | HOLD | STOR 0x40A LD
-if.end292:
+if.end288:
 	INC | HOLD | HOLD | LOAD Current_signal LD
 	INC | MOV LD ACC | HOLD | LOAD ua_const_0 LD
 	INC | HOLD | XOR ACC LD R0 | HOLD
 	INC | HOLD | HOLD | STOR Current_signal R0
-if.end308:
-	JMP | HOLD | HOLD | LOAD @if.end309 LD
+if.end304:
+	JMP | HOLD | HOLD | LOAD @if.end305 LD
 land.lhs.true:
 	INC | HOLD | HOLD | LOAD Current_state LD
 	INC | HOLD | MOV LD R0 | LOAD ua_const_0 LD
@@ -978,7 +970,7 @@ land.lhs.true:
 	JMP | HOLD | HOLD | LOAD @if.else97 LD
 if.then34:
 	INC | HOLD | HOLD | LOAD Current_signal LD
-	INC | HOLD | MOV LD R0 | LOAD ua_const_1 LD
+	INC | HOLD | MOV LD R0 | LOAD ua_const_0 LD
 	JE R0 LD | HOLD | HOLD | LOAD @if.then37 LD
 	INC | HOLD | HOLD | LOAD ua_const_15 LD
 	INC | HOLD | HOLD | STOR 0x40A LD
@@ -1145,7 +1137,7 @@ if.end89:
 	INC | FADD ACC LD ACC | HOLD | HOLD
 	INC | F2P ACC  ACC | HOLD | HOLD
 	INC | HOLD | HOLD | STOR MAX_UA_Cycle ACC
-if.end309:
+if.end305:
 	INC | HOLD | HOLD | LOAD ua_const_69 LD
 	INC | HOLD | HOLD | STOR 0x40B LD
 	INC | HOLD | HOLD | CLR 0x405
