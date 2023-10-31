@@ -91,16 +91,6 @@ ua_param ua_word_t UA_INIT_ADC_CONVERSION_CONF = ADC_CONVERSION_CONF;
 /**********************************
 * phase control A
 ***********************************/
-
-// constants
-ua_param ua_float_t par_phase_LP_0 = 0.00017358097829856f;		//Ts / (2 * T + Ts)
-ua_param ua_float_t par_phase_LP_1 = 5759.0f;							//(2 * T - Ts) / Ts
-ua_param ua_float_t par_phase_P = 100.0f;
-ua_param ua_float_t par_phase_I = 0.3f;
-ua_param ua_float_t par_phase_min_wind = 600.0f;
-ua_param ua_float_t par_phase_max_wind = 1200.0f;
-ua_param ua_float_t par_phase_startFreq = 700.0f;
-
 // variables
 ua_float_t phase_LP_n_1 = 0.0f;
 ua_float_t phase_P = 0.0f;
@@ -115,11 +105,6 @@ ua_float_t f_A = 0.0f;
 * resonator A 
 ***********************************/
 
-// Güte 32
-ua_param ua_float_t par_res_c1_A = 1.2056327047816E-09f;					//Ts^2
-ua_param ua_float_t par_res_c2_A = 2.1701388888889E-06f;					//2 * Ts/Q
-ua_param ua_float_t par_res_c6_A = 0.03125f;								//1/Q
-
 // variables
 ua_float_t a0_inv_A = 0.0f;
 ua_float_t res1_n_1_A = 0.0f;
@@ -132,18 +117,6 @@ ua_float_t res_output_A = 0.0f;
 /**********************************
 * amplification control
 ***********************************/
-ua_param ua_float_t par_amp_reset = 80.0f;							//minimum allowed amplitude value before reset
-ua_param ua_int_t par_amp_reset_max = 1000;						//amount of occured amp_resets cycles (Ts!) before reset of control be be initiated 
-ua_param ua_float_t par_amp_startFreq = 700.0f;
-ua_param ua_float_t par_amp_endFreq = 1200.0f;
-ua_param ua_float_t par_amp_stepFreq = 20.0f;
-
-/**********************************
-* output limitation
-***********************************/
-ua_param ua_int_t par_time_min = 12;								//minimum amount of cycles (Ts) before output change is allowed
-ua_param ua_int_t par_time_max = 24;								//maximum amount of cycles (Ts) before output has to be changed (will be forced to change after that time)
-
 
 /**********************************
 * variables
@@ -197,7 +170,6 @@ ua_word_t lastOutputSignal = 0;
 ua_word_t sensorState_flag = 1; //keep as 1 // CDI ParamID = UIDP_LS_SENSORSTATUS
 ua_word_t deviceSwitchState = 2; //0 = free 1 = covered, 2 = init/prooftest 3 = error // CDI ParamID = UIDP_LS_FORKSTATE
 ua_word_t deviceOutputState = 1; //relay output: here inverted to deviceSwitchState // CDI ParamID = UIDP_LS_DEVICEOUTPUTSTATE
-ua_param ua_word_t electronicType = 2; // Liqu ES sends 2 for FEL64
 
 // ua_word_t frequencyUnit = 0x435; //Hz
 // ua_word_t temperatureUnit = 0x10; //should be degree celcius, don't know the value
