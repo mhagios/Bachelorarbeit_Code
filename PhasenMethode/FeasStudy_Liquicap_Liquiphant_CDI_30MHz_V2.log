@@ -1,24 +1,6 @@
 Microarchitecure Suite Version 3.20.20
 UAC Compiler Version 2.5 @ 16.12.2022 15:14:30
 
-==========================C-Compiler===========================
-Selected Strategy: backlog,1 - Additional Option: -l
-Compiling C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.ll
-
-Optimization:
-          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
-          |----|----|----|----|----|----|----|----|----|----|
-          |||||||||||||||||||||||||||||||||||||||||||||||||||
-
-Parallelization:
-          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
-          |----|----|----|----|----|----|----|----|----|----|
-          ||||||||||||||||||||||||||||||||||||||||||||||||||||
-
-Info: Selected path: path1130; VLIW count: 887
-
-Compilation successful in 78,16 s
-
 ===========================Assembler===========================
 Analyzing ASM finished.
 Note: Variable "n_calc" declared but not used.
@@ -57,7 +39,7 @@ All files generated successfully.
 
 -------------Memory usage:-------------------------------------
 IMEM:	887 of 2048
-DMEM:	341 of 1024	(144 checked param. + 1 CRC)
+DMEM:	343 of 1024	(146 checked param. + 1 CRC)
 ---------------------------------------------------------------
 Workload AU: 34,2%; LU: 20,4%; LD/ST: 89,9% (Concurr.: 22,2%)
 
@@ -290,6 +272,6 @@ Verifying Memory ...Successful
 
 Programming of:
 C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.bin
-successful in 34706 ms
+successful in 36561 ms
 Disconnecting Programmer...Done
 

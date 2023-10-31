@@ -266,17 +266,18 @@ ua_param ua_word_t Increment_Table[9] = {
 										};
 
 //1kOhm
-// ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
-// 	43.1735414203f,
-// 	86.2470828406f,
-// 	172.806677002f,
-// 	345.328488268f,
-// 	691.978013443f,
-// 	1383.95602688f,
-// 	2763.10665090f,
-// 	5526.21330180f,
-// 	11052.4266036f
-// };
+ua_param ua_float_t OneOn_WR[10] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+	43.1735414203f,
+	86.2470828406f,
+	172.806677002f,
+	345.328488268f,
+	691.978013443f,
+	1383.95602688f,
+	2763.10665090f,
+	5526.21330180f,
+	11052.4266036f,
+	100
+};
 
 //0.9932kOhm
 // ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
@@ -305,17 +306,17 @@ ua_param ua_word_t Increment_Table[9] = {
 // };
 
 //99.78kOhm
-ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
-	0.47536449425f,
-	0.95072898850f,
-	1.90145797700f,
-	3.80291595399f,
-	7.60583190799f,
-	15.2116638160f,
-	30.4233276320f,
-	60.8466552639f,
-	121.693310527f
-};
+// ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+// 	0.47536449425f,
+// 	0.95072898850f,
+// 	1.90145797700f,
+// 	3.80291595399f,
+// 	7.60583190799f,
+// 	15.2116638160f,
+// 	30.4233276320f,
+// 	60.8466552639f,
+// 	121.693310527f
+// };
 
 //1.0245MOhm
 // ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
@@ -742,14 +743,16 @@ void ua_main()
 				
 				if (s25_Switch_CP_CR == 0)  //Steuerung des GPIO Ports und Zuweisung der gemessenen Werte an die jeweilige Variable
 				{
-					UA_GPIO_OUT_SET = 0x4000;
+					UA_GPIO_OUT_SET = 0x2000; //Neues Board
+					//UA_GPIO_OUT_SET = 0x4000; //Altes Board
 					f_Kapazitaet_CP_A[Frequency_number] = C_GainAmp_pF * (OneOn_WR[Frequency_number] * UA_sqrt(Amplitude[1] * Amplitude[1] * FloatInverse(Amplitude[0] * Amplitude[0]) - 1) - C_OffsetAmp_pF);
 					f_Kapazitaet_CP_P[Frequency_number] = C_GainPhase_pF * (OneOn_WR[Frequency_number] * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) - C_OffsetPhase_pF);
 					s25_Switch_CP_CR = 1; //Umschalten des Switches fuer CP-Messung
 				}	
 				else
 				{
-					UA_GPIO_OUT_RESET = 0x4000;
+					UA_GPIO_OUT_SET = 0x2000; //Neues Board
+					//UA_GPIO_OUT_SET = 0x4000; //Altes Board
 					f_Kapazitaet_CR_A[Frequency_number] = C_GainAmp_pF * (OneOn_WR[Frequency_number] * UA_sqrt(Amplitude[1] * Amplitude[1] * FloatInverse(Amplitude[0] * Amplitude[0]) - 1) - C_OffsetAmp_pF);
 					f_Kapazitaet_CR_P[Frequency_number]= C_GainPhase_pF * (OneOn_WR[Frequency_number] * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) - C_OffsetPhase_pF);
 					s25_Switch_CP_CR = 0; //Umschalten des Switches fuer CR-Messung
@@ -770,8 +773,7 @@ void ua_main()
 					UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CP_P[Frequency_number];
 					UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CR_P[Frequency_number];
 					
-					
-					UA_SERIAL_OUT3 = Frequency_number;
+					UA_SERIAL_OUT3 = Frequency_number;//Frequency_number;
 				//f_Kapazitaet = f_Kapazitaet * 0.9f + f_KapazitiverAnteil * 0.1f;
 
 

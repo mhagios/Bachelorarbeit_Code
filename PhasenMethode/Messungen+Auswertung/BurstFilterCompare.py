@@ -1,10 +1,12 @@
 import csv
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import sys
 import os
 import numpy as np
 import locale
 import copy
+import math
 from locale import atof
 locale.setlocale(locale.LC_ALL, 'de_DE')
 
@@ -94,6 +96,10 @@ for (root,dirs,files) in os.walk(fileDir):
                         np.mean(Cr_A_m[i][x* pressureLen + windowLow:
                                                     x* pressureLen + windowHigh])
                         for x in range(9)]
+                for x in range(9):
+                    if math.isnan(stdNorm[x]):
+                        stdNorm[x] = 0
+                    
                 #Mittelwertbildung des Variationskoeffizienten pro Druckstufe in Prozent
                 Cr_A_sigma[i] = (np.mean(stdNorm)*100)
                 
@@ -103,18 +109,29 @@ for (root,dirs,files) in os.walk(fileDir):
                         np.mean(Cr_P_m[i][x* pressureLen + windowLow:
                                                     x* pressureLen + windowHigh])
                         for x in range(9)]
+                for x in range(9):
+                    if math.isnan(stdNorm[x]):
+                        stdNorm[x] = 0
                 Cr_P_sigma[i] = (np.mean(stdNorm)*100)
+                
                 stdNorm = [np.std(Cp_A_m[i][x* pressureLen + windowLow:
                                                     x* pressureLen + windowHigh])/
                         np.mean(Cp_A_m[i][x* pressureLen + windowLow:
                                                     x* pressureLen + windowHigh])
                         for x in range(9)]
+                for x in range(9):
+                    if math.isnan(stdNorm[x]):
+                        stdNorm[x] = 0
                 Cp_A_sigma[i] = (np.mean(stdNorm)*100)
+                
                 stdNorm = [np.std(Cp_P_m[i][x* pressureLen + windowLow:
                                                     x* pressureLen + windowHigh])/
                         np.mean(Cp_P_m[i][x* pressureLen + windowLow:
                                                     x* pressureLen + windowHigh])
                         for x in range(9)]
+                for x in range(9):
+                    if math.isnan(stdNorm[x]):
+                        stdNorm[x] = 0
                 Cp_P_sigma[i] = (np.mean(stdNorm)*100)
 
         Cr_A_sigma_m.append(copy.copy(Cr_A_sigma))#[r und Filter][Frequenz]
@@ -124,66 +141,144 @@ for (root,dirs,files) in os.walk(fileDir):
   
 ##Plotting          
 frequencies = [36864, 18432, 921, 461, 230, 115, 57.6, 28.8, 14.4]
-Measurements = ['Normal', 'Ohne DAC', 'Ohne AA', 'Ohne beide']
-fig, axs = plt.subplots(5, 2, layout='constrained')
-fig.suptitle("Amplitude Computation", fontsize=20)
-f = 0
+Measurements = ['Normal', '!DAC', '!AA', '!Filter']
+colorsR = ["royalblue", "cornflowerblue", "lightsteelblue", "gainsboro"]
+colorsP = ["darkorange", "orange", "sandybrown", "moccasin"]
 
+fig1, axs = plt.subplots(5, 2, layout='constrained', sharex=True, sharey=True)
+fig1.suptitle("Amplitude Computation", fontsize=20)
+f = 0
 for row in axs:
     for col in row:
         for i in range(4):
+            if f >= 9:
+                #Move Categorie further from x-axis
+                col.tick_params(axis="x", which='major', pad=15, size=0)
+                break
             Cr_A_rsweep = [Cr_A_sigma_m[0 + i * 3][f],
                                         Cr_A_sigma_m[1 + i * 3][f],
                                         Cr_A_sigma_m[2 + i * 3][f],
                                         ]
-            Cp_A_rsweep = Cp_A_sigma_m[0 + i * 3][f]
+            Cp_A_rsweep = [Cp_A_sigma_m[0 + i * 3][f],
+                                        Cp_A_sigma_m[1 + i * 3][f],
+                                        Cp_A_sigma_m[2 + i * 3][f],
+                                        ]
             X_axis = np.arange(len(Cr_A_rsweep)) 
-            col.bar(X_axis - 0.3 + i * 0.2, Cr_A_rsweep, 0.2, label = Measurements[i]) 
-            col.bar(X_axis - 0.3 * i, Cp_A_rsweep, 0.2, label = Measurements[i])
+            bar = col.bar(X_axis - 0.3 + i * 0.2, Cp_A_rsweep, 0.2, color = colorsP[i], label="$C_\mathrm{P}$")
+            col.bar_label(bar, fmt="%.2f", padding=-6)
+            
+            bar = col.bar(X_axis - 0.3 + i * 0.2, Cr_A_rsweep, 0.2,  color = colorsR[i], label="$C_\mathrm{R}$")
+            col.bar_label(bar, fmt="%.2f", padding=3, label_type='center')
+            
             col.set_title("   " + str(frequencies[f]) + " kHz",
                         loc="left", y=1.0, pad=-14)
-            col.grid()
-            col.legend() 
+            col.grid() 
             col.set_xticks(X_axis, ["$100\ \mathrm{k\Omega}$", 
                                     "$10\ \mathrm{k\Omega}$", 
-                                    "$1\ \mathrm{k\Omega}$"])  
-            col.set_ylabel("$\overline{VarK}(X)$ in \%") 
+                                    "$1\ \mathrm{k\Omega}$"]) 
+            if f%2 == 0: 
+                col.set_ylabel("$\overline{VarK}(X)$ in \%") 
+            col.set_ylim(0, 5)
+            
+            ##Custom legend
+            orange_patch = mpatches.Patch(color='orange', label='$C_\mathrm{P}$')
+            blue_patch = mpatches.Patch(color='blue', label='$C_\mathrm{R}$')
+            col.legend(handles=[orange_patch, blue_patch])
+            
+            ## minor ticks
+            #Get rectangle locations-axis
+            rectLocs = []
+            for bar in col.patches: 
+                rectLocs.append(bar.get_x()+bar.get_width()/2.)
+            col.set_xticks(rectLocs, minor = True)
+            
+            #Labels
+            minorLabels = []
+            for i in range(len(rectLocs)):
+                minorLabels.append(Measurements[int(i/6)])
+            col.set_xticklabels(minorLabels, minor=True)
+            #Move Categorie further from x-axis
+            col.tick_params(axis="x", which='major', pad=15, size=0)
+
+            # Remove minor ticks where not necessary
+            col.tick_params(axis='x',which='both', top='off')
+            col.tick_params(axis='y',which='both', left='off', right = 'off')
            
-    f += 1;        
+        f += 1;        
 
 # Fullscreen
 manager = plt.get_current_fig_manager()
 manager.window.showMaximized()
 
-fig2, axs2 = plt.subplots(5, 2, layout='constrained')
+fig2, axs2 = plt.subplots(5, 2, layout='constrained', sharex=True, sharey=True)
 fig2.suptitle("Phase Computation", fontsize=20)
 f = 0
 for row in axs2:
     for col in row:
         if f >= 9:
+                #Move Categorie further from x-axis
+                col.tick_params(axis="x", which='major', pad=15, size=0)
                 break
         for i in range(4):
-            R_array = [Cr_P_sigma_m[0 + i * 3][f],
+            Cr_P_rsweep = [Cr_P_sigma_m[0 + i * 3][f],
                                         Cr_P_sigma_m[1 + i * 3][f],
                                         Cr_P_sigma_m[2 + i * 3][f],
                                         ]
-            X_axis = np.arange(len(R_array)) 
-            col.bar(X_axis - 0.3 + i * 0.2, R_array, 0.2, label = Measurements[i]) #R1
+            Cp_P_rsweep = [Cp_P_sigma_m[0 + i * 3][f],
+                            Cp_P_sigma_m[1 + i * 3][f],
+                            Cp_P_sigma_m[2 + i * 3][f],
+                            ]
+            X_axis = np.arange(len(Cr_P_rsweep)) 
+            bar = col.bar(X_axis - 0.3 + i * 0.2, Cp_P_rsweep, 0.2,  color = colorsP[i], label="$C_\mathrm{P}$") 
+            col.bar_label(bar, fmt="%.2f", padding=-6)
+            
+            bar = col.bar(X_axis - 0.3 + i * 0.2, Cr_P_rsweep, 0.2,  color = colorsR[i], label="$C_\mathrm{R}$")
+            col.bar_label(bar, fmt="%.2f", padding=3, label_type='center')
+            
             col.set_title("   " + str(frequencies[f]) + " kHz",
                 loc="left", y=1.0, pad=-14)
             col.grid()
-            col.legend() 
             col.set_xticks(X_axis, ["$100\ \mathrm{k\Omega}$", 
                                     "$10\ \mathrm{k\Omega}$", 
                                     "$1\ \mathrm{k\Omega}$"])  
-            col.set_ylabel("$\overline{VarK}(X)$ in \%")
-            #col.bar(X_axis + 0.8 + i * 0.2, Cr_A_sigma_m[1 + i * 3][f], 0.4, label = '$C_\mathrm{R}$') #R2
-            #col.bar(X_axis + 1.6 + i * 0.2, Cr_A_sigma_m[2 + i * 3][f], 0.4, label = '$C_\mathrm{R}$') #R3
-            #col.bar(X_axis + 0.2 * i, Cp_A_sigma_m[0 + i * 3], 0.4, label = '$C_\mathrm{P}$')
-        f += 1;        
+            if f%2 == 0:
+                col.set_ylabel("$\overline{VarK}(X)$ in \%")
+            col.set_ylim(0, 5)
+            
+            ##Custom legend
+            orange_patch = mpatches.Patch(color='orange', label='$C_\mathrm{P}$')
+            blue_patch = mpatches.Patch(color='blue', label='$C_\mathrm{R}$')
+            col.legend(handles=[orange_patch, blue_patch])
+            
+            ## minor ticks
+            #Get rectangle locations-axis
+            rectLocs = []
+            for bar in col.patches: 
+                rectLocs.append(bar.get_x()+bar.get_width()/2.)
+            col.set_xticks(rectLocs, minor = True)
+            
+            #Labels
+            minorLabels = []
+            for i in range(len(rectLocs)):
+                minorLabels.append(Measurements[int(i/6)])
+            col.set_xticklabels(minorLabels, minor=True)
+            #Move Categorie further from x-axis
+            col.tick_params(axis="x", which='major', pad=15, size=0)
+
+            # Remove minor ticks where not necessary
+            col.tick_params(axis='x',which='both', top='off')
+            col.tick_params(axis='y',which='both', left='off', right = 'off')
+        f += 1; 
+           
     
 # Fullscreen
 manager = plt.get_current_fig_manager()
 manager.window.showMaximized()
     
 plt.show()
+
+filePathAmplitude = OutputfilePath.replace('.', '_Amplitude.')
+filePathPhase = OutputfilePath.replace('.', '_Phase.')
+
+fig1.savefig(filePathAmplitude, dpi=500)
+fig2.savefig(filePathPhase, dpi=500)

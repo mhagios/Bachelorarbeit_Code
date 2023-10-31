@@ -456,7 +456,7 @@ Addresse: 113 / 0071
    Code: 233202f1 
 Addresse: 114 / 0072 
    Label:  
-   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_68 LD
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_69 LD
    Code: 2334001d 
 Addresse: 115 / 0073 
    Label:  
@@ -536,7 +536,7 @@ Addresse: 133 / 0085
    Code: 23326af1 
 Addresse: 134 / 0086 
    Label:  
-   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_67 LD
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_68 LD
    Code: 2332001e 
 Addresse: 135 / 0087 
    Label:  
@@ -1720,12 +1720,12 @@ Addresse: 429 / 01AD
    Code: a332022e 
 Addresse: 430 / 01AE 
    Label:  
-   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_15 LD
-   Code: 23320019 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_66 LD
+   Code: 23320051 
 Addresse: 431 / 01AF 
    Label:  
-   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x40A LD
-   Code: 23324c0a 
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x409 LD
+   Code: 23324c09 
 Addresse: 432 / 01B0 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Frequency_number LD
@@ -1733,7 +1733,7 @@ Addresse: 432 / 01B0
 Addresse: 433 / 01B1 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOFF OneOn_WR LD LD
-   Code: 23325051 
+   Code: 23325052 
 Addresse: 434 / 01B2 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR ua_tmp_339 LD
@@ -2061,7 +2061,7 @@ Addresse: 514 / 0202
 Addresse: 515 / 0203 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOFF OneOn_WR LD LD
-   Code: 23325051 
+   Code: 23325052 
 Addresse: 516 / 0204 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR ua_tmp_406 LD
@@ -2232,8 +2232,8 @@ Addresse: 557 / 022D
    Code: 633202ad 
 Addresse: 558 / 022E 
    Label: if.then211 
-   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_15 LD
-   Code: 23320019 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_66 LD
+   Code: 23320051 
 Addresse: 559 / 022F 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x409 LD
@@ -2245,7 +2245,7 @@ Addresse: 560 / 0230
 Addresse: 561 / 0231 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOFF OneOn_WR LD LD
-   Code: 23325051 
+   Code: 23325052 
 Addresse: 562 / 0232 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR ua_tmp_236 LD
@@ -2573,7 +2573,7 @@ Addresse: 642 / 0282
 Addresse: 643 / 0283 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOFF OneOn_WR LD LD
-   Code: 23325051 
+   Code: 23325052 
 Addresse: 644 / 0284 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR ua_tmp_303 LD
@@ -2832,8 +2832,8 @@ Addresse: 707 / 02C3
    Code: 233202b9 
 Addresse: 708 / 02C4 
    Label:  
-   INC  | INC LD ACC  | MOV R0 R0  | LOAD ua_const_66 LD
-   Code: 2f2005a 
+   INC  | INC LD ACC  | MOV R0 R0  | LOAD ua_const_67 LD
+   Code: 2f2005c 
 Addresse: 709 / 02C5 
    Label:  
    INC  | MOV ACC ACC  | MOV ACC R0  | STOR Frequency_number ACC
@@ -2852,7 +2852,7 @@ Addresse: 712 / 02C8
    Code: 23326aef 
 Addresse: 713 / 02C9 
    Label:  
-   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_67 LD
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_68 LD
    Code: 2332001e 
 Addresse: 714 / 02CA 
    Label:  
@@ -2917,7 +2917,7 @@ Addresse: 728 / 02D8
 Addresse: 729 / 02D9 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_18 LD
-   Code: 2332005b 
+   Code: 2332005d 
 Addresse: 730 / 02DA 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x40A LD
@@ -2929,7 +2929,7 @@ Addresse: 731 / 02DB
 Addresse: 732 / 02DC 
    Label: if.then37 
    INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_18 LD
-   Code: 2332005b 
+   Code: 2332005d 
 Addresse: 733 / 02DD 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x409 LD
@@ -2949,7 +2949,7 @@ Addresse: 736 / 02E0
 Addresse: 737 / 02E1 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_19 LD
-   Code: 2332005c 
+   Code: 2332005e 
 Addresse: 738 / 02E2 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
@@ -2993,7 +2993,7 @@ Addresse: 747 / 02EB
 Addresse: 748 / 02EC 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_21 LD
-   Code: 2332005d 
+   Code: 2332005f 
 Addresse: 749 / 02ED 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
@@ -3005,7 +3005,7 @@ Addresse: 750 / 02EE
 Addresse: 751 / 02EF 
    Label:  
    INC  | MOV LD ACC  | MOV R0 R0  | LOAD ua_const_22 LD
-   Code: 23b2005e 
+   Code: 23b20060 
 Addresse: 752 / 02F0 
    Label:  
    INC  | MOV ACC ACC  | AND ACC LD R0  | CLR 0x3FF
@@ -3049,7 +3049,7 @@ Addresse: 761 / 02F9
 Addresse: 762 / 02FA 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_24 LD
-   Code: 2332005f 
+   Code: 23320061 
 Addresse: 763 / 02FB 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
@@ -3061,7 +3061,7 @@ Addresse: 764 / 02FC
 Addresse: 765 / 02FD 
    Label:  
    INC  | MOV LD ACC  | MOV R0 R0  | LOAD ua_const_25 LD
-   Code: 23b20060 
+   Code: 23b20062 
 Addresse: 766 / 02FE 
    Label:  
    INC  | MOV ACC ACC  | AND ACC LD R0  | CLR 0x3FF
@@ -3117,7 +3117,7 @@ Addresse: 778 / 030A
 Addresse: 779 / 030B 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_27 LD
-   Code: 23320061 
+   Code: 23320063 
 Addresse: 780 / 030C 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
@@ -3161,7 +3161,7 @@ Addresse: 789 / 0315
 Addresse: 790 / 0316 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_27 LD
-   Code: 23320061 
+   Code: 23320063 
 Addresse: 791 / 0317 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
@@ -3173,7 +3173,7 @@ Addresse: 792 / 0318
 Addresse: 793 / 0319 
    Label:  
    INC  | MOV LD ACC  | MOV R0 R0  | LOAD ua_const_22 LD
-   Code: 23b2005e 
+   Code: 23b20060 
 Addresse: 794 / 031A 
    Label:  
    INC  | MOV ACC ACC  | AND ACC LD R0  | CLR 0x3FF
@@ -3217,7 +3217,7 @@ Addresse: 803 / 0323
 Addresse: 804 / 0324 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_28 LD
-   Code: 23320062 
+   Code: 23320064 
 Addresse: 805 / 0325 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
@@ -3229,7 +3229,7 @@ Addresse: 806 / 0326
 Addresse: 807 / 0327 
    Label:  
    INC  | MOV LD ACC  | MOV R0 R0  | LOAD ua_const_25 LD
-   Code: 23b20060 
+   Code: 23b20062 
 Addresse: 808 / 0328 
    Label:  
    INC  | MOV ACC ACC  | AND ACC LD R0  | CLR 0x3FF
@@ -3285,7 +3285,7 @@ Addresse: 820 / 0334
 Addresse: 821 / 0335 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_29 LD
-   Code: 23320063 
+   Code: 23320065 
 Addresse: 822 / 0336 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
@@ -3329,7 +3329,7 @@ Addresse: 831 / 033F
 Addresse: 832 / 0340 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_30 LD
-   Code: 23320064 
+   Code: 23320066 
 Addresse: 833 / 0341 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
@@ -3341,7 +3341,7 @@ Addresse: 834 / 0342
 Addresse: 835 / 0343 
    Label:  
    INC  | MOV LD ACC  | MOV R0 R0  | LOAD ua_const_22 LD
-   Code: 23b2005e 
+   Code: 23b20060 
 Addresse: 836 / 0344 
    Label:  
    INC  | MOV ACC ACC  | AND ACC LD R0  | CLR 0x3FF
@@ -3377,7 +3377,7 @@ Addresse: 843 / 034B
 Addresse: 844 / 034C 
    Label:  
    INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_4 LD
-   Code: 23340065 
+   Code: 23340067 
 Addresse: 845 / 034D 
    Label:  
    JNE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end89 LD
@@ -3385,7 +3385,7 @@ Addresse: 845 / 034D
 Addresse: 846 / 034E 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_30 LD
-   Code: 23320064 
+   Code: 23320066 
 Addresse: 847 / 034F 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
@@ -3397,7 +3397,7 @@ Addresse: 848 / 0350
 Addresse: 849 / 0351 
    Label:  
    INC  | MOV LD ACC  | MOV R0 R0  | LOAD ua_const_25 LD
-   Code: 23b20060 
+   Code: 23b20062 
 Addresse: 850 / 0352 
    Label:  
    INC  | MOV ACC ACC  | AND ACC LD R0  | CLR 0x3FF
@@ -3445,7 +3445,7 @@ Addresse: 860 / 035C
 Addresse: 861 / 035D 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOFF Increment_Table LD LD
-   Code: 23325066 
+   Code: 23325068 
 Addresse: 862 / 035E 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x421 LD
@@ -3453,7 +3453,7 @@ Addresse: 862 / 035E
 Addresse: 863 / 035F 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_31 LD
-   Code: 2332006f 
+   Code: 23320071 
 Addresse: 864 / 0360 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x426 LD
@@ -3465,7 +3465,7 @@ Addresse: 865 / 0361
 Addresse: 866 / 0362 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOFF ADC_divider LD LD
-   Code: 23325070 
+   Code: 23325072 
 Addresse: 867 / 0363 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR Current_ADC_divider LD
@@ -3509,7 +3509,7 @@ Addresse: 876 / 036C
 Addresse: 877 / 036D 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_32 LD
-   Code: 23320079 
+   Code: 2332007b 
 Addresse: 878 / 036E 
    Label:  
    INC  | FADD ACC LD ACC  | MOV R0 R0  | LOAD ua_const_33 LD
@@ -3517,7 +3517,7 @@ Addresse: 878 / 036E
 Addresse: 879 / 036F 
    Label:  
    INC  | FMUL ACC LD ACC  | MOV R0 R0  | LOAD ua_const_34 LD
-   Code: 28b2007a 
+   Code: 28b2007c 
 Addresse: 880 / 0370 
    Label:  
    INC  | FADD ACC LD ACC  | MOV R0 R0  | CLR 0x3FF
@@ -3532,8 +3532,8 @@ Addresse: 882 / 0372
    Code: 23320af0 
 Addresse: 883 / 0373 
    Label: if.end309 
-   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_69 LD
-   Code: 2332007b 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_70 LD
+   Code: 2332007d 
 Addresse: 884 / 0374 
    Label:  
    INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x40B LD
