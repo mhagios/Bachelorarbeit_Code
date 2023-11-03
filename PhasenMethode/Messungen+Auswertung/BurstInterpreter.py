@@ -8,8 +8,8 @@ import copy
 from locale import atof
 locale.setlocale(locale.LC_ALL, 'de_DE')
 
-RESISTANCE = 100 #kOhm
-CSTM_TITLE = "\tT=2min, step=1bar/10s, 0-10bar without filters" #Anti-Aliasing 
+RESISTANCE = 1 #kOhm
+CSTM_TITLE = "\tT=2min, step=1bar/10s, 0-10bar without filters with new board and Adapter" #Anti-Aliasing 
 
 LEGEND_POS_X = 1.005
 LEGEND_POS_Y = 1.04
@@ -24,7 +24,7 @@ Cr_P_m = []
 Cp_A_m = []
 Cp_P_m = []
 
-fileName = 'Messungen/19_10_Messplatz/r100k_woFilters.csv'
+fileName = 'Messungen/02_11_NeuesBoard_Messplatz/r10k_OhnePiSpule.csv'
 filePath = 'Auswertung/' + fileName.rsplit('/')[-2] + '/' + fileName.rsplit('/')[-1].replace('csv', 'png')
 directory = os.path.dirname(filePath)
 if not os.path.exists(directory):
@@ -37,10 +37,25 @@ with open(fileName,'r', newline='') as csvfile:
     
     for row in reader:
         for i in range(0,9): 
-            Cp_P[i] = atof(row[4 * (i + 1)]) #+1 because there is the first word
-            Cp_A[i] = atof(row[4 * (i + 1 + 9)]) #+9 Because after 8 frequencies the next var starts
-            Cr_P[i] = atof(row[4 * (i + 1 + 18)]) #+9*2(next var)
-            Cr_A[i] = atof(row[4 * (i + 1 + 27 + 2)]) #+9*3(next var) and +2 because there a two vars, that doesn't matter.
+            try:
+                Cp_P[i] = atof(row[4 * (i + 1)]) #+1 because there is the first word
+            except:
+                Cp_P[i] = 0
+                
+            try:
+                Cp_A[i] = atof(row[4 * (i + 1 + 9)]) #+9 Because after 8 frequencies the next var starts
+            except:
+                Cp_A[i] = 0
+            
+            try:
+                Cr_P[i] = atof(row[4 * (i + 1 + 18)]) #+9*2(next var)
+            except:  
+                Cr_P[i] = 0
+            
+            try:
+                Cr_A[i] = atof(row[4 * (i + 1 + 27 + 2)]) #+9*3(next var) and +2 because there a two vars, that doesn't matter.
+            except:
+                Cr_A[i] = 0
         Cr_A_m.append(copy.copy(Cr_A))
         Cr_P_m.append(copy.copy(Cr_P))
         Cp_A_m.append(copy.copy(Cp_A))

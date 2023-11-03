@@ -237,17 +237,17 @@ ua_param ua_word_t Increment_Table[9] = {
 										};
 
 //1kOhm
-ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
-	43.1735414203f,
-	86.2470828406f,
-	172.806677002f,
-	345.328488268f,
-	691.978013443f,
-	1383.95602688f,
-	2763.10665090f,
-	5526.21330180f,
-	11052.4266036f
-};
+// ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+// 	43.1735414203f,
+// 	86.2470828406f,
+// 	172.806677002f,
+// 	345.328488268f,
+// 	691.978013443f,
+// 	1383.95602688f,
+// 	2763.10665090f,
+// 	5526.21330180f,
+// 	11052.4266036f
+// };
 
 //0.9932kOhm
 // ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
@@ -263,17 +263,17 @@ ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Freq
 // };
 
 //9.957kOhm
-// ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
-// 	4.76367070766f,
-// 	9.52734141533f,
-// 	19.0546828307f,
-// 	38.1093656613f,
-// 	76.2187313226f,
-// 	152.437462645f,
-// 	304.874925290f,
-// 	609.749850581f,
-// 	1219.49970116f
-// };
+ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+	4.76367070766f,
+	9.52734141533f,
+	19.0546828307f,
+	38.1093656613f,
+	76.2187313226f,
+	152.437462645f,
+	304.874925290f,
+	609.749850581f,
+	1219.49970116f
+};
 
 //99.78kOhm
 // ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
@@ -449,7 +449,7 @@ void ua_main()
 		{	
 			
 			//Switch für alternierendes Messen von Uref und Rmess
-			if (Current_signal == 1)				
+			if (Current_signal == 0)				
 			{
 				UA_GPIO_OUT_SET = 0x1000; //GPIO12
 			}
