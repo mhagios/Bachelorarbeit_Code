@@ -17,7 +17,7 @@ Parallelization:
 
 Info: Selected path: path1130; VLIW count: 883
 
-Compilation successful in 111,618 s
+Compilation successful in 146,545 s
 
 ===========================Assembler===========================
 Analyzing ASM finished.
@@ -274,6 +274,6 @@ Verifying Memory ...Successful
 
 Programming of:
 C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.bin
-successful in 37985 ms
+successful in 38757 ms
 Disconnecting Programmer...Done
 
