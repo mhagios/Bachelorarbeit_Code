@@ -2892,8 +2892,8 @@ Addresse: 722 / 02D2
    Code: 233202ea 
 Addresse: 723 / 02D3 
    Label:  
-   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_0 LD
-   Code: 2334000a 
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_1 LD
+   Code: 2334001d 
 Addresse: 724 / 02D4 
    Label:  
    JE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.then37 LD

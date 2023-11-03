@@ -1980,7 +1980,7 @@ land.lhs.true:                                    ; preds = %while.body
 
 if.then34:                                        ; preds = %land.lhs.true
   %46 = load i32* @Current_signal, align 4
-  %cmp35 = icmp eq i32 %46, 1
+  %cmp35 = icmp eq i32 %46, 0
   br i1 %cmp35, label %if.then37, label %if.else38
 
 if.then37:                                        ; preds = %if.then34

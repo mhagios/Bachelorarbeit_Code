@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This file has been created with UACCompiler V2.5
 ; Used Strategy: backlog,1 - Additional Option: -l
-; Creation: 02.11.2023 15:55:31
+; Creation: 03.11.2023 09:54:13
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .param
@@ -970,7 +970,7 @@ land.lhs.true:
 	JMP | HOLD | HOLD | LOAD @if.else97 LD
 if.then34:
 	INC | HOLD | HOLD | LOAD Current_signal LD
-	INC | HOLD | MOV LD R0 | LOAD ua_const_0 LD
+	INC | HOLD | MOV LD R0 | LOAD ua_const_1 LD
 	JE R0 LD | HOLD | HOLD | LOAD @if.then37 LD
 	INC | HOLD | HOLD | LOAD ua_const_15 LD
 	INC | HOLD | HOLD | STOR 0x40A LD

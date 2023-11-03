@@ -24,7 +24,7 @@ Cr_P_m = []
 Cp_A_m = []
 Cp_P_m = []
 
-fileName = 'Messungen/02_11_NeuesBoard_Messplatz/r10k_OhnePiSpule.csv'
+fileName = 'Messungen/03_11_NeuesBoard_Messplatz/r10k_VccAltesBoard.csv'
 filePath = 'Auswertung/' + fileName.rsplit('/')[-2] + '/' + fileName.rsplit('/')[-1].replace('csv', 'png')
 directory = os.path.dirname(filePath)
 if not os.path.exists(directory):
