@@ -83,108 +83,108 @@ ua_word_t startup_switchcycle_ctr_var = 0;
 
 //constants
 
-ua_param ua_float_t n_calc = 12.5f;                                          	//ADC-Verzögerung: ~1*230.4k; Rechenzeit: 8*230.4k; DAC: 4*230.4k; -0.5 Rundung float zu int
+// ua_param ua_float_t n_calc = 12.5f;                                          	//ADC-Verzögerung: ~1*230.4k; Rechenzeit: 8*230.4k; DAC: 4*230.4k; -0.5 Rundung float zu int
 
 ua_param ua_word_t UA_INIT_ADC_CONVERSION_CONF = ADC_CONVERSION_CONF;
 
 
-/**********************************
-* phase control A
-***********************************/
-// variables
-ua_float_t phase_LP_n_1 = 0.0f;
-ua_float_t phase_P = 0.0f;
-ua_float_t phase_I = 0.0f;
-ua_float_t phase_n_1 = 0.0f;
-ua_float_t f_A = 0.0f;
+// /**********************************
+// * phase control A
+// ***********************************/
+// // variables
+// ua_float_t phase_LP_n_1 = 0.0f;
+// ua_float_t phase_P = 0.0f;
+// ua_float_t phase_I = 0.0f;
+// ua_float_t phase_n_1 = 0.0f;
+// ua_float_t f_A = 0.0f;
 
 
 
 
-/**********************************
-* resonator A 
-***********************************/
+// /**********************************
+// * resonator A 
+// ***********************************/
 
-// variables
-ua_float_t a0_inv_A = 0.0f;
-ua_float_t res1_n_1_A = 0.0f;
-ua_float_t res1_n_2_A = 0.0f;
-ua_float_t res2_n_1_A = 0.0f;
-ua_float_t res2_n_2_A = 0.0f;
-ua_float_t res_output_A = 0.0f;
+// // variables
+// ua_float_t a0_inv_A = 0.0f;
+// ua_float_t res1_n_1_A = 0.0f;
+// ua_float_t res1_n_2_A = 0.0f;
+// ua_float_t res2_n_1_A = 0.0f;
+// ua_float_t res2_n_2_A = 0.0f;
+// ua_float_t res_output_A = 0.0f;
 
 
-/**********************************
-* amplification control
-***********************************/
+// /**********************************
+// * amplification control
+// ***********************************/
 
-/**********************************
-* variables
-***********************************/
-ua_float_t setFreeFrequ = 0.0f;
-ua_float_t setCoveredFrequ = 0.0f;
-ua_float_t corrosionFrequ = 0.0f;
+// /**********************************
+// * variables
+// ***********************************/
+// ua_float_t setFreeFrequ = 0.0f;
+// ua_float_t setCoveredFrequ = 0.0f;
+// ua_float_t corrosionFrequ = 0.0f;
 
-ua_word_t ledOutValFree = 0x1000;    //set out
-ua_word_t ledOutValCovered = 0x0200;   // set LED yellow
+// ua_word_t ledOutValFree = 0x1000;    //set out
+// ua_word_t ledOutValCovered = 0x0200;   // set LED yellow
 
-ua_float_t f_inv_A = 1.0f/700.0f;
-ua_float_t adc_value = 0.0f;
-ua_float_t adc_z1 = 0.0f;
-ua_int_t amp_reset_ctr = 0;
-ua_float_t amp_act_max = 0.0f;
-ua_float_t amp_last_max = 0.0f;
-ua_float_t amp_n_1 = 0.0f;
-ua_float_t amp_actFreq = 700.0f;
-ua_float_t rc1_inv = 0.0f;
-ua_float_t rc_proportion = 0.0f;
-ua_float_t rc_proportion_mean = 0.0f;
-ua_int_t capWert = 0;
-ua_int_t time_ctr = 0;
-ua_word_t lastDAC_val = 0;
-ua_word_t nextDAC = 0;
-ua_float_t phase = 90.0f;
-ua_float_t f_mean_A = 700.0f; // CDI ParamID = UIDP_LS_CURRENTSENSORFREQUENCY
-ua_float_t mult = 1.0f;
-ua_float_t res_output_TP = 0.0f;
+// ua_float_t f_inv_A = 1.0f/700.0f;
+// ua_float_t adc_value = 0.0f;
+// ua_float_t adc_z1 = 0.0f;
+// ua_int_t amp_reset_ctr = 0;
+// ua_float_t amp_act_max = 0.0f;
+// ua_float_t amp_last_max = 0.0f;
+// ua_float_t amp_n_1 = 0.0f;
+// ua_float_t amp_actFreq = 700.0f;
+// ua_float_t rc1_inv = 0.0f;
+// ua_float_t rc_proportion = 0.0f;
+// ua_float_t rc_proportion_mean = 0.0f;
+// ua_int_t capWert = 0;
+// ua_int_t time_ctr = 0;
+// ua_word_t lastDAC_val = 0;
+// ua_word_t nextDAC = 0;
+// ua_float_t phase = 90.0f;
+// ua_float_t f_mean_A = 700.0f; // CDI ParamID = UIDP_LS_CURRENTSENSORFREQUENCY
+// ua_float_t mult = 1.0f;
+// ua_float_t res_output_TP = 0.0f;
 
-ua_int_t errCtr = 0;
-ua_int_t timeCtr = 0; //count until 28800 (1 s)
+// ua_int_t errCtr = 0;
+// ua_int_t timeCtr = 0; //count until 28800 (1 s)
 
-ua_int_t coreCheckCtr = 1; //init with 1 for initialisation process
+// ua_int_t coreCheckCtr = 1; //init with 1 for initialisation process
 
-ua_word_t no_CoreCheck = 0;
-ua_word_t coreCheck_challenge = 0;
-ua_word_t coreCheck_crc = 0;
+// ua_word_t no_CoreCheck = 0;
+// ua_word_t coreCheck_challenge = 0;
+// ua_word_t coreCheck_crc = 0;
 
-ua_word_t last_coreCheck_crc = 0;
-ua_word_t last_coreCheck_challenge = 0;
+// ua_word_t last_coreCheck_crc = 0;
+// ua_word_t last_coreCheck_challenge = 0;
 
-ua_word_t lastOutputSignal = 0;
+// ua_word_t lastOutputSignal = 0;
 
-/**********************************
-* information for Bluetooth and LED module
-***********************************/
-//ua_word_t minMaxSwitch = 0;
-//ua_word_t densitySwitch = 1; //preconfigured as max
-ua_word_t sensorState_flag = 1; //keep as 1 // CDI ParamID = UIDP_LS_SENSORSTATUS
-ua_word_t deviceSwitchState = 2; //0 = free 1 = covered, 2 = init/prooftest 3 = error // CDI ParamID = UIDP_LS_FORKSTATE
-ua_word_t deviceOutputState = 1; //relay output: here inverted to deviceSwitchState // CDI ParamID = UIDP_LS_DEVICEOUTPUTSTATE
+// /**********************************
+// * information for Bluetooth and LED module
+// ***********************************/
+// //ua_word_t minMaxSwitch = 0;
+// //ua_word_t densitySwitch = 1; //preconfigured as max
+// ua_word_t sensorState_flag = 1; //keep as 1 // CDI ParamID = UIDP_LS_SENSORSTATUS
+// ua_word_t deviceSwitchState = 2; //0 = free 1 = covered, 2 = init/prooftest 3 = error // CDI ParamID = UIDP_LS_FORKSTATE
+// ua_word_t deviceOutputState = 1; //relay output: here inverted to deviceSwitchState // CDI ParamID = UIDP_LS_DEVICEOUTPUTSTATE
 
-// ua_word_t frequencyUnit = 0x435; //Hz
-// ua_word_t temperatureUnit = 0x10; //should be degree celcius, don't know the value
+// // ua_word_t frequencyUnit = 0x435; //Hz
+// // ua_word_t temperatureUnit = 0x10; //should be degree celcius, don't know the value
 
-ua_word_t pv_status = 0; //keep as 0 (should be ok)
-ua_word_t sv_status = 0; //keep as 0 (should be ok)
+// ua_word_t pv_status = 0; //keep as 0 (should be ok)
+// ua_word_t sv_status = 0; //keep as 0 (should be ok)
 
-ua_word_t sensorTest = 1; //keep as 1 (should be ok) // CDI ParamID = UIDP_LS_SENSORTEST
-ua_word_t memoryTest = 1; //keep as 1 (should be ok) // CDI ParamID = UIDP_LS_MEMORYTEST
-ua_word_t controllerTest = 1; //keep as 1 (should be ok) // CDI ParamID = UIDP_LS_CONTROLLERTEST
-ua_word_t frequencyTest = 1; //keep as 1 (should be ok) // CDI ParamID = UIDP_LS_FREQUENCYTEST
+// ua_word_t sensorTest = 1; //keep as 1 (should be ok) // CDI ParamID = UIDP_LS_SENSORTEST
+// ua_word_t memoryTest = 1; //keep as 1 (should be ok) // CDI ParamID = UIDP_LS_MEMORYTEST
+// ua_word_t controllerTest = 1; //keep as 1 (should be ok) // CDI ParamID = UIDP_LS_CONTROLLERTEST
+// ua_word_t frequencyTest = 1; //keep as 1 (should be ok) // CDI ParamID = UIDP_LS_FREQUENCYTEST
 
-ua_word_t currentDiagTimeStampLSB = 0; // CDI ParamID = UIDP_LS_CURRENTTIMESTAMP LSB
-ua_word_t currentDiagTimeStampMSB = 0; // CDI ParamID = UIDP_LS_CURRENTTIMESTAMP MSB
-ua_word_t currentDiagnostic = 0; // CDI ParamID = UIDP_LS_CURRENTSYSCONDITIONUNION
+// ua_word_t currentDiagTimeStampLSB = 0; // CDI ParamID = UIDP_LS_CURRENTTIMESTAMP LSB
+// ua_word_t currentDiagTimeStampMSB = 0; // CDI ParamID = UIDP_LS_CURRENTTIMESTAMP MSB
+// ua_word_t currentDiagnostic = 0; // CDI ParamID = UIDP_LS_CURRENTSYSCONDITIONUNION
 
 /**********************************
 * Liquicap
@@ -364,70 +364,70 @@ ua_float_t 		f_KapazitiverAnteil2;
 void ua_main()
 {
     //workaround to keep variables
-    sensorState_flag = 1;
+    // sensorState_flag = 1;
 //    electronicType = 0;
 
     // frequencyUnit = 0x435; //Hz
     // temperatureUnit = 0x10; //should be degree celcius, don't know the value
 
-    pv_status = 0; //keep as 0 (should be ok)
-    sv_status = 0; //keep as 0 (should be ok)
+    // pv_status = 0; //keep as 0 (should be ok)
+    // sv_status = 0; //keep as 0 (should be ok)
 
-    sensorTest = 1; //keep as 1 (should be ok)
-    memoryTest = 1; //keep as 1 (should be ok)
-    controllerTest = 1; //keep as 1 (should be ok)
-    frequencyTest = 1; //keep as 1 (should be ok)
+    // sensorTest = 1; //keep as 1 (should be ok)
+    // memoryTest = 1; //keep as 1 (should be ok)
+    // controllerTest = 1; //keep as 1 (should be ok)
+    // frequencyTest = 1; //keep as 1 (should be ok)
     
-    ua_word_t pin1Val = 0; 
-    ua_word_t pin2Val = 0;
+    // ua_word_t pin1Val = 0; 
+    // ua_word_t pin2Val = 0;
 
-    startup_switchcycle_ctr_var = SWITCH_CTR;
-    startup_switchcycle_ctr_var++;
-    SWITCH_CTR = startup_switchcycle_ctr_var;
+    // startup_switchcycle_ctr_var = SWITCH_CTR;
+    // startup_switchcycle_ctr_var++;
+    // SWITCH_CTR = startup_switchcycle_ctr_var;
 
-    //setup PWM
-    UA_PFM_PWM_TIMINGS = UA_PFM_PWM_HIGH_STATE(SET_PFM_PWM_HIGH_STATE(1.0f/60000.0f)) | UA_PFM_PWM_PERIOD(SET_PFM_PWM_PERIOD(1.0f/30000.0f));
-    UA_PFM_PWM_ENABLE_REG = UA_PFM_PWM_ENABLE;
+    // //setup PWM
+    // UA_PFM_PWM_TIMINGS = UA_PFM_PWM_HIGH_STATE(SET_PFM_PWM_HIGH_STATE(1.0f/60000.0f)) | UA_PFM_PWM_PERIOD(SET_PFM_PWM_PERIOD(1.0f/30000.0f));
+    // UA_PFM_PWM_ENABLE_REG = UA_PFM_PWM_ENABLE;
     
-    pin1Val = (UA_GPIO_IN & 0x01) | ((UA_GPIO_IN_INV & 0x01) << 8); 
-    if(pin1Val == 0x0001) //high -> Density 0.7
-    {
-        // minMaxSwitch = 1;
-        setFreeFrequ = SP_HIGH_0_7;
-        setCoveredFrequ = SP_LOW_0_7;
-    }
-    else if(pin1Val == 0x0100) //low -> Density 0.5
-    {
-        // minMaxSwitch = 0;
-        setFreeFrequ = SP_HIGH_0_5;
-        setCoveredFrequ = SP_LOW_0_5;
-    }
-    else
-    {
-        no_CoreCheck = 1;
-        UA_ERROR_LOG_CODE = ERROR_INPUT_REG_INVALID;
-    }
+    // pin1Val = (UA_GPIO_IN & 0x01) | ((UA_GPIO_IN_INV & 0x01) << 8); 
+    // if(pin1Val == 0x0001) //high -> Density 0.7
+    // {
+    //     // minMaxSwitch = 1;
+    //     setFreeFrequ = SP_HIGH_0_7;
+    //     setCoveredFrequ = SP_LOW_0_7;
+    // }
+    // else if(pin1Val == 0x0100) //low -> Density 0.5
+    // {
+    //     // minMaxSwitch = 0;
+    //     setFreeFrequ = SP_HIGH_0_5;
+    //     setCoveredFrequ = SP_LOW_0_5;
+    // }
+    // else
+    // {
+    //     no_CoreCheck = 1;
+    //     UA_ERROR_LOG_CODE = ERROR_INPUT_REG_INVALID;
+    // }
     
-    corrosionFrequ = SP_CORROSION;
+    // corrosionFrequ = SP_CORROSION;
     
-    pin2Val = (UA_GPIO_IN & 0x02) | ((UA_GPIO_IN_INV & 0x02) << 8); 
-    if(pin2Val == 0x0200) //Low -> MIN
-    {
-        // densitySwitch = 0;
-        ua_word_t tmpVal = ledOutValFree;
-        ledOutValFree = ledOutValCovered;
-        ledOutValCovered = tmpVal;
-    }
-    else if(pin2Val != 0x0002)
-    {
-        no_CoreCheck = 1;
-        UA_ERROR_LOG_CODE = ERROR_INPUT_REG_INVALID;
-    }
-    //else not needed as MAX is preconfigured
+    // pin2Val = (UA_GPIO_IN & 0x02) | ((UA_GPIO_IN_INV & 0x02) << 8); 
+    // if(pin2Val == 0x0200) //Low -> MIN
+    // {
+    //     // densitySwitch = 0;
+    //     ua_word_t tmpVal = ledOutValFree;
+    //     ledOutValFree = ledOutValCovered;
+    //     ledOutValCovered = tmpVal;
+    // }
+    // else if(pin2Val != 0x0002)
+    // {
+    //     no_CoreCheck = 1;
+    //     UA_ERROR_LOG_CODE = ERROR_INPUT_REG_INVALID;
+    // }
+    // //else not needed as MAX is preconfigured
     
-	// Test of crystal Frequency
-	UA_DCO2_HALFPERIOD = 31;
-	UA_DCO_ENABLE = UA_DCO2_ENABLE;
+	// // Test of crystal Frequency
+	// UA_DCO2_HALFPERIOD = 31;
+	// UA_DCO_ENABLE = UA_DCO2_ENABLE;
 	
 	// Liquicap
 	UA_PHASE_OFFSET1_DDS = 0;
@@ -782,8 +782,8 @@ void ua_main()
 				if (Frequency_number >= 9)// ==> Reset Frequency
 				{
 					Frequency_number = 0;
-					Current_state = ST_SLEEP;
-					UA_DAC_CONFIG_RESET = UA_DAC_CONFIG_PDN_DISABLE;// PoweDowN (Set Vout Tree-State)
+					Current_state = ST_STARTUP; //ST_SLEEP
+					//UA_DAC_CONFIG_RESET = UA_DAC_CONFIG_PDN_DISABLE;// PoweDowN (Set Vout Tree-State)
 					
 					CLEAR_LED_GREEN;
 				}
