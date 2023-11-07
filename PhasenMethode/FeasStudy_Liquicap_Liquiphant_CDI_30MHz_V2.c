@@ -438,6 +438,8 @@ void ua_main()
 	UA_GPIO_OUT_SET = 0x2000; //CP	<-->CR		
 	UA_GPIO_OUT_SET = 0x0020;
 
+	ua_int_t s32TGrad = 0;
+
 	UA_LPSI_DMA = UA_LPSI_DMA_ADDRESS(0x26B) | UA_LPSI_DMA_LENGTH(38); //0x26B bis 0x2B8
 	
     UA_SLEEP;
@@ -599,7 +601,10 @@ void ua_main()
 			UA_ADC_CONVERSION_CONF = (ua_word_t)UA_ADC_DISABLE;
 			UA_CONFIG_DDS = UA_DDS_MODE_SINE_SAW_PSK_FSK | UA_DDS_PHASE1_SELECT | UA_DDS_FREQUENCY1_SELECT | UA_DDS1_SINE | UA_DDS_RESTART | UA_DDS_DISABLE;
 
-			ua_int_t	Zeroline_Temp = 0;			
+			ua_int_t	Zeroline_Temp = 0;
+
+			
+			//s32TGrad =	//Auslesen der Temperatur
 			
 			for (Value_index = 0; Value_index < c_SAMPLE_POINTS; Value_index++) //Auslesen des ADCs
 			{

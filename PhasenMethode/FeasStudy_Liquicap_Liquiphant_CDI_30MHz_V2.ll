@@ -1825,6 +1825,7 @@ entry:
   %pin1Val = alloca i128, align 16
   %pin2Val = alloca i128, align 16
   %tmpVal = alloca i128, align 16
+  %s32TGrad = alloca i32, align 4
   %Zeroline_Temp = alloca i32, align 4
   store i128 1, i128* @sensorState_flag, align 16
   store i128 0, i128* @pv_status, align 16
@@ -1962,6 +1963,7 @@ if.end29:                                         ; preds = %if.end28, %if.then2
   store i128 8192, i128* %40, align 16
   %41 = load i128** @UA_OUTPUT_SET_regptr, align 8
   store i128 32, i128* %41, align 16
+  store i32 0, i32* %s32TGrad, align 4
   %42 = load i128** @UA_LPSI_DMA_regptr, align 8
   store i128 2490987, i128* %42, align 16
   %43 = load i128** @UA_ENABLE_regptr, align 8

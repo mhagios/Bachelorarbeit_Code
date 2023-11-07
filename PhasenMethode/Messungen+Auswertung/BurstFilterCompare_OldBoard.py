@@ -10,10 +10,10 @@ import math
 from locale import atof
 locale.setlocale(locale.LC_ALL, 'de_DE')
 
-OUTPUT_FILE_NAME = "StandardDevComparison_NewBoard"
+OUTPUT_FILE_NAME = "StandardDevComparison_OldBoard"
 
 NUM_VAR_FILTER = 4
-NUM_RESISTORS = 1
+NUM_RESISTORS = 3
 NUM_PRESSURE_STEPS = 12 #(0bar to 10 bar plus last step which is again 0 bar)
 NUM_FREQUENCIES = 9
 
@@ -42,7 +42,7 @@ Cr_P_sigma_m = []
 Cp_A_sigma_m = []
 Cp_P_sigma_m = []
 
-fileDir = 'Messungen/07_11_NeuesBoard_Messplatz'
+fileDir = 'Messungen/18u19_10_Messplatz'
 OutputfilePath = 'Auswertung/' + OUTPUT_FILE_NAME + ".png"
 directory = os.path.dirname(OutputfilePath)
 if not os.path.exists(directory):
@@ -159,19 +159,27 @@ for row in axs:
                 #Move Categorie further from x-axis
                 col.tick_params(axis="x", which='major', pad=15, size=0)
                 break
-            Cr_A_rsweep = [Cr_A_sigma_m[0 + i * NUM_RESISTORS][f]]
-            Cp_A_rsweep = [Cp_A_sigma_m[0 + i * NUM_RESISTORS][f]]
+            Cr_A_rsweep = [Cr_A_sigma_m[0 + i * NUM_RESISTORS][f],
+                                        Cr_A_sigma_m[1 + i * NUM_RESISTORS][f],
+                                        Cr_A_sigma_m[2 + i * NUM_RESISTORS][f]
+                                        ]
+            Cp_A_rsweep = [Cp_A_sigma_m[0 + i * NUM_RESISTORS][f],
+                                        Cp_A_sigma_m[1 + i * NUM_RESISTORS][f],
+                                        Cr_A_sigma_m[2 + i * NUM_RESISTORS][f]
+                                        ]
             X_axis = np.arange(len(Cr_A_rsweep)) 
             bar = col.bar(X_axis - 0.3 + i * 0.2, Cp_A_rsweep, 0.2, color = colorsP[i], label="$C_\mathrm{P}$")
-            col.bar_label(bar, fmt="%.3f", padding=-6)
+            col.bar_label(bar, fmt="%.2f", padding=-6)
             
             bar = col.bar(X_axis - 0.3 + i * 0.2, Cr_A_rsweep, 0.2,  color = colorsR[i], label="$C_\mathrm{R}$")
-            col.bar_label(bar, fmt="%.3f", padding=3, label_type='center')
+            col.bar_label(bar, fmt="%.2f", padding=3, label_type='center')
             
             col.set_title("   " + str(frequencies[f]) + " kHz",
                         loc="left", y=1.0, pad=-14)
             col.grid() 
-            col.set_xticks(X_axis, ["$10\ \mathrm{k\Omega}$"]) 
+            col.set_xticks(X_axis, ["$100\ \mathrm{k\Omega}$",
+                                    "$10\ \mathrm{k\Omega}$", 
+                                    "$1\ \mathrm{k\Omega}$"]) 
             if f%2 == 0: 
                 col.set_ylabel("$\overline{VarK}(X)$ in \%") 
             col.set_ylim(0, 1)
@@ -191,7 +199,7 @@ for row in axs:
             #Labels
             minorLabels = []
             for i in range(len(rectLocs)):
-                minorLabels.append(Measurements[int(i/(NUM_RESISTORS*2))])
+                minorLabels.append(Measurements[int(i/6)])
             col.set_xticklabels(minorLabels, minor=True)
             #Move Categorie further from x-axis
             col.tick_params(axis="x", which='major', pad=15, size=0)
@@ -216,19 +224,27 @@ for row in axs2:
                 col.tick_params(axis="x", which='major', pad=15, size=0)
                 break
         for i in range(NUM_VAR_FILTER):
-            Cr_P_rsweep = [Cr_P_sigma_m[0 + i * NUM_RESISTORS][f]]
-            Cp_P_rsweep = [Cp_P_sigma_m[0 + i * NUM_RESISTORS][f]]
+            Cr_P_rsweep = [Cr_P_sigma_m[0 + i * NUM_RESISTORS][f],
+                                        Cr_P_sigma_m[1 + i * NUM_RESISTORS][f],
+                                        Cr_A_sigma_m[2 + i * NUM_RESISTORS][f]
+                                        ]
+            Cp_P_rsweep = [Cp_P_sigma_m[0 + i * NUM_RESISTORS][f],
+                            Cp_P_sigma_m[1 + i * NUM_RESISTORS][f],
+                            Cr_A_sigma_m[2 + i * NUM_RESISTORS][f]
+                            ]
             X_axis = np.arange(len(Cr_P_rsweep)) 
             bar = col.bar(X_axis - 0.3 + i * 0.2, Cp_P_rsweep, 0.2,  color = colorsP[i], label="$C_\mathrm{P}$") 
-            col.bar_label(bar, fmt="%.3f", padding=-6)
+            col.bar_label(bar, fmt="%.2f", padding=-6)
             
             bar = col.bar(X_axis - 0.3 + i * 0.2, Cr_P_rsweep, 0.2,  color = colorsR[i], label="$C_\mathrm{R}$")
-            col.bar_label(bar, fmt="%.3f", padding=3, label_type='center')
+            col.bar_label(bar, fmt="%.2f", padding=3, label_type='center')
             
             col.set_title("   " + str(frequencies[f]) + " kHz",
                 loc="left", y=1.0, pad=-14)
             col.grid()
-            col.set_xticks(X_axis, ["$10\ \mathrm{k\Omega}$"])  
+            col.set_xticks(X_axis, ["$100\ \mathrm{k\Omega}$",
+                                    "$10\ \mathrm{k\Omega}$", 
+                                    "$1\ \mathrm{k\Omega}$"])  
             if f%2 == 0:
                 col.set_ylabel("$\overline{VarK}(X)$ in \%")
             col.set_ylim(0, 1)
@@ -248,7 +264,7 @@ for row in axs2:
             #Labels
             minorLabels = []
             for i in range(len(rectLocs)):
-                minorLabels.append(Measurements[int(i/(NUM_RESISTORS*2))])
+                minorLabels.append(Measurements[int(i/6)])
             col.set_xticklabels(minorLabels, minor=True)
             #Move Categorie further from x-axis
             col.tick_params(axis="x", which='major', pad=15, size=0)
