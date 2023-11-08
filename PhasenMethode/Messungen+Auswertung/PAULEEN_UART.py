@@ -6,6 +6,8 @@ CRC_MODE = "CRC-16/CCITT-FALSE"
 
 ERR0_NO_ERROR = 0x00
 
+BURST_VEL = 2 #ms 
+
 # Methods
 def searchPAULEEN():
     ports = list(serial.tools.list_ports.comports())
@@ -24,7 +26,7 @@ def lpsiSend(serialPort, sendBuf):
 def lpsiReceive(serialPort, recBuf):
     if serialPort.in_waiting > 0:
 
-        # Read data out of the buffer until a carraige return / new line is found
+        # Read data out of the buffer until a carriage return / new line is found
         recBuf = serialPort.readline()
 
         # Print the contents of the serial data
@@ -57,7 +59,7 @@ def lpsiStartBurst():
     CRC16 = 0x0EE8
 
 def lpsiStopBurst():
-
+    pass
 # Connect to comPort if available
 comStatus, serialPort = searchPAULEEN()
 if comStatus == -1:
