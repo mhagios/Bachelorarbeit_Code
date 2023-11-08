@@ -1992,7 +1992,7 @@ if.end43:                                         ; preds = %if.then40, %if.end3
   %70 = load i32* @Current_ADC_divider, align 4
   %conv47 = sitofp i32 %70 to float
   %add = fadd float %conv47, 2.800000e+01
-  %mul = fmul float %add, 5.000000e-01
+  %mul = fmul float %add, 2.500000e-01
   store float %mul, float* %in.addr.i, align 4
   %71 = load float* %in.addr.i, align 4
   %add.i = fadd float %71, 0x3FEFFFFFE0000000

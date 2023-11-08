@@ -18,13 +18,13 @@ Parallelization:
 Info: Selected path: path1074; VLIW count: 785
 
 Error: Errors or warnings during compilation of "C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.c":
-C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.c:441:11: warning: unused variable 's32TGrad' [-Wunused-variable]
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.c:452:11: warning: unused variable 's32TGrad' [-Wunused-variable]
         ua_int_t s32TGrad = 0;
                  ^
 1 warning generated.
 
 
-Compilation successful in 40,959 s
+Compilation successful in 34,965 s
 
 ===========================Assembler===========================
 Analyzing ASM finished.
@@ -46,7 +46,7 @@ All files generated successfully.
 
 -------------Memory usage:-------------------------------------
 IMEM:	785 of 2048
-DMEM:	298 of 1024	(118 checked param. + 1 CRC)
+DMEM:	299 of 1024	(119 checked param. + 1 CRC)
 ---------------------------------------------------------------
 Workload AU: 36,2%; LU: 21,4%; LD/ST: 89,7% (Concurr.: 23,6%)
 
@@ -279,6 +279,6 @@ Verifying Memory ...Successful
 
 Programming of:
 C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\FeasStudy_Liquicap_Liquiphant_CDI_30MHz_V2.bin
-successful in 33848 ms
+successful in 36655 ms
 Disconnecting Programmer...Done
 

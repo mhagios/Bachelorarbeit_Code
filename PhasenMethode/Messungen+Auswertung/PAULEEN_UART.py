@@ -45,6 +45,8 @@ def lpsiStartBurst():
     lpsiSend(sendBuf)
     
     #Observer Command
+    # f = 57.6kHz
+    # 
     #BurstrateX = (BurstrateSeconds * 14.7456MHz) / (2**(14)) - 9
     STX = 0x02
     LEN = 0x02

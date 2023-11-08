@@ -211,28 +211,28 @@ ua_param ua_word_t UA_INIT_ADC_CONVERSION_CONF = ADC_CONVERSION_CONF;
 
 // ua_param ua_word_t UA_INIT_ADC_CONVERSION_CONF = ADC_CONVERSION_CONF;
 
-// ua_param ua_int_t ADC_divider[9] = {
-// 									6,
-// 									6,
-// 									6,
-// 									40,
-// 									108,
-// 									244,
-// 									4,
-// 									36,
-// 									100
-// 									};
 ua_param ua_int_t ADC_divider[9] = {
-									3,
-									3,
-									3,
-									20,
-									54,
-									122,
-									2,
-									18,
-									50
+									6,
+									6,
+									6,
+									40,
+									108,
+									244,
+									4,
+									36,
+									100
 									};
+// ua_param ua_int_t ADC_divider[9] = {
+// 									3,
+// 									3,
+// 									3,
+// 									20,
+// 									54,
+// 									122,
+// 									2,
+// 									18,
+// 									50
+// 									};
 
 //                                       0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k
 ua_param ua_word_t Increment_Table[9] = {
@@ -603,7 +603,7 @@ void ua_main()
 			UA_ADC_CONVERSION_CONF = (ua_word_t)UA_ADC_ENABLE;
 			
 			Cycle_Number++;
-			MAX_UA_Cycle = UA_ceil((Current_ADC_divider + 28.0f) * 0.5f);
+			MAX_UA_Cycle = UA_ceil((Current_ADC_divider + 28.0f) * 0.25f);
 		}
 		else if ((Cycle_Number >= MAX_UA_Cycle) && (Current_state == ST_MEASURE))
 		{
