@@ -20,7 +20,7 @@
 *	- Parameters and BlockID for Bluetooth V00.90
 ***********************************/
 
-#define CCU_CONTROL (UA_CCU_EN_UA_DIV_512 | UA_CCU_SERIAL_OUT_115_2k | UA_CCU_CLK_IN_14_7_MHz | UA_CCU_I2C_DIV_1024 | UA_CCU_AN_SWITCH_ENABLE | UA_CCU_AN_SWITCH_VAL(100) | UA_CCU_PIEZO_CAP_MEAS_ENABLE | UA_CCU_IF_CDI_ENABLE | UA_CCU_SMEM_ENABLE | UA_CCU_HMEM_DISABLE | UA_CCU_EL_TEMP_ENABLE | UA_CCU_FREQU_MEAS_ENABLE | UA_CCU_ENP_ENABLE | UA_CCU_HISTOROM_APPDATA1_DISABLE | UA_CCU_HISTOROM_APPDATA2_DISABLE | UA_CCU_PIEZO_CAP_REF_GPIO7 | UA_CCU_PWM_MEAS_DISABLE | UA_CCU_CARMEN_AUTO_FRAME_TRIG | UA_CCU_UART_NOT_INVERTED)
+#define CCU_CONTROL (UA_CCU_EN_UA_DIV_512 | UA_CCU_SERIAL_OUT_230_4k | UA_CCU_CLK_IN_14_7_MHz | UA_CCU_I2C_DIV_1024 | UA_CCU_AN_SWITCH_ENABLE | UA_CCU_AN_SWITCH_VAL(100) | UA_CCU_PIEZO_CAP_MEAS_ENABLE | UA_CCU_IF_CDI_ENABLE | UA_CCU_SMEM_ENABLE | UA_CCU_HMEM_DISABLE | UA_CCU_EL_TEMP_ENABLE | UA_CCU_FREQU_MEAS_ENABLE | UA_CCU_ENP_ENABLE | UA_CCU_HISTOROM_APPDATA1_DISABLE | UA_CCU_HISTOROM_APPDATA2_DISABLE | UA_CCU_PIEZO_CAP_REF_GPIO7 | UA_CCU_PWM_MEAS_DISABLE | UA_CCU_CARMEN_AUTO_FRAME_TRIG | UA_CCU_UART_NOT_INVERTED)
 #define FIRMWARE_REV (10000)
 #define ENP_FIRMWARE_REV_MSB (0x302E3130)
 #define ENP_FIRMWARE_REV_LSB (0x30302E30)
@@ -211,16 +211,27 @@ ua_param ua_word_t UA_INIT_ADC_CONVERSION_CONF = ADC_CONVERSION_CONF;
 
 // ua_param ua_word_t UA_INIT_ADC_CONVERSION_CONF = ADC_CONVERSION_CONF;
 
+// ua_param ua_int_t ADC_divider[9] = {
+// 									6,
+// 									6,
+// 									6,
+// 									40,
+// 									108,
+// 									244,
+// 									4,
+// 									36,
+// 									100
+// 									};
 ua_param ua_int_t ADC_divider[9] = {
-									6,
-									6,
-									6,
-									40,
-									108,
-									244,
-									4,
-									36,
-									100
+									3,
+									3,
+									3,
+									20,
+									54,
+									122,
+									2,
+									18,
+									50
 									};
 
 //                                       0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k
@@ -782,7 +793,8 @@ void ua_main()
 				if (Frequency_number >= 9)// ==> Reset Frequency
 				{
 					Frequency_number = 0;
-					Current_state = ST_STARTUP; //ST_SLEEP
+					//Current_state = ST_STARTUP; //ST_SLEEP
+					Cycle_Number = 0;
 					//UA_DAC_CONFIG_RESET = UA_DAC_CONFIG_PDN_DISABLE;// PoweDowN (Set Vout Tree-State)
 					
 					CLEAR_LED_GREEN;
