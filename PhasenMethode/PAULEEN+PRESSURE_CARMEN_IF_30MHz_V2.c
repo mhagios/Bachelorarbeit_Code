@@ -20,7 +20,7 @@
 *	- Parameters and BlockID for Bluetooth V00.90
 ***********************************/
 
-#define CCU_CONTROL (UA_CCU_EN_UA_DIV_512 | UA_CCU_SERIAL_OUT_230_4k | UA_CCU_CLK_IN_14_7_MHz | UA_CCU_I2C_DIV_1024 | UA_CCU_AN_SWITCH_ENABLE | UA_CCU_AN_SWITCH_VAL(100) | UA_CCU_PIEZO_CAP_MEAS_ENABLE | UA_CCU_IF_CARMEN_ENABLE | UA_CCU_SMEM_ENABLE | UA_CCU_HMEM_DISABLE | UA_CCU_EL_TEMP_ENABLE | UA_CCU_FREQU_MEAS_ENABLE | UA_CCU_ENP_ENABLE | UA_CCU_HISTOROM_APPDATA1_DISABLE | UA_CCU_HISTOROM_APPDATA2_DISABLE | UA_CCU_PIEZO_CAP_REF_GPIO7 | UA_CCU_PWM_MEAS_DISABLE | UA_CCU_CARMEN_AUTO_FRAME_TRIG | UA_CCU_UART_NOT_INVERTED)
+#define CCU_CONTROL (UA_CCU_EN_UA_DIV_512 | UA_CCU_SERIAL_OUT_230_4k | UA_CCU_CLK_IN_14_7_MHz | UA_CCU_I2C_DIV_1024 | UA_CCU_AN_SWITCH_ENABLE | UA_CCU_AN_SWITCH_VAL(100) | UA_CCU_PIEZO_CAP_MEAS_ENABLE | UA_CCU_IF_CARMEN_ENABLE | UA_CCU_SMEM_ENABLE | UA_CCU_HMEM_DISABLE | UA_CCU_EL_TEMP_ENABLE | UA_CCU_FREQU_MEAS_ENABLE | UA_CCU_ENP_ENABLE | UA_CCU_HISTOROM_APPDATA1_DISABLE | UA_CCU_HISTOROM_APPDATA2_DISABLE | UA_CCU_PIEZO_CAP_REF_GPIO7 | UA_CCU_PWM_MEAS_DISABLE | UA_CCU_CARMEN_AUTO_FRAME_TRIG | UA_CCU_UART_INVERTED)
 #define FIRMWARE_REV (10000)
 #define ENP_FIRMWARE_REV_MSB (0x302E3130)
 #define ENP_FIRMWARE_REV_LSB (0x30302E30)
@@ -736,9 +736,9 @@ void ua_main()
 					f_Kapazitaet_CP_P[Frequency_number] = C_GainPhase_pF * (OneOn_WR[Frequency_number] * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) - C_OffsetPhase_pF);
 					s25_Switch_CP_CR = 1; //Umschalten des Switches fuer CP-Messung
 
-					UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CP_A[Frequency_number];
-					UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CP_P[Frequency_number];
-					UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xF0);//Frequency_number and Code for CP;
+					//UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CP_A[Frequency_number];
+					//UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CP_P[Frequency_number];
+					//UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xF0);//Frequency_number and Code for CP;
 				}	
 				else
 				{//CR
@@ -750,8 +750,8 @@ void ua_main()
 
 					//UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CR_A[Frequency_number];
 					UA_SERIAL_OUT = 0x1010CAFE;
-					UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CR_P[Frequency_number];
-					UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xF1);//Frequency_number and Code for CP;				
+					UA_SERIAL_OUT2 = 0x1010CAFE;//(ua_word_t) f_Kapazitaet_CR_P[Frequency_number];
+					UA_SERIAL_OUT3 = 0x1010CAFE;//(Frequency_number << 8)|(0xF1);//Frequency_number and Code for CP;				
 					
 					Frequency_number++; //Inkrement of the Frequency
 				}

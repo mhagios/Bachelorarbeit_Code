@@ -25,9 +25,9 @@ if serialPort != -1:
     print("Adapter found!\n")
 
 
-    serialPort.flushInput() #flush input buffer, discarding all its contents
+    #serialPort.flushInput() #flush input buffer, discarding all its contents
     # Wait until there is data waiting in the serial buffer
-    test = serialPort.read()
+    test = serialPort.read(13)
     print(test, '\n')
     #readBytes = bytearray()
     #numBytesRead = serialPort.readinto(readBytes)
