@@ -1,31 +1,6 @@
 Microarchitecure Suite Version 3.20.20
 UAC Compiler Version 2.5 @ 16.12.2022 15:14:30
 
-==========================C-Compiler===========================
-Selected Strategy: backlog,1 - Additional Option: -l
-Compiling C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.ll
-
-Optimization:
-          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
-          |----|----|----|----|----|----|----|----|----|----|
-          |||||||||||||||||||||||||||||||||||||||||||||||||||
-
-Parallelization:
-          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
-          |----|----|----|----|----|----|----|----|----|----|
-          |||||||||||||||||||||||||||||||||||||||||||||||||||
-
-Info: Selected path: path1086; VLIW count: 792
-
-Error: Errors or warnings during compilation of "C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c":
-C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c:452:11: warning: unused variable 's32TGrad' [-Wunused-variable]
-        ua_int_t s32TGrad = 0;
-                 ^
-1 warning generated.
-
-
-Compilation successful in 36,102 s
-
 ===========================Assembler===========================
 Analyzing ASM finished.
 Note: Variable "UA_INIT_ADC_CONVERSION_CONF" declared but not used.
@@ -45,10 +20,10 @@ Start creating output files...
 All files generated successfully.
 
 -------------Memory usage:-------------------------------------
-IMEM:	792 of 2048
-DMEM:	301 of 1024	(121 checked param. + 1 CRC)
+IMEM:	791 of 2048
+DMEM:	302 of 1024	(122 checked param. + 1 CRC)
 ---------------------------------------------------------------
-Workload AU: 36,0%; LU: 21,7%; LD/ST: 89,4% (Concurr.: 23,5%)
+Workload AU: 36,0%; LU: 21,7%; LD/ST: 89,4% (Concurr.: 23,6%)
 
 
 ===================Longest Path Analyzation====================
@@ -279,6 +254,6 @@ Verifying Memory ...Successful
 
 Programming of:
 C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.bin
-successful in 33255 ms
+successful in 36120 ms
 Disconnecting Programmer...Done
 
