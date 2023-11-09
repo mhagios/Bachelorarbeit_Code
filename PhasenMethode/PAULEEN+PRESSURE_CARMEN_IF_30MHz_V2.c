@@ -736,9 +736,9 @@ void ua_main()
 					f_Kapazitaet_CP_P[Frequency_number] = C_GainPhase_pF * (OneOn_WR[Frequency_number] * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) - C_OffsetPhase_pF);
 					s25_Switch_CP_CR = 1; //Umschalten des Switches fuer CP-Messung
 
-					//UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CP_A[Frequency_number];
-					//UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CP_P[Frequency_number];
-					//UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xF0);//Frequency_number and Code for CP;
+					UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CP_A[Frequency_number];
+					UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CP_P[Frequency_number];
+					UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xC0);//Frequency_number and Code for CP;
 				}	
 				else
 				{//CR
@@ -748,10 +748,9 @@ void ua_main()
 					f_Kapazitaet_CR_P[Frequency_number]= C_GainPhase_pF * (OneOn_WR[Frequency_number] * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) - C_OffsetPhase_pF);
 					s25_Switch_CP_CR = 0; //Umschalten des Switches fuer CR-Messung					
 
-					//UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CR_A[Frequency_number];
-					UA_SERIAL_OUT = 0x1010CAFE;
-					UA_SERIAL_OUT2 = 0x1010CAFE;//(ua_word_t) f_Kapazitaet_CR_P[Frequency_number];
-					UA_SERIAL_OUT3 = 0x1010CAFE;//(Frequency_number << 8)|(0xF1);//Frequency_number and Code for CP;				
+					UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CR_A[Frequency_number];
+					UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CR_P[Frequency_number];
+					UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xC1);//Frequency_number and Code for CP;				
 					
 					Frequency_number++; //Inkrement of the Frequency
 				}

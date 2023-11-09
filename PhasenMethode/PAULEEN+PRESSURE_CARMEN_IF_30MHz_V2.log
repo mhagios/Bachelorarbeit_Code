@@ -15,7 +15,7 @@ Parallelization:
           |----|----|----|----|----|----|----|----|----|----|
           |||||||||||||||||||||||||||||||||||||||||||||||||||
 
-Info: Selected path: path1074; VLIW count: 777
+Info: Selected path: path1086; VLIW count: 792
 
 Error: Errors or warnings during compilation of "C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c":
 C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c:452:11: warning: unused variable 's32TGrad' [-Wunused-variable]
@@ -24,7 +24,7 @@ C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CA
 1 warning generated.
 
 
-Compilation successful in 33,983 s
+Compilation successful in 36,188 s
 
 ===========================Assembler===========================
 Analyzing ASM finished.
@@ -45,10 +45,10 @@ Start creating output files...
 All files generated successfully.
 
 -------------Memory usage:-------------------------------------
-IMEM:	777 of 2048
-DMEM:	300 of 1024	(120 checked param. + 1 CRC)
+IMEM:	792 of 2048
+DMEM:	301 of 1024	(121 checked param. + 1 CRC)
 ---------------------------------------------------------------
-Workload AU: 36,6%; LU: 21,6%; LD/ST: 89,6% (Concurr.: 23,9%)
+Workload AU: 36,0%; LU: 21,7%; LD/ST: 89,4% (Concurr.: 23,5%)
 
 
 ===================Longest Path Analyzation====================
@@ -279,6 +279,6 @@ Verifying Memory ...Successful
 
 Programming of:
 C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.bin
-successful in 36286 ms
+successful in 37072 ms
 Disconnecting Programmer...Done
 
