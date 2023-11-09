@@ -1,12 +1,11 @@
-import time
+import datetime
 import serial
 import serial.tools.list_ports
 import struct
 import csv
 
-CRC_MODE = "CRC-16/CCITT-FALSE"
+NUM_FREQUENCIES = 2
 
-ERR0_NO_ERROR = 0x00
 
 def connectPAULEEN():
     ports = list(serial.tools.list_ports.comports())
@@ -42,8 +41,6 @@ else:
 
 
 # Init of global variables
-byteBuf = bytearray(3744)
-
 startPos = 0
 endOverflow = 0
 startFound = False
@@ -51,28 +48,42 @@ packageFound = False
 
 numCrcErrors = 0
 
-#Open File to write Data
 
+
+#Open File to write Data
 with open("DataSet.csv", "w", newline='') as fileWriter:
-    csvWriter = csv.writer(fileWriter, delimiter=',')
+    csvWriter = csv.writer(fileWriter, delimiter=';')
     serialPort.reset_input_buffer() #flush input buffer, discarding all its contents
-    while 1:
+    packageNum = 0
+    while packageNum < 100:
         ###############################################
         # Package Size = 13bytes * 8bit/byte = 104bit
         # Package time = 104 bit / 23040baud = 451.38 us
-        # All Frequenzies = 35.56 ms 
+        ################################################
+        ###### 9 Frequencies ############################################
+        # All Frequencies = 35.56 ms (oszi measurement)
         # Two frequency cycles = 71.1264ms 
         # packages in one cycle = (104bit * 2) * 9 frequencies = 1872bit
-        ###############################################
+        #################################################################
+        ###### 2 Frequencies ############################################
+        # 2 Frequencies = 5 ms (oszi measurement)
+        # packages = (104bit * 2 Capacities) * 2 frequencies = 416bit
+        #################################################################
         
         # Wait until there is data waiting in the serial buffer
-        #print(serialPort.in_waiting)
-        
-        if serialPort.in_waiting > 3744 - endOverflow: 
-            serialPort.readinto(byteBuf)
+        # Because there is data discarded in the first package, it gets added in the second loop with startPos
+        # Because the fragment of the last 13 byte in the first package is added in the second loop, the length of the package can be subtracted 
+        if serialPort.in_waiting > (104 - endOverflow + startPos): 
+            packageNum +=1
+            startPos = 0
             
+            byteBuf = bytearray(serialPort.read(104 - endOverflow + 13))
+            #print(serialPort.in_waiting)
+            
+            #If a fragmented package occured before, then fit it at the beginning
             if endOverflow:
                 byteBuf[0:0] = cutPackage
+                
             # print
             # byteStr = []
             # for x in byteBuf:
@@ -117,12 +128,12 @@ with open("DataSet.csv", "w", newline='') as fileWriter:
                         del byteBuf[0:13]
         
         
-            byteStr = []
-            for x in byteBuf:
-                byteStr.append(hex(x))
-            for i in range(int(len(byteStr)/13)):
-                print(byteStr[i*13:i*13 + 13])
-            print("\n\n")
+            # byteStr = []
+            # for x in byteBuf:
+            #     byteStr.append(hex(x))
+            # for i in range(int(len(byteStr)/13)):
+            #     print(byteStr[i*13:i*13 + 13])
+            # print("\n\n")
             
             
             #Find End and if the last package is fragmented, then save it for the next cycle
@@ -131,25 +142,39 @@ with open("DataSet.csv", "w", newline='') as fileWriter:
             if endOverflow:
                 cutPackage = byteBuf[-endOverflow:]
                 del byteBuf[-endOverflow:]
-                
-            for x in byteBuf:
-                byteStr.append(hex(x))
-            print("Cute Package:\n", byteStr)
-            print("\n\n")    
+            
+            # byteStr = []
+            # for x in cutPackage:
+            #     byteStr.append(hex(x))
+            # print("Cut Package:\n", byteStr)
+            # print("\n\n")    
 
             
+            #Extract each 13byte-Package
             for p in range(int(len(byteBuf) / 13)):
                 #CRC-Checks
                 crcTest = crc16(byteBuf[p * 13 : p * 13 + 13], 0, 13 - 2)
                 if (int(byteBuf[p * 13 + 11]))|(int(byteBuf[p * 13 + 12]) << 8) != crcTest:
                     numCrcErrors += 1
+                    byteStr = []
+                    for x in byteBuf[p * 13 : p * 13 + 13]:
+                        byteStr.append(hex(x))
+                    print("CRC-ERROR-Package:\n", byteStr) 
+                    print("CRC-Value = ", hex(crcTest))
+                    
+                    byteStr = []
+                    for x in byteBuf:
+                        byteStr.append(hex(x))
+                    for i in range(int(len(byteStr)/13)):
+                        print(byteStr[i*13:i*13 + 13])
+                    print("\n\n")
                     raise(IOError("CRC-Failed"))
                 #Convert in Cr/Cp and Frequency and save in File                
-                cA = struct.unpack('f', byteBuf[p * 13 + 1 : p * 13 + 5])
-                cP = struct.unpack('f', byteBuf[p * 13 + 5 : p * 13 + 9])
+                cA = (struct.unpack('f', byteBuf[p * 13 + 1 : p * 13 + 5])[0])
+                cP = (struct.unpack('f', byteBuf[p * 13 + 5 : p * 13 + 9]))[0]
                 C = hex(byteBuf[p * 13 + 9])[2:]
                 f = byteBuf[p * 13 + 10]
-                csvWriter.writerow([cA, cP, C, f])
+                csvWriter.writerow([cA, cP, C, f, datetime.datetime.now(), packageNum])
                 
 
     
