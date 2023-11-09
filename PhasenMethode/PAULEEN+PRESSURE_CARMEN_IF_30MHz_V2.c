@@ -318,7 +318,7 @@ ua_param ua_float_t f_VIRTUAL_SINE[16] = {	0.0f,	0.382683432f,	0.707106781f,	0.9
 										-1.0f,	-0.923879533f,	-0.707106781f,	-0.382683432f};
 
 
-ua_int_t Frequency_number = 0; 
+ua_int_t Frequency_number = 7; 
 ua_float_t C_OffsetAmp_pF = 0.0f;
 ua_float_t C_OffsetPhase_pF = 0.0f;
 ua_float_t C_GainAmp_pF = 1.0f;
@@ -752,7 +752,15 @@ void ua_main()
 					UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CR_P[Frequency_number];
 					UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xC1);//Frequency_number and Code for CP;				
 					
-					Frequency_number++; //Inkrement of the Frequency
+					//Frequency_number++; //Inkrement of the Frequency
+					if (Frequency_number == 6)
+					{
+						Frequency_number = 7;
+					}
+					else
+					{
+						Frequency_number = 6;
+					}
 				}
 				
 				//Serielle Ausgabe der Werte mit der entsprechenden Frequenzzuweisung
@@ -796,7 +804,6 @@ void ua_main()
 				{
 					Frequency_number = 0;
 					//Current_state = ST_STARTUP; //ST_SLEEP
-					Cycle_Number = 0;
 					//UA_DAC_CONFIG_RESET = UA_DAC_CONFIG_PDN_DISABLE;// PoweDowN (Set Vout Tree-State)
 					
 					CLEAR_LED_GREEN;
