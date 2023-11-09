@@ -45,6 +45,7 @@ else:
 byteBuf = bytearray(3744)
 
 startPos = 0
+endOverflow = 0
 startFound = False
 packageFound = False
 
@@ -67,8 +68,11 @@ with open("DataSet.csv", "w", newline='') as fileWriter:
         # Wait until there is data waiting in the serial buffer
         #print(serialPort.in_waiting)
         
-        if serialPort.in_waiting > 3744: 
+        if serialPort.in_waiting > 3744 - endOverflow: 
             serialPort.readinto(byteBuf)
+            
+            if endOverflow:
+                byteBuf[0:0] = cutPackage
             # print
             # byteStr = []
             # for x in byteBuf:
@@ -118,6 +122,8 @@ with open("DataSet.csv", "w", newline='') as fileWriter:
                 byteStr.append(hex(x))
             for i in range(int(len(byteStr)/13)):
                 print(byteStr[i*13:i*13 + 13])
+            print("\n\n")
+            
             
             #Find End and if the last package is fragmented, then save it for the next cycle
             endOverflow = len(byteBuf) %13
@@ -125,6 +131,11 @@ with open("DataSet.csv", "w", newline='') as fileWriter:
             if endOverflow:
                 cutPackage = byteBuf[-endOverflow:]
                 del byteBuf[-endOverflow:]
+                
+            for x in byteBuf:
+                byteStr.append(hex(x))
+            print("Cute Package:\n", byteStr)
+            print("\n\n")    
 
             
             for p in range(int(len(byteBuf) / 13)):
@@ -138,7 +149,7 @@ with open("DataSet.csv", "w", newline='') as fileWriter:
                 cP = struct.unpack('f', byteBuf[p * 13 + 5 : p * 13 + 9])
                 C = hex(byteBuf[p * 13 + 9])[2:]
                 f = byteBuf[p * 13 + 10]
-                csvWriter.writerow(cA, cP, C, f)
+                csvWriter.writerow([cA, cP, C, f])
                 
 
     
