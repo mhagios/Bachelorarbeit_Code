@@ -750,7 +750,7 @@ void ua_main()
 
 					UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CR_A[Frequency_number];
 					UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CR_P[Frequency_number];
-					UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xC1);//Frequency_number and Code for CP;				
+					UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xC1);//Frequency_number and Code for CR;				
 					
 					//Frequency_number++; //Inkrement of the Frequency
 					if (Frequency_number == 6)

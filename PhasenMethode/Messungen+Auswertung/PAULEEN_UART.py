@@ -51,11 +51,12 @@ numCrcErrors = 0
 
 
 #Open File to write Data
-with open("DataSet.csv", "w", newline='') as fileWriter:
+with open("Messungen/woDAC_Schreibtisch_1311/HomeOffSpannungsquelle.csv", "w", newline='') as fileWriter:
     csvWriter = csv.writer(fileWriter, delimiter=';')
     serialPort.reset_input_buffer() #flush input buffer, discarding all its contents
     packageNum = 0
-    while packageNum < 100:
+    print("Start Measurement!")
+    while 1:#packageNum < 100:
         ###############################################
         # Package Size = 13bytes * 8bit/byte = 104bit
         # Package time = 104 bit / 23040baud = 451.38 us
