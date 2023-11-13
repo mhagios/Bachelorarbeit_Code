@@ -1,5 +1,5 @@
 /****************************************************************************
- * Author		Romuald Girardey
+ * Author		Romuald Girardey/Maximilian Hagios
  * Department	TTD
  * Date			21.09.2021
  ***************************************************************************/
@@ -28,6 +28,12 @@
 // #define CORE_CHECK_CONFIG (CORE_CHECK_ENABLE | CORE_CHECK_CRC6(0x2A) | CORE_CHECK_TIME_LOW_LIMIT(247) | CORE_CHECK_TIME_HIGH_LIMIT(26))
 #define ADC_CONVERSION_CONF (UA_ADC_DISABLE)
 #define ADC_CONVERSION_TIME (UA_ADC_DELAY_LSB(0) | UA_ADC_CONV_TIME(48))
+
+#define ADC_CONVERSION_CONF_VINPO 0x00000 //00<<11
+#define ADC_CONVERSION_CONF_VINP1 0x00800 //01<<11 
+#define ADC_CONVERSION_CONF_VINP2 0x01000 //10<<11 
+#define ADC_CONVERSION_CONF_VINP3 0x01800 //11<<11 
+
 #define CCU_CONTROL2 (UA_CCU2_UART_STANDARD | UA_CCU2_SENS_EEP_INT | UA_CCU2_TMP100_1MIN | UA_CCU2_AN_SWITCH_DIV_16 | UA_CCU2_PIEZO_CAP_REF_GPIO7 | UA_CCU2_AN_SWITCH_REF_GPIO7 | UA_CCU2_APPDATA1_CRC_DISABLE | UA_CCU2_APPDATA2_CRC_DISABLE | UA_CCU2_APPDATA3_CRC_DISABLE)
 
 #define GPIO_DIRECTION 	(0x0000FF80)		// same as V01.00.06
@@ -199,11 +205,12 @@ ua_param ua_word_t UA_INIT_ADC_CONVERSION_CONF = ADC_CONVERSION_CONF;
 #define __INVPI         0.31830988618379067154f
 #define __TWOOPI        0.63661977236758134308f
 
-#define  EN_SIGNAL    0   /* Signal from Sensor */
-#define  EN_REFERENCE 1   /* Signal to   Sensor */
-#define  ST_STARTUP   2   
-#define  ST_MEASURE   1   
-#define  ST_SLEEP   0   
+#define  EN_SIGNAL    	0   /* Signal from Sensor */
+#define  EN_REFERENCE 	1   /* Signal to   Sensor */
+#define  ST_TEMPERATURE 3
+#define  ST_STARTUP   	2   
+#define  ST_MEASURE   	1   
+#define  ST_SLEEP   	0   
 #define  SLEEP_CYCLES   2259
 
 //constants
@@ -449,7 +456,8 @@ void ua_main()
 	UA_GPIO_OUT_SET = 0x2000; //CP	<-->CR		
 	UA_GPIO_OUT_SET = 0x0020;
 
-	ua_int_t s32TGrad = 0;
+	ua_float_t f32TGrad = 0;
+	ua_float_t f32TVoltage = 0;
 
 	UA_LPSI_DMA = UA_LPSI_DMA_ADDRESS(0x26B) | UA_LPSI_DMA_LENGTH(38); //0x26B bis 0x2B8
 	
@@ -600,10 +608,10 @@ void ua_main()
 			Last_ADC_Pointer = (ua_int_t)UA_ADC_MEM_PTR-1;
 			
 			UA_ADC_CONVERSION_TIME = (ua_word_t)Current_ADC_divider;
-			UA_ADC_CONVERSION_CONF = (ua_word_t)UA_ADC_ENABLE;
+			UA_ADC_CONVERSION_CONF = ((ua_word_t)UA_ADC_ENABLE) | ((ua_word_t)ADC_CONVERSION_CONF_VINPO);
 			
 			Cycle_Number++;
-			MAX_UA_Cycle = UA_ceil((Current_ADC_divider + 28.0f) * 0.25f);
+			MAX_UA_Cycle = UA_ceil((Current_ADC_divider + 28.0f) * 0.25f); //28 because of data output latency
 		}
 		else if ((Cycle_Number >= MAX_UA_Cycle) && (Current_state == ST_MEASURE))
 		{
@@ -810,14 +818,39 @@ void ua_main()
 				}
 			}
 			Current_signal ^= 1; // Toggle between EN_SIGNAL <> EN_REFERENCE
-			
+			//Current_state = ST_TEMPERATURE;
 		}
-		else if ((Cycle_Number >= SLEEP_CYCLES) && (Current_state == ST_SLEEP)) //Aufwachen aus Sleep mode
+		
+		/*else if ((Cycle_Number == 0) && (Current_state == ST_TEMPERATURE)) //Übergang Temperaturmessung
+		{ 
+			Current_ADC_divider = ADC_divider[Frequency_number];
+			Last_ADC_Pointer = (ua_int_t)UA_ADC_MEM_PTR-1;
+			
+			UA_ADC_CONVERSION_TIME = (ua_word_t)Current_ADC_divider;
+			UA_ADC_CONVERSION_CONF = ((ua_word_t)UA_ADC_ENABLE) | ((ua_word_t)ADC_CONVERSION_CONF_VINPO);
+			
+			Cycle_Number++;
+			MAX_UA_Cycle = UA_ceil((Current_ADC_divider + 28.0f) * 0.25f); //28 because of data output latency
+		}
+		else if ((Cycle_Number >= MAX_UA_Cycle) && (Current_state == ST_TEMPERATURE)) //Auswertung Temperaturmessung
+		{
+			Cycle_Number = 0;
+			UA_ADC_CONVERSION_CONF = (ua_word_t)UA_ADC_DISABLE;
+
+			f32TVoltage = UA_ADC_MEM[(Last_ADC_Pointer - period * c_SAMPLE_POINTS - Value_index) & 0x3FF] + Temp;
+
+			// Berechnung Temperatur aus Temperaturwiderstand (Tkoeff = 2750 +- 250)
+			// R2 = R1/(Vcc/U2 - 1)
+			// R1 = 2k7
+			// T = (3kOhm - R2) / Tkoeff 
+			f32TGrad = 3000.0f - (2700.0f * f32TVoltage * FloatInverse(3.3f * 2750.0f - 2750.0f * f32TVoltage)); 
+			Current_state = ST_MEASURE;
+		}*/
+		else if ((Cycle_Number >= SLEEP_CYCLES) && (Current_state == ST_MEASURE)) //Aufwachen aus Sleep mode
 		{
 			Current_state = ST_STARTUP;
 			Cycle_Number = 0;
 			UA_DAC_CONFIG_SET = UA_DAC_CONFIG_PDN_DISABLE; //Wake up from PDN(Power Down bzw. Tree-State)
-			
 		}
 		else if (Current_state == ST_STARTUP) //Übergang in den Messzustand
 		{

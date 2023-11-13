@@ -1765,7 +1765,8 @@ entry:
   %In_Reduced.i = alloca float, align 4
   %x.i = alloca float, align 4
   %in.addr.i = alloca float, align 4
-  %s32TGrad = alloca i32, align 4
+  %f32TGrad = alloca float, align 4
+  %f32TVoltage = alloca float, align 4
   %Zeroline_Temp = alloca i32, align 4
   %0 = load i128** @UA_DDS_REG_IN3_regptr, align 8
   store i128 0, i128* %0, align 16
@@ -1779,7 +1780,8 @@ entry:
   store i128 8192, i128* %4, align 16
   %5 = load i128** @UA_OUTPUT_SET_regptr, align 8
   store i128 32, i128* %5, align 16
-  store i32 0, i32* %s32TGrad, align 4
+  store float 0.000000e+00, float* %f32TGrad, align 4
+  store float 0.000000e+00, float* %f32TVoltage, align 4
   %6 = load i128** @UA_LPSI_DMA_regptr, align 8
   store i128 2490987, i128* %6, align 16
   %7 = load i128** @UA_ENABLE_regptr, align 8
@@ -3065,7 +3067,7 @@ if.else247:                                       ; preds = %land.lhs.true51, %i
 
 land.lhs.true250:                                 ; preds = %if.else247
   %406 = load i32* @Current_state, align 4
-  %cmp251 = icmp eq i32 %406, 0
+  %cmp251 = icmp eq i32 %406, 1
   br i1 %cmp251, label %if.then253, label %if.else254
 
 if.then253:                                       ; preds = %land.lhs.true250
