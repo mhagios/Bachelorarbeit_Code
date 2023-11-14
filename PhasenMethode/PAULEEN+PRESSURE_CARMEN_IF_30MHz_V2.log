@@ -1,6 +1,24 @@
 Microarchitecure Suite Version 3.20.20
 UAC Compiler Version 2.5 @ 16.12.2022 15:14:30
 
+==========================C-Compiler===========================
+Selected Strategy: backlog,1 - Additional Option: -l
+Compiling C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.ll
+
+Optimization:
+          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+          |||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Parallelization:
+          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+          |||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Info: Selected path: path1202; VLIW count: 858
+
+Compilation successful in 45,984 s
+
 ===========================Assembler===========================
 Analyzing ASM finished.
 Note: Variable "UA_INIT_ADC_CONVERSION_CONF" declared but not used.
@@ -20,10 +38,10 @@ Start creating output files...
 All files generated successfully.
 
 -------------Memory usage:-------------------------------------
-IMEM:	797 of 2048
-DMEM:	301 of 1024	(121 checked param. + 1 CRC)
+IMEM:	858 of 2048
+DMEM:	308 of 1024	(125 checked param. + 1 CRC)
 ---------------------------------------------------------------
-Workload AU: 35,8%; LU: 21,7%; LD/ST: 89,5% (Concurr.: 23,5%)
+Workload AU: 36,8%; LU: 21,3%; LD/ST: 89,9% (Concurr.: 24,0%)
 
 
 ===================Longest Path Analyzation====================
@@ -37,11 +55,223 @@ Set Up Programmer...Done
 
 DMEM:
 Writing 4096 Bytes to EEPROM ...Done
-Verifying Memory ...Unsuccessful
+Verifying Memory ...Successful
 
+IMEM:
+Writing 10240 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
 
-Retry Nr. 1
+IMEM_CRC:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PMEM_WORD_SIZE:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+SMEM_Config:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+DeviceID:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+VibronicID1:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+VibronicID2:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+CRC_CHECK1:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_WRITE_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_READ_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_WRITE_SENS_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_READ_SENS_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_WRITE_HIST_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_READ_HIST_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_WRITE_WHOLE:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_READ_WHOLE:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_WRITE_USER_HMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_READ_USER_HMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_WRITE_USER_DMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_READ_USER_DMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+CRC_CHECK2:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PID_Table:
+Writing 508 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+CRC_CHECK3:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+SMEM_EEP:
+Writing 128 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+ENPMEM_EEP:
+Writing 188 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+BLUTOOTH_PASS_EEP:
+Writing 256 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup DMEM:
 Writing 4096 Bytes to EEPROM ...Done
-Verifying Memory ...Unsuccessful
+Verifying Memory ...Successful
+
+Backup IMEM:
+Writing 10240 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup IMEM_CRC:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PMEM_WORD_SIZE:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup SMEM_Config:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup DeviceID:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup VibronicID1:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup VibronicID2:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup CRC_CHECK1:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_WRITE_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_READ_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_WRITE_SENS_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_READ_SENS_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_WRITE_HIST_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_READ_HIST_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_WRITE_WHOLE:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_READ_WHOLE:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_WRITE_USER_HMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_READ_USER_HMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_WRITE_USER_DMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_READ_USER_DMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup CRC_CHECK2:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PID_Table:
+Writing 508 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup CRC_CHECK3:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup SMEM_EEP:
+Writing 128 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup ENPMEM_EEP:
+Writing 188 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup BLUTOOTH_PASS_EEP:
+Writing 256 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+
+Programming of:
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.bin
+successful in 37129 ms
 Disconnecting Programmer...Done
 

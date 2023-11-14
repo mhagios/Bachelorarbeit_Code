@@ -708,32 +708,32 @@ void ua_main()
 
 			if (Current_signal != EN_SIGNAL)
 			{
-				f_Phase_ref[Frequency_number] = Phase[EN_REFERENCE];
-				f_Phase_sig[Frequency_number] = Phase[EN_SIGNAL];
+				// f_Phase_ref[Frequency_number] = Phase[EN_REFERENCE];
+				// f_Phase_sig[Frequency_number] = Phase[EN_SIGNAL];
 				
-				f_Amplitude_ref[Frequency_number] = Amplitude[EN_REFERENCE];
-				f_Amplitude_sig[Frequency_number] = Amplitude[EN_SIGNAL];
+				// f_Amplitude_ref[Frequency_number] = Amplitude[EN_REFERENCE];
+				// f_Amplitude_sig[Frequency_number] = Amplitude[EN_SIGNAL];
 				
-				DeltaPhase = Phase[EN_REFERENCE] - Phase[EN_SIGNAL];
-				if (DeltaPhase > __PIO2)    
-				{
-					DeltaPhase = __PIO2;
-				}                       // Phasenbegrenzung auf max. 90°
+				// DeltaPhase = Phase[EN_REFERENCE] - Phase[EN_SIGNAL];
+				// if (DeltaPhase > __PIO2)    
+				// {
+				// 	DeltaPhase = __PIO2;
+				// }                       // Phasenbegrenzung auf max. 90°
 
-				if (DeltaPhase < -1.396263f)  // -80°           wenn der Auswertealgorithmus eine Phasensprung von 180° erzeugt
-				{                                                  // wird dem hiermit entgegen gewirkt
-					DeltaPhase = __PI + DeltaPhase;
-				}
+				// if (DeltaPhase < -1.396263f)  // -80°           wenn der Auswertealgorithmus eine Phasensprung von 180° erzeugt
+				// {                                                  // wird dem hiermit entgegen gewirkt
+				// 	DeltaPhase = __PI + DeltaPhase;
+				// }
 
-					//st_Result.f_Amplitude_Sig = st_Sig.f_Amplitude/(st_Ref.f_Amplitude/st_NVParam.f_AmplitudeReferenz_Range2);
-					// f_KapazitiverAnteil  = Amplitude[0] * UA_sin_pi(DeltaPhase);       // reine Blindanteil
-					//f_KapazitiverAnteil  = st_Result.f_Amplitude_Sig * sin(st_Result.f_Phase);       // reine Blindanteil
-					// f_Kapazitaet[c_Index] = f_Steigung_M_Range2_90Grad * (f_KapazitiverAnteil - st_NVParam.f_FactoryCalib_Empty_Range2_90Grad);
-					
-					//Ergaenzungen Phasenverschiebung:
-					//f_KapazitiverAnteil2 = C_GainPhase_pF * (OneOn_WR[Frequency_number] * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) - C_OffsetPhase_pF);
-					//st_Result.f_Phase = (st_Ref.f_Phase - st_Sig.f_Phase) + st_NVParam.f_PhaseOffset;   // Kompensation der Phasenschiebung des 500KHZ-Filters
+				//st_Result.f_Amplitude_Sig = st_Sig.f_Amplitude/(st_Ref.f_Amplitude/st_NVParam.f_AmplitudeReferenz_Range2);
+				// f_KapazitiverAnteil  = Amplitude[0] * UA_sin_pi(DeltaPhase);       // reine Blindanteil
+				//f_KapazitiverAnteil  = st_Result.f_Amplitude_Sig * sin(st_Result.f_Phase);       // reine Blindanteil
+				// f_Kapazitaet[c_Index] = f_Steigung_M_Range2_90Grad * (f_KapazitiverAnteil - st_NVParam.f_FactoryCalib_Empty_Range2_90Grad);
 				
+				//Ergaenzungen Phasenverschiebung:
+				//f_KapazitiverAnteil2 = C_GainPhase_pF * (OneOn_WR[Frequency_number] * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) - C_OffsetPhase_pF);
+				//st_Result.f_Phase = (st_Ref.f_Phase - st_Sig.f_Phase) + st_NVParam.f_PhaseOffset;   // Kompensation der Phasenschiebung des 500KHZ-Filters
+			
 				
 				
 				if (s25_Switch_CP_CR == 0)  //Toggle of Switch N6 on GPIO13 and assignment of capacity variables
@@ -744,9 +744,9 @@ void ua_main()
 					f_Kapazitaet_CP_P[Frequency_number] = C_GainPhase_pF * (OneOn_WR[Frequency_number] * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) - C_OffsetPhase_pF);
 					s25_Switch_CP_CR = 1; //Umschalten des Switches fuer CP-Messung
 
-					UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CP_A[Frequency_number];
-					UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CP_P[Frequency_number];
-					UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xC0);//Frequency_number and Code for CP;
+					//UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CP_A[Frequency_number];
+					//UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CP_P[Frequency_number];
+					//UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xC0);//Frequency_number and Code for CP;
 				}	
 				else
 				{//CR
@@ -756,14 +756,15 @@ void ua_main()
 					f_Kapazitaet_CR_P[Frequency_number]= C_GainPhase_pF * (OneOn_WR[Frequency_number] * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) - C_OffsetPhase_pF);
 					s25_Switch_CP_CR = 0; //Umschalten des Switches fuer CR-Messung					
 
-					UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CR_A[Frequency_number];
-					UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CR_P[Frequency_number];
-					UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xC1);//Frequency_number and Code for CR;				
+					//UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CR_A[Frequency_number];
+					//UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CR_P[Frequency_number];
+					//UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xC1);//Frequency_number and Code for CR;				
 					
 					//Frequency_number++; //Inkrement of the Frequency
 					if (Frequency_number == 6)
 					{
 						Frequency_number = 7;
+						//Current_state = ST_TEMPERATURE;
 					}
 					else
 					{
@@ -818,16 +819,15 @@ void ua_main()
 				}
 			}
 			Current_signal ^= 1; // Toggle between EN_SIGNAL <> EN_REFERENCE
-			//Current_state = ST_TEMPERATURE;
 		}
 		
-		/*else if ((Cycle_Number == 0) && (Current_state == ST_TEMPERATURE)) //Übergang Temperaturmessung
+		else if ((Cycle_Number == 0) && (Current_state == ST_TEMPERATURE)) //Übergang Temperaturmessung
 		{ 
 			Current_ADC_divider = ADC_divider[Frequency_number];
 			Last_ADC_Pointer = (ua_int_t)UA_ADC_MEM_PTR-1;
 			
 			UA_ADC_CONVERSION_TIME = (ua_word_t)Current_ADC_divider;
-			UA_ADC_CONVERSION_CONF = ((ua_word_t)UA_ADC_ENABLE) | ((ua_word_t)ADC_CONVERSION_CONF_VINPO);
+			UA_ADC_CONVERSION_CONF = ((ua_word_t)UA_ADC_ENABLE) | ((ua_word_t)ADC_CONVERSION_CONF_VINP3);
 			
 			Cycle_Number++;
 			MAX_UA_Cycle = UA_ceil((Current_ADC_divider + 28.0f) * 0.25f); //28 because of data output latency
@@ -844,8 +844,13 @@ void ua_main()
 			// R1 = 2k7
 			// T = (3kOhm - R2) / Tkoeff 
 			f32TGrad = 3000.0f - (2700.0f * f32TVoltage * FloatInverse(3.3f * 2750.0f - 2750.0f * f32TVoltage)); 
+
+			UA_SERIAL_OUT = (ua_word_t) f32TGrad;
+			UA_SERIAL_OUT2 = (ua_word_t) f32TGrad;
+			UA_SERIAL_OUT3 = (0xCA << 8)|(0xFE);//Frequency_number and Code for CP;
+
 			Current_state = ST_MEASURE;
-		}*/
+		}
 		else if ((Cycle_Number >= SLEEP_CYCLES) && (Current_state == ST_MEASURE)) //Aufwachen aus Sleep mode
 		{
 			Current_state = ST_STARTUP;
