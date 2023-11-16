@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 f = np.linspace(2000, 2002000, 10000 + 1)
-R=10000 #Ohm
+R=40000 #Ohm
 L=100*pow(10, (-6)) #H
 C0 = 99*pow(10, (-12)) #F
 Cmax = 114*pow(10, (-12)) #F
