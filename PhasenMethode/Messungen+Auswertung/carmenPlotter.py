@@ -31,7 +31,7 @@ Cr_P_m = []
 Cp_A_m = []
 Cp_P_m = []
 
-fileName = 'Messungen/woDAC_HomeOffice_1011/10s.csv'
+fileName = 'Messungen/woDAC_HomeOffice_1011/HomeOffSpannungsquelle.csv'
 filePath = 'Auswertung/' + fileName.rsplit('/')[-2] + '/' + fileName.rsplit('/')[-1].replace('csv', 'png')
 directory = os.path.dirname(filePath)
 if not os.path.exists(directory):
