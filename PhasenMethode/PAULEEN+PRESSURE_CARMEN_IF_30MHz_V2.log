@@ -15,9 +15,46 @@ Parallelization:
           |----|----|----|----|----|----|----|----|----|----|
           |||||||||||||||||||||||||||||||||||||||||||||||||||
 
-Info: Selected path: path1202; VLIW count: 858
+Info: Selected path: path1030; VLIW count: 704
 
-Compilation successful in 45,984 s
+Error: Errors or warnings during compilation of "C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c":
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c:298:2: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+        1.00403584698,
+        ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c:299:2: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+        2.00807169397,
+        ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c:300:2: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+        4.01614338794,
+        ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c:301:2: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+        8.03228677587,
+        ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c:302:2: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+        16.0645735517,
+        ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c:303:2: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+        32.1291471035,
+        ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c:304:2: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+        64.2582942070,
+        ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c:305:2: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+        128.516588414,
+        ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c:306:2: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+        257.033176828
+        ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c:472:13: warning: unused variable 'f32TGrad' [-Wunused-variable]
+        ua_float_t f32TGrad = 0;
+                   ^
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.c:473:13: warning: unused variable 'f32TVoltage' [-Wunused-variable]
+        ua_float_t f32TVoltage = 0;
+                   ^
+11 warnings generated.
+
+
+Compilation successful in 32,041 s
 
 ===========================Assembler===========================
 Analyzing ASM finished.
@@ -38,10 +75,10 @@ Start creating output files...
 All files generated successfully.
 
 -------------Memory usage:-------------------------------------
-IMEM:	858 of 2048
-DMEM:	308 of 1024	(125 checked param. + 1 CRC)
+IMEM:	704 of 2048
+DMEM:	258 of 1024	(118 checked param. + 1 CRC)
 ---------------------------------------------------------------
-Workload AU: 36,8%; LU: 21,3%; LD/ST: 89,9% (Concurr.: 24,0%)
+Workload AU: 38,2%; LU: 18,3%; LD/ST: 93,3% (Concurr.: 24,9%)
 
 
 ===================Longest Path Analyzation====================
@@ -272,6 +309,6 @@ Verifying Memory ...Successful
 
 Programming of:
 C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_30MHz_V2.bin
-successful in 37129 ms
+successful in 37654 ms
 Disconnecting Programmer...Done
 

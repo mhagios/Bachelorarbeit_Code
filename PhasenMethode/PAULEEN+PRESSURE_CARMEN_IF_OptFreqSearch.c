@@ -219,28 +219,28 @@ ua_param ua_word_t UA_INIT_ADC_CONVERSION_CONF = ADC_CONVERSION_CONF;
 // ua_param ua_word_t UA_INIT_ADC_CONVERSION_CONF = ADC_CONVERSION_CONF;
 
 ua_param ua_int_t ADC_divider[9] = {
-									32,
-									35,
-									38,
-									41,
-									44,
-									47,
-									50,
-									53,
-									56
+									4,
+									7,
+									10,
+									13,
+									16,
+									19,
+									22,
+									25,
+									28
 									};
 
 //                                      
 ua_param ua_word_t Increment_Table[9] = {
-										466034,
-										430186,
-										399458,
-										372828,
-										349526,
-										328966,
-										310690,
-										294338,
-										279621
+										524288,
+										479349,
+										441506,
+										409200,
+										381300,
+										356962,
+										335544,
+										316551,
+										299593
 										};
 
 // //                                       0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k
@@ -298,15 +298,15 @@ ua_param ua_word_t Increment_Table[9] = {
 
 //43kOhm
 ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
-		72.0000000000f,
-		78.3147960648f,
-		84.3390111467f,
-		90.3632262286f,
-		96.3874413105f,
-		102.411656392f,
-		108.435871474f,
-		114.460086556f,
-		120.484301638f
+		64.0000000000,
+		70.2825092889,
+		76.3067243708,
+		82.3309394527,
+		88.3551545346,
+		94.3793696165,
+		100.4035846984,
+		106.4277997803,
+		112.4520148622
 };
 
 //99.78kOhm
@@ -643,9 +643,6 @@ void ua_main()
 			UA_CONFIG_DDS = UA_DDS_MODE_SINE_SAW_PSK_FSK | UA_DDS_PHASE1_SELECT | UA_DDS_FREQUENCY1_SELECT | UA_DDS1_SINE | UA_DDS_RESTART | UA_DDS_DISABLE;
 
 			ua_int_t	Zeroline_Temp = 0;
-
-			
-			//s32TGrad =	//Auslesen der Temperatur
 			
 			for (Value_index = 0; Value_index < c_SAMPLE_POINTS; Value_index++) //Auslesen des ADCs
 			{

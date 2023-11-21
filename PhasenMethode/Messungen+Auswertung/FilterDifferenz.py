@@ -1,4 +1,5 @@
 from math import atan
+from math import atan2
 from math import pi
 import math
 import numpy as np
@@ -6,7 +7,7 @@ import matplotlib.pyplot as plt
 
 f = np.linspace(2000, 2002000, 10000 + 1)
 R=40000 #Ohm
-L=100*pow(10, (-6)) #H
+L=68*pow(10, (-3)) #H
 C0 = 99*pow(10, (-12)) #F
 Cmax = 114*pow(10, (-12)) #F
 
@@ -36,8 +37,8 @@ def annot_max(x,y, ax=None):
 Phi0=[]
 Phimax=[]
 for freq in f:
-    Phi0.append(-atan(freq*2*pi*R*C0) / (2*pi) * 360) # - R/(freq*2*pi*L)
-    Phimax.append(-atan(freq*2*pi*R*Cmax) / (2*pi) * 360) # - R/(freq*2*pi*L)
+    Phi0.append(-atan2(freq*2*pi*R*C0 - R/(freq*2*pi*L), 1) / (2*pi) * 360) 
+    Phimax.append(-atan2(freq*2*pi*R*Cmax - R/(freq*2*pi*L), 1) / (2*pi) * 360) # - R/(freq*2*pi*L)
     
 deltaPhi = [Phi0[x] - Phimax[x] for x in range(len(Phi0))]
 
@@ -47,7 +48,7 @@ plt.plot(f, deltaPhi, '-gD', markevery=markers_on, label="$\Delta \Phi$")
 
 annot_max(f,deltaPhi)
 
-plt.ylim(min(Phi0), 2.5*max(deltaPhi))
+#plt.ylim(min(Phi0), 2.5*max(deltaPhi))
 plt.ylabel("Phasenversatz / °")
 plt.xlabel("f / Hz")
 plt.legend()
@@ -58,8 +59,8 @@ plt.show()
 H0=[]
 Hmax=[]
 for freq in f:
-    H0.append(1 / (math.sqrt(1 + pow((2*pi*freq * R * C0), 2)))) # - R/(freq*2*pi*L)
-    Hmax.append(1 / (math.sqrt(1 + pow((2*pi*freq * R * Cmax), 2)))) # - R/(freq*2*pi*L)
+    H0.append(1 / (math.sqrt(1 + pow((2*pi*freq * R * C0 - R/(freq*2*pi*L)), 2)))) # - R/(freq*2*pi*L)
+    Hmax.append(1 / (math.sqrt(1 + pow((2*pi*freq * R * Cmax - R/(freq*2*pi*L)), 2)))) # - R/(freq*2*pi*L)
     
 deltaH = [H0[x] - Hmax[x] for x in range(len(H0))]
 

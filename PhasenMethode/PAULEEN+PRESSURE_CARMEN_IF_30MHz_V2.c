@@ -281,16 +281,29 @@ ua_param ua_word_t Increment_Table[9] = {
 // };
 
 //9.957kOhm
+// ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
+// 	4.76367070766f,
+// 	9.52734141533f,
+// 	19.0546828307f,
+// 	38.1093656613f,
+// 	76.2187313226f,
+// 	152.437462645f,
+// 	304.874925290f,
+// 	609.749850581f,
+// 	1219.49970116f
+// };
+
+//43kOhm
 ua_param ua_float_t OneOn_WR[9] = { //Aenderungsfaktoren fuer Parameter pro Frequenz durch Formel: 1/(2*pi*f*R) 
-	4.76367070766f,
-	9.52734141533f,
-	19.0546828307f,
-	38.1093656613f,
-	76.2187313226f,
-	152.437462645f,
-	304.874925290f,
-	609.749850581f,
-	1219.49970116f
+	1.00403584698,
+	2.00807169397,
+	4.01614338794,
+	8.03228677587,
+	16.0645735517,
+	32.1291471035,
+	64.2582942070,
+	128.516588414,
+	257.033176828
 };
 
 //99.78kOhm
@@ -482,12 +495,13 @@ void ua_main()
 
 			// ============================================================================
 			// Adjust correct Amplitude per Frequency =====================================
+			UA_OUTPUT_DDS1 =  (0x00003FF);
 			if (Frequency_number==0 ) 			// 0:3.6864  1: 1.8432  2:921k    3:461k   4:230k    5:115k   6:57,6k  7:28,8k  8: 14,4k
 			{
 				//if ( (DDS_Amplitude[0]&0x00003FF) > 0)
 				{
 					UA_DAC_CONFIG = UA_DAC_CONFIG_MODE(0b111) | UA_DAC_CONFIG_GDAC(0b100) | UA_DAC_CONFIG_PDN_DISABLE | UA_DAC_CONFIG_STANDBY_DISABLE;
-					UA_OUTPUT_DDS1 = (DDS_Amplitude[0]&0x00003FF);
+					//UA_OUTPUT_DDS1 = (DDS_Amplitude[0]&0x00003FF);
 					SET_LED_GREEN;
 				}
 				// else
@@ -500,7 +514,7 @@ void ua_main()
 				//if ( ((DDS_Amplitude[0]&0x000FFC00)>>10) > 0)
 				{
 					UA_DAC_CONFIG = UA_DAC_CONFIG_MODE(0b110) | UA_DAC_CONFIG_GDAC(0b100) | UA_DAC_CONFIG_PDN_DISABLE | UA_DAC_CONFIG_STANDBY_DISABLE;
-					UA_OUTPUT_DDS1 = ((DDS_Amplitude[0]&0x000FFC00)>>10);
+					//UA_OUTPUT_DDS1 = ((DDS_Amplitude[0]&0x000FFC00)>>10);
 					SET_LED_GREEN;
 				}
 				// else
@@ -513,7 +527,7 @@ void ua_main()
 				//if ( ((DDS_Amplitude[0]&0x3FF00000)>>20) > 0)
 				{
 					UA_DAC_CONFIG = UA_DAC_CONFIG_MODE(0b101) | UA_DAC_CONFIG_GDAC(0b100) | UA_DAC_CONFIG_PDN_DISABLE | UA_DAC_CONFIG_STANDBY_DISABLE;
-					UA_OUTPUT_DDS1 = ((DDS_Amplitude[0]&0x3FF00000)>>20);
+					//UA_OUTPUT_DDS1 = ((DDS_Amplitude[0]&0x3FF00000)>>20);
 					SET_LED_GREEN;
 				}
 				// else
@@ -526,7 +540,7 @@ void ua_main()
 				//if ((DDS_Amplitude[1]&0x00003FF) > 0)
 				{
 					UA_DAC_CONFIG = UA_DAC_CONFIG_MODE(0b100) | UA_DAC_CONFIG_GDAC(0b100) | UA_DAC_CONFIG_PDN_DISABLE | UA_DAC_CONFIG_STANDBY_DISABLE;
-					UA_OUTPUT_DDS1 = (DDS_Amplitude[1]&0x00003FF);
+					//UA_OUTPUT_DDS1 = (DDS_Amplitude[1]&0x00003FF);
 					SET_LED_GREEN;
 				}
 				// else
@@ -539,7 +553,7 @@ void ua_main()
 				//if (((DDS_Amplitude[1]&0x000FFC00)>>10) > 0)
 				{
 					UA_DAC_CONFIG = UA_DAC_CONFIG_MODE(0b100) | UA_DAC_CONFIG_GDAC(0b100) | UA_DAC_CONFIG_PDN_DISABLE | UA_DAC_CONFIG_STANDBY_DISABLE;
-					UA_OUTPUT_DDS1 = ((DDS_Amplitude[1]&0x000FFC00)>>10);
+					//UA_OUTPUT_DDS1 = ((DDS_Amplitude[1]&0x000FFC00)>>10);
 					SET_LED_GREEN;
 				}
 				// else
@@ -552,7 +566,7 @@ void ua_main()
 				//if (((DDS_Amplitude[1]&0x3FF00000)>>20) > 0)
 				{
 					UA_DAC_CONFIG = UA_DAC_CONFIG_MODE(0b011) | UA_DAC_CONFIG_GDAC(0b100) | UA_DAC_CONFIG_PDN_DISABLE | UA_DAC_CONFIG_STANDBY_DISABLE;
-					UA_OUTPUT_DDS1 = ((DDS_Amplitude[1]&0x3FF00000)>>20);
+					//UA_OUTPUT_DDS1 = ((DDS_Amplitude[1]&0x3FF00000)>>20);
 					SET_LED_GREEN;
 				}
 				// else
@@ -565,7 +579,7 @@ void ua_main()
 				//if ((DDS_Amplitude[2]&0x00003FF) > 0)
 				{
 					UA_DAC_CONFIG = UA_DAC_CONFIG_MODE(0b010) | UA_DAC_CONFIG_GDAC(0b100) | UA_DAC_CONFIG_PDN_DISABLE | UA_DAC_CONFIG_STANDBY_DISABLE;
-					UA_OUTPUT_DDS1 = (DDS_Amplitude[2]&0x00003FF);
+					//UA_OUTPUT_DDS1 = (DDS_Amplitude[2]&0x00003FF);
 					SET_LED_GREEN;
 				}
 				// else
@@ -578,7 +592,7 @@ void ua_main()
 				//if (((DDS_Amplitude[2]&0x000FFC00)>>10) > 0)
 				{
 					UA_DAC_CONFIG = UA_DAC_CONFIG_MODE(0b001) | UA_DAC_CONFIG_GDAC(0b100) | UA_DAC_CONFIG_PDN_DISABLE | UA_DAC_CONFIG_STANDBY_DISABLE;
-					UA_OUTPUT_DDS1 = ((DDS_Amplitude[2]&0x000FFC00)>>10);
+					//UA_OUTPUT_DDS1 = ((DDS_Amplitude[2]&0x000FFC00)>>10);
 					SET_LED_GREEN;
 				}
 				//else
@@ -591,7 +605,7 @@ void ua_main()
 				//if (((DDS_Amplitude[2]&0x3FF00000)>>20) > 0)
 				{				
 					UA_DAC_CONFIG = UA_DAC_CONFIG_MODE(0b001) | UA_DAC_CONFIG_GDAC(0b100) | UA_DAC_CONFIG_PDN_DISABLE | UA_DAC_CONFIG_STANDBY_DISABLE;
-					UA_OUTPUT_DDS1 = ((DDS_Amplitude[2]&0x3FF00000)>>20);
+					//UA_OUTPUT_DDS1 = ((DDS_Amplitude[2]&0x3FF00000)>>20);
 					SET_LED_GREEN;
 				}
 				//else
@@ -744,9 +758,9 @@ void ua_main()
 					f_Kapazitaet_CP_P[Frequency_number] = C_GainPhase_pF * (OneOn_WR[Frequency_number] * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) - C_OffsetPhase_pF);
 					s25_Switch_CP_CR = 1; //Umschalten des Switches fuer CP-Messung
 
-					//UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CP_A[Frequency_number];
-					//UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CP_P[Frequency_number];
-					//UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xC0);//Frequency_number and Code for CP;
+					UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CP_A[Frequency_number];
+					UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CP_P[Frequency_number];
+					UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xC0);//Frequency_number and Code for CP;
 				}	
 				else
 				{//CR
@@ -756,20 +770,20 @@ void ua_main()
 					f_Kapazitaet_CR_P[Frequency_number]= C_GainPhase_pF * (OneOn_WR[Frequency_number] * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) - C_OffsetPhase_pF);
 					s25_Switch_CP_CR = 0; //Umschalten des Switches fuer CR-Messung					
 
-					//UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CR_A[Frequency_number];
-					//UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CR_P[Frequency_number];
-					//UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xC1);//Frequency_number and Code for CR;				
+					UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_CR_A[Frequency_number];
+					UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_CR_P[Frequency_number];
+					UA_SERIAL_OUT3 = (Frequency_number << 8)|(0xC1);//Frequency_number and Code for CR;				
 					
-					//Frequency_number++; //Inkrement of the Frequency
-					if (Frequency_number == 6)
-					{
-						Frequency_number = 7;
-						//Current_state = ST_TEMPERATURE;
-					}
-					else
-					{
-						Frequency_number = 6;
-					}
+					Frequency_number++; //Inkrement of the Frequency
+					// if (Frequency_number == 6)
+					// {
+					// 	Frequency_number = 7;
+					// 	//Current_state = ST_TEMPERATURE;
+					// }
+					// else
+					// {
+					// 	Frequency_number = 6;
+					// }
 				}
 				
 				//Serielle Ausgabe der Werte mit der entsprechenden Frequenzzuweisung
@@ -821,36 +835,36 @@ void ua_main()
 			Current_signal ^= 1; // Toggle between EN_SIGNAL <> EN_REFERENCE
 		}
 		
-		else if ((Cycle_Number == 0) && (Current_state == ST_TEMPERATURE)) //Übergang Temperaturmessung
-		{ 
-			Current_ADC_divider = ADC_divider[Frequency_number];
-			Last_ADC_Pointer = (ua_int_t)UA_ADC_MEM_PTR-1;
+		// else if ((Cycle_Number == 0) && (Current_state == ST_TEMPERATURE)) //Übergang Temperaturmessung
+		// { 
+		// 	Current_ADC_divider = ADC_divider[Frequency_number];
+		// 	Last_ADC_Pointer = (ua_int_t)UA_ADC_MEM_PTR-1;
 			
-			UA_ADC_CONVERSION_TIME = (ua_word_t)Current_ADC_divider;
-			UA_ADC_CONVERSION_CONF = ((ua_word_t)UA_ADC_ENABLE) | ((ua_word_t)ADC_CONVERSION_CONF_VINP3);
+		// 	UA_ADC_CONVERSION_TIME = (ua_word_t)Current_ADC_divider;
+		// 	UA_ADC_CONVERSION_CONF = ((ua_word_t)UA_ADC_ENABLE) | ((ua_word_t)ADC_CONVERSION_CONF_VINP3);
 			
-			Cycle_Number++;
-			MAX_UA_Cycle = UA_ceil((Current_ADC_divider + 28.0f) * 0.25f); //28 because of data output latency
-		}
-		else if ((Cycle_Number >= MAX_UA_Cycle) && (Current_state == ST_TEMPERATURE)) //Auswertung Temperaturmessung
-		{
-			Cycle_Number = 0;
-			UA_ADC_CONVERSION_CONF = (ua_word_t)UA_ADC_DISABLE;
+		// 	Cycle_Number++;
+		// 	MAX_UA_Cycle = UA_ceil((Current_ADC_divider + 28.0f) * 0.25f); //28 because of data output latency
+		// }
+		// else if ((Cycle_Number >= MAX_UA_Cycle) && (Current_state == ST_TEMPERATURE)) //Auswertung Temperaturmessung
+		// {
+		// 	Cycle_Number = 0;
+		// 	UA_ADC_CONVERSION_CONF = (ua_word_t)UA_ADC_DISABLE;
 
-			f32TVoltage = UA_ADC_MEM[(Last_ADC_Pointer - period * c_SAMPLE_POINTS - Value_index) & 0x3FF] + Temp;
+		// 	f32TVoltage = UA_ADC_MEM[(Last_ADC_Pointer - period * c_SAMPLE_POINTS - Value_index) & 0x3FF] + Temp;
 
-			// Berechnung Temperatur aus Temperaturwiderstand (Tkoeff = 2750 +- 250)
-			// R2 = R1/(Vcc/U2 - 1)
-			// R1 = 2k7
-			// T = (3kOhm - R2) / Tkoeff 
-			f32TGrad = 3000.0f - (2700.0f * f32TVoltage * FloatInverse(3.3f * 2750.0f - 2750.0f * f32TVoltage)); 
+		// 	// Berechnung Temperatur aus Temperaturwiderstand (Tkoeff = 2750 +- 250)
+		// 	// R2 = R1/(Vcc/U2 - 1)
+		// 	// R1 = 2k7
+		// 	// T = (3kOhm - R2) / Tkoeff 
+		// 	f32TGrad = 3000.0f - (2700.0f * f32TVoltage * FloatInverse(3.3f * 2750.0f - 2750.0f * f32TVoltage)); 
 
-			UA_SERIAL_OUT = (ua_word_t) f32TGrad;
-			UA_SERIAL_OUT2 = (ua_word_t) f32TGrad;
-			UA_SERIAL_OUT3 = (0xCA << 8)|(0xFE);//Frequency_number and Code for CP;
+		// 	UA_SERIAL_OUT = (ua_word_t) f32TGrad;
+		// 	UA_SERIAL_OUT2 = (ua_word_t) f32TGrad;
+		// 	UA_SERIAL_OUT3 = (0xCA << 8)|(0xFE);//Frequency_number and Code for CP;
 
-			Current_state = ST_MEASURE;
-		}
+		// 	Current_state = ST_MEASURE;
+		// }
 		else if ((Cycle_Number >= SLEEP_CYCLES) && (Current_state == ST_MEASURE)) //Aufwachen aus Sleep mode
 		{
 			Current_state = ST_STARTUP;

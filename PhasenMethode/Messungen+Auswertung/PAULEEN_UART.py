@@ -3,8 +3,11 @@ import serial
 import serial.tools.list_ports
 import struct
 import csv
+import os
 
-NUM_FREQUENCIES = 2
+NUM_FREQUENCIES = 228-4
+START_FREQ_CODE = "04"
+fileName = 'Messungen/Filter_Schreibtisch_21_11/FrequencySweepTest.csv'
 
 
 def connectPAULEEN():
@@ -48,10 +51,12 @@ packageFound = False
 
 numCrcErrors = 0
 
-
+directory = os.path.dirname(fileName)
+if not os.path.exists(directory):
+    os.makedirs(directory)
 
 #Open File to write Data
-with open("Messungen/woDAC_Schreibtisch_1311/HomeOffSpannungsquelle.csv", "w", newline='') as fileWriter:
+with open(fileName, "w", newline='') as fileWriter:
     csvWriter = csv.writer(fileWriter, delimiter=';')
     serialPort.reset_input_buffer() #flush input buffer, discarding all its contents
     packageNum = 0
@@ -74,7 +79,7 @@ with open("Messungen/woDAC_Schreibtisch_1311/HomeOffSpannungsquelle.csv", "w", n
         # Wait until there is data waiting in the serial buffer
         # Because there is data discarded in the first package, it gets added in the second loop with startPos
         # Because the fragment of the last 13 byte in the first package is added in the second loop, the length of the package can be subtracted 
-        if serialPort.in_waiting > (104 - endOverflow + startPos): 
+        if serialPort.in_waiting > (52*2 - endOverflow + startPos): # 52Byte per Package *NUM_FREQUENCIES is often to much
             packageNum +=1
             startPos = 0
             
@@ -108,9 +113,8 @@ with open("Messungen/woDAC_Schreibtisch_1311/HomeOffSpannungsquelle.csv", "w", n
             
             #Find Beginning
             if startFound == False:
-                while packageFound == False:
+                while packageFound == False and len(byteBuf) > 13*5:
                     packageFound = True
-                    
                     #Find first occurence of 0x35 and check if its a data word
                     for i in range(5):
                         if byteBuf[i*13] != 0x35: #if in the next 5 cycles the cmd is not found, its likely a data word
@@ -121,13 +125,12 @@ with open("Messungen/woDAC_Schreibtisch_1311/HomeOffSpannungsquelle.csv", "w", n
                             break
                         
                 #Check if the package is the beginning with the lower frequency f=7 and c0
-                while startFound == False:
+                while startFound == False and len(byteBuf) > 13:
                     startFound = True
-                    if (byteBuf[9] != int("c0",base=16)) or (byteBuf[10] != int("07",base=16)):
+                    if (byteBuf[9] != int("c0",base=16)) or (byteBuf[10] != int(START_FREQ_CODE,base=16)):
                         startPos += 13
                         startFound = False
                         del byteBuf[0:13]
-        
         
             # byteStr = []
             # for x in byteBuf:
@@ -136,6 +139,10 @@ with open("Messungen/woDAC_Schreibtisch_1311/HomeOffSpannungsquelle.csv", "w", n
             #     print(byteStr[i*13:i*13 + 13])
             # print("\n\n")
             
+            #Reset Package if start is not found
+            if startFound == False:
+                packageFound = False
+                continue
             
             #Find End and if the last package is fragmented, then save it for the next cycle
             endOverflow = len(byteBuf) %13

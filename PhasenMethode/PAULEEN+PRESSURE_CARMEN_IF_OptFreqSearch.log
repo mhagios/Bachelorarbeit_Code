@@ -1,0 +1,311 @@
+Microarchitecure Suite Version 3.20.20
+UAC Compiler Version 2.5 @ 16.12.2022 15:14:30
+
+==========================C-Compiler===========================
+Selected Strategy: backlog,1 - Additional Option: -l
+Compiling C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_OptFreqSearch.ll
+
+Optimization:
+          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+          |||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Parallelization:
+          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+          |||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Info: Selected path: path1030; VLIW count: 720
+
+Error: Errors or warnings during compilation of "C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_OptFreqSearch.c":
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_OptFreqSearch.c:302:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                70.2825092889,
+                ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_OptFreqSearch.c:303:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                76.3067243708,
+                ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_OptFreqSearch.c:304:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                82.3309394527,
+                ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_OptFreqSearch.c:305:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                88.3551545346,
+                ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_OptFreqSearch.c:306:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                94.3793696165,
+                ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_OptFreqSearch.c:307:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                100.4035846984,
+                ^~~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_OptFreqSearch.c:308:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                106.4277997803,
+                ^~~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_OptFreqSearch.c:309:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                112.4520148622
+                ^~~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_OptFreqSearch.c:477:13: warning: unused variable 'f32TGrad' [-Wunused-variable]
+        ua_float_t f32TGrad = 0;
+                   ^
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_OptFreqSearch.c:478:13: warning: unused variable 'f32TVoltage' [-Wunused-variable]
+        ua_float_t f32TVoltage = 0;
+                   ^
+10 warnings generated.
+
+
+Compilation successful in 42,025 s
+
+===========================Assembler===========================
+Analyzing ASM finished.
+Note: Variable "UA_INIT_ADC_CONVERSION_CONF" declared but not used.
+Start creating output files...
+ - Warning: PID File doesn't exist, use 0xFFFFFFFF for whole PID Table!
+ - Warning: SMEM File doesn't exist, use 0xFFFFFFFF for whole SMEM!
+ - Warning: ENPMEM File doesn't exist, use 0xFFFFFFFF for whole ENPMEM!
+ - Warning: Bluetooth Password File doesn't exist, use 0xFFFFFFFF for whole Bluetooth Password!
+ - Warning: PID File doesn't exist, use 0xFFFFFFFF for whole PID Table!
+ - Warning: SMEM File doesn't exist, use 0xFFFFFFFF for whole SMEM!
+ - Warning: ENPMEM File doesn't exist, use 0xFFFFFFFF for whole ENPMEM!
+ - Warning: Bluetooth Password File doesn't exist, use 0xFFFFFFFF for whole Bluetooth Password!
+	- BIN Files
+	- MAP Files
+	- TXT Files
+
+All files generated successfully.
+
+-------------Memory usage:-------------------------------------
+IMEM:	720 of 2048
+DMEM:	258 of 1024	(118 checked param. + 1 CRC)
+---------------------------------------------------------------
+Workload AU: 37,4%; LU: 17,9%; LD/ST: 93,5% (Concurr.: 24,4%)
+
+
+===================Longest Path Analyzation====================
+Info: The Path analyzer couldn't finish. This error can occur if there is an (endless) loop.
+
+
+==========================Programmer===========================
+Connecting Programmer...Connected
+Set Up Programmer...Done
+
+
+DMEM:
+Writing 4096 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+IMEM:
+Writing 10240 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+IMEM_CRC:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PMEM_WORD_SIZE:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+SMEM_Config:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+DeviceID:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+VibronicID1:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+VibronicID2:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+CRC_CHECK1:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_WRITE_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_READ_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_WRITE_SENS_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_READ_SENS_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_WRITE_HIST_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_READ_HIST_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_WRITE_WHOLE:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_READ_WHOLE:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_WRITE_USER_HMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_READ_USER_HMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_WRITE_USER_DMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PW_READ_USER_DMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+CRC_CHECK2:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+PID_Table:
+Writing 508 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+CRC_CHECK3:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+SMEM_EEP:
+Writing 128 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+ENPMEM_EEP:
+Writing 188 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+BLUTOOTH_PASS_EEP:
+Writing 256 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup DMEM:
+Writing 4096 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup IMEM:
+Writing 10240 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup IMEM_CRC:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PMEM_WORD_SIZE:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup SMEM_Config:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup DeviceID:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup VibronicID1:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup VibronicID2:
+Writing 2 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup CRC_CHECK1:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_WRITE_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_READ_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_WRITE_SENS_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_READ_SENS_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_WRITE_HIST_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_READ_HIST_EEP:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_WRITE_WHOLE:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_READ_WHOLE:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_WRITE_USER_HMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_READ_USER_HMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_WRITE_USER_DMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PW_READ_USER_DMEM:
+Writing 4 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup CRC_CHECK2:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup PID_Table:
+Writing 508 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup CRC_CHECK3:
+Writing 3 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup SMEM_EEP:
+Writing 128 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup ENPMEM_EEP:
+Writing 188 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+Backup BLUTOOTH_PASS_EEP:
+Writing 256 Bytes to EEPROM ...Done
+Verifying Memory ...Successful
+
+
+Programming of:
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_CARMEN_IF_OptFreqSearch.bin
+successful in 36106 ms
+Disconnecting Programmer...Done
+
