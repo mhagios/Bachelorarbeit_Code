@@ -1,0 +1,88 @@
+Microarchitecure Suite Version 3.20.20
+UAC Compiler Version 2.5 @ 16.12.2022 15:14:30
+
+==========================C-Compiler===========================
+Selected Strategy: backlog,1 - Additional Option: -l
+Compiling C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_Temperature_States.ll
+
+Optimization:
+          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+          |||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Parallelization:
+          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+          |||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Info: Selected path: path210; VLIW count: 268
+
+Error: Errors or warnings during compilation of "C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_Temperature_States.c":
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_Temperature_States.c:302:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                70.2825092889,
+                ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_Temperature_States.c:303:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                76.3067243708,
+                ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_Temperature_States.c:304:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                82.3309394527,
+                ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_Temperature_States.c:305:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                88.3551545346,
+                ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_Temperature_States.c:306:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                94.3793696165,
+                ^~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_Temperature_States.c:307:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                100.4035846984,
+                ^~~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_Temperature_States.c:308:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                106.4277997803,
+                ^~~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_Temperature_States.c:309:3: warning: implicit conversion loses floating-point precision: 'double' to 'ua_float_t' (aka 'float') [-Wconversion]
+                112.4520148622
+                ^~~~~~~~~~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_Temperature_States.c:708:35: warning: implicit conversion turns floating-point number into integer: 'float' to 'ua_int_t' (aka 'int') [-Wfloat-conversion]
+                        MAX_UA_Cycle = (10.0f + 28.0f) * 0.5f; //28800Hz  
+                                     ~ ~~~~~~~~~~~~~~~~^~~~~~
+C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_Temperature_States.c:726:42: warning: implicit conversion turns floating-point number into integer: 'float' to 'ua_int_t' (aka 'int') [-Wfloat-conversion]
+                        ADC_values_sig[0] = ADC_values_sig[0] * FloatInverse(16.0f);
+                                          ~ ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+10 warnings generated.
+
+
+Compilation successful in 1,579 s
+
+===========================Assembler===========================
+Analyzing ASM finished.
+Note: Variable "UA_INIT_ADC_CONVERSION_CONF" declared but not used.
+Note: Variable "OneOn_WR" declared but not used.
+Note: Variable "f_VIRTUAL_SINE" declared but not used.
+Start creating output files...
+ - Warning: PID File doesn't exist, use 0xFFFFFFFF for whole PID Table!
+ - Warning: SMEM File doesn't exist, use 0xFFFFFFFF for whole SMEM!
+ - Warning: ENPMEM File doesn't exist, use 0xFFFFFFFF for whole ENPMEM!
+ - Warning: Bluetooth Password File doesn't exist, use 0xFFFFFFFF for whole Bluetooth Password!
+ - Warning: PID File doesn't exist, use 0xFFFFFFFF for whole PID Table!
+ - Warning: SMEM File doesn't exist, use 0xFFFFFFFF for whole SMEM!
+ - Warning: ENPMEM File doesn't exist, use 0xFFFFFFFF for whole ENPMEM!
+ - Warning: Bluetooth Password File doesn't exist, use 0xFFFFFFFF for whole Bluetooth Password!
+	- BIN Files
+	- MAP Files
+	- TXT Files
+
+All files generated successfully.
+
+-------------Memory usage:-------------------------------------
+IMEM:	268 of 2048
+DMEM:	140 of 1024	(103 checked param. + 1 CRC)
+---------------------------------------------------------------
+Workload AU: 22,0%; LU: 14,9%; LD/ST: 94,8% (Concurr.: 15,9%)
+
+
+===================Longest Path Analyzation====================
+Info: The Path analyzer couldn't finish. This error can occur if there is an (endless) loop.
+
+
+==========================Programmer===========================
+Connecting Programmer...Failed!

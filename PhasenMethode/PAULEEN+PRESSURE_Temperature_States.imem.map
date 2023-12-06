@@ -1,0 +1,1072 @@
+Addresse: 0 / 0000 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | CLR 0x422
+   Code: 23326c22 
+Addresse: 1 / 0001 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | CLR 0x424
+   Code: 23326c24 
+Addresse: 2 / 0002 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_0 LD
+   Code: 2332000a 
+Addresse: 3 / 0003 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x423 LD
+   Code: 23324c23 
+Addresse: 4 / 0004 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_1 LD
+   Code: 2332000b 
+Addresse: 5 / 0005 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x409 LD
+   Code: 23324c09 
+Addresse: 6 / 0006 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_2 LD
+   Code: 2332000c 
+Addresse: 7 / 0007 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x409 LD
+   Code: 23324c09 
+Addresse: 8 / 0008 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_3 LD
+   Code: 2332000d 
+Addresse: 9 / 0009 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x409 LD
+   Code: 23324c09 
+Addresse: 10 / 000A 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_4 LD
+   Code: 2332000e 
+Addresse: 11 / 000B 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x448 LD
+   Code: 23324c48 
+Addresse: 12 / 000C 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | CLR 0x405
+   Code: 23326c05 
+Addresse: 13 / 000D 
+   Label: while.body 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Cycle_Number LD
+   Code: 233202ff 
+Addresse: 14 / 000E 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_5 LD
+   Code: 2334000f 
+Addresse: 15 / 000F 
+   Label:  
+   JE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @land.lhs.true LD
+   Code: a33200b6 
+Addresse: 16 / 0010 
+   Label: if.else35 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Cycle_Number LD
+   Code: 233202ff 
+Addresse: 17 / 0011 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD MAX_UA_Cycle LD
+   Code: 233402fe 
+Addresse: 18 / 0012 
+   Label:  
+   JGE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @land.lhs.true38 LD
+   Code: 1a33200a7 
+Addresse: 19 / 0013 
+   Label: if.else42 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Cycle_Number LD
+   Code: 233202ff 
+Addresse: 20 / 0014 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_5 LD
+   Code: 2334000f 
+Addresse: 21 / 0015 
+   Label:  
+   JE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @land.lhs.true45 LD
+   Code: a3320097 
+Addresse: 22 / 0016 
+   Label: if.else52 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Cycle_Number LD
+   Code: 233202ff 
+Addresse: 23 / 0017 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD MAX_UA_Cycle LD
+   Code: 233402fe 
+Addresse: 24 / 0018 
+   Label:  
+   JGE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @land.lhs.true55 LD
+   Code: 1a3320031 
+Addresse: 25 / 0019 
+   Label: if.else85 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Cycle_Number LD
+   Code: 233202ff 
+Addresse: 26 / 001A 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_45 LD
+   Code: 23340010 
+Addresse: 27 / 001B 
+   Label:  
+   JGE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @land.lhs.true88 LD
+   Code: 1a3320027 
+Addresse: 28 / 001C 
+   Label: if.else92 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Current_state LD
+   Code: 233202fd 
+Addresse: 29 / 001D 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_9 LD
+   Code: 23340011 
+Addresse: 30 / 001E 
+   Label:  
+   JE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.then95 LD
+   Code: a3320023 
+Addresse: 31 / 001F 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Cycle_Number LD
+   Code: 233202ff 
+Addresse: 32 / 0020 
+   Label:  
+   INC  | INC LD ACC  | MOV R0 R0  | CLR 0x3FF
+   Code: 2f26bff 
+Addresse: 33 / 0021 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR Cycle_Number ACC
+   Code: 23320aff 
+Addresse: 34 / 0022 
+   Label:  
+   JMP  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end98 LD
+   Code: 63320026 
+Addresse: 35 / 0023 
+   Label: if.then95 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_0 LD
+   Code: 2332000a 
+Addresse: 36 / 0024 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR Current_state LD
+   Code: 23324afd 
+Addresse: 37 / 0025 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | CLR Cycle_Number
+   Code: 23326aff 
+Addresse: 38 / 0026 
+   Label: if.end98 
+   JMP  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end99 LD
+   Code: 63320030 
+Addresse: 39 / 0027 
+   Label: land.lhs.true88 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Current_state LD
+   Code: 233202fd 
+Addresse: 40 / 0028 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_0 LD
+   Code: 2334000a 
+Addresse: 41 / 0029 
+   Label:  
+   JE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.then91 LD
+   Code: a332002b 
+Addresse: 42 / 002A 
+   Label:  
+   JMP  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.else92 LD
+   Code: 6332001c 
+Addresse: 43 / 002B 
+   Label: if.then91 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_9 LD
+   Code: 23320011 
+Addresse: 44 / 002C 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR Current_state LD
+   Code: 23324afd 
+Addresse: 45 / 002D 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | CLR Cycle_Number
+   Code: 23326aff 
+Addresse: 46 / 002E 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_46 LD
+   Code: 23320012 
+Addresse: 47 / 002F 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x432 LD
+   Code: 23324c32 
+Addresse: 48 / 0030 
+   Label: if.end99 
+   JMP  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end100 LD
+   Code: 63320096 
+Addresse: 49 / 0031 
+   Label: land.lhs.true55 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Current_state LD
+   Code: 233202fd 
+Addresse: 50 / 0032 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_11 LD
+   Code: 23340013 
+Addresse: 51 / 0033 
+   Label:  
+   JE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.then58 LD
+   Code: a3320035 
+Addresse: 52 / 0034 
+   Label:  
+   JMP  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.else85 LD
+   Code: 63320019 
+Addresse: 53 / 0035 
+   Label: if.then58 
+   INC  | MOV ACC ACC  | MOV R0 R0  | CLR 0x429
+   Code: 23326c29 
+Addresse: 54 / 0036 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD tCounter LD
+   Code: 233202fc 
+Addresse: 55 / 0037 
+   Label:  
+   INC  | INC LD ACC  | MOV R0 R0  | CLR 0x3FF
+   Code: 2f26bff 
+Addresse: 56 / 0038 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR tCounter ACC
+   Code: 23320afc 
+Addresse: 57 / 0039 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | CLR Cycle_Number
+   Code: 23326aff 
+Addresse: 58 / 003A 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | CLR Temp
+   Code: 23326afb 
+Addresse: 59 / 003B 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | CLR period
+   Code: 23326afa 
+Addresse: 60 / 003C 
+   Label: for.cond 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD period LD
+   Code: 233202fa 
+Addresse: 61 / 003D 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_28 LD
+   Code: 23340014 
+Addresse: 62 / 003E 
+   Label:  
+   JGE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @for.end LD
+   Code: 1a332004a 
+Addresse: 63 / 003F 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Last_ADC_Pointer LD
+   Code: 233202f9 
+Addresse: 64 / 0040 
+   Label:  
+   INC  | MOV LD ACC  | MOV R0 R0  | LOAD period LD
+   Code: 23b202fa 
+Addresse: 65 / 0041 
+   Label:  
+   INC  | SUB ACC LD ACC  | MOV R0 R0  | LOAD ua_const_6 LD
+   Code: 10b20015 
+Addresse: 66 / 0042 
+   Label:  
+   INC  | MOV ACC ACC  | AND ACC LD R0  | LOAD UA_ADC_MEM_regptr LD
+   Code: 23110016 
+Addresse: 67 / 0043 
+   Label:  
+   INC  | ADD LD R0 ACC  | MOV R0 R0  | CLR 0x3FF
+   Code: 2726bff 
+Addresse: 68 / 0044 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOFF 0x0 ACC LD
+   Code: 23321000 
+Addresse: 69 / 0045 
+   Label:  
+   INC  | MOV LD ACC  | MOV R0 R0  | LOAD Temp LD
+   Code: 23b202fb 
+Addresse: 70 / 0046 
+   Label:  
+   INC  | ADD ACC LD ACC  | MOV R0 R0  | LOAD period LD
+   Code: b202fa 
+Addresse: 71 / 0047 
+   Label:  
+   INC  | INC LD ACC  | MOV R0 R0  | STOR Temp ACC
+   Code: 2f20afb 
+Addresse: 72 / 0048 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR period ACC
+   Code: 23320afa 
+Addresse: 73 / 0049 
+   Label:  
+   JMP  | MOV ACC ACC  | MOV R0 R0  | LOAD @for.cond LD
+   Code: 6332003c 
+Addresse: 74 / 004A 
+   Label: for.end 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Value_index LD
+   Code: 233202f8 
+Addresse: 75 / 004B 
+   Label:  
+   INC  | MOV LD ACC  | MOV R0 R0  | LOAD Temp LD
+   Code: 23b202fb 
+Addresse: 76 / 004C 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | SOFF ADC_values_sig ACC LD
+   Code: 23325ae8 
+Addresse: 77 / 004D 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOFF ADC_values_sig 0 LD
+   Code: 233202e8 
+Addresse: 78 / 004E 
+   Label:  
+   INC  | P2F LD  ACC  | MOV R0 R0  | LOAD ua_const_29 LD
+   Code: 3ef20017 
+Addresse: 79 / 004F 
+   Label:  
+   INC  | MOV LD ACC  | MOV R0 R0  | STOR ua_tmp_30 ACC
+   Code: 23b20add 
+Addresse: 80 / 0050 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR ua_loc_in.addr.i106 LD
+   Code: 23324ae1 
+Addresse: 81 / 0051 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_30 LD
+   Code: 23320018 
+Addresse: 82 / 0052 
+   Label:  
+   INC  | MOV ACC ACC  | AND ACC LD R0  | LOAD ua_const_31 LD
+   Code: 23110019 
+Addresse: 83 / 0053 
+   Label:  
+   INC  | MOV ACC ACC  | OR R0 LD R0  | LOAD ua_const_32 LD
+   Code: 2323001a 
+Addresse: 84 / 0054 
+   Label:  
+   INC  | FMUL LD R0 ACC  | MOV R0 R0  | LOAD ua_const_33 LD
+   Code: 2a72001b 
+Addresse: 85 / 0055 
+   Label:  
+   INC  | FSUB LD ACC ACC  | MOV R0 R0  | LOAD ua_const_34 LD
+   Code: 3232001c 
+Addresse: 86 / 0056 
+   Label:  
+   INC  | FMUL R0 ACC ACC  | MOV R0 R0  | STOR ua_loc_x.i108 ACC
+   Code: 29320ae0 
+Addresse: 87 / 0057 
+   Label:  
+   INC  | FSUB LD ACC ACC  | MOV R0 R0  | LOAD ua_loc_x.i108 LD
+   Code: 323202e0 
+Addresse: 88 / 0058 
+   Label:  
+   INC  | FMUL LD ACC ACC  | MOV R0 R0  | LOAD ua_const_34 LD
+   Code: 2a32001c 
+Addresse: 89 / 0059 
+   Label:  
+   INC  | FMUL R0 ACC ACC  | MOV R0 R0  | STOR ua_loc_x.i108 ACC
+   Code: 29320ae0 
+Addresse: 90 / 005A 
+   Label:  
+   INC  | FSUB LD ACC ACC  | MOV R0 R0  | LOAD ua_loc_x.i108 LD
+   Code: 323202e0 
+Addresse: 91 / 005B 
+   Label:  
+   INC  | FMUL LD ACC ACC  | MOV R0 R0  | LOAD ua_const_34 LD
+   Code: 2a32001c 
+Addresse: 92 / 005C 
+   Label:  
+   INC  | FMUL R0 ACC ACC  | MOV R0 R0  | STOR ua_loc_x.i108 ACC
+   Code: 29320ae0 
+Addresse: 93 / 005D 
+   Label:  
+   INC  | FSUB LD ACC ACC  | MOV R0 R0  | LOAD ua_loc_x.i108 LD
+   Code: 323202e0 
+Addresse: 94 / 005E 
+   Label:  
+   INC  | FMUL LD ACC ACC  | MOV R0 R0  | LOAD ua_const_30 LD
+   Code: 2a320018 
+Addresse: 95 / 005F 
+   Label:  
+   INC  | MOV ACC ACC  | AND ACC LD R0  | STOR ua_loc_x.i108 ACC
+   Code: 23110ae0 
+Addresse: 96 / 0060 
+   Label:  
+   INC  | MOV R0 ACC  | MOV R0 R0  | LOAD ua_loc_in.addr.i106 LD
+   Code: 237202e1 
+Addresse: 97 / 0061 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_35 LD
+   Code: 2334001d 
+Addresse: 98 / 0062 
+   Label:  
+   INC  | MOV ACC ACC  | XOR R0 LD R0  | LOAD ua_const_36 LD
+   Code: 232b001e 
+Addresse: 99 / 0063 
+   Label:  
+   INC  | MOV ACC ACC  | AND R0 LD R0  | LOAD ua_const_37 LD
+   Code: 2313001f 
+Addresse: 100 / 0064 
+   Label:  
+   INC  | MOV ACC ACC  | OR ACC R0 R0  | CLR 0x3FF
+   Code: 2320ebff 
+Addresse: 101 / 0065 
+   Label:  
+   INC  | FMUL R0 LD ACC  | MOV R0 R0  | LOAD ua_tmp_30 LD
+   Code: 29b202dd 
+Addresse: 102 / 0066 
+   Label:  
+   INC  | FMUL LD ACC ACC  | MOV R0 R0  | CLR 0x3FF
+   Code: 2a326bff 
+Addresse: 103 / 0067 
+   Label:  
+   INC  | F2P ACC  ACC  | MOV R0 R0  | CLR 0x3FF
+   Code: 2cf26bff 
+Addresse: 104 / 0068 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | SOFF ADC_values_sig 0x0 ACC
+   Code: 23320ae8 
+Addresse: 105 / 0069 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOFF ADC_values_sig 0 LD
+   Code: 233202e8 
+Addresse: 106 / 006A 
+   Label:  
+   INC  | P2F LD  ACC  | MOV R0 R0  | LOAD ua_const_38 LD
+   Code: 3ef20020 
+Addresse: 107 / 006B 
+   Label:  
+   INC  | FMUL ACC LD ACC  | MOV R0 R0  | LOAD ua_const_39 LD
+   Code: 28b20021 
+Addresse: 108 / 006C 
+   Label:  
+   INC  | FMUL ACC LD ACC  | MOV R0 R0  | STOR f32Voltage ACC
+   Code: 28b20ae7 
+Addresse: 109 / 006D 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_40 LD
+   Code: 23320022 
+Addresse: 110 / 006E 
+   Label:  
+   INC  | MOV LD ACC  | MOV R0 R0  | STOR ua_tmp_59 ACC
+   Code: 23b20adc 
+Addresse: 111 / 006F 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD f32Voltage LD
+   Code: 233202e7 
+Addresse: 112 / 0070 
+   Label:  
+   INC  | FSUB ACC LD ACC  | MOV R0 R0  | LOAD ua_const_30 LD
+   Code: 30b20018 
+Addresse: 113 / 0071 
+   Label:  
+   INC  | MOV ACC ACC  | AND ACC LD R0  | STOR ua_loc_in.addr.i104 ACC
+   Code: 23110adf 
+Addresse: 114 / 0072 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_31 LD
+   Code: 23320019 
+Addresse: 115 / 0073 
+   Label:  
+   INC  | MOV ACC ACC  | OR R0 LD R0  | LOAD ua_const_32 LD
+   Code: 2323001a 
+Addresse: 116 / 0074 
+   Label:  
+   INC  | FMUL LD R0 ACC  | MOV R0 R0  | LOAD ua_const_33 LD
+   Code: 2a72001b 
+Addresse: 117 / 0075 
+   Label:  
+   INC  | FSUB LD ACC ACC  | MOV R0 R0  | LOAD ua_const_34 LD
+   Code: 3232001c 
+Addresse: 118 / 0076 
+   Label:  
+   INC  | FMUL R0 ACC ACC  | MOV R0 R0  | STOR ua_loc_x.i ACC
+   Code: 29320ade 
+Addresse: 119 / 0077 
+   Label:  
+   INC  | FSUB LD ACC ACC  | MOV R0 R0  | LOAD ua_loc_x.i LD
+   Code: 323202de 
+Addresse: 120 / 0078 
+   Label:  
+   INC  | FMUL LD ACC ACC  | MOV R0 R0  | LOAD ua_const_34 LD
+   Code: 2a32001c 
+Addresse: 121 / 0079 
+   Label:  
+   INC  | FMUL R0 ACC ACC  | MOV R0 R0  | STOR ua_loc_x.i ACC
+   Code: 29320ade 
+Addresse: 122 / 007A 
+   Label:  
+   INC  | FSUB LD ACC ACC  | MOV R0 R0  | LOAD ua_loc_x.i LD
+   Code: 323202de 
+Addresse: 123 / 007B 
+   Label:  
+   INC  | FMUL LD ACC ACC  | MOV R0 R0  | LOAD ua_const_34 LD
+   Code: 2a32001c 
+Addresse: 124 / 007C 
+   Label:  
+   INC  | FMUL R0 ACC ACC  | MOV R0 R0  | STOR ua_loc_x.i ACC
+   Code: 29320ade 
+Addresse: 125 / 007D 
+   Label:  
+   INC  | FSUB LD ACC ACC  | MOV R0 R0  | LOAD ua_loc_x.i LD
+   Code: 323202de 
+Addresse: 126 / 007E 
+   Label:  
+   INC  | FMUL LD ACC ACC  | MOV R0 R0  | LOAD ua_const_30 LD
+   Code: 2a320018 
+Addresse: 127 / 007F 
+   Label:  
+   INC  | MOV ACC ACC  | AND ACC LD R0  | STOR ua_loc_x.i ACC
+   Code: 23110ade 
+Addresse: 128 / 0080 
+   Label:  
+   INC  | MOV R0 ACC  | MOV R0 R0  | LOAD ua_loc_in.addr.i104 LD
+   Code: 237202df 
+Addresse: 129 / 0081 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_35 LD
+   Code: 2334001d 
+Addresse: 130 / 0082 
+   Label:  
+   INC  | MOV ACC ACC  | XOR R0 LD R0  | LOAD ua_const_36 LD
+   Code: 232b001e 
+Addresse: 131 / 0083 
+   Label:  
+   INC  | MOV ACC ACC  | AND R0 LD R0  | LOAD ua_const_37 LD
+   Code: 2313001f 
+Addresse: 132 / 0084 
+   Label:  
+   INC  | MOV ACC ACC  | OR ACC R0 R0  | CLR 0x3FF
+   Code: 2320ebff 
+Addresse: 133 / 0085 
+   Label:  
+   INC  | FMUL R0 LD ACC  | MOV R0 R0  | LOAD ua_tmp_59 LD
+   Code: 29b202dc 
+Addresse: 134 / 0086 
+   Label:  
+   INC  | FMUL LD ACC ACC  | MOV R0 R0  | LOAD ua_const_41 LD
+   Code: 2a320023 
+Addresse: 135 / 0087 
+   Label:  
+   INC  | FSUB ACC LD ACC  | MOV R0 R0  | STOR f32Rnew ACC
+   Code: 30b20ae6 
+Addresse: 136 / 0088 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_42 LD
+   Code: 23320024 
+Addresse: 137 / 0089 
+   Label:  
+   INC  | FMUL ACC LD ACC  | MOV R0 R0  | LOAD ua_const_43 LD
+   Code: 28b20025 
+Addresse: 138 / 008A 
+   Label:  
+   INC  | FADD ACC LD ACC  | MOV R0 R0  | LOAD f32Rnew LD
+   Code: 20b202e6 
+Addresse: 139 / 008B 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR f32TGrad ACC
+   Code: 23320ae5 
+Addresse: 140 / 008C 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x404 LD
+   Code: 23324c04 
+Addresse: 141 / 008D 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD f32TGrad LD
+   Code: 233202e5 
+Addresse: 142 / 008E 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x427 LD
+   Code: 23324c27 
+Addresse: 143 / 008F 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD tCounter LD
+   Code: 233202fc 
+Addresse: 144 / 0090 
+   Label:  
+   INC  | MOV ACC ACC  | SL LD 8 R0  | LOAD ua_const_44 LD
+   Code: 23048026 
+Addresse: 145 / 0091 
+   Label:  
+   INC  | MOV R0 ACC  | MOV R0 R0  | CLR 0x3FF
+   Code: 23726bff 
+Addresse: 146 / 0092 
+   Label:  
+   INC  | MOV ACC ACC  | OR ACC LD R0  | CLR 0x3FF
+   Code: 23216bff 
+Addresse: 147 / 0093 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x428 R0
+   Code: 23322c28 
+Addresse: 148 / 0094 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_11 LD
+   Code: 23320013 
+Addresse: 149 / 0095 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR Current_state LD
+   Code: 23324afd 
+Addresse: 150 / 0096 
+   Label: if.end100 
+   JMP  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end101 LD
+   Code: 633200a6 
+Addresse: 151 / 0097 
+   Label: land.lhs.true45 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Current_state LD
+   Code: 233202fd 
+Addresse: 152 / 0098 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_11 LD
+   Code: 23340013 
+Addresse: 153 / 0099 
+   Label:  
+   JE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.then48 LD
+   Code: a332009b 
+Addresse: 154 / 009A 
+   Label:  
+   JMP  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.else52 LD
+   Code: 63320016 
+Addresse: 155 / 009B 
+   Label: if.then48 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD 0x3D1 LD
+   Code: 233203d1 
+Addresse: 156 / 009C 
+   Label:  
+   INC  | DEC LD ACC  | MOV R0 R0  | CLR 0x3FF
+   Code: 12f26bff 
+Addresse: 157 / 009D 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR Last_ADC_Pointer ACC
+   Code: 23320af9 
+Addresse: 158 / 009E 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | CLR 0x420
+   Code: 23326c20 
+Addresse: 159 / 009F 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_26 LD
+   Code: 23320027 
+Addresse: 160 / 00A0 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x429 LD
+   Code: 23324c29 
+Addresse: 161 / 00A1 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_27 LD
+   Code: 23320028 
+Addresse: 162 / 00A2 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR MAX_UA_Cycle LD
+   Code: 23324afe 
+Addresse: 163 / 00A3 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Cycle_Number LD
+   Code: 233202ff 
+Addresse: 164 / 00A4 
+   Label:  
+   INC  | INC LD ACC  | MOV R0 R0  | CLR 0x3FF
+   Code: 2f26bff 
+Addresse: 165 / 00A5 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR Cycle_Number ACC
+   Code: 23320aff 
+Addresse: 166 / 00A6 
+   Label: if.end101 
+   JMP  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end102 LD
+   Code: 633200b5 
+Addresse: 167 / 00A7 
+   Label: land.lhs.true38 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Current_state LD
+   Code: 233202fd 
+Addresse: 168 / 00A8 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_0 LD
+   Code: 2334000a 
+Addresse: 169 / 00A9 
+   Label:  
+   JE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.then41 LD
+   Code: a33200ab 
+Addresse: 170 / 00AA 
+   Label:  
+   JMP  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.else42 LD
+   Code: 63320013 
+Addresse: 171 / 00AB 
+   Label: if.then41 
+   INC  | MOV ACC ACC  | MOV R0 R0  | CLR Cycle_Number
+   Code: 23326aff 
+Addresse: 172 / 00AC 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | CLR 0x429
+   Code: 23326c29 
+Addresse: 173 / 00AD 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_25 LD
+   Code: 23320029 
+Addresse: 174 / 00AE 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x426 LD
+   Code: 23324c26 
+Addresse: 175 / 00AF 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_11 LD
+   Code: 23320013 
+Addresse: 176 / 00B0 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR Current_state LD
+   Code: 23324afd 
+Addresse: 177 / 00B1 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Current_signal LD
+   Code: 233202e4 
+Addresse: 178 / 00B2 
+   Label:  
+   INC  | MOV LD ACC  | MOV R0 R0  | LOAD ua_const_0 LD
+   Code: 23b2000a 
+Addresse: 179 / 00B3 
+   Label:  
+   INC  | MOV ACC ACC  | XOR ACC LD R0  | CLR 0x3FF
+   Code: 23296bff 
+Addresse: 180 / 00B4 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR Current_signal R0
+   Code: 23322ae4 
+Addresse: 181 / 00B5 
+   Label: if.end102 
+   JMP  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end103 LD
+   Code: 63320108 
+Addresse: 182 / 00B6 
+   Label: land.lhs.true 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Current_state LD
+   Code: 233202fd 
+Addresse: 183 / 00B7 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_0 LD
+   Code: 2334000a 
+Addresse: 184 / 00B8 
+   Label:  
+   JE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.then LD
+   Code: a33200ba 
+Addresse: 185 / 00B9 
+   Label:  
+   JMP  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.else35 LD
+   Code: 63320010 
+Addresse: 186 / 00BA 
+   Label: if.then 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Current_signal LD
+   Code: 233202e4 
+Addresse: 187 / 00BB 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_5 LD
+   Code: 2334000f 
+Addresse: 188 / 00BC 
+   Label:  
+   JE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.then3 LD
+   Code: a33200c0 
+Addresse: 189 / 00BD 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_1 LD
+   Code: 2332000b 
+Addresse: 190 / 00BE 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x40A LD
+   Code: 23324c0a 
+Addresse: 191 / 00BF 
+   Label:  
+   JMP  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end LD
+   Code: 633200c2 
+Addresse: 192 / 00C0 
+   Label: if.then3 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_1 LD
+   Code: 2332000b 
+Addresse: 193 / 00C1 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x409 LD
+   Code: 23324c09 
+Addresse: 194 / 00C2 
+   Label: if.end 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_6 LD
+   Code: 23320015 
+Addresse: 195 / 00C3 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x42B LD
+   Code: 23324c2b 
+Addresse: 196 / 00C4 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Frequency_number LD
+   Code: 233202e3 
+Addresse: 197 / 00C5 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_5 LD
+   Code: 2334000f 
+Addresse: 198 / 00C6 
+   Label:  
+   JNE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end6 LD
+   Code: 1e33200c9 
+Addresse: 199 / 00C7 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_7 LD
+   Code: 2332002a 
+Addresse: 200 / 00C8 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
+   Code: 23324c11 
+Addresse: 201 / 00C9 
+   Label: if.end6 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Frequency_number LD
+   Code: 233202e3 
+Addresse: 202 / 00CA 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_0 LD
+   Code: 2334000a 
+Addresse: 203 / 00CB 
+   Label:  
+   JNE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end9 LD
+   Code: 1e33200ce 
+Addresse: 204 / 00CC 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_8 LD
+   Code: 2332002b 
+Addresse: 205 / 00CD 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
+   Code: 23324c11 
+Addresse: 206 / 00CE 
+   Label: if.end9 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Frequency_number LD
+   Code: 233202e3 
+Addresse: 207 / 00CF 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_9 LD
+   Code: 23340011 
+Addresse: 208 / 00D0 
+   Label:  
+   JNE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end12 LD
+   Code: 1e33200d3 
+Addresse: 209 / 00D1 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_10 LD
+   Code: 2332002c 
+Addresse: 210 / 00D2 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
+   Code: 23324c11 
+Addresse: 211 / 00D3 
+   Label: if.end12 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Frequency_number LD
+   Code: 233202e3 
+Addresse: 212 / 00D4 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_11 LD
+   Code: 23340013 
+Addresse: 213 / 00D5 
+   Label:  
+   JNE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end15 LD
+   Code: 1e33200d8 
+Addresse: 214 / 00D6 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_12 LD
+   Code: 2332002d 
+Addresse: 215 / 00D7 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
+   Code: 23324c11 
+Addresse: 216 / 00D8 
+   Label: if.end15 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Frequency_number LD
+   Code: 233202e3 
+Addresse: 217 / 00D9 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_13 LD
+   Code: 2334002e 
+Addresse: 218 / 00DA 
+   Label:  
+   JNE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end18 LD
+   Code: 1e33200dd 
+Addresse: 219 / 00DB 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_12 LD
+   Code: 2332002d 
+Addresse: 220 / 00DC 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
+   Code: 23324c11 
+Addresse: 221 / 00DD 
+   Label: if.end18 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Frequency_number LD
+   Code: 233202e3 
+Addresse: 222 / 00DE 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_14 LD
+   Code: 2334002f 
+Addresse: 223 / 00DF 
+   Label:  
+   JNE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end21 LD
+   Code: 1e33200e2 
+Addresse: 224 / 00E0 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_15 LD
+   Code: 23320030 
+Addresse: 225 / 00E1 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
+   Code: 23324c11 
+Addresse: 226 / 00E2 
+   Label: if.end21 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Frequency_number LD
+   Code: 233202e3 
+Addresse: 227 / 00E3 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_16 LD
+   Code: 23340031 
+Addresse: 228 / 00E4 
+   Label:  
+   JNE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end24 LD
+   Code: 1e33200e7 
+Addresse: 229 / 00E5 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_17 LD
+   Code: 23320032 
+Addresse: 230 / 00E6 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
+   Code: 23324c11 
+Addresse: 231 / 00E7 
+   Label: if.end24 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Frequency_number LD
+   Code: 233202e3 
+Addresse: 232 / 00E8 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_18 LD
+   Code: 23340033 
+Addresse: 233 / 00E9 
+   Label:  
+   JNE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end27 LD
+   Code: 1e33200ec 
+Addresse: 234 / 00EA 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_19 LD
+   Code: 23320034 
+Addresse: 235 / 00EB 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
+   Code: 23324c11 
+Addresse: 236 / 00EC 
+   Label: if.end27 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Frequency_number LD
+   Code: 233202e3 
+Addresse: 237 / 00ED 
+   Label:  
+   INC  | MOV ACC ACC  | MOV LD R0  | LOAD ua_const_20 LD
+   Code: 23340035 
+Addresse: 238 / 00EE 
+   Label:  
+   JNE R0 LD  | MOV ACC ACC  | MOV R0 R0  | LOAD @if.end30 LD
+   Code: 1e33200f1 
+Addresse: 239 / 00EF 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_19 LD
+   Code: 23320034 
+Addresse: 240 / 00F0 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x411 LD
+   Code: 23324c11 
+Addresse: 241 / 00F1 
+   Label: if.end30 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Frequency_number LD
+   Code: 233202e3 
+Addresse: 242 / 00F2 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOFF Increment_Table LD LD
+   Code: 23325036 
+Addresse: 243 / 00F3 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x421 LD
+   Code: 23324c21 
+Addresse: 244 / 00F4 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_21 LD
+   Code: 2332003f 
+Addresse: 245 / 00F5 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x426 LD
+   Code: 23324c26 
+Addresse: 246 / 00F6 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Frequency_number LD
+   Code: 233202e3 
+Addresse: 247 / 00F7 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOFF ADC_divider LD LD
+   Code: 23325040 
+Addresse: 248 / 00F8 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR Current_ADC_divider LD
+   Code: 23324ae2 
+Addresse: 249 / 00F9 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD 0x3D1 LD
+   Code: 233203d1 
+Addresse: 250 / 00FA 
+   Label:  
+   INC  | DEC LD ACC  | MOV R0 R0  | LOAD Current_ADC_divider LD
+   Code: 12f202e2 
+Addresse: 251 / 00FB 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR Last_ADC_Pointer ACC
+   Code: 23320af9 
+Addresse: 252 / 00FC 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x420 LD
+   Code: 23324c20 
+Addresse: 253 / 00FD 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_0 LD
+   Code: 2332000a 
+Addresse: 254 / 00FE 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x429 LD
+   Code: 23324c29 
+Addresse: 255 / 00FF 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD Cycle_Number LD
+   Code: 233202ff 
+Addresse: 256 / 0100 
+   Label:  
+   INC  | INC LD ACC  | MOV R0 R0  | LOAD Current_ADC_divider LD
+   Code: 2f202e2 
+Addresse: 257 / 0101 
+   Label:  
+   INC  | P2F LD  ACC  | MOV R0 R0  | STOR Cycle_Number ACC
+   Code: 3ef20aff 
+Addresse: 258 / 0102 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_22 LD
+   Code: 23320049 
+Addresse: 259 / 0103 
+   Label:  
+   INC  | FADD ACC LD ACC  | MOV R0 R0  | LOAD ua_const_23 LD
+   Code: 20b2004a 
+Addresse: 260 / 0104 
+   Label:  
+   INC  | FMUL ACC LD ACC  | MOV R0 R0  | LOAD ua_const_24 LD
+   Code: 28b2004b 
+Addresse: 261 / 0105 
+   Label:  
+   INC  | FADD ACC LD ACC  | MOV R0 R0  | CLR 0x3FF
+   Code: 20b26bff 
+Addresse: 262 / 0106 
+   Label:  
+   INC  | F2P ACC  ACC  | MOV R0 R0  | CLR 0x3FF
+   Code: 2cf26bff 
+Addresse: 263 / 0107 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR MAX_UA_Cycle ACC
+   Code: 23320afe 
+Addresse: 264 / 0108 
+   Label: if.end103 
+   INC  | MOV ACC ACC  | MOV R0 R0  | LOAD ua_const_47 LD
+   Code: 2332004c 
+Addresse: 265 / 0109 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | STOR 0x40B LD
+   Code: 23324c0b 
+Addresse: 266 / 010A 
+   Label:  
+   INC  | MOV ACC ACC  | MOV R0 R0  | CLR 0x405
+   Code: 23326c05 
+Addresse: 267 / 010B 
+   Label:  
+   JMP  | MOV ACC ACC  | MOV R0 R0  | LOAD @while.body LD
+   Code: 6332000d 

@@ -5,9 +5,12 @@ import struct
 import csv
 import os
 
-NUM_FREQUENCIES = 228-4
-START_FREQ_CODE = "04"
-fileName = 'Messungen/Filter_Schreibtisch_21_11/FrequencySweepTest.csv'
+#END_FREQ_CODE = 228
+#START_FREQ_CODE = 6
+END_FREQ_CODE = 0
+START_FREQ_CODE = 0
+NUM_COND = 2
+fileName = 'Messungen/ST_0412/StdAwb430k68mH_correctWL.csv'
 
 
 def connectPAULEEN():
@@ -124,13 +127,22 @@ with open(fileName, "w", newline='') as fileWriter:
                             startPos += 1
                             break
                         
-                #Check if the package is the beginning with the lower frequency f=7 and c0
-                while startFound == False and len(byteBuf) > 13:
+                #Check if the package is the beginning with the start frequency and c0
+                while startFound == False and len(byteBuf) > (13 + NUM_COND*13):
                     startFound = True
-                    if (byteBuf[9] != int("c0",base=16)) or (byteBuf[10] != int(START_FREQ_CODE,base=16)):
+                    f = (byteBuf[10]<<7)|(byteBuf[9]>>1)
+                    fnext = (byteBuf[10 + NUM_COND*13]<<7)|(byteBuf[9 + NUM_COND*13] >> 1)
+                    #f = (byteBuf[10])
+                    #fnext = (byteBuf[10 + NUM_COND*13])
+                    if not((byteBuf[9]&(0x01) == 0) and (f == END_FREQ_CODE) and fnext == START_FREQ_CODE):
+                    #if not((byteBuf[9] == 0) and (f == END_FREQ_CODE)):
                         startPos += 13
                         startFound = False
                         del byteBuf[0:13]
+                    else:
+                        startPos += NUM_COND*13
+                        del byteBuf[0:NUM_COND*13] # Delete the first last two packages
+                    
         
             # byteStr = []
             # for x in byteBuf:
@@ -180,8 +192,10 @@ with open(fileName, "w", newline='') as fileWriter:
                 #Convert in Cr/Cp and Frequency and save in File                
                 cA = (struct.unpack('f', byteBuf[p * 13 + 1 : p * 13 + 5])[0])
                 cP = (struct.unpack('f', byteBuf[p * 13 + 5 : p * 13 + 9]))[0]
-                C = hex(byteBuf[p * 13 + 9])[2:]
-                f = byteBuf[p * 13 + 10]
+                #C = byteBuf[p * 13 + 9]
+                #f = (byteBuf[p * 13 + 10])
+                C = byteBuf[p * 13 + 9] & 0x01
+                f = (byteBuf[p * 13 + 10]<<7)|(byteBuf[p * 13 + 9]>>1)
                 csvWriter.writerow([cA, cP, C, f, datetime.datetime.now(), packageNum])
                 
 
