@@ -112,11 +112,12 @@ ua_param ua_word_t UA_INIT_ADC_CONVERSION_CONF = ADC_CONVERSION_CONF;
 #define  EN_CP			0
 #define  EN_CR			1
 
-#define  ST_TEMPERATURE 4
-#define  ST_COMPUTE		3 
-#define  ST_MEASURE   	2   
-#define  ST_STARTUP   	1  
-#define  ST_SLEEP   	0   
+#define  ST_READOUT_ADC_VALS 	5
+#define  ST_TEMPERATURE 		4
+#define  ST_COMPUTE				3 
+#define  ST_MEASURE   			2   
+#define  ST_STARTUP   			1  
+#define  ST_SLEEP   			0   
 #define  SLEEP_CYCLES   2259
 #define  UA_RATE		115200 //Hz
 #define  UART_RATE		223400 //Hz
@@ -172,7 +173,7 @@ ua_float_t		f_Kapazitaet_P = 0.0f; //Variablen fuer Messung der Phasenverschiebu
 ua_int_t        s25_Switch_CP_CR = 0; // 0=CP  1=CR		//Festlegung des Switch Signals fuer die jeweilige Messung von CP oder CR
 
 //Computation
-const ua_int_t		cs25Resistance = 43000; //Ohm
+const ua_int_t		cs25Resistance = 430000; //Ohm
 const ua_float_t 	cf32Inductivity = 0.068f; //mH
 const ua_int_t		cs25Averaging = 16;
 ua_int_t			s25AvgNum = 0;
@@ -336,10 +337,10 @@ void ua_main()
 				f_Q1 = f_Temp * f_VIRTUAL_SINE[Value_index];                                   // Multiplikation mit Sinus
 				f_Q2 = f_Temp * f_VIRTUAL_SINE[(Value_index+(c_SAMPLE_POINTS/4)) & MOD_c_SAMPLE_POINTS]; // Multiplikation mit um 90° verschobenen Sinus -> Cosinus
 
-				f_Q1m += f_Q1;              // Mittelwert von Q1, teilen durch 16 entfällt da Q2 auch durch 16 geteilt werden muesste
-				f_Q2m += f_Q2;              // Mittelwert von Q2  teilen durch 16 entfällt da Q1 auch durch 16 geteilt werden muesste
+				f_Q1m = f_Q1m + f_Q1;              // Mittelwert von Q1, teilen durch 16 entfällt da Q2 auch durch 16 geteilt werden muesste
+				f_Q2m = f_Q2m + f_Q2;              // Mittelwert von Q2  teilen durch 16 entfällt da Q1 auch durch 16 geteilt werden muesste
 
-				f_Amplitude_Temp +=  f_Q1*f_Q1 + f_Q2*f_Q2;
+				f_Amplitude_Temp =  f_Amplitude_Temp + f_Q1*f_Q1 + f_Q2*f_Q2;
 
 			}
 			Q2mSig	= 	f_Q2m;
@@ -356,10 +357,10 @@ void ua_main()
 				f_Q1 = f_Temp * f_VIRTUAL_SINE[Value_index];                                   // Multiplikation mit Sinus
 				f_Q2 = f_Temp * f_VIRTUAL_SINE[(Value_index+(c_SAMPLE_POINTS/4)) & MOD_c_SAMPLE_POINTS]; // Multiplikation mit um 90° verschobenen Sinus -> Cosinus
 
-				f_Q1m += f_Q1;              // Mittelwert von Q1, teilen durch 16 entfällt da Q2 auch durch 16 geteilt werden muesste
-				f_Q2m += f_Q2;              // Mittelwert von Q2  teilen durch 16 entfällt da Q1 auch durch 16 geteilt werden muesste
+				f_Q1m = f_Q1m + f_Q1;              // Mittelwert von Q1, teilen durch 16 entfällt da Q2 auch durch 16 geteilt werden muesste
+				f_Q2m = f_Q2m + f_Q2;              // Mittelwert von Q2  teilen durch 16 entfällt da Q1 auch durch 16 geteilt werden muesste
 
-				f_Amplitude_Temp +=  f_Q1*f_Q1 + f_Q2*f_Q2;
+				f_Amplitude_Temp = f_Amplitude_Temp + f_Q1*f_Q1 + f_Q2*f_Q2;
 			}			
 
 			Q2mRef	=	f_Q2m;
@@ -368,39 +369,72 @@ void ua_main()
 
 			f_Kapazitaet_A = C_GainAmp_pF * (f32OneOn_WR * UA_sqrt(Amplitude[EN_REFERENCE] * Amplitude[EN_REFERENCE] * FloatInverse(Amplitude[EN_SIGNAL] * Amplitude[EN_SIGNAL]) - 1) + f32OneOn_W2L - C_OffsetAmp_pF);
 			f_Kapazitaet_P = C_GainPhase_pF * (f32OneOn_WR * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) + f32OneOn_W2L - C_OffsetPhase_pF);
-			UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_A;
-			UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_P;
+			// UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_A;
+			// UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_P;
 
-			//Send Package with postfix to indicate Cp/Cr
-			if (cpCr == EN_CP) 
-			{//CP
-				UA_SERIAL_OUT3 = ((s25debugCounter) << 1)|(0b0); //Frequency_number and Code for CP;
-			}	
-			else
-			{//CR				
-				UA_SERIAL_OUT3 = ((s25debugCounter) << 1)|(0b1); //Frequency_number and Code for CR;
-				s25debugCounter++;
-			}
+			// //Send Package with postfix to indicate Cp/Cr
+			// if (cpCr == EN_CP) 
+			// {//CP
+			// 	UA_SERIAL_OUT3 = ((s25debugCounter) << 1)|(0b0); //Frequency_number and Code for CP;
+			// }	
+			// else
+			// {//CR				
+			// 	UA_SERIAL_OUT3 = ((s25debugCounter) << 1)|(0b1); //Frequency_number and Code for CR;
+			// 	s25debugCounter++;
+			// }
 
 			//Clear last values
-			for (Value_index = 0; Value_index < 16; Value_index++)
-			{
-				ADC_values_sig[Value_index + 16 * cpCr] = 0;
-				ADC_values_ref[Value_index + 16 * cpCr] = 0;
-			}	
-			Zeroline[EN_SIGNAL + 2 * cpCr] = 0;
-			Zeroline[EN_REFERENCE + 2 * cpCr] = 0;
+			// for (Value_index = 0; Value_index < 16; Value_index++)
+			// {
+			// 	ADC_values_sig[Value_index + 16 * cpCr] = 0;
+			// 	ADC_values_ref[Value_index + 16 * cpCr] = 0;
+			// }	
+			// Zeroline[EN_SIGNAL + 2 * cpCr] = 0;
+			// Zeroline[EN_REFERENCE + 2 * cpCr] = 0;
 
 			Cycle_Number = 0;
 			if(cpCr >= 1)
 			{
-				Current_state = ST_MEASURE;
+				//Current_state = ST_MEASURE;
+				//MAX_UA_Cycle = 0; //TODO: TEST
+
+				//*************DEBUG***********************
+				Current_state = ST_READOUT_ADC_VALS; //DEBUG
+				Value_index = 0;
+				MAX_UA_Cycle = 130;					//DEBUG
 			}
 			else
 			{
 				cpCr++;
 				MAX_UA_Cycle = 130;
 			}
+		}
+		else if (Current_state == ST_READOUT_ADC_VALS && (Cycle_Number >= MAX_UA_Cycle) ) //Übergang in den Messzustand
+		{
+			Cycle_Number = 0;
+			UA_SERIAL_OUT = (ua_word_t) ADC_values_sig[Value_index];
+			UA_SERIAL_OUT2 = (ua_word_t) ADC_values_sig[Value_index + 1];
+			UA_SERIAL_OUT3 = (Frequency_number << 8)|Value_index;//Frequency_number and Code for CR;
+			
+			Value_index = Value_index + 2;
+			if(Value_index >= 16)
+			{
+				//Clear last values
+				ua_int_t index;
+				for (index = 0; index < 32; index++)
+				{
+					ADC_values_sig[Value_index] = 0;
+					ADC_values_ref[Value_index] = 0;
+				}	
+				Zeroline[EN_SIGNAL] = 0;
+				Zeroline[EN_REFERENCE] = 0;
+				Zeroline[EN_SIGNAL + 2] = 0;
+				Zeroline[EN_REFERENCE + 2] = 0;
+
+				Value_index = 0;
+				Current_state = ST_MEASURE;
+			}
+			MAX_UA_Cycle = 130;
 		}
 		else if ((Cycle_Number >= SLEEP_CYCLES) && (Current_state == ST_MEASURE)) //Aufwachen aus Sleep mode
 		{

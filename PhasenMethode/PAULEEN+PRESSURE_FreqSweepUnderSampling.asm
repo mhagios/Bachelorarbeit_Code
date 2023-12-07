@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; This file has been created with UACCompiler V2.5
 ; Used Strategy: backlog,1 - Additional Option: -l
-; Creation: 04.12.2023 14:18:54
+; Creation: 07.12.2023 10:47:41
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .param
@@ -328,11 +328,11 @@ if.end120:
 	INC | FADD ACC LD ACC | HOLD | LOAD f_Q1 LD
 	INC | MOV LD ACC | HOLD | STOR f_Q2m ACC
 	INC | HOLD | HOLD | LOAD f_Q1 LD
-	INC | FMUL ACC LD ACC | HOLD | LOAD f_Q2 LD
-	INC | MOV LD ACC | MOV ACC R0 | LOAD f_Q2 LD
 	INC | FMUL ACC LD ACC | HOLD | LOAD f_Amplitude_Temp LD
+	INC | FADD LD ACC ACC | HOLD | LOAD f_Q2 LD
+	INC | MOV LD ACC | MOV ACC R0 | LOAD f_Q2 LD
+	INC | FMUL ACC LD ACC | HOLD | LOAD Value_index LD
 	INC | FADD R0 ACC ACC | HOLD | HOLD
-	INC | FADD LD ACC ACC | HOLD | LOAD Value_index LD
 	INC | INC LD ACC | HOLD | STOR f_Amplitude_Temp ACC
 	INC | HOLD | HOLD | STOR Value_index ACC
 	JMP | HOLD | HOLD | LOAD @for.cond100 LD

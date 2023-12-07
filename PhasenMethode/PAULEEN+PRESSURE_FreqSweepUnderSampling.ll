@@ -2246,9 +2246,9 @@ if.else88:                                        ; preds = %for.end
   br label %if.end91
 
 if.end91:                                         ; preds = %if.else88, %if.then85
-  %125 = load i32* @Temp, align 4
-  %126 = load i32* %Zeroline_Temp, align 4
-  %add92 = add nsw i32 %126, %125
+  %125 = load i32* %Zeroline_Temp, align 4
+  %126 = load i32* @Temp, align 4
+  %add92 = add nsw i32 %125, %126
   store i32 %add92, i32* %Zeroline_Temp, align 4
   br label %for.inc93
 
@@ -2327,23 +2327,23 @@ if.end120:                                        ; preds = %if.else113, %if.the
   %145 = load volatile float* %arrayidx127, align 4
   %mul128 = fmul float %143, %145
   store float %mul128, float* @f_Q2, align 4
-  %146 = load float* @f_Q1, align 4
-  %147 = load float* @f_Q1m, align 4
-  %add129 = fadd float %147, %146
+  %146 = load float* @f_Q1m, align 4
+  %147 = load float* @f_Q1, align 4
+  %add129 = fadd float %146, %147
   store float %add129, float* @f_Q1m, align 4
-  %148 = load float* @f_Q2, align 4
-  %149 = load float* @f_Q2m, align 4
-  %add130 = fadd float %149, %148
+  %148 = load float* @f_Q2m, align 4
+  %149 = load float* @f_Q2, align 4
+  %add130 = fadd float %148, %149
   store float %add130, float* @f_Q2m, align 4
-  %150 = load float* @f_Q1, align 4
+  %150 = load float* @f_Amplitude_Temp, align 4
   %151 = load float* @f_Q1, align 4
-  %mul131 = fmul float %150, %151
-  %152 = load float* @f_Q2, align 4
+  %152 = load float* @f_Q1, align 4
+  %mul131 = fmul float %151, %152
+  %add132 = fadd float %150, %mul131
   %153 = load float* @f_Q2, align 4
-  %mul132 = fmul float %152, %153
-  %add133 = fadd float %mul131, %mul132
-  %154 = load float* @f_Amplitude_Temp, align 4
-  %add134 = fadd float %154, %add133
+  %154 = load float* @f_Q2, align 4
+  %mul133 = fmul float %153, %154
+  %add134 = fadd float %add132, %mul133
   store float %add134, float* @f_Amplitude_Temp, align 4
   br label %for.inc135
 

@@ -303,7 +303,7 @@ void ua_main()
 				}
 					
 				
-				Zeroline_Temp += Temp;
+				Zeroline_Temp = Zeroline_Temp + Temp;
 
 			}
 			
@@ -345,10 +345,10 @@ void ua_main()
 				f_Q1 = f_Temp * f_VIRTUAL_SINE[Value_index];                                   // Multiplikation mit Sinus
 				f_Q2 = f_Temp * f_VIRTUAL_SINE[(Value_index+(c_SAMPLE_POINTS/4)) & MOD_c_SAMPLE_POINTS]; // Multiplikation mit um 90° verschobenen Sinus -> Cosinus
 
-				f_Q1m += f_Q1;              // Mittelwert von Q1, teilen durch 16 entfällt da Q2 auch durch 16 geteilt werden muesste
-				f_Q2m += f_Q2;              // Mittelwert von Q2  teilen durch 16 entfällt da Q1 auch durch 16 geteilt werden muesste
+				f_Q1m = f_Q1m + f_Q1;              // Mittelwert von Q1, teilen durch 16 entfällt da Q2 auch durch 16 geteilt werden muesste
+				f_Q2m = f_Q2m + f_Q2;              // Mittelwert von Q2  teilen durch 16 entfällt da Q1 auch durch 16 geteilt werden muesste
 
-				f_Amplitude_Temp +=  f_Q1*f_Q1 + f_Q2*f_Q2;
+				f_Amplitude_Temp =  f_Amplitude_Temp + f_Q1*f_Q1 + f_Q2*f_Q2;
 			}
 			
 			if (Current_signal == EN_SIGNAL)

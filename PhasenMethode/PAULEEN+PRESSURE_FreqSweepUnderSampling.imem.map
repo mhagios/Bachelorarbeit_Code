@@ -540,24 +540,24 @@ Addresse: 134 / 0086
    Code: 233202d1 
 Addresse: 135 / 0087 
    Label:  
-   INC  | FMUL ACC LD ACC  | MOV R0 R0  | LOAD f_Q2 LD
-   Code: 28b202d0 
+   INC  | FMUL ACC LD ACC  | MOV R0 R0  | LOAD f_Amplitude_Temp LD
+   Code: 28b202d5 
 Addresse: 136 / 0088 
+   Label:  
+   INC  | FADD LD ACC ACC  | MOV R0 R0  | LOAD f_Q2 LD
+   Code: 223202d0 
+Addresse: 137 / 0089 
    Label:  
    INC  | MOV LD ACC  | MOV ACC R0  | LOAD f_Q2 LD
    Code: 23b002d0 
-Addresse: 137 / 0089 
-   Label:  
-   INC  | FMUL ACC LD ACC  | MOV R0 R0  | LOAD f_Amplitude_Temp LD
-   Code: 28b202d5 
 Addresse: 138 / 008A 
+   Label:  
+   INC  | FMUL ACC LD ACC  | MOV R0 R0  | LOAD Value_index LD
+   Code: 28b202fc 
+Addresse: 139 / 008B 
    Label:  
    INC  | FADD R0 ACC ACC  | MOV R0 R0  | CLR 0x3FF
    Code: 21326bff 
-Addresse: 139 / 008B 
-   Label:  
-   INC  | FADD LD ACC ACC  | MOV R0 R0  | LOAD Value_index LD
-   Code: 223202fc 
 Addresse: 140 / 008C 
    Label:  
    INC  | INC LD ACC  | MOV R0 R0  | STOR f_Amplitude_Temp ACC
