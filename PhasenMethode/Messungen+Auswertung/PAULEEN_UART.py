@@ -10,7 +10,7 @@ import os
 END_FREQ_CODE = 0
 START_FREQ_CODE = 0
 NUM_COND = 2
-fileName = 'Messungen/HO_0712/Interleaving_AmplitudeValues_t1.csv'
+fileName = 'Messungen/HO_0712/Interleaving_AmplitudeValues_t5_ADCafter160Points.csv'
 
 
 def connectPAULEEN():

@@ -405,8 +405,7 @@ void ua_main()
 				
 			}
 			Current_signal ^= 1; // Toggle between EN_SIGNAL <> EN_REFERENCE
-		}
-		
+		}	
 		else if ((Cycle_Number >= SLEEP_CYCLES) && (Current_state == ST_MEASURE)) //Aufwachen aus Sleep mode
 		{
 			Current_state = ST_STARTUP;

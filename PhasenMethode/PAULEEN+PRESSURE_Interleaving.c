@@ -175,7 +175,7 @@ ua_int_t        s25_Switch_CP_CR = 0; // 0=CP  1=CR		//Festlegung des Switch Sig
 //Computation
 const ua_int_t		cs25Resistance = 430000; //Ohm
 const ua_float_t 	cf32Inductivity = 0.068f; //mH
-const ua_int_t		cs25Averaging = 16;
+const ua_int_t		cs25Averaging = 1;//16;
 ua_int_t			s25AvgNum = 0;
 ua_int_t 			s25debugCounter = 0;
 ua_float_t f32DDS_Frequency = 0.0f; //Hz
@@ -244,7 +244,7 @@ void ua_main()
 			
 			Cycle_Number++;
 			//+1.0f to componsate the computation time of the first cycle -> This fixes the Problem of not enough ADC-Values
-			MAX_UA_Cycle = 2 + 1; 
+			MAX_UA_Cycle = 2 + 1 + 130; 
 		}
 		else if ((Cycle_Number >= MAX_UA_Cycle) && (Current_state == ST_MEASURE))
 		{
@@ -257,7 +257,7 @@ void ua_main()
 			//Auslesen des ADC Memories
 			for (Value_index = 0; Value_index < 16; Value_index++)
 			{
-				Temp = UA_ADC_MEM[(Last_ADC_Pointer - Value_index) & 0x3FF];
+				Temp = UA_ADC_MEM[(Last_ADC_Pointer - Value_index - 160) & 0x3FF];
 				Zeroline[Current_signal + 2 * s25_Switch_CP_CR] = Zeroline[Current_signal + 2 * s25_Switch_CP_CR] + Temp;
 
 				//Zuweisung: Entweder Referenz-/ oder Signalvariable

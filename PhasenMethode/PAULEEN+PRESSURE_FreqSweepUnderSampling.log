@@ -1,24 +1,6 @@
 Microarchitecure Suite Version 3.20.20
 UAC Compiler Version 2.5 @ 16.12.2022 15:14:30
 
-==========================C-Compiler===========================
-Selected Strategy: backlog,1 - Additional Option: -l
-Compiling C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_FreqSweepUnderSampling.ll
-
-Optimization:
-          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
-          |----|----|----|----|----|----|----|----|----|----|
-          |||||||||||||||||||||||||||||||||||||||||||||||||||
-
-Parallelization:
-          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
-          |----|----|----|----|----|----|----|----|----|----|
-          |||||||||||||||||||||||||||||||||||||||||||||||||||
-
-Info: Selected path: path1164; VLIW count: 670
-
-Compilation successful in 38,277 s
-
 ===========================Assembler===========================
 Analyzing ASM finished.
 Note: Variable "UA_INIT_ADC_CONVERSION_CONF" declared but not used.
@@ -276,6 +258,6 @@ Verifying Memory ...Successful
 
 Programming of:
 C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_FreqSweepUnderSampling.bin
-successful in 35583 ms
+successful in 34274 ms
 Disconnecting Programmer...Done
 
