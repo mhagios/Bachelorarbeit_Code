@@ -15,9 +15,9 @@ Parallelization:
           |----|----|----|----|----|----|----|----|----|----|
           |||||||||||||||||||||||||||||||||||||||||||||||||||
 
-Info: Selected path: path1196; VLIW count: 775
+Info: Selected path: path1444; VLIW count: 927
 
-Compilation successful in 47,192 s
+Compilation successful in 78,656 s
 
 ===========================Assembler===========================
 Analyzing ASM finished.
@@ -43,10 +43,10 @@ Start creating output files...
 All files generated successfully.
 
 -------------Memory usage:-------------------------------------
-IMEM:	775 of 2048
-DMEM:	233 of 1024	(90 checked param. + 1 CRC)
+IMEM:	927 of 2048
+DMEM:	253 of 1024	(100 checked param. + 1 CRC)
 ---------------------------------------------------------------
-Workload AU: 42,2%; LU: 18,2%; LD/ST: 91,5% (Concurr.: 25,9%)
+Workload AU: 42,9%; LU: 17,5%; LD/ST: 91,5% (Concurr.: 25,9%)
 
 
 ===================Longest Path Analyzation====================
@@ -277,6 +277,6 @@ Verifying Memory ...Successful
 
 Programming of:
 C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_Interleaving.bin
-successful in 35537 ms
+successful in 36638 ms
 Disconnecting Programmer...Done
 

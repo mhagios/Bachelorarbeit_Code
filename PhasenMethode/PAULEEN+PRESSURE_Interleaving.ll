@@ -143,9 +143,9 @@ target triple = "x86_64-pc-windows-gnu"
 @f_Kapazitaet_A = global float 0.000000e+00, align 4
 @f_Kapazitaet_P = global float 0.000000e+00, align 4
 @s25_Switch_CP_CR = global i32 0, align 4
-@cs25Resistance = constant i32 430000, align 4
+@cs25Resistance = constant i32 43000, align 4
 @cf32Inductivity = constant float 0x3FB16872C0000000, align 4
-@cs25Averaging = constant i32 1, align 4
+@cs25Averaging = constant i32 16, align 4
 @s25AvgNum = global i32 0, align 4
 @s25debugCounter = global i32 0, align 4
 @f32DDS_Frequency = global float 0.000000e+00, align 4
@@ -155,7 +155,7 @@ target triple = "x86_64-pc-windows-gnu"
 @s25DAC_CONF_MODE = global i32 2, align 4
 @s25DDSInkr = global i32 0, align 4
 @s25EnableUnderSampling = global i32 0, align 4
-@cs25EnableRLC = constant i32 1, align 4
+@cs25EnableRLC = constant i32 0, align 4
 @f32TGrad = global float 0.000000e+00, align 4
 @f32TVoltage = global float 0.000000e+00, align 4
 @Last_ADC_Pointer = common global i32 0, align 4
@@ -173,12 +173,12 @@ target triple = "x86_64-pc-windows-gnu"
 @Q2mSig = common global float 0.000000e+00, align 4
 @Q1mSig = common global float 0.000000e+00, align 4
 @Amplitude = common global [2 x float] zeroinitializer, align 4
+@Phase = common global [2 x float] zeroinitializer, align 4
 @Q2mRef = common global float 0.000000e+00, align 4
 @Q1mRef = common global float 0.000000e+00, align 4
 @Current_ADC_divider = common global i32 0, align 4
 @period = common global i32 0, align 4
 @ADC_Values_DevTool = common global [17 x i128] zeroinitializer, align 16
-@Phase = common global [2 x float] zeroinitializer, align 4
 @DeltaPhase = common global float 0.000000e+00, align 4
 @f_KapazitiverAnteil = common global float 0.000000e+00, align 4
 
@@ -1719,43 +1719,74 @@ if.end51:                                         ; preds = %if.end29, %if.then
 ; Function Attrs: nounwind uwtable
 define void @ua_main() #1 {
 entry:
-  %number.addr.i516 = alloca float, align 4
-  %i.i517 = alloca i128, align 16
-  %i_lo.i518 = alloca i32, align 4
-  %i_hi.i519 = alloca i32, align 4
-  %x2.i520 = alloca float, align 4
-  %y.i521 = alloca float, align 4
-  %number.addr.i476 = alloca float, align 4
-  %i.i477 = alloca i128, align 16
-  %i_lo.i478 = alloca i32, align 4
-  %i_hi.i479 = alloca i32, align 4
-  %x2.i480 = alloca float, align 4
-  %y.i481 = alloca float, align 4
-  %in.addr.i450 = alloca float, align 4
-  %In_Reduced.i451 = alloca float, align 4
-  %x.i452 = alloca float, align 4
+  %number.addr.i609 = alloca float, align 4
+  %i.i610 = alloca i128, align 16
+  %i_lo.i611 = alloca i32, align 4
+  %i_hi.i612 = alloca i32, align 4
+  %x2.i613 = alloca float, align 4
+  %y.i614 = alloca float, align 4
+  %in.addr.i583 = alloca float, align 4
+  %In_Reduced.i584 = alloca float, align 4
+  %x.i585 = alloca float, align 4
+  %in.addr.i.i509 = alloca float, align 4
+  %In_Reduced.i.i510 = alloca float, align 4
+  %x.i.i511 = alloca float, align 4
+  %x.addr.i512 = alloca float, align 4
+  %r.i513 = alloca float, align 4
+  %t.i514 = alloca float, align 4
+  %p1.i515 = alloca float, align 4
+  %p2.i516 = alloca float, align 4
+  %p3.i517 = alloca float, align 4
+  %p4.i518 = alloca float, align 4
+  %p5.i519 = alloca float, align 4
+  %p6.i520 = alloca float, align 4
+  %p7.i521 = alloca float, align 4
+  %p8.i522 = alloca float, align 4
+  %p9.i523 = alloca float, align 4
+  %p10.i524 = alloca float, align 4
+  %s.i525 = alloca float, align 4
+  %number.addr.i468 = alloca float, align 4
+  %i.i469 = alloca i128, align 16
+  %i_lo.i470 = alloca i32, align 4
+  %i_hi.i471 = alloca i32, align 4
+  %x2.i472 = alloca float, align 4
+  %y.i473 = alloca float, align 4
+  %in.addr.i442 = alloca float, align 4
+  %In_Reduced.i443 = alloca float, align 4
+  %x.i444 = alloca float, align 4
+  %in.addr.i.i = alloca float, align 4
+  %In_Reduced.i.i = alloca float, align 4
+  %x.i.i = alloca float, align 4
+  %x.addr.i = alloca float, align 4
+  %r.i = alloca float, align 4
+  %t.i = alloca float, align 4
+  %p1.i = alloca float, align 4
+  %p2.i = alloca float, align 4
+  %p3.i = alloca float, align 4
+  %p4.i = alloca float, align 4
+  %p5.i = alloca float, align 4
+  %p6.i = alloca float, align 4
+  %p7.i = alloca float, align 4
+  %p8.i = alloca float, align 4
+  %p9.i = alloca float, align 4
+  %p10.i = alloca float, align 4
+  %s.i = alloca float, align 4
+  %in.addr.i404 = alloca float, align 4
+  %In_Reduced.i405 = alloca float, align 4
+  %x.i406 = alloca float, align 4
   %number.addr.i = alloca float, align 4
   %i.i = alloca i128, align 16
   %i_lo.i = alloca i32, align 4
   %i_hi.i = alloca i32, align 4
   %x2.i = alloca float, align 4
   %y.i = alloca float, align 4
-  %in.addr.i414 = alloca float, align 4
-  %In_Reduced.i415 = alloca float, align 4
-  %x.i416 = alloca float, align 4
-  %in.addr.i388 = alloca float, align 4
-  %In_Reduced.i389 = alloca float, align 4
-  %x.i390 = alloca float, align 4
-  %in.addr.i362 = alloca float, align 4
-  %In_Reduced.i363 = alloca float, align 4
-  %x.i364 = alloca float, align 4
-  %in.addr.i336 = alloca float, align 4
-  %In_Reduced.i337 = alloca float, align 4
-  %x.i338 = alloca float, align 4
-  %in.addr.i310 = alloca float, align 4
-  %In_Reduced.i311 = alloca float, align 4
-  %x.i312 = alloca float, align 4
-  %in.addr.i308 = alloca float, align 4
+  %in.addr.i368 = alloca float, align 4
+  %In_Reduced.i369 = alloca float, align 4
+  %x.i370 = alloca float, align 4
+  %in.addr.i342 = alloca float, align 4
+  %In_Reduced.i343 = alloca float, align 4
+  %x.i344 = alloca float, align 4
+  %in.addr.i340 = alloca float, align 4
   %In_Reduced.i = alloca float, align 4
   %x.i = alloca float, align 4
   %in.addr.i = alloca float, align 4
@@ -1778,7 +1809,7 @@ entry:
   store i128 0, i128* %6, align 16
   br label %while.body
 
-while.body:                                       ; preds = %entry, %if.end307
+while.body:                                       ; preds = %entry, %if.end339
   %7 = load i32* @Cycle_Number, align 4
   %cmp = icmp eq i32 %7, 0
   br i1 %cmp, label %land.lhs.true, label %if.else12
@@ -1833,28 +1864,28 @@ if.end7:                                          ; preds = %if.end, %if.then3
   %conv10 = trunc i128 %19 to i32
   %sub = sub nsw i32 %conv10, 1
   store i32 %sub, i32* @Last_ADC_Pointer, align 4
-  %20 = load i32* @Frequency_number, align 4
-  %conv11 = sext i32 %20 to i128
-  %21 = load i128** @UA_ADC_CONVERSION_TIME_regptr, align 8
-  store i128 %conv11, i128* %21, align 16
-  %22 = load i128** @UA_ADC_CONVERSION_CONF_regptr, align 8
-  store i128 1, i128* %22, align 16
-  %23 = load i32* @Cycle_Number, align 4
-  %inc = add nsw i32 %23, 1
+  %20 = load i32* @Cycle_Number, align 4
+  %inc = add nsw i32 %20, 1
   store i32 %inc, i32* @Cycle_Number, align 4
-  store i32 133, i32* @MAX_UA_Cycle, align 4
-  br label %if.end307
+  %21 = load i32* @Frequency_number, align 4
+  %conv11 = sext i32 %21 to i128
+  %22 = load i128** @UA_ADC_CONVERSION_TIME_regptr, align 8
+  store i128 %conv11, i128* %22, align 16
+  %23 = load i128** @UA_ADC_CONVERSION_CONF_regptr, align 8
+  store i128 1, i128* %23, align 16
+  store i32 5, i32* @MAX_UA_Cycle, align 4
+  br label %if.end339
 
 if.else12:                                        ; preds = %land.lhs.true, %while.body
   %24 = load i32* @Cycle_Number, align 4
   %25 = load i32* @MAX_UA_Cycle, align 4
   %cmp13 = icmp sge i32 %24, %25
-  br i1 %cmp13, label %land.lhs.true15, label %if.else83
+  br i1 %cmp13, label %land.lhs.true15, label %if.else80
 
 land.lhs.true15:                                  ; preds = %if.else12
   %26 = load i32* @Current_state, align 4
   %cmp16 = icmp eq i32 %26, 2
-  br i1 %cmp16, label %if.then18, label %if.else83
+  br i1 %cmp16, label %if.then18, label %if.else80
 
 if.then18:                                        ; preds = %land.lhs.true15
   %27 = load i128** @UA_ADC_CONVERSION_CONF_regptr, align 8
@@ -1875,7 +1906,7 @@ for.body:                                         ; preds = %for.cond
   %30 = load i32* @Last_ADC_Pointer, align 4
   %31 = load i32* @Value_index, align 4
   %sub21 = sub nsw i32 %30, %31
-  %sub22 = sub nsw i32 %sub21, 160
+  %sub22 = sub nsw i32 %sub21, 12
   %and = and i32 %sub22, 1023
   %idxprom = sext i32 %and to i64
   %32 = load i32** @UA_ADC_MEM_regptr, align 8
@@ -1977,1083 +2008,1400 @@ if.end63:                                         ; preds = %if.end62, %for.end
   %xor64 = xor i32 %58, 1
   store i32 %xor64, i32* @Current_signal, align 4
   %59 = load i32* @s25AvgNum, align 4
-  %cmp65 = icmp sge i32 %59, 1
-  br i1 %cmp65, label %if.then67, label %if.end82
+  %cmp65 = icmp sge i32 %59, 16
+  br i1 %cmp65, label %if.then67, label %if.end79
 
 if.then67:                                        ; preds = %if.end63
   store i32 3, i32* @Current_state, align 4
   store i32 0, i32* %cpCr, align 4
-  %60 = load i32* @s25AvgNum, align 4
-  %mul68 = mul nsw i32 %60, 4
-  %mul69 = mul nsw i32 %mul68, 3
-  %conv70 = sitofp i32 %mul69 to float
-  %61 = load float* @f32uartTime, align 4
-  %mul71 = fmul float %61, 1.152000e+05
-  %cmp72 = fcmp olt float %conv70, %mul71
-  br i1 %cmp72, label %if.then74, label %if.else80
+  store i32 0, i32* @s25AvgNum, align 4
+  %60 = load float* @f32uartTime, align 4
+  %mul68 = fmul float %60, 1.152000e+05
+  %cmp69 = fcmp olt float 1.920000e+02, %mul68
+  br i1 %cmp69, label %if.then71, label %if.else77
 
-if.then74:                                        ; preds = %if.then67
-  %62 = load float* @f32uartTime, align 4
-  %mul75 = fmul float %62, 1.152000e+05
-  %63 = load i32* @s25AvgNum, align 4
-  %mul76 = mul nsw i32 %63, 4
-  %mul77 = mul nsw i32 %mul76, 3
-  %conv78 = sitofp i32 %mul77 to float
-  %sub79 = fsub float %mul75, %conv78
-  store float %sub79, float* %in.addr.i, align 4
-  %64 = load float* %in.addr.i, align 4
-  %add.i = fadd float %64, 0x3FEFFFFFE0000000
+if.then71:                                        ; preds = %if.then67
+  %61 = load float* @f32uartTime, align 4
+  %mul72 = fmul float %61, 1.152000e+05
+  %62 = load i32* @s25AvgNum, align 4
+  %mul73 = mul nsw i32 %62, 4
+  %mul74 = mul nsw i32 %mul73, 3
+  %conv75 = sitofp i32 %mul74 to float
+  %sub76 = fsub float %mul72, %conv75
+  store float %sub76, float* %in.addr.i, align 4
+  %63 = load float* %in.addr.i, align 4
+  %add.i = fadd float %63, 0x3FEFFFFFE0000000
   %conv.i = fptosi float %add.i to i32
   store i32 %conv.i, i32* @MAX_UA_Cycle, align 4
-  br label %if.end81
+  br label %if.end78
 
-if.else80:                                        ; preds = %if.then67
+if.else77:                                        ; preds = %if.then67
   store i32 0, i32* @MAX_UA_Cycle, align 4
-  br label %if.end81
+  br label %if.end78
 
-if.end81:                                         ; preds = %if.else80, %if.then74
-  store i32 0, i32* @s25AvgNum, align 4
-  br label %if.end82
+if.end78:                                         ; preds = %if.else77, %if.then71
+  br label %if.end79
 
-if.end82:                                         ; preds = %if.end81, %if.end63
-  br label %if.end306
+if.end79:                                         ; preds = %if.end78, %if.end63
+  br label %if.end338
 
-if.else83:                                        ; preds = %land.lhs.true15, %if.else12
-  %65 = load i32* @Cycle_Number, align 4
-  %66 = load i32* @MAX_UA_Cycle, align 4
-  %cmp84 = icmp sge i32 %65, %66
-  br i1 %cmp84, label %land.lhs.true86, label %if.else202
+if.else80:                                        ; preds = %land.lhs.true15, %if.else12
+  %64 = load i32* @Cycle_Number, align 4
+  %65 = load i32* @MAX_UA_Cycle, align 4
+  %cmp81 = icmp sge i32 %64, %65
+  br i1 %cmp81, label %land.lhs.true83, label %if.else241
 
-land.lhs.true86:                                  ; preds = %if.else83
-  %67 = load i32* @Current_state, align 4
-  %cmp87 = icmp eq i32 %67, 3
-  br i1 %cmp87, label %if.then89, label %if.else202
+land.lhs.true83:                                  ; preds = %if.else80
+  %66 = load i32* @Current_state, align 4
+  %cmp84 = icmp eq i32 %66, 3
+  br i1 %cmp84, label %if.then86, label %if.else241
 
-if.then89:                                        ; preds = %land.lhs.true86
-  store float 0.000000e+00, float* @f_Amplitude_Temp, align 4
-  store float 0.000000e+00, float* @f_Q1m, align 4
-  store float 0.000000e+00, float* @f_Q2m, align 4
-  %68 = load i32* %cpCr, align 4
-  %mul90 = mul nsw i32 2, %68
-  %add91 = add nsw i32 0, %mul90
-  %idxprom92 = sext i32 %add91 to i64
-  %arrayidx93 = getelementptr inbounds [4 x float]* @Zeroline, i32 0, i64 %idxprom92
-  %69 = load float* %arrayidx93, align 4
-  %mul94 = fmul float %69, 6.250000e-02
+if.then86:                                        ; preds = %land.lhs.true83
+  %67 = load i32* %cpCr, align 4
+  %mul87 = mul nsw i32 2, %67
+  %add88 = add nsw i32 0, %mul87
+  %idxprom89 = sext i32 %add88 to i64
+  %arrayidx90 = getelementptr inbounds [4 x float]* @Zeroline, i32 0, i64 %idxprom89
+  %68 = load float* %arrayidx90, align 4
+  %mul91 = fmul float %68, 6.250000e-02
+  %69 = load i32* %cpCr, align 4
+  %mul92 = mul nsw i32 2, %69
+  %add93 = add nsw i32 0, %mul92
+  %idxprom94 = sext i32 %add93 to i64
+  %arrayidx95 = getelementptr inbounds [4 x float]* @Zeroline, i32 0, i64 %idxprom94
+  store float %mul91, float* %arrayidx95, align 4
   %70 = load i32* %cpCr, align 4
-  %mul95 = mul nsw i32 2, %70
-  %add96 = add nsw i32 0, %mul95
-  %idxprom97 = sext i32 %add96 to i64
-  %arrayidx98 = getelementptr inbounds [4 x float]* @Zeroline, i32 0, i64 %idxprom97
-  store float %mul94, float* %arrayidx98, align 4
-  %71 = load i32* %cpCr, align 4
-  %mul99 = mul nsw i32 2, %71
-  %add100 = add nsw i32 1, %mul99
-  %idxprom101 = sext i32 %add100 to i64
-  %arrayidx102 = getelementptr inbounds [4 x float]* @Zeroline, i32 0, i64 %idxprom101
-  %72 = load float* %arrayidx102, align 4
-  %mul103 = fmul float %72, 6.250000e-02
-  %73 = load i32* %cpCr, align 4
-  %mul104 = mul nsw i32 2, %73
-  %add105 = add nsw i32 1, %mul104
-  %idxprom106 = sext i32 %add105 to i64
-  %arrayidx107 = getelementptr inbounds [4 x float]* @Zeroline, i32 0, i64 %idxprom106
-  store float %mul103, float* %arrayidx107, align 4
-  store i32 0, i32* @Value_index, align 4
-  br label %for.cond108
-
-for.cond108:                                      ; preds = %for.inc136, %if.then89
-  %74 = load i32* @Value_index, align 4
-  %cmp109 = icmp slt i32 %74, 16
-  br i1 %cmp109, label %for.body111, label %for.end138
-
-for.body111:                                      ; preds = %for.cond108
-  %75 = load i32* @Value_index, align 4
-  %76 = load i32* %cpCr, align 4
-  %mul112 = mul nsw i32 16, %76
-  %add113 = add nsw i32 %75, %mul112
-  %idxprom114 = sext i32 %add113 to i64
-  %arrayidx115 = getelementptr inbounds [32 x i32]* @ADC_values_sig, i32 0, i64 %idxprom114
-  %77 = load i32* %arrayidx115, align 4
-  %conv116 = sitofp i32 %77 to float
-  %78 = load i32* %cpCr, align 4
-  %mul117 = mul nsw i32 2, %78
-  %add118 = add nsw i32 0, %mul117
-  %idxprom119 = sext i32 %add118 to i64
-  %arrayidx120 = getelementptr inbounds [4 x float]* @Zeroline, i32 0, i64 %idxprom119
-  %79 = load float* %arrayidx120, align 4
-  %sub121 = fsub float %conv116, %79
-  store float %sub121, float* @f_Temp, align 4
-  %80 = load float* @f_Temp, align 4
-  %81 = load i32* @Value_index, align 4
-  %idxprom122 = sext i32 %81 to i64
-  %arrayidx123 = getelementptr inbounds [16 x float]* @f_VIRTUAL_SINE, i32 0, i64 %idxprom122
-  %82 = load volatile float* %arrayidx123, align 4
-  %mul124 = fmul float %80, %82
-  store float %mul124, float* @f_Q1, align 4
-  %83 = load float* @f_Temp, align 4
-  %84 = load i32* @Value_index, align 4
-  %add125 = add nsw i32 %84, 4
-  %and126 = and i32 %add125, 15
-  %idxprom127 = sext i32 %and126 to i64
-  %arrayidx128 = getelementptr inbounds [16 x float]* @f_VIRTUAL_SINE, i32 0, i64 %idxprom127
-  %85 = load volatile float* %arrayidx128, align 4
-  %mul129 = fmul float %83, %85
-  store float %mul129, float* @f_Q2, align 4
-  %86 = load float* @f_Q1m, align 4
-  %87 = load float* @f_Q1, align 4
-  %add130 = fadd float %86, %87
-  store float %add130, float* @f_Q1m, align 4
-  %88 = load float* @f_Q2m, align 4
-  %89 = load float* @f_Q2, align 4
-  %add131 = fadd float %88, %89
-  store float %add131, float* @f_Q2m, align 4
-  %90 = load float* @f_Amplitude_Temp, align 4
-  %91 = load float* @f_Q1, align 4
-  %92 = load float* @f_Q1, align 4
-  %mul132 = fmul float %91, %92
-  %add133 = fadd float %90, %mul132
-  %93 = load float* @f_Q2, align 4
-  %94 = load float* @f_Q2, align 4
-  %mul134 = fmul float %93, %94
-  %add135 = fadd float %add133, %mul134
-  store float %add135, float* @f_Amplitude_Temp, align 4
-  br label %for.inc136
-
-for.inc136:                                       ; preds = %for.body111
-  %95 = load i32* @Value_index, align 4
-  %inc137 = add nsw i32 %95, 1
-  store i32 %inc137, i32* @Value_index, align 4
-  br label %for.cond108
-
-for.end138:                                       ; preds = %for.cond108
-  %96 = load float* @f_Q2m, align 4
-  store float %96, float* @Q2mSig, align 4
-  %97 = load float* @f_Q1m, align 4
-  store float %97, float* @Q1mSig, align 4
-  %98 = load float* @f_Amplitude_Temp, align 4
-  %mul139 = fmul float %98, 1.250000e-01
-  store float %mul139, float* %number.addr.i516, align 4
-  %99 = load float* %number.addr.i516, align 4
-  %mul.i522 = fmul float %99, 5.000000e-01
-  store float %mul.i522, float* %x2.i520, align 4
-  %100 = load float* %number.addr.i516, align 4
-  %conv.i523 = fptosi float %100 to i128
-  store i128 %conv.i523, i128* %i.i517, align 16
-  %101 = load i128* %i.i517, align 16
-  %shr.i524 = ashr i128 %101, 1
-  store i128 %shr.i524, i128* %i.i517, align 16
-  %102 = load i128* %i.i517, align 16
-  %and.i525 = and i128 %102, 65535
-  %conv1.i526 = trunc i128 %and.i525 to i32
-  store i32 %conv1.i526, i32* %i_lo.i518, align 4
-  %103 = load i128* %i.i517, align 16
-  %and2.i527 = and i128 %103, 2147418112
-  %shr3.i528 = ashr i128 %and2.i527, 16
-  %conv4.i529 = trunc i128 %shr3.i528 to i32
-  store i32 %conv4.i529, i32* %i_hi.i519, align 4
-  %104 = load i32* %i_lo.i518, align 4
-  %sub.i530 = sub nsw i32 23007, %104
-  store i32 %sub.i530, i32* %i_lo.i518, align 4
-  %105 = load i32* %i_lo.i518, align 4
-  %cmp.i531 = icmp slt i32 %105, 0
-  br i1 %cmp.i531, label %if.then.i535, label %if.else.i537
-
-if.then.i535:                                     ; preds = %for.end138
-  %106 = load i32* %i_hi.i519, align 4
-  %sub6.i532 = sub nsw i32 24375, %106
-  %sub7.i533 = sub nsw i32 %sub6.i532, 1
-  store i32 %sub7.i533, i32* %i_hi.i519, align 4
-  %107 = load i32* %i_lo.i518, align 4
-  %and8.i534 = and i32 %107, 65535
-  store i32 %and8.i534, i32* %i_lo.i518, align 4
-  br label %UA_sqrt.exit555
-
-if.else.i537:                                     ; preds = %for.end138
-  %108 = load i32* %i_hi.i519, align 4
-  %sub9.i536 = sub nsw i32 24375, %108
-  store i32 %sub9.i536, i32* %i_hi.i519, align 4
-  br label %UA_sqrt.exit555
-
-UA_sqrt.exit555:                                  ; preds = %if.then.i535, %if.else.i537
-  %109 = load i32* %i_hi.i519, align 4
-  %shl.i538 = shl i32 %109, 16
-  %110 = load i32* %i_lo.i518, align 4
-  %or.i539 = or i32 %shl.i538, %110
-  %conv10.i540 = sext i32 %or.i539 to i128
-  store i128 %conv10.i540, i128* %i.i517, align 16
-  %111 = load i128* %i.i517, align 16
-  %conv11.i541 = sitofp i128 %111 to float
-  store float %conv11.i541, float* %y.i521, align 4
-  %112 = load float* %y.i521, align 4
-  %113 = load float* %x2.i520, align 4
-  %114 = load float* %y.i521, align 4
-  %mul12.i542 = fmul float %113, %114
-  %115 = load float* %y.i521, align 4
-  %mul13.i543 = fmul float %mul12.i542, %115
-  %sub14.i544 = fsub float 1.500000e+00, %mul13.i543
-  %mul15.i545 = fmul float %112, %sub14.i544
-  store float %mul15.i545, float* %y.i521, align 4
-  %116 = load float* %y.i521, align 4
-  %117 = load float* %x2.i520, align 4
-  %118 = load float* %y.i521, align 4
-  %mul16.i546 = fmul float %117, %118
-  %119 = load float* %y.i521, align 4
-  %mul17.i547 = fmul float %mul16.i546, %119
-  %sub18.i548 = fsub float 1.500000e+00, %mul17.i547
-  %mul19.i549 = fmul float %116, %sub18.i548
-  store float %mul19.i549, float* %y.i521, align 4
-  %120 = load float* %y.i521, align 4
-  %121 = load float* %x2.i520, align 4
-  %122 = load float* %y.i521, align 4
-  %mul20.i550 = fmul float %121, %122
-  %123 = load float* %y.i521, align 4
-  %mul21.i551 = fmul float %mul20.i550, %123
-  %sub22.i552 = fsub float 1.500000e+00, %mul21.i551
-  %mul23.i553 = fmul float %120, %sub22.i552
-  store float %mul23.i553, float* %y.i521, align 4
-  %124 = load float* %y.i521, align 4
-  %125 = load float* %number.addr.i516, align 4
-  %mul24.i554 = fmul float %124, %125
-  store float %mul24.i554, float* getelementptr inbounds ([2 x float]* @Amplitude, i32 0, i64 0), align 4
+  %mul96 = mul nsw i32 2, %70
+  %add97 = add nsw i32 1, %mul96
+  %idxprom98 = sext i32 %add97 to i64
+  %arrayidx99 = getelementptr inbounds [4 x float]* @Zeroline, i32 0, i64 %idxprom98
+  %71 = load float* %arrayidx99, align 4
+  %mul100 = fmul float %71, 6.250000e-02
+  %72 = load i32* %cpCr, align 4
+  %mul101 = mul nsw i32 2, %72
+  %add102 = add nsw i32 1, %mul101
+  %idxprom103 = sext i32 %add102 to i64
+  %arrayidx104 = getelementptr inbounds [4 x float]* @Zeroline, i32 0, i64 %idxprom103
+  store float %mul100, float* %arrayidx104, align 4
   store float 0.000000e+00, float* @f_Amplitude_Temp, align 4
   store float 0.000000e+00, float* @f_Q1m, align 4
   store float 0.000000e+00, float* @f_Q2m, align 4
   store i32 0, i32* @Value_index, align 4
-  br label %for.cond141
+  br label %for.cond105
 
-for.cond141:                                      ; preds = %for.inc169, %UA_sqrt.exit555
-  %126 = load i32* @Value_index, align 4
-  %cmp142 = icmp slt i32 %126, 16
-  br i1 %cmp142, label %for.body144, label %for.end171
+for.cond105:                                      ; preds = %for.inc133, %if.then86
+  %73 = load i32* @Value_index, align 4
+  %cmp106 = icmp slt i32 %73, 16
+  br i1 %cmp106, label %for.body108, label %for.end135
 
-for.body144:                                      ; preds = %for.cond141
-  %127 = load i32* @Value_index, align 4
-  %128 = load i32* %cpCr, align 4
-  %mul145 = mul nsw i32 16, %128
-  %add146 = add nsw i32 %127, %mul145
-  %idxprom147 = sext i32 %add146 to i64
-  %arrayidx148 = getelementptr inbounds [32 x i32]* @ADC_values_ref, i32 0, i64 %idxprom147
-  %129 = load i32* %arrayidx148, align 4
-  %conv149 = sitofp i32 %129 to float
-  %130 = load i32* %cpCr, align 4
-  %mul150 = mul nsw i32 2, %130
-  %add151 = add nsw i32 1, %mul150
-  %idxprom152 = sext i32 %add151 to i64
-  %arrayidx153 = getelementptr inbounds [4 x float]* @Zeroline, i32 0, i64 %idxprom152
-  %131 = load float* %arrayidx153, align 4
-  %sub154 = fsub float %conv149, %131
-  store float %sub154, float* @f_Temp, align 4
-  %132 = load float* @f_Temp, align 4
-  %133 = load i32* @Value_index, align 4
-  %idxprom155 = sext i32 %133 to i64
-  %arrayidx156 = getelementptr inbounds [16 x float]* @f_VIRTUAL_SINE, i32 0, i64 %idxprom155
-  %134 = load volatile float* %arrayidx156, align 4
-  %mul157 = fmul float %132, %134
-  store float %mul157, float* @f_Q1, align 4
-  %135 = load float* @f_Temp, align 4
-  %136 = load i32* @Value_index, align 4
-  %add158 = add nsw i32 %136, 4
-  %and159 = and i32 %add158, 15
-  %idxprom160 = sext i32 %and159 to i64
-  %arrayidx161 = getelementptr inbounds [16 x float]* @f_VIRTUAL_SINE, i32 0, i64 %idxprom160
-  %137 = load volatile float* %arrayidx161, align 4
-  %mul162 = fmul float %135, %137
-  store float %mul162, float* @f_Q2, align 4
-  %138 = load float* @f_Q1m, align 4
-  %139 = load float* @f_Q1, align 4
-  %add163 = fadd float %138, %139
-  store float %add163, float* @f_Q1m, align 4
-  %140 = load float* @f_Q2m, align 4
-  %141 = load float* @f_Q2, align 4
-  %add164 = fadd float %140, %141
-  store float %add164, float* @f_Q2m, align 4
-  %142 = load float* @f_Amplitude_Temp, align 4
-  %143 = load float* @f_Q1, align 4
-  %144 = load float* @f_Q1, align 4
-  %mul165 = fmul float %143, %144
-  %add166 = fadd float %142, %mul165
-  %145 = load float* @f_Q2, align 4
-  %146 = load float* @f_Q2, align 4
-  %mul167 = fmul float %145, %146
-  %add168 = fadd float %add166, %mul167
-  store float %add168, float* @f_Amplitude_Temp, align 4
-  br label %for.inc169
+for.body108:                                      ; preds = %for.cond105
+  %74 = load i32* @Value_index, align 4
+  %75 = load i32* %cpCr, align 4
+  %mul109 = mul nsw i32 16, %75
+  %add110 = add nsw i32 %74, %mul109
+  %idxprom111 = sext i32 %add110 to i64
+  %arrayidx112 = getelementptr inbounds [32 x i32]* @ADC_values_sig, i32 0, i64 %idxprom111
+  %76 = load i32* %arrayidx112, align 4
+  %conv113 = sitofp i32 %76 to float
+  %77 = load i32* %cpCr, align 4
+  %mul114 = mul nsw i32 2, %77
+  %add115 = add nsw i32 0, %mul114
+  %idxprom116 = sext i32 %add115 to i64
+  %arrayidx117 = getelementptr inbounds [4 x float]* @Zeroline, i32 0, i64 %idxprom116
+  %78 = load float* %arrayidx117, align 4
+  %sub118 = fsub float %conv113, %78
+  store float %sub118, float* @f_Temp, align 4
+  %79 = load float* @f_Temp, align 4
+  %80 = load i32* @Value_index, align 4
+  %idxprom119 = sext i32 %80 to i64
+  %arrayidx120 = getelementptr inbounds [16 x float]* @f_VIRTUAL_SINE, i32 0, i64 %idxprom119
+  %81 = load volatile float* %arrayidx120, align 4
+  %mul121 = fmul float %79, %81
+  store float %mul121, float* @f_Q1, align 4
+  %82 = load float* @f_Temp, align 4
+  %83 = load i32* @Value_index, align 4
+  %add122 = add nsw i32 %83, 4
+  %and123 = and i32 %add122, 15
+  %idxprom124 = sext i32 %and123 to i64
+  %arrayidx125 = getelementptr inbounds [16 x float]* @f_VIRTUAL_SINE, i32 0, i64 %idxprom124
+  %84 = load volatile float* %arrayidx125, align 4
+  %mul126 = fmul float %82, %84
+  store float %mul126, float* @f_Q2, align 4
+  %85 = load float* @f_Q1m, align 4
+  %86 = load float* @f_Q1, align 4
+  %add127 = fadd float %85, %86
+  store float %add127, float* @f_Q1m, align 4
+  %87 = load float* @f_Q2m, align 4
+  %88 = load float* @f_Q2, align 4
+  %add128 = fadd float %87, %88
+  store float %add128, float* @f_Q2m, align 4
+  %89 = load float* @f_Amplitude_Temp, align 4
+  %90 = load float* @f_Q1, align 4
+  %91 = load float* @f_Q1, align 4
+  %mul129 = fmul float %90, %91
+  %add130 = fadd float %89, %mul129
+  %92 = load float* @f_Q2, align 4
+  %93 = load float* @f_Q2, align 4
+  %mul131 = fmul float %92, %93
+  %add132 = fadd float %add130, %mul131
+  store float %add132, float* @f_Amplitude_Temp, align 4
+  br label %for.inc133
 
-for.inc169:                                       ; preds = %for.body144
-  %147 = load i32* @Value_index, align 4
-  %inc170 = add nsw i32 %147, 1
-  store i32 %inc170, i32* @Value_index, align 4
-  br label %for.cond141
+for.inc133:                                       ; preds = %for.body108
+  %94 = load i32* @Value_index, align 4
+  %inc134 = add nsw i32 %94, 1
+  store i32 %inc134, i32* @Value_index, align 4
+  br label %for.cond105
 
-for.end171:                                       ; preds = %for.cond141
-  %148 = load float* @f_Q2m, align 4
-  store float %148, float* @Q2mRef, align 4
-  %149 = load float* @f_Q1m, align 4
-  store float %149, float* @Q1mRef, align 4
-  %150 = load float* @f_Amplitude_Temp, align 4
-  %mul172 = fmul float %150, 1.250000e-01
-  store float %mul172, float* %number.addr.i476, align 4
-  %151 = load float* %number.addr.i476, align 4
-  %mul.i482 = fmul float %151, 5.000000e-01
-  store float %mul.i482, float* %x2.i480, align 4
-  %152 = load float* %number.addr.i476, align 4
-  %conv.i483 = fptosi float %152 to i128
-  store i128 %conv.i483, i128* %i.i477, align 16
-  %153 = load i128* %i.i477, align 16
-  %shr.i484 = ashr i128 %153, 1
-  store i128 %shr.i484, i128* %i.i477, align 16
-  %154 = load i128* %i.i477, align 16
-  %and.i485 = and i128 %154, 65535
-  %conv1.i486 = trunc i128 %and.i485 to i32
-  store i32 %conv1.i486, i32* %i_lo.i478, align 4
-  %155 = load i128* %i.i477, align 16
-  %and2.i487 = and i128 %155, 2147418112
-  %shr3.i488 = ashr i128 %and2.i487, 16
-  %conv4.i489 = trunc i128 %shr3.i488 to i32
-  store i32 %conv4.i489, i32* %i_hi.i479, align 4
-  %156 = load i32* %i_lo.i478, align 4
-  %sub.i490 = sub nsw i32 23007, %156
-  store i32 %sub.i490, i32* %i_lo.i478, align 4
-  %157 = load i32* %i_lo.i478, align 4
-  %cmp.i491 = icmp slt i32 %157, 0
-  br i1 %cmp.i491, label %if.then.i495, label %if.else.i497
+for.end135:                                       ; preds = %for.cond105
+  %95 = load float* @f_Q2m, align 4
+  store float %95, float* @Q2mSig, align 4
+  %96 = load float* @f_Q1m, align 4
+  store float %96, float* @Q1mSig, align 4
+  %97 = load float* @f_Amplitude_Temp, align 4
+  %mul136 = fmul float %97, 1.250000e-01
+  store float %mul136, float* %number.addr.i609, align 4
+  %98 = load float* %number.addr.i609, align 4
+  %mul.i615 = fmul float %98, 5.000000e-01
+  store float %mul.i615, float* %x2.i613, align 4
+  %99 = load float* %number.addr.i609, align 4
+  %conv.i616 = fptosi float %99 to i128
+  store i128 %conv.i616, i128* %i.i610, align 16
+  %100 = load i128* %i.i610, align 16
+  %shr.i617 = ashr i128 %100, 1
+  store i128 %shr.i617, i128* %i.i610, align 16
+  %101 = load i128* %i.i610, align 16
+  %and.i618 = and i128 %101, 65535
+  %conv1.i619 = trunc i128 %and.i618 to i32
+  store i32 %conv1.i619, i32* %i_lo.i611, align 4
+  %102 = load i128* %i.i610, align 16
+  %and2.i620 = and i128 %102, 2147418112
+  %shr3.i621 = ashr i128 %and2.i620, 16
+  %conv4.i622 = trunc i128 %shr3.i621 to i32
+  store i32 %conv4.i622, i32* %i_hi.i612, align 4
+  %103 = load i32* %i_lo.i611, align 4
+  %sub.i623 = sub nsw i32 23007, %103
+  store i32 %sub.i623, i32* %i_lo.i611, align 4
+  %104 = load i32* %i_lo.i611, align 4
+  %cmp.i624 = icmp slt i32 %104, 0
+  br i1 %cmp.i624, label %if.then.i628, label %if.else.i630
 
-if.then.i495:                                     ; preds = %for.end171
-  %158 = load i32* %i_hi.i479, align 4
-  %sub6.i492 = sub nsw i32 24375, %158
-  %sub7.i493 = sub nsw i32 %sub6.i492, 1
-  store i32 %sub7.i493, i32* %i_hi.i479, align 4
-  %159 = load i32* %i_lo.i478, align 4
-  %and8.i494 = and i32 %159, 65535
-  store i32 %and8.i494, i32* %i_lo.i478, align 4
-  br label %UA_sqrt.exit515
+if.then.i628:                                     ; preds = %for.end135
+  %105 = load i32* %i_hi.i612, align 4
+  %sub6.i625 = sub nsw i32 24375, %105
+  %sub7.i626 = sub nsw i32 %sub6.i625, 1
+  store i32 %sub7.i626, i32* %i_hi.i612, align 4
+  %106 = load i32* %i_lo.i611, align 4
+  %and8.i627 = and i32 %106, 65535
+  store i32 %and8.i627, i32* %i_lo.i611, align 4
+  br label %UA_sqrt.exit649
 
-if.else.i497:                                     ; preds = %for.end171
-  %160 = load i32* %i_hi.i479, align 4
-  %sub9.i496 = sub nsw i32 24375, %160
-  store i32 %sub9.i496, i32* %i_hi.i479, align 4
-  br label %UA_sqrt.exit515
+if.else.i630:                                     ; preds = %for.end135
+  %107 = load i32* %i_hi.i612, align 4
+  %sub9.i629 = sub nsw i32 24375, %107
+  store i32 %sub9.i629, i32* %i_hi.i612, align 4
+  br label %UA_sqrt.exit649
 
-UA_sqrt.exit515:                                  ; preds = %if.then.i495, %if.else.i497
-  %161 = load i32* %i_hi.i479, align 4
-  %shl.i498 = shl i32 %161, 16
-  %162 = load i32* %i_lo.i478, align 4
-  %or.i499 = or i32 %shl.i498, %162
-  %conv10.i500 = sext i32 %or.i499 to i128
-  store i128 %conv10.i500, i128* %i.i477, align 16
-  %163 = load i128* %i.i477, align 16
-  %conv11.i501 = sitofp i128 %163 to float
-  store float %conv11.i501, float* %y.i481, align 4
-  %164 = load float* %y.i481, align 4
-  %165 = load float* %x2.i480, align 4
-  %166 = load float* %y.i481, align 4
-  %mul12.i502 = fmul float %165, %166
-  %167 = load float* %y.i481, align 4
-  %mul13.i503 = fmul float %mul12.i502, %167
-  %sub14.i504 = fsub float 1.500000e+00, %mul13.i503
-  %mul15.i505 = fmul float %164, %sub14.i504
-  store float %mul15.i505, float* %y.i481, align 4
-  %168 = load float* %y.i481, align 4
-  %169 = load float* %x2.i480, align 4
-  %170 = load float* %y.i481, align 4
-  %mul16.i506 = fmul float %169, %170
-  %171 = load float* %y.i481, align 4
-  %mul17.i507 = fmul float %mul16.i506, %171
-  %sub18.i508 = fsub float 1.500000e+00, %mul17.i507
-  %mul19.i509 = fmul float %168, %sub18.i508
-  store float %mul19.i509, float* %y.i481, align 4
-  %172 = load float* %y.i481, align 4
-  %173 = load float* %x2.i480, align 4
-  %174 = load float* %y.i481, align 4
-  %mul20.i510 = fmul float %173, %174
-  %175 = load float* %y.i481, align 4
-  %mul21.i511 = fmul float %mul20.i510, %175
-  %sub22.i512 = fsub float 1.500000e+00, %mul21.i511
-  %mul23.i513 = fmul float %172, %sub22.i512
-  store float %mul23.i513, float* %y.i481, align 4
-  %176 = load float* %y.i481, align 4
-  %177 = load float* %number.addr.i476, align 4
-  %mul24.i514 = fmul float %176, %177
-  store float %mul24.i514, float* getelementptr inbounds ([2 x float]* @Amplitude, i32 0, i64 1), align 4
-  %178 = load float* @C_GainAmp_pF, align 4
-  %179 = load float* @f32OneOn_WR, align 4
-  %180 = load float* getelementptr inbounds ([2 x float]* @Amplitude, i32 0, i64 1), align 4
-  %181 = load float* getelementptr inbounds ([2 x float]* @Amplitude, i32 0, i64 1), align 4
-  %mul174 = fmul float %180, %181
-  %182 = load float* getelementptr inbounds ([2 x float]* @Amplitude, i32 0, i64 0), align 4
-  %183 = load float* getelementptr inbounds ([2 x float]* @Amplitude, i32 0, i64 0), align 4
-  %mul175 = fmul float %182, %183
-  store float %mul175, float* %in.addr.i450, align 4
-  %184 = load float* %in.addr.i450, align 4
-  %conv.i453 = fptosi float %184 to i128
-  %and.i454 = and i128 %conv.i453, 8388607
-  %or.i455 = or i128 %and.i454, 1056964608
-  %conv1.i456 = sitofp i128 %or.i455 to float
-  store float %conv1.i456, float* %In_Reduced.i451, align 4
-  %185 = load float* %In_Reduced.i451, align 4
-  %mul.i457 = fmul float 0x3FFE1E1E20000000, %185
-  %sub.i458 = fsub float 0x40069696A0000000, %mul.i457
-  store float %sub.i458, float* %x.i452, align 4
-  %186 = load float* %x.i452, align 4
-  %187 = load float* %In_Reduced.i451, align 4
-  %188 = load float* %x.i452, align 4
-  %mul2.i459 = fmul float %187, %188
-  %sub3.i460 = fsub float 2.000000e+00, %mul2.i459
-  %mul4.i461 = fmul float %186, %sub3.i460
-  store float %mul4.i461, float* %x.i452, align 4
-  %189 = load float* %x.i452, align 4
-  %190 = load float* %In_Reduced.i451, align 4
-  %191 = load float* %x.i452, align 4
-  %mul5.i462 = fmul float %190, %191
-  %sub6.i463 = fsub float 2.000000e+00, %mul5.i462
-  %mul7.i464 = fmul float %189, %sub6.i463
-  store float %mul7.i464, float* %x.i452, align 4
-  %192 = load float* %x.i452, align 4
-  %193 = load float* %In_Reduced.i451, align 4
-  %194 = load float* %x.i452, align 4
-  %mul8.i465 = fmul float %193, %194
-  %sub9.i466 = fsub float 2.000000e+00, %mul8.i465
-  %mul10.i467 = fmul float %192, %sub9.i466
-  store float %mul10.i467, float* %x.i452, align 4
-  %195 = load float* %x.i452, align 4
-  %conv11.i468 = fptosi float %195 to i128
-  %and12.i469 = and i128 %conv11.i468, 8388607
-  %196 = load float* %in.addr.i450, align 4
-  %conv13.i470 = fptosi float %196 to i128
-  %neg.i471 = xor i128 %conv13.i470, -1
-  %and14.i472 = and i128 %neg.i471, 4286578688
-  %or15.i473 = or i128 %and12.i469, %and14.i472
-  %conv16.i474 = sitofp i128 %or15.i473 to float
-  %mul17.i475 = fmul float %conv16.i474, -2.500000e-01
-  %mul177 = fmul float %mul174, %mul17.i475
-  %sub178 = fsub float %mul177, 1.000000e+00
-  store float %sub178, float* %number.addr.i, align 4
-  %197 = load float* %number.addr.i, align 4
-  %mul.i440 = fmul float %197, 5.000000e-01
-  store float %mul.i440, float* %x2.i, align 4
-  %198 = load float* %number.addr.i, align 4
-  %conv.i441 = fptosi float %198 to i128
-  store i128 %conv.i441, i128* %i.i, align 16
-  %199 = load i128* %i.i, align 16
-  %shr.i = ashr i128 %199, 1
+UA_sqrt.exit649:                                  ; preds = %if.then.i628, %if.else.i630
+  %108 = load i32* %i_hi.i612, align 4
+  %shl.i631 = shl i32 %108, 16
+  %109 = load i32* %i_lo.i611, align 4
+  %or.i632 = or i32 %shl.i631, %109
+  %conv10.i633 = sext i32 %or.i632 to i128
+  store i128 %conv10.i633, i128* %i.i610, align 16
+  %110 = load i128* %i.i610, align 16
+  %conv11.i634 = sitofp i128 %110 to float
+  store float %conv11.i634, float* %y.i614, align 4
+  %111 = load float* %y.i614, align 4
+  %112 = load float* %x2.i613, align 4
+  %113 = load float* %y.i614, align 4
+  %mul12.i635 = fmul float %112, %113
+  %114 = load float* %y.i614, align 4
+  %mul13.i636 = fmul float %mul12.i635, %114
+  %sub14.i637 = fsub float 1.500000e+00, %mul13.i636
+  %mul15.i638 = fmul float %111, %sub14.i637
+  store float %mul15.i638, float* %y.i614, align 4
+  %115 = load float* %y.i614, align 4
+  %116 = load float* %x2.i613, align 4
+  %117 = load float* %y.i614, align 4
+  %mul16.i639 = fmul float %116, %117
+  %118 = load float* %y.i614, align 4
+  %mul17.i640 = fmul float %mul16.i639, %118
+  %sub18.i641 = fsub float 1.500000e+00, %mul17.i640
+  %mul19.i642 = fmul float %115, %sub18.i641
+  store float %mul19.i642, float* %y.i614, align 4
+  %119 = load float* %y.i614, align 4
+  %120 = load float* %x2.i613, align 4
+  %121 = load float* %y.i614, align 4
+  %mul20.i643 = fmul float %120, %121
+  %122 = load float* %y.i614, align 4
+  %mul21.i644 = fmul float %mul20.i643, %122
+  %sub22.i645 = fsub float 1.500000e+00, %mul21.i644
+  %mul23.i646 = fmul float %119, %sub22.i645
+  store float %mul23.i646, float* %y.i614, align 4
+  %123 = load float* %y.i614, align 4
+  %124 = load float* %number.addr.i609, align 4
+  %mul24.i647 = fmul float %123, %124
+  store float %mul24.i647, float* getelementptr inbounds ([2 x float]* @Amplitude, i32 0, i64 0), align 4
+  %125 = load float* @Q2mSig, align 4
+  %126 = load float* @Q1mSig, align 4
+  store float %126, float* %in.addr.i583, align 4
+  %127 = load float* %in.addr.i583, align 4
+  %conv.i586 = fptosi float %127 to i128
+  %and.i587 = and i128 %conv.i586, 8388607
+  %or.i588 = or i128 %and.i587, 1056964608
+  %conv1.i589 = sitofp i128 %or.i588 to float
+  store float %conv1.i589, float* %In_Reduced.i584, align 4
+  %128 = load float* %In_Reduced.i584, align 4
+  %mul.i590 = fmul float 0x3FFE1E1E20000000, %128
+  %sub.i591 = fsub float 0x40069696A0000000, %mul.i590
+  store float %sub.i591, float* %x.i585, align 4
+  %129 = load float* %x.i585, align 4
+  %130 = load float* %In_Reduced.i584, align 4
+  %131 = load float* %x.i585, align 4
+  %mul2.i592 = fmul float %130, %131
+  %sub3.i593 = fsub float 2.000000e+00, %mul2.i592
+  %mul4.i594 = fmul float %129, %sub3.i593
+  store float %mul4.i594, float* %x.i585, align 4
+  %132 = load float* %x.i585, align 4
+  %133 = load float* %In_Reduced.i584, align 4
+  %134 = load float* %x.i585, align 4
+  %mul5.i595 = fmul float %133, %134
+  %sub6.i596 = fsub float 2.000000e+00, %mul5.i595
+  %mul7.i597 = fmul float %132, %sub6.i596
+  store float %mul7.i597, float* %x.i585, align 4
+  %135 = load float* %x.i585, align 4
+  %136 = load float* %In_Reduced.i584, align 4
+  %137 = load float* %x.i585, align 4
+  %mul8.i598 = fmul float %136, %137
+  %sub9.i599 = fsub float 2.000000e+00, %mul8.i598
+  %mul10.i600 = fmul float %135, %sub9.i599
+  store float %mul10.i600, float* %x.i585, align 4
+  %138 = load float* %x.i585, align 4
+  %conv11.i601 = fptosi float %138 to i128
+  %and12.i602 = and i128 %conv11.i601, 8388607
+  %139 = load float* %in.addr.i583, align 4
+  %conv13.i603 = fptosi float %139 to i128
+  %neg.i604 = xor i128 %conv13.i603, -1
+  %and14.i605 = and i128 %neg.i604, 4286578688
+  %or15.i606 = or i128 %and12.i602, %and14.i605
+  %conv16.i607 = sitofp i128 %or15.i606 to float
+  %mul17.i608 = fmul float %conv16.i607, -2.500000e-01
+  %mul139 = fmul float %125, %mul17.i608
+  store float %mul139, float* %x.addr.i512, align 4
+  %140 = load float* %x.addr.i512, align 4
+  store float %140, float* %t.i514, align 4
+  %141 = load float* %x.addr.i512, align 4
+  %cmp.i526 = fcmp olt float %141, 0.000000e+00
+  br i1 %cmp.i526, label %if.then.i528, label %if.end.i530
+
+if.then.i528:                                     ; preds = %UA_sqrt.exit649
+  %142 = load float* %x.addr.i512, align 4
+  %sub.i527 = fsub float -0.000000e+00, %142
+  store float %sub.i527, float* %t.i514, align 4
+  br label %if.end.i530
+
+if.end.i530:                                      ; preds = %if.then.i528, %UA_sqrt.exit649
+  %143 = load float* %t.i514, align 4
+  store float %143, float* %r.i513, align 4
+  %144 = load float* %t.i514, align 4
+  %cmp1.i529 = fcmp ogt float %144, 1.000000e+00
+  br i1 %cmp1.i529, label %if.then2.i554, label %if.end3.i574
+
+if.then2.i554:                                    ; preds = %if.end.i530
+  %145 = load float* %r.i513, align 4
+  store float %145, float* %in.addr.i.i509, align 4
+  %146 = load float* %in.addr.i.i509, align 4
+  %conv.i.i531 = fptosi float %146 to i128
+  %and.i.i532 = and i128 %conv.i.i531, 8388607
+  %or.i.i533 = or i128 %and.i.i532, 1056964608
+  %conv1.i.i534 = sitofp i128 %or.i.i533 to float
+  store float %conv1.i.i534, float* %In_Reduced.i.i510, align 4
+  %147 = load float* %In_Reduced.i.i510, align 4
+  %mul.i.i535 = fmul float 0x3FFE1E1E20000000, %147
+  %sub.i.i536 = fsub float 0x40069696A0000000, %mul.i.i535
+  store float %sub.i.i536, float* %x.i.i511, align 4
+  %148 = load float* %x.i.i511, align 4
+  %149 = load float* %In_Reduced.i.i510, align 4
+  %150 = load float* %x.i.i511, align 4
+  %mul2.i.i537 = fmul float %149, %150
+  %sub3.i.i538 = fsub float 2.000000e+00, %mul2.i.i537
+  %mul4.i.i539 = fmul float %148, %sub3.i.i538
+  store float %mul4.i.i539, float* %x.i.i511, align 4
+  %151 = load float* %x.i.i511, align 4
+  %152 = load float* %In_Reduced.i.i510, align 4
+  %153 = load float* %x.i.i511, align 4
+  %mul5.i.i540 = fmul float %152, %153
+  %sub6.i.i541 = fsub float 2.000000e+00, %mul5.i.i540
+  %mul7.i.i542 = fmul float %151, %sub6.i.i541
+  store float %mul7.i.i542, float* %x.i.i511, align 4
+  %154 = load float* %x.i.i511, align 4
+  %155 = load float* %In_Reduced.i.i510, align 4
+  %156 = load float* %x.i.i511, align 4
+  %mul8.i.i543 = fmul float %155, %156
+  %sub9.i.i544 = fsub float 2.000000e+00, %mul8.i.i543
+  %mul10.i.i545 = fmul float %154, %sub9.i.i544
+  store float %mul10.i.i545, float* %x.i.i511, align 4
+  %157 = load float* %x.i.i511, align 4
+  %conv11.i.i546 = fptosi float %157 to i128
+  %and12.i.i547 = and i128 %conv11.i.i546, 8388607
+  %158 = load float* %in.addr.i.i509, align 4
+  %conv13.i.i548 = fptosi float %158 to i128
+  %neg.i.i549 = xor i128 %conv13.i.i548, -1
+  %and14.i.i550 = and i128 %neg.i.i549, 4286578688
+  %or15.i.i551 = or i128 %and12.i.i547, %and14.i.i550
+  %conv16.i.i552 = sitofp i128 %or15.i.i551 to float
+  %mul17.i.i553 = fmul float %conv16.i.i552, -2.500000e-01
+  store float %mul17.i.i553, float* %r.i513, align 4
+  br label %if.end3.i574
+
+if.end3.i574:                                     ; preds = %if.then2.i554, %if.end.i530
+  %159 = load float* %r.i513, align 4
+  %160 = load float* %r.i513, align 4
+  %mul.i555 = fmul float %159, %160
+  store float %mul.i555, float* %s.i525, align 4
+  store float 0x3F66D20860000000, float* %p1.i515, align 4
+  %161 = load float* %p1.i515, align 4
+  %162 = load float* %s.i525, align 4
+  %mul4.i556 = fmul float %161, %162
+  %add.i557 = fadd float %mul4.i556, 0xBF903F2EC0000000
+  store float %add.i557, float* %p2.i516, align 4
+  %163 = load float* %p2.i516, align 4
+  %164 = load float* %s.i525, align 4
+  %mul5.i558 = fmul float %163, %164
+  %add6.i559 = fadd float %mul5.i558, 0x3FA5BEEBA0000000
+  store float %add6.i559, float* %p3.i517, align 4
+  %165 = load float* %p3.i517, align 4
+  %166 = load float* %s.i525, align 4
+  %mul7.i560 = fmul float %165, %166
+  %add8.i561 = fadd float %mul7.i560, 0xBFB33194E0000000
+  store float %add8.i561, float* %p4.i518, align 4
+  %167 = load float* %p4.i518, align 4
+  %168 = load float* %s.i525, align 4
+  %mul9.i562 = fmul float %167, %168
+  %add10.i563 = fadd float %mul9.i562, 0x3FBB403A80000000
+  store float %add10.i563, float* %p5.i519, align 4
+  %169 = load float* %p5.i519, align 4
+  %170 = load float* %s.i525, align 4
+  %mul11.i564 = fmul float %169, %170
+  %add12.i565 = fadd float %mul11.i564, 0xBFC22F5C20000000
+  store float %add12.i565, float* %p6.i520, align 4
+  %171 = load float* %p6.i520, align 4
+  %172 = load float* %s.i525, align 4
+  %mul13.i566 = fmul float %171, %172
+  %add14.i567 = fadd float %mul13.i566, 0x3FC9977480000000
+  store float %add14.i567, float* %p7.i521, align 4
+  %173 = load float* %p7.i521, align 4
+  %174 = load float* %s.i525, align 4
+  %mul15.i568 = fmul float %173, %174
+  %add16.i569 = fadd float %mul15.i568, 0xBFD5554D80000000
+  store float %add16.i569, float* %p8.i522, align 4
+  %175 = load float* %p8.i522, align 4
+  %176 = load float* %s.i525, align 4
+  %mul17.i570 = fmul float %175, %176
+  store float %mul17.i570, float* %p9.i523, align 4
+  %177 = load float* %p9.i523, align 4
+  %178 = load float* %r.i513, align 4
+  %mul18.i571 = fmul float %177, %178
+  %179 = load float* %r.i513, align 4
+  %add19.i572 = fadd float %mul18.i571, %179
+  store float %add19.i572, float* %p10.i524, align 4
+  %180 = load float* %p10.i524, align 4
+  store float %180, float* %r.i513, align 4
+  %181 = load float* %t.i514, align 4
+  %cmp20.i573 = fcmp ogt float %181, 1.000000e+00
+  br i1 %cmp20.i573, label %if.then21.i577, label %if.end24.i579
+
+if.then21.i577:                                   ; preds = %if.end3.i574
+  %182 = load float* %r.i513, align 4
+  %sub22.i575 = fsub float -0.000000e+00, %182
+  %add23.i576 = fadd float 0x3FF921FB60000000, %sub22.i575
+  store float %add23.i576, float* %r.i513, align 4
+  br label %if.end24.i579
+
+if.end24.i579:                                    ; preds = %if.then21.i577, %if.end3.i574
+  %183 = load float* %x.addr.i512, align 4
+  %cmp25.i578 = fcmp olt float %183, 0.000000e+00
+  br i1 %cmp25.i578, label %if.then26.i581, label %UA_atan.exit582
+
+if.then26.i581:                                   ; preds = %if.end24.i579
+  %184 = load float* %r.i513, align 4
+  %sub27.i580 = fsub float -0.000000e+00, %184
+  store float %sub27.i580, float* %r.i513, align 4
+  br label %UA_atan.exit582
+
+UA_atan.exit582:                                  ; preds = %if.end24.i579, %if.then26.i581
+  %185 = load float* %r.i513, align 4
+  %sub141 = fsub float 0x400921FB60000000, %185
+  store float %sub141, float* getelementptr inbounds ([2 x float]* @Phase, i32 0, i64 0), align 4
+  store float 0.000000e+00, float* @f_Amplitude_Temp, align 4
+  store float 0.000000e+00, float* @f_Q1m, align 4
+  store float 0.000000e+00, float* @f_Q2m, align 4
+  store i32 0, i32* @Value_index, align 4
+  br label %for.cond142
+
+for.cond142:                                      ; preds = %for.inc170, %UA_atan.exit582
+  %186 = load i32* @Value_index, align 4
+  %cmp143 = icmp slt i32 %186, 16
+  br i1 %cmp143, label %for.body145, label %for.end172
+
+for.body145:                                      ; preds = %for.cond142
+  %187 = load i32* @Value_index, align 4
+  %188 = load i32* %cpCr, align 4
+  %mul146 = mul nsw i32 16, %188
+  %add147 = add nsw i32 %187, %mul146
+  %idxprom148 = sext i32 %add147 to i64
+  %arrayidx149 = getelementptr inbounds [32 x i32]* @ADC_values_ref, i32 0, i64 %idxprom148
+  %189 = load i32* %arrayidx149, align 4
+  %conv150 = sitofp i32 %189 to float
+  %190 = load i32* %cpCr, align 4
+  %mul151 = mul nsw i32 2, %190
+  %add152 = add nsw i32 1, %mul151
+  %idxprom153 = sext i32 %add152 to i64
+  %arrayidx154 = getelementptr inbounds [4 x float]* @Zeroline, i32 0, i64 %idxprom153
+  %191 = load float* %arrayidx154, align 4
+  %sub155 = fsub float %conv150, %191
+  store float %sub155, float* @f_Temp, align 4
+  %192 = load float* @f_Temp, align 4
+  %193 = load i32* @Value_index, align 4
+  %idxprom156 = sext i32 %193 to i64
+  %arrayidx157 = getelementptr inbounds [16 x float]* @f_VIRTUAL_SINE, i32 0, i64 %idxprom156
+  %194 = load volatile float* %arrayidx157, align 4
+  %mul158 = fmul float %192, %194
+  store float %mul158, float* @f_Q1, align 4
+  %195 = load float* @f_Temp, align 4
+  %196 = load i32* @Value_index, align 4
+  %add159 = add nsw i32 %196, 4
+  %and160 = and i32 %add159, 15
+  %idxprom161 = sext i32 %and160 to i64
+  %arrayidx162 = getelementptr inbounds [16 x float]* @f_VIRTUAL_SINE, i32 0, i64 %idxprom161
+  %197 = load volatile float* %arrayidx162, align 4
+  %mul163 = fmul float %195, %197
+  store float %mul163, float* @f_Q2, align 4
+  %198 = load float* @f_Q1m, align 4
+  %199 = load float* @f_Q1, align 4
+  %add164 = fadd float %198, %199
+  store float %add164, float* @f_Q1m, align 4
+  %200 = load float* @f_Q2m, align 4
+  %201 = load float* @f_Q2, align 4
+  %add165 = fadd float %200, %201
+  store float %add165, float* @f_Q2m, align 4
+  %202 = load float* @f_Amplitude_Temp, align 4
+  %203 = load float* @f_Q1, align 4
+  %204 = load float* @f_Q1, align 4
+  %mul166 = fmul float %203, %204
+  %add167 = fadd float %202, %mul166
+  %205 = load float* @f_Q2, align 4
+  %206 = load float* @f_Q2, align 4
+  %mul168 = fmul float %205, %206
+  %add169 = fadd float %add167, %mul168
+  store float %add169, float* @f_Amplitude_Temp, align 4
+  br label %for.inc170
+
+for.inc170:                                       ; preds = %for.body145
+  %207 = load i32* @Value_index, align 4
+  %inc171 = add nsw i32 %207, 1
+  store i32 %inc171, i32* @Value_index, align 4
+  br label %for.cond142
+
+for.end172:                                       ; preds = %for.cond142
+  %208 = load float* @f_Q2m, align 4
+  store float %208, float* @Q2mRef, align 4
+  %209 = load float* @f_Q1m, align 4
+  store float %209, float* @Q1mRef, align 4
+  %210 = load float* @f_Amplitude_Temp, align 4
+  %mul173 = fmul float %210, 1.250000e-01
+  store float %mul173, float* %number.addr.i468, align 4
+  %211 = load float* %number.addr.i468, align 4
+  %mul.i474 = fmul float %211, 5.000000e-01
+  store float %mul.i474, float* %x2.i472, align 4
+  %212 = load float* %number.addr.i468, align 4
+  %conv.i475 = fptosi float %212 to i128
+  store i128 %conv.i475, i128* %i.i469, align 16
+  %213 = load i128* %i.i469, align 16
+  %shr.i476 = ashr i128 %213, 1
+  store i128 %shr.i476, i128* %i.i469, align 16
+  %214 = load i128* %i.i469, align 16
+  %and.i477 = and i128 %214, 65535
+  %conv1.i478 = trunc i128 %and.i477 to i32
+  store i32 %conv1.i478, i32* %i_lo.i470, align 4
+  %215 = load i128* %i.i469, align 16
+  %and2.i479 = and i128 %215, 2147418112
+  %shr3.i480 = ashr i128 %and2.i479, 16
+  %conv4.i481 = trunc i128 %shr3.i480 to i32
+  store i32 %conv4.i481, i32* %i_hi.i471, align 4
+  %216 = load i32* %i_lo.i470, align 4
+  %sub.i482 = sub nsw i32 23007, %216
+  store i32 %sub.i482, i32* %i_lo.i470, align 4
+  %217 = load i32* %i_lo.i470, align 4
+  %cmp.i483 = icmp slt i32 %217, 0
+  br i1 %cmp.i483, label %if.then.i487, label %if.else.i489
+
+if.then.i487:                                     ; preds = %for.end172
+  %218 = load i32* %i_hi.i471, align 4
+  %sub6.i484 = sub nsw i32 24375, %218
+  %sub7.i485 = sub nsw i32 %sub6.i484, 1
+  store i32 %sub7.i485, i32* %i_hi.i471, align 4
+  %219 = load i32* %i_lo.i470, align 4
+  %and8.i486 = and i32 %219, 65535
+  store i32 %and8.i486, i32* %i_lo.i470, align 4
+  br label %UA_sqrt.exit508
+
+if.else.i489:                                     ; preds = %for.end172
+  %220 = load i32* %i_hi.i471, align 4
+  %sub9.i488 = sub nsw i32 24375, %220
+  store i32 %sub9.i488, i32* %i_hi.i471, align 4
+  br label %UA_sqrt.exit508
+
+UA_sqrt.exit508:                                  ; preds = %if.then.i487, %if.else.i489
+  %221 = load i32* %i_hi.i471, align 4
+  %shl.i490 = shl i32 %221, 16
+  %222 = load i32* %i_lo.i470, align 4
+  %or.i491 = or i32 %shl.i490, %222
+  %conv10.i492 = sext i32 %or.i491 to i128
+  store i128 %conv10.i492, i128* %i.i469, align 16
+  %223 = load i128* %i.i469, align 16
+  %conv11.i493 = sitofp i128 %223 to float
+  store float %conv11.i493, float* %y.i473, align 4
+  %224 = load float* %y.i473, align 4
+  %225 = load float* %x2.i472, align 4
+  %226 = load float* %y.i473, align 4
+  %mul12.i494 = fmul float %225, %226
+  %227 = load float* %y.i473, align 4
+  %mul13.i495 = fmul float %mul12.i494, %227
+  %sub14.i496 = fsub float 1.500000e+00, %mul13.i495
+  %mul15.i497 = fmul float %224, %sub14.i496
+  store float %mul15.i497, float* %y.i473, align 4
+  %228 = load float* %y.i473, align 4
+  %229 = load float* %x2.i472, align 4
+  %230 = load float* %y.i473, align 4
+  %mul16.i498 = fmul float %229, %230
+  %231 = load float* %y.i473, align 4
+  %mul17.i499 = fmul float %mul16.i498, %231
+  %sub18.i500 = fsub float 1.500000e+00, %mul17.i499
+  %mul19.i501 = fmul float %228, %sub18.i500
+  store float %mul19.i501, float* %y.i473, align 4
+  %232 = load float* %y.i473, align 4
+  %233 = load float* %x2.i472, align 4
+  %234 = load float* %y.i473, align 4
+  %mul20.i502 = fmul float %233, %234
+  %235 = load float* %y.i473, align 4
+  %mul21.i503 = fmul float %mul20.i502, %235
+  %sub22.i504 = fsub float 1.500000e+00, %mul21.i503
+  %mul23.i505 = fmul float %232, %sub22.i504
+  store float %mul23.i505, float* %y.i473, align 4
+  %236 = load float* %y.i473, align 4
+  %237 = load float* %number.addr.i468, align 4
+  %mul24.i506 = fmul float %236, %237
+  store float %mul24.i506, float* getelementptr inbounds ([2 x float]* @Amplitude, i32 0, i64 1), align 4
+  %238 = load float* @Q2mRef, align 4
+  %239 = load float* @Q1mRef, align 4
+  store float %239, float* %in.addr.i442, align 4
+  %240 = load float* %in.addr.i442, align 4
+  %conv.i445 = fptosi float %240 to i128
+  %and.i446 = and i128 %conv.i445, 8388607
+  %or.i447 = or i128 %and.i446, 1056964608
+  %conv1.i448 = sitofp i128 %or.i447 to float
+  store float %conv1.i448, float* %In_Reduced.i443, align 4
+  %241 = load float* %In_Reduced.i443, align 4
+  %mul.i449 = fmul float 0x3FFE1E1E20000000, %241
+  %sub.i450 = fsub float 0x40069696A0000000, %mul.i449
+  store float %sub.i450, float* %x.i444, align 4
+  %242 = load float* %x.i444, align 4
+  %243 = load float* %In_Reduced.i443, align 4
+  %244 = load float* %x.i444, align 4
+  %mul2.i451 = fmul float %243, %244
+  %sub3.i452 = fsub float 2.000000e+00, %mul2.i451
+  %mul4.i453 = fmul float %242, %sub3.i452
+  store float %mul4.i453, float* %x.i444, align 4
+  %245 = load float* %x.i444, align 4
+  %246 = load float* %In_Reduced.i443, align 4
+  %247 = load float* %x.i444, align 4
+  %mul5.i454 = fmul float %246, %247
+  %sub6.i455 = fsub float 2.000000e+00, %mul5.i454
+  %mul7.i456 = fmul float %245, %sub6.i455
+  store float %mul7.i456, float* %x.i444, align 4
+  %248 = load float* %x.i444, align 4
+  %249 = load float* %In_Reduced.i443, align 4
+  %250 = load float* %x.i444, align 4
+  %mul8.i457 = fmul float %249, %250
+  %sub9.i458 = fsub float 2.000000e+00, %mul8.i457
+  %mul10.i459 = fmul float %248, %sub9.i458
+  store float %mul10.i459, float* %x.i444, align 4
+  %251 = load float* %x.i444, align 4
+  %conv11.i460 = fptosi float %251 to i128
+  %and12.i461 = and i128 %conv11.i460, 8388607
+  %252 = load float* %in.addr.i442, align 4
+  %conv13.i462 = fptosi float %252 to i128
+  %neg.i463 = xor i128 %conv13.i462, -1
+  %and14.i464 = and i128 %neg.i463, 4286578688
+  %or15.i465 = or i128 %and12.i461, %and14.i464
+  %conv16.i466 = sitofp i128 %or15.i465 to float
+  %mul17.i467 = fmul float %conv16.i466, -2.500000e-01
+  %mul176 = fmul float %238, %mul17.i467
+  store float %mul176, float* %x.addr.i, align 4
+  %253 = load float* %x.addr.i, align 4
+  store float %253, float* %t.i, align 4
+  %254 = load float* %x.addr.i, align 4
+  %cmp.i430 = fcmp olt float %254, 0.000000e+00
+  br i1 %cmp.i430, label %if.then.i432, label %if.end.i
+
+if.then.i432:                                     ; preds = %UA_sqrt.exit508
+  %255 = load float* %x.addr.i, align 4
+  %sub.i431 = fsub float -0.000000e+00, %255
+  store float %sub.i431, float* %t.i, align 4
+  br label %if.end.i
+
+if.end.i:                                         ; preds = %if.then.i432, %UA_sqrt.exit508
+  %256 = load float* %t.i, align 4
+  store float %256, float* %r.i, align 4
+  %257 = load float* %t.i, align 4
+  %cmp1.i = fcmp ogt float %257, 1.000000e+00
+  br i1 %cmp1.i, label %if.then2.i, label %if.end3.i
+
+if.then2.i:                                       ; preds = %if.end.i
+  %258 = load float* %r.i, align 4
+  store float %258, float* %in.addr.i.i, align 4
+  %259 = load float* %in.addr.i.i, align 4
+  %conv.i.i = fptosi float %259 to i128
+  %and.i.i = and i128 %conv.i.i, 8388607
+  %or.i.i = or i128 %and.i.i, 1056964608
+  %conv1.i.i = sitofp i128 %or.i.i to float
+  store float %conv1.i.i, float* %In_Reduced.i.i, align 4
+  %260 = load float* %In_Reduced.i.i, align 4
+  %mul.i.i = fmul float 0x3FFE1E1E20000000, %260
+  %sub.i.i = fsub float 0x40069696A0000000, %mul.i.i
+  store float %sub.i.i, float* %x.i.i, align 4
+  %261 = load float* %x.i.i, align 4
+  %262 = load float* %In_Reduced.i.i, align 4
+  %263 = load float* %x.i.i, align 4
+  %mul2.i.i = fmul float %262, %263
+  %sub3.i.i = fsub float 2.000000e+00, %mul2.i.i
+  %mul4.i.i = fmul float %261, %sub3.i.i
+  store float %mul4.i.i, float* %x.i.i, align 4
+  %264 = load float* %x.i.i, align 4
+  %265 = load float* %In_Reduced.i.i, align 4
+  %266 = load float* %x.i.i, align 4
+  %mul5.i.i = fmul float %265, %266
+  %sub6.i.i = fsub float 2.000000e+00, %mul5.i.i
+  %mul7.i.i = fmul float %264, %sub6.i.i
+  store float %mul7.i.i, float* %x.i.i, align 4
+  %267 = load float* %x.i.i, align 4
+  %268 = load float* %In_Reduced.i.i, align 4
+  %269 = load float* %x.i.i, align 4
+  %mul8.i.i = fmul float %268, %269
+  %sub9.i.i = fsub float 2.000000e+00, %mul8.i.i
+  %mul10.i.i = fmul float %267, %sub9.i.i
+  store float %mul10.i.i, float* %x.i.i, align 4
+  %270 = load float* %x.i.i, align 4
+  %conv11.i.i = fptosi float %270 to i128
+  %and12.i.i = and i128 %conv11.i.i, 8388607
+  %271 = load float* %in.addr.i.i, align 4
+  %conv13.i.i = fptosi float %271 to i128
+  %neg.i.i = xor i128 %conv13.i.i, -1
+  %and14.i.i = and i128 %neg.i.i, 4286578688
+  %or15.i.i = or i128 %and12.i.i, %and14.i.i
+  %conv16.i.i = sitofp i128 %or15.i.i to float
+  %mul17.i.i = fmul float %conv16.i.i, -2.500000e-01
+  store float %mul17.i.i, float* %r.i, align 4
+  br label %if.end3.i
+
+if.end3.i:                                        ; preds = %if.then2.i, %if.end.i
+  %272 = load float* %r.i, align 4
+  %273 = load float* %r.i, align 4
+  %mul.i433 = fmul float %272, %273
+  store float %mul.i433, float* %s.i, align 4
+  store float 0x3F66D20860000000, float* %p1.i, align 4
+  %274 = load float* %p1.i, align 4
+  %275 = load float* %s.i, align 4
+  %mul4.i434 = fmul float %274, %275
+  %add.i435 = fadd float %mul4.i434, 0xBF903F2EC0000000
+  store float %add.i435, float* %p2.i, align 4
+  %276 = load float* %p2.i, align 4
+  %277 = load float* %s.i, align 4
+  %mul5.i436 = fmul float %276, %277
+  %add6.i = fadd float %mul5.i436, 0x3FA5BEEBA0000000
+  store float %add6.i, float* %p3.i, align 4
+  %278 = load float* %p3.i, align 4
+  %279 = load float* %s.i, align 4
+  %mul7.i437 = fmul float %278, %279
+  %add8.i = fadd float %mul7.i437, 0xBFB33194E0000000
+  store float %add8.i, float* %p4.i, align 4
+  %280 = load float* %p4.i, align 4
+  %281 = load float* %s.i, align 4
+  %mul9.i = fmul float %280, %281
+  %add10.i = fadd float %mul9.i, 0x3FBB403A80000000
+  store float %add10.i, float* %p5.i, align 4
+  %282 = load float* %p5.i, align 4
+  %283 = load float* %s.i, align 4
+  %mul11.i = fmul float %282, %283
+  %add12.i = fadd float %mul11.i, 0xBFC22F5C20000000
+  store float %add12.i, float* %p6.i, align 4
+  %284 = load float* %p6.i, align 4
+  %285 = load float* %s.i, align 4
+  %mul13.i438 = fmul float %284, %285
+  %add14.i = fadd float %mul13.i438, 0x3FC9977480000000
+  store float %add14.i, float* %p7.i, align 4
+  %286 = load float* %p7.i, align 4
+  %287 = load float* %s.i, align 4
+  %mul15.i439 = fmul float %286, %287
+  %add16.i = fadd float %mul15.i439, 0xBFD5554D80000000
+  store float %add16.i, float* %p8.i, align 4
+  %288 = load float* %p8.i, align 4
+  %289 = load float* %s.i, align 4
+  %mul17.i440 = fmul float %288, %289
+  store float %mul17.i440, float* %p9.i, align 4
+  %290 = load float* %p9.i, align 4
+  %291 = load float* %r.i, align 4
+  %mul18.i = fmul float %290, %291
+  %292 = load float* %r.i, align 4
+  %add19.i = fadd float %mul18.i, %292
+  store float %add19.i, float* %p10.i, align 4
+  %293 = load float* %p10.i, align 4
+  store float %293, float* %r.i, align 4
+  %294 = load float* %t.i, align 4
+  %cmp20.i = fcmp ogt float %294, 1.000000e+00
+  br i1 %cmp20.i, label %if.then21.i, label %if.end24.i
+
+if.then21.i:                                      ; preds = %if.end3.i
+  %295 = load float* %r.i, align 4
+  %sub22.i441 = fsub float -0.000000e+00, %295
+  %add23.i = fadd float 0x3FF921FB60000000, %sub22.i441
+  store float %add23.i, float* %r.i, align 4
+  br label %if.end24.i
+
+if.end24.i:                                       ; preds = %if.then21.i, %if.end3.i
+  %296 = load float* %x.addr.i, align 4
+  %cmp25.i = fcmp olt float %296, 0.000000e+00
+  br i1 %cmp25.i, label %if.then26.i, label %UA_atan.exit
+
+if.then26.i:                                      ; preds = %if.end24.i
+  %297 = load float* %r.i, align 4
+  %sub27.i = fsub float -0.000000e+00, %297
+  store float %sub27.i, float* %r.i, align 4
+  br label %UA_atan.exit
+
+UA_atan.exit:                                     ; preds = %if.end24.i, %if.then26.i
+  %298 = load float* %r.i, align 4
+  %sub178 = fsub float 0x400921FB60000000, %298
+  store float %sub178, float* getelementptr inbounds ([2 x float]* @Phase, i32 0, i64 1), align 4
+  %299 = load float* @C_GainAmp_pF, align 4
+  %300 = load float* @f32OneOn_WR, align 4
+  %301 = load float* getelementptr inbounds ([2 x float]* @Amplitude, i32 0, i64 1), align 4
+  %302 = load float* getelementptr inbounds ([2 x float]* @Amplitude, i32 0, i64 1), align 4
+  %mul179 = fmul float %301, %302
+  %303 = load float* getelementptr inbounds ([2 x float]* @Amplitude, i32 0, i64 0), align 4
+  %304 = load float* getelementptr inbounds ([2 x float]* @Amplitude, i32 0, i64 0), align 4
+  %mul180 = fmul float %303, %304
+  store float %mul180, float* %in.addr.i404, align 4
+  %305 = load float* %in.addr.i404, align 4
+  %conv.i407 = fptosi float %305 to i128
+  %and.i408 = and i128 %conv.i407, 8388607
+  %or.i409 = or i128 %and.i408, 1056964608
+  %conv1.i410 = sitofp i128 %or.i409 to float
+  store float %conv1.i410, float* %In_Reduced.i405, align 4
+  %306 = load float* %In_Reduced.i405, align 4
+  %mul.i411 = fmul float 0x3FFE1E1E20000000, %306
+  %sub.i412 = fsub float 0x40069696A0000000, %mul.i411
+  store float %sub.i412, float* %x.i406, align 4
+  %307 = load float* %x.i406, align 4
+  %308 = load float* %In_Reduced.i405, align 4
+  %309 = load float* %x.i406, align 4
+  %mul2.i413 = fmul float %308, %309
+  %sub3.i414 = fsub float 2.000000e+00, %mul2.i413
+  %mul4.i415 = fmul float %307, %sub3.i414
+  store float %mul4.i415, float* %x.i406, align 4
+  %310 = load float* %x.i406, align 4
+  %311 = load float* %In_Reduced.i405, align 4
+  %312 = load float* %x.i406, align 4
+  %mul5.i416 = fmul float %311, %312
+  %sub6.i417 = fsub float 2.000000e+00, %mul5.i416
+  %mul7.i418 = fmul float %310, %sub6.i417
+  store float %mul7.i418, float* %x.i406, align 4
+  %313 = load float* %x.i406, align 4
+  %314 = load float* %In_Reduced.i405, align 4
+  %315 = load float* %x.i406, align 4
+  %mul8.i419 = fmul float %314, %315
+  %sub9.i420 = fsub float 2.000000e+00, %mul8.i419
+  %mul10.i421 = fmul float %313, %sub9.i420
+  store float %mul10.i421, float* %x.i406, align 4
+  %316 = load float* %x.i406, align 4
+  %conv11.i422 = fptosi float %316 to i128
+  %and12.i423 = and i128 %conv11.i422, 8388607
+  %317 = load float* %in.addr.i404, align 4
+  %conv13.i424 = fptosi float %317 to i128
+  %neg.i425 = xor i128 %conv13.i424, -1
+  %and14.i426 = and i128 %neg.i425, 4286578688
+  %or15.i427 = or i128 %and12.i423, %and14.i426
+  %conv16.i428 = sitofp i128 %or15.i427 to float
+  %mul17.i429 = fmul float %conv16.i428, -2.500000e-01
+  %mul182 = fmul float %mul179, %mul17.i429
+  %sub183 = fsub float %mul182, 1.000000e+00
+  store float %sub183, float* %number.addr.i, align 4
+  %318 = load float* %number.addr.i, align 4
+  %mul.i394 = fmul float %318, 5.000000e-01
+  store float %mul.i394, float* %x2.i, align 4
+  %319 = load float* %number.addr.i, align 4
+  %conv.i395 = fptosi float %319 to i128
+  store i128 %conv.i395, i128* %i.i, align 16
+  %320 = load i128* %i.i, align 16
+  %shr.i = ashr i128 %320, 1
   store i128 %shr.i, i128* %i.i, align 16
-  %200 = load i128* %i.i, align 16
-  %and.i442 = and i128 %200, 65535
-  %conv1.i443 = trunc i128 %and.i442 to i32
-  store i32 %conv1.i443, i32* %i_lo.i, align 4
-  %201 = load i128* %i.i, align 16
-  %and2.i = and i128 %201, 2147418112
+  %321 = load i128* %i.i, align 16
+  %and.i396 = and i128 %321, 65535
+  %conv1.i397 = trunc i128 %and.i396 to i32
+  store i32 %conv1.i397, i32* %i_lo.i, align 4
+  %322 = load i128* %i.i, align 16
+  %and2.i = and i128 %322, 2147418112
   %shr3.i = ashr i128 %and2.i, 16
   %conv4.i = trunc i128 %shr3.i to i32
   store i32 %conv4.i, i32* %i_hi.i, align 4
-  %202 = load i32* %i_lo.i, align 4
-  %sub.i444 = sub nsw i32 23007, %202
-  store i32 %sub.i444, i32* %i_lo.i, align 4
-  %203 = load i32* %i_lo.i, align 4
-  %cmp.i = icmp slt i32 %203, 0
+  %323 = load i32* %i_lo.i, align 4
+  %sub.i398 = sub nsw i32 23007, %323
+  store i32 %sub.i398, i32* %i_lo.i, align 4
+  %324 = load i32* %i_lo.i, align 4
+  %cmp.i = icmp slt i32 %324, 0
   br i1 %cmp.i, label %if.then.i, label %if.else.i
 
-if.then.i:                                        ; preds = %UA_sqrt.exit515
-  %204 = load i32* %i_hi.i, align 4
-  %sub6.i445 = sub nsw i32 24375, %204
-  %sub7.i = sub nsw i32 %sub6.i445, 1
+if.then.i:                                        ; preds = %UA_atan.exit
+  %325 = load i32* %i_hi.i, align 4
+  %sub6.i399 = sub nsw i32 24375, %325
+  %sub7.i = sub nsw i32 %sub6.i399, 1
   store i32 %sub7.i, i32* %i_hi.i, align 4
-  %205 = load i32* %i_lo.i, align 4
-  %and8.i = and i32 %205, 65535
+  %326 = load i32* %i_lo.i, align 4
+  %and8.i = and i32 %326, 65535
   store i32 %and8.i, i32* %i_lo.i, align 4
   br label %UA_sqrt.exit
 
-if.else.i:                                        ; preds = %UA_sqrt.exit515
-  %206 = load i32* %i_hi.i, align 4
-  %sub9.i446 = sub nsw i32 24375, %206
-  store i32 %sub9.i446, i32* %i_hi.i, align 4
+if.else.i:                                        ; preds = %UA_atan.exit
+  %327 = load i32* %i_hi.i, align 4
+  %sub9.i400 = sub nsw i32 24375, %327
+  store i32 %sub9.i400, i32* %i_hi.i, align 4
   br label %UA_sqrt.exit
 
 UA_sqrt.exit:                                     ; preds = %if.then.i, %if.else.i
-  %207 = load i32* %i_hi.i, align 4
-  %shl.i = shl i32 %207, 16
-  %208 = load i32* %i_lo.i, align 4
-  %or.i447 = or i32 %shl.i, %208
-  %conv10.i = sext i32 %or.i447 to i128
+  %328 = load i32* %i_hi.i, align 4
+  %shl.i = shl i32 %328, 16
+  %329 = load i32* %i_lo.i, align 4
+  %or.i401 = or i32 %shl.i, %329
+  %conv10.i = sext i32 %or.i401 to i128
   store i128 %conv10.i, i128* %i.i, align 16
-  %209 = load i128* %i.i, align 16
-  %conv11.i448 = sitofp i128 %209 to float
-  store float %conv11.i448, float* %y.i, align 4
-  %210 = load float* %y.i, align 4
-  %211 = load float* %x2.i, align 4
-  %212 = load float* %y.i, align 4
-  %mul12.i = fmul float %211, %212
-  %213 = load float* %y.i, align 4
-  %mul13.i = fmul float %mul12.i, %213
+  %330 = load i128* %i.i, align 16
+  %conv11.i402 = sitofp i128 %330 to float
+  store float %conv11.i402, float* %y.i, align 4
+  %331 = load float* %y.i, align 4
+  %332 = load float* %x2.i, align 4
+  %333 = load float* %y.i, align 4
+  %mul12.i = fmul float %332, %333
+  %334 = load float* %y.i, align 4
+  %mul13.i = fmul float %mul12.i, %334
   %sub14.i = fsub float 1.500000e+00, %mul13.i
-  %mul15.i = fmul float %210, %sub14.i
+  %mul15.i = fmul float %331, %sub14.i
   store float %mul15.i, float* %y.i, align 4
-  %214 = load float* %y.i, align 4
-  %215 = load float* %x2.i, align 4
-  %216 = load float* %y.i, align 4
-  %mul16.i = fmul float %215, %216
-  %217 = load float* %y.i, align 4
-  %mul17.i449 = fmul float %mul16.i, %217
-  %sub18.i = fsub float 1.500000e+00, %mul17.i449
-  %mul19.i = fmul float %214, %sub18.i
+  %335 = load float* %y.i, align 4
+  %336 = load float* %x2.i, align 4
+  %337 = load float* %y.i, align 4
+  %mul16.i = fmul float %336, %337
+  %338 = load float* %y.i, align 4
+  %mul17.i403 = fmul float %mul16.i, %338
+  %sub18.i = fsub float 1.500000e+00, %mul17.i403
+  %mul19.i = fmul float %335, %sub18.i
   store float %mul19.i, float* %y.i, align 4
-  %218 = load float* %y.i, align 4
-  %219 = load float* %x2.i, align 4
-  %220 = load float* %y.i, align 4
-  %mul20.i = fmul float %219, %220
-  %221 = load float* %y.i, align 4
-  %mul21.i = fmul float %mul20.i, %221
+  %339 = load float* %y.i, align 4
+  %340 = load float* %x2.i, align 4
+  %341 = load float* %y.i, align 4
+  %mul20.i = fmul float %340, %341
+  %342 = load float* %y.i, align 4
+  %mul21.i = fmul float %mul20.i, %342
   %sub22.i = fsub float 1.500000e+00, %mul21.i
-  %mul23.i = fmul float %218, %sub22.i
+  %mul23.i = fmul float %339, %sub22.i
   store float %mul23.i, float* %y.i, align 4
-  %222 = load float* %y.i, align 4
-  %223 = load float* %number.addr.i, align 4
-  %mul24.i = fmul float %222, %223
-  %mul180 = fmul float %179, %mul24.i
-  %224 = load float* @f32OneOn_W2L, align 4
-  %add181 = fadd float %mul180, %224
-  %225 = load float* @C_OffsetAmp_pF, align 4
-  %sub182 = fsub float %add181, %225
-  %mul183 = fmul float %178, %sub182
-  store float %mul183, float* @f_Kapazitaet_A, align 4
-  %226 = load float* @C_GainPhase_pF, align 4
-  %227 = load float* @f32OneOn_WR, align 4
-  %228 = load float* @Q2mRef, align 4
-  %229 = load float* @Q1mSig, align 4
-  %mul184 = fmul float %228, %229
-  %230 = load float* @Q2mSig, align 4
-  %231 = load float* @Q1mRef, align 4
-  %mul185 = fmul float %230, %231
-  %sub186 = fsub float %mul184, %mul185
-  %mul187 = fmul float %227, %sub186
-  %232 = load float* @Q1mSig, align 4
-  %233 = load float* @Q1mRef, align 4
-  %mul188 = fmul float %232, %233
-  %234 = load float* @Q2mSig, align 4
-  %235 = load float* @Q2mRef, align 4
-  %mul189 = fmul float %234, %235
-  %add190 = fadd float %mul188, %mul189
-  store float %add190, float* %in.addr.i414, align 4
-  %236 = load float* %in.addr.i414, align 4
-  %conv.i417 = fptosi float %236 to i128
-  %and.i418 = and i128 %conv.i417, 8388607
-  %or.i419 = or i128 %and.i418, 1056964608
-  %conv1.i420 = sitofp i128 %or.i419 to float
-  store float %conv1.i420, float* %In_Reduced.i415, align 4
-  %237 = load float* %In_Reduced.i415, align 4
-  %mul.i421 = fmul float 0x3FFE1E1E20000000, %237
-  %sub.i422 = fsub float 0x40069696A0000000, %mul.i421
-  store float %sub.i422, float* %x.i416, align 4
-  %238 = load float* %x.i416, align 4
-  %239 = load float* %In_Reduced.i415, align 4
-  %240 = load float* %x.i416, align 4
-  %mul2.i423 = fmul float %239, %240
-  %sub3.i424 = fsub float 2.000000e+00, %mul2.i423
-  %mul4.i425 = fmul float %238, %sub3.i424
-  store float %mul4.i425, float* %x.i416, align 4
-  %241 = load float* %x.i416, align 4
-  %242 = load float* %In_Reduced.i415, align 4
-  %243 = load float* %x.i416, align 4
-  %mul5.i426 = fmul float %242, %243
-  %sub6.i427 = fsub float 2.000000e+00, %mul5.i426
-  %mul7.i428 = fmul float %241, %sub6.i427
-  store float %mul7.i428, float* %x.i416, align 4
-  %244 = load float* %x.i416, align 4
-  %245 = load float* %In_Reduced.i415, align 4
-  %246 = load float* %x.i416, align 4
-  %mul8.i429 = fmul float %245, %246
-  %sub9.i430 = fsub float 2.000000e+00, %mul8.i429
-  %mul10.i431 = fmul float %244, %sub9.i430
-  store float %mul10.i431, float* %x.i416, align 4
-  %247 = load float* %x.i416, align 4
-  %conv11.i432 = fptosi float %247 to i128
-  %and12.i433 = and i128 %conv11.i432, 8388607
-  %248 = load float* %in.addr.i414, align 4
-  %conv13.i434 = fptosi float %248 to i128
-  %neg.i435 = xor i128 %conv13.i434, -1
-  %and14.i436 = and i128 %neg.i435, 4286578688
-  %or15.i437 = or i128 %and12.i433, %and14.i436
-  %conv16.i438 = sitofp i128 %or15.i437 to float
-  %mul17.i439 = fmul float %conv16.i438, -2.500000e-01
-  %mul192 = fmul float %mul187, %mul17.i439
-  %249 = load float* @f32OneOn_W2L, align 4
-  %add193 = fadd float %mul192, %249
-  %250 = load float* @C_OffsetPhase_pF, align 4
-  %sub194 = fsub float %add193, %250
-  %mul195 = fmul float %226, %sub194
-  store float %mul195, float* @f_Kapazitaet_P, align 4
-  store i32 0, i32* @Cycle_Number, align 4
-  %251 = load i32* %cpCr, align 4
-  %cmp196 = icmp sge i32 %251, 1
-  br i1 %cmp196, label %if.then198, label %if.else199
+  %343 = load float* %y.i, align 4
+  %344 = load float* %number.addr.i, align 4
+  %mul24.i = fmul float %343, %344
+  %mul185 = fmul float %300, %mul24.i
+  %345 = load float* @f32OneOn_W2L, align 4
+  %add186 = fadd float %mul185, %345
+  %346 = load float* @C_OffsetAmp_pF, align 4
+  %sub187 = fsub float %add186, %346
+  %mul188 = fmul float %299, %sub187
+  store float %mul188, float* @f_Kapazitaet_A, align 4
+  %347 = load float* @C_GainPhase_pF, align 4
+  %348 = load float* @f32OneOn_WR, align 4
+  %349 = load float* @Q2mRef, align 4
+  %350 = load float* @Q1mSig, align 4
+  %mul189 = fmul float %349, %350
+  %351 = load float* @Q2mSig, align 4
+  %352 = load float* @Q1mRef, align 4
+  %mul190 = fmul float %351, %352
+  %sub191 = fsub float %mul189, %mul190
+  %mul192 = fmul float %348, %sub191
+  %353 = load float* @Q1mSig, align 4
+  %354 = load float* @Q1mRef, align 4
+  %mul193 = fmul float %353, %354
+  %355 = load float* @Q2mSig, align 4
+  %356 = load float* @Q2mRef, align 4
+  %mul194 = fmul float %355, %356
+  %add195 = fadd float %mul193, %mul194
+  store float %add195, float* %in.addr.i368, align 4
+  %357 = load float* %in.addr.i368, align 4
+  %conv.i371 = fptosi float %357 to i128
+  %and.i372 = and i128 %conv.i371, 8388607
+  %or.i373 = or i128 %and.i372, 1056964608
+  %conv1.i374 = sitofp i128 %or.i373 to float
+  store float %conv1.i374, float* %In_Reduced.i369, align 4
+  %358 = load float* %In_Reduced.i369, align 4
+  %mul.i375 = fmul float 0x3FFE1E1E20000000, %358
+  %sub.i376 = fsub float 0x40069696A0000000, %mul.i375
+  store float %sub.i376, float* %x.i370, align 4
+  %359 = load float* %x.i370, align 4
+  %360 = load float* %In_Reduced.i369, align 4
+  %361 = load float* %x.i370, align 4
+  %mul2.i377 = fmul float %360, %361
+  %sub3.i378 = fsub float 2.000000e+00, %mul2.i377
+  %mul4.i379 = fmul float %359, %sub3.i378
+  store float %mul4.i379, float* %x.i370, align 4
+  %362 = load float* %x.i370, align 4
+  %363 = load float* %In_Reduced.i369, align 4
+  %364 = load float* %x.i370, align 4
+  %mul5.i380 = fmul float %363, %364
+  %sub6.i381 = fsub float 2.000000e+00, %mul5.i380
+  %mul7.i382 = fmul float %362, %sub6.i381
+  store float %mul7.i382, float* %x.i370, align 4
+  %365 = load float* %x.i370, align 4
+  %366 = load float* %In_Reduced.i369, align 4
+  %367 = load float* %x.i370, align 4
+  %mul8.i383 = fmul float %366, %367
+  %sub9.i384 = fsub float 2.000000e+00, %mul8.i383
+  %mul10.i385 = fmul float %365, %sub9.i384
+  store float %mul10.i385, float* %x.i370, align 4
+  %368 = load float* %x.i370, align 4
+  %conv11.i386 = fptosi float %368 to i128
+  %and12.i387 = and i128 %conv11.i386, 8388607
+  %369 = load float* %in.addr.i368, align 4
+  %conv13.i388 = fptosi float %369 to i128
+  %neg.i389 = xor i128 %conv13.i388, -1
+  %and14.i390 = and i128 %neg.i389, 4286578688
+  %or15.i391 = or i128 %and12.i387, %and14.i390
+  %conv16.i392 = sitofp i128 %or15.i391 to float
+  %mul17.i393 = fmul float %conv16.i392, -2.500000e-01
+  %mul197 = fmul float %mul192, %mul17.i393
+  %370 = load float* @f32OneOn_W2L, align 4
+  %add198 = fadd float %mul197, %370
+  %371 = load float* @C_OffsetPhase_pF, align 4
+  %sub199 = fsub float %add198, %371
+  %mul200 = fmul float %347, %sub199
+  store float %mul200, float* @f_Kapazitaet_P, align 4
+  %372 = load float* @f_Kapazitaet_A, align 4
+  %conv201 = fptosi float %372 to i128
+  %373 = load i128** @UA_SERIAL_OUT_regptr, align 8
+  store i128 %conv201, i128* %373, align 16
+  %374 = load float* @f_Kapazitaet_P, align 4
+  %conv202 = fptosi float %374 to i128
+  %375 = load i128** @UA_SERIAL_OUT2_regptr, align 8
+  store i128 %conv202, i128* %375, align 16
+  %376 = load i32* %cpCr, align 4
+  %cmp203 = icmp eq i32 %376, 0
+  br i1 %cmp203, label %if.then205, label %if.else207
 
-if.then198:                                       ; preds = %UA_sqrt.exit
-  store i32 5, i32* @Current_state, align 4
+if.then205:                                       ; preds = %UA_sqrt.exit
+  %377 = load i32* @Frequency_number, align 4
+  %shl = shl i32 %377, 1
+  %conv206 = sext i32 %shl to i128
+  %378 = load i128** @UA_SERIAL_OUT3_regptr, align 8
+  store i128 %conv206, i128* %378, align 16
+  br label %if.end211
+
+if.else207:                                       ; preds = %UA_sqrt.exit
+  %379 = load i32* @Frequency_number, align 4
+  %shl208 = shl i32 %379, 1
+  %or209 = or i32 %shl208, 1
+  %conv210 = sext i32 %or209 to i128
+  %380 = load i128** @UA_SERIAL_OUT3_regptr, align 8
+  store i128 %conv210, i128* %380, align 16
+  br label %if.end211
+
+if.end211:                                        ; preds = %if.else207, %if.then205
   store i32 0, i32* @Value_index, align 4
-  store i32 130, i32* @MAX_UA_Cycle, align 4
-  br label %if.end201
+  br label %for.cond212
 
-if.else199:                                       ; preds = %UA_sqrt.exit
-  %252 = load i32* %cpCr, align 4
-  %inc200 = add nsw i32 %252, 1
-  store i32 %inc200, i32* %cpCr, align 4
-  store i32 130, i32* @MAX_UA_Cycle, align 4
-  br label %if.end201
+for.cond212:                                      ; preds = %for.inc224, %if.end211
+  %381 = load i32* @Value_index, align 4
+  %cmp213 = icmp slt i32 %381, 16
+  br i1 %cmp213, label %for.body215, label %for.end226
 
-if.end201:                                        ; preds = %if.else199, %if.then198
-  br label %if.end305
+for.body215:                                      ; preds = %for.cond212
+  %382 = load i32* @Value_index, align 4
+  %383 = load i32* %cpCr, align 4
+  %mul216 = mul nsw i32 16, %383
+  %add217 = add nsw i32 %382, %mul216
+  %idxprom218 = sext i32 %add217 to i64
+  %arrayidx219 = getelementptr inbounds [32 x i32]* @ADC_values_sig, i32 0, i64 %idxprom218
+  store i32 0, i32* %arrayidx219, align 4
+  %384 = load i32* @Value_index, align 4
+  %385 = load i32* %cpCr, align 4
+  %mul220 = mul nsw i32 16, %385
+  %add221 = add nsw i32 %384, %mul220
+  %idxprom222 = sext i32 %add221 to i64
+  %arrayidx223 = getelementptr inbounds [32 x i32]* @ADC_values_ref, i32 0, i64 %idxprom222
+  store i32 0, i32* %arrayidx223, align 4
+  br label %for.inc224
 
-if.else202:                                       ; preds = %land.lhs.true86, %if.else83
-  %253 = load i32* @Current_state, align 4
-  %cmp203 = icmp eq i32 %253, 5
-  br i1 %cmp203, label %land.lhs.true205, label %if.else234
+for.inc224:                                       ; preds = %for.body215
+  %386 = load i32* @Value_index, align 4
+  %inc225 = add nsw i32 %386, 1
+  store i32 %inc225, i32* @Value_index, align 4
+  br label %for.cond212
 
-land.lhs.true205:                                 ; preds = %if.else202
-  %254 = load i32* @Cycle_Number, align 4
-  %255 = load i32* @MAX_UA_Cycle, align 4
-  %cmp206 = icmp sge i32 %254, %255
-  br i1 %cmp206, label %if.then208, label %if.else234
-
-if.then208:                                       ; preds = %land.lhs.true205
+for.end226:                                       ; preds = %for.cond212
+  %387 = load i32* %cpCr, align 4
+  %mul227 = mul nsw i32 2, %387
+  %add228 = add nsw i32 0, %mul227
+  %idxprom229 = sext i32 %add228 to i64
+  %arrayidx230 = getelementptr inbounds [4 x float]* @Zeroline, i32 0, i64 %idxprom229
+  store float 0.000000e+00, float* %arrayidx230, align 4
+  %388 = load i32* %cpCr, align 4
+  %mul231 = mul nsw i32 2, %388
+  %add232 = add nsw i32 1, %mul231
+  %idxprom233 = sext i32 %add232 to i64
+  %arrayidx234 = getelementptr inbounds [4 x float]* @Zeroline, i32 0, i64 %idxprom233
+  store float 0.000000e+00, float* %arrayidx234, align 4
   store i32 0, i32* @Cycle_Number, align 4
-  %256 = load i32* @Value_index, align 4
-  %idxprom209 = sext i32 %256 to i64
-  %arrayidx210 = getelementptr inbounds [32 x i32]* @ADC_values_sig, i32 0, i64 %idxprom209
-  %257 = load i32* %arrayidx210, align 4
-  %conv211 = sext i32 %257 to i128
-  %258 = load i128** @UA_SERIAL_OUT_regptr, align 8
-  store i128 %conv211, i128* %258, align 16
-  %259 = load i32* @Value_index, align 4
-  %add212 = add nsw i32 %259, 1
-  %idxprom213 = sext i32 %add212 to i64
-  %arrayidx214 = getelementptr inbounds [32 x i32]* @ADC_values_sig, i32 0, i64 %idxprom213
-  %260 = load i32* %arrayidx214, align 4
-  %conv215 = sext i32 %260 to i128
-  %261 = load i128** @UA_SERIAL_OUT2_regptr, align 8
-  store i128 %conv215, i128* %261, align 16
-  %262 = load i32* @Frequency_number, align 4
-  %shl = shl i32 %262, 8
-  %263 = load i32* @Value_index, align 4
-  %or216 = or i32 %shl, %263
-  %conv217 = sext i32 %or216 to i128
-  %264 = load i128** @UA_SERIAL_OUT3_regptr, align 8
-  store i128 %conv217, i128* %264, align 16
-  %265 = load i32* @Value_index, align 4
-  %add218 = add nsw i32 %265, 2
-  store i32 %add218, i32* @Value_index, align 4
-  %266 = load i32* @Value_index, align 4
-  %cmp219 = icmp sge i32 %266, 16
-  br i1 %cmp219, label %if.then221, label %if.end233
+  %389 = load i32* %cpCr, align 4
+  %cmp235 = icmp sge i32 %389, 1
+  br i1 %cmp235, label %if.then237, label %if.else238
 
-if.then221:                                       ; preds = %if.then208
+if.then237:                                       ; preds = %for.end226
+  store i32 2, i32* @Current_state, align 4
+  store i32 0, i32* @MAX_UA_Cycle, align 4
+  br label %if.end240
+
+if.else238:                                       ; preds = %for.end226
+  %390 = load i32* %cpCr, align 4
+  %inc239 = add nsw i32 %390, 1
+  store i32 %inc239, i32* %cpCr, align 4
+  store i32 130, i32* @MAX_UA_Cycle, align 4
+  br label %if.end240
+
+if.end240:                                        ; preds = %if.else238, %if.then237
+  br label %if.end337
+
+if.else241:                                       ; preds = %land.lhs.true83, %if.else80
+  %391 = load i32* @Current_state, align 4
+  %cmp242 = icmp eq i32 %391, 5
+  br i1 %cmp242, label %land.lhs.true244, label %if.else274
+
+land.lhs.true244:                                 ; preds = %if.else241
+  %392 = load i32* @Cycle_Number, align 4
+  %393 = load i32* @MAX_UA_Cycle, align 4
+  %cmp245 = icmp sge i32 %392, %393
+  br i1 %cmp245, label %if.then247, label %if.else274
+
+if.then247:                                       ; preds = %land.lhs.true244
+  store i32 0, i32* @Cycle_Number, align 4
+  %394 = load i32* @Value_index, align 4
+  %idxprom248 = sext i32 %394 to i64
+  %arrayidx249 = getelementptr inbounds [32 x i32]* @ADC_values_sig, i32 0, i64 %idxprom248
+  %395 = load i32* %arrayidx249, align 4
+  %conv250 = sext i32 %395 to i128
+  %396 = load i128** @UA_SERIAL_OUT_regptr, align 8
+  store i128 %conv250, i128* %396, align 16
+  %397 = load i32* @Value_index, align 4
+  %add251 = add nsw i32 %397, 1
+  %idxprom252 = sext i32 %add251 to i64
+  %arrayidx253 = getelementptr inbounds [32 x i32]* @ADC_values_sig, i32 0, i64 %idxprom252
+  %398 = load i32* %arrayidx253, align 4
+  %conv254 = sext i32 %398 to i128
+  %399 = load i128** @UA_SERIAL_OUT2_regptr, align 8
+  store i128 %conv254, i128* %399, align 16
+  %400 = load i32* @Frequency_number, align 4
+  %shl255 = shl i32 %400, 8
+  %401 = load i32* @Value_index, align 4
+  %or256 = or i32 %shl255, %401
+  %conv257 = sext i32 %or256 to i128
+  %402 = load i128** @UA_SERIAL_OUT3_regptr, align 8
+  store i128 %conv257, i128* %402, align 16
+  %403 = load i32* @Value_index, align 4
+  %add258 = add nsw i32 %403, 2
+  store i32 %add258, i32* @Value_index, align 4
+  %404 = load i32* @Value_index, align 4
+  %cmp259 = icmp sge i32 %404, 16
+  br i1 %cmp259, label %if.then261, label %if.end273
+
+if.then261:                                       ; preds = %if.then247
   store i32 0, i32* %index, align 4
-  br label %for.cond222
+  br label %for.cond262
 
-for.cond222:                                      ; preds = %for.inc230, %if.then221
-  %267 = load i32* %index, align 4
-  %cmp223 = icmp slt i32 %267, 32
-  br i1 %cmp223, label %for.body225, label %for.end232
+for.cond262:                                      ; preds = %for.inc270, %if.then261
+  %405 = load i32* %index, align 4
+  %cmp263 = icmp slt i32 %405, 32
+  br i1 %cmp263, label %for.body265, label %for.end272
 
-for.body225:                                      ; preds = %for.cond222
-  %268 = load i32* @Value_index, align 4
-  %idxprom226 = sext i32 %268 to i64
-  %arrayidx227 = getelementptr inbounds [32 x i32]* @ADC_values_sig, i32 0, i64 %idxprom226
-  store i32 0, i32* %arrayidx227, align 4
-  %269 = load i32* @Value_index, align 4
-  %idxprom228 = sext i32 %269 to i64
-  %arrayidx229 = getelementptr inbounds [32 x i32]* @ADC_values_ref, i32 0, i64 %idxprom228
-  store i32 0, i32* %arrayidx229, align 4
-  br label %for.inc230
+for.body265:                                      ; preds = %for.cond262
+  %406 = load i32* @Value_index, align 4
+  %idxprom266 = sext i32 %406 to i64
+  %arrayidx267 = getelementptr inbounds [32 x i32]* @ADC_values_sig, i32 0, i64 %idxprom266
+  store i32 0, i32* %arrayidx267, align 4
+  %407 = load i32* @Value_index, align 4
+  %idxprom268 = sext i32 %407 to i64
+  %arrayidx269 = getelementptr inbounds [32 x i32]* @ADC_values_ref, i32 0, i64 %idxprom268
+  store i32 0, i32* %arrayidx269, align 4
+  br label %for.inc270
 
-for.inc230:                                       ; preds = %for.body225
-  %270 = load i32* %index, align 4
-  %inc231 = add nsw i32 %270, 1
-  store i32 %inc231, i32* %index, align 4
-  br label %for.cond222
+for.inc270:                                       ; preds = %for.body265
+  %408 = load i32* %index, align 4
+  %inc271 = add nsw i32 %408, 1
+  store i32 %inc271, i32* %index, align 4
+  br label %for.cond262
 
-for.end232:                                       ; preds = %for.cond222
+for.end272:                                       ; preds = %for.cond262
   store float 0.000000e+00, float* getelementptr inbounds ([4 x float]* @Zeroline, i32 0, i64 0), align 4
   store float 0.000000e+00, float* getelementptr inbounds ([4 x float]* @Zeroline, i32 0, i64 1), align 4
   store float 0.000000e+00, float* getelementptr inbounds ([4 x float]* @Zeroline, i32 0, i64 2), align 4
   store float 0.000000e+00, float* getelementptr inbounds ([4 x float]* @Zeroline, i32 0, i64 3), align 4
   store i32 0, i32* @Value_index, align 4
   store i32 2, i32* @Current_state, align 4
-  br label %if.end233
+  br label %if.end273
 
-if.end233:                                        ; preds = %for.end232, %if.then208
+if.end273:                                        ; preds = %for.end272, %if.then247
   store i32 130, i32* @MAX_UA_Cycle, align 4
-  br label %if.end304
+  br label %if.end336
 
-if.else234:                                       ; preds = %land.lhs.true205, %if.else202
-  %271 = load i32* @Cycle_Number, align 4
-  %cmp235 = icmp sge i32 %271, 2259
-  br i1 %cmp235, label %land.lhs.true237, label %if.else241
+if.else274:                                       ; preds = %land.lhs.true244, %if.else241
+  %409 = load i32* @Cycle_Number, align 4
+  %cmp275 = icmp sge i32 %409, 2259
+  br i1 %cmp275, label %land.lhs.true277, label %if.else281
 
-land.lhs.true237:                                 ; preds = %if.else234
-  %272 = load i32* @Current_state, align 4
-  %cmp238 = icmp eq i32 %272, 2
-  br i1 %cmp238, label %if.then240, label %if.else241
+land.lhs.true277:                                 ; preds = %if.else274
+  %410 = load i32* @Current_state, align 4
+  %cmp278 = icmp eq i32 %410, 2
+  br i1 %cmp278, label %if.then280, label %if.else281
 
-if.then240:                                       ; preds = %land.lhs.true237
+if.then280:                                       ; preds = %land.lhs.true277
   store i32 1, i32* @Current_state, align 4
   store i32 0, i32* @Cycle_Number, align 4
-  %273 = load i128** @UA_DAC_CONFIG_SET_regptr, align 8
-  store i128 64, i128* %273, align 16
-  br label %if.end303
+  %411 = load i128** @UA_DAC_CONFIG_SET_regptr, align 8
+  store i128 64, i128* %411, align 16
+  br label %if.end335
 
-if.else241:                                       ; preds = %land.lhs.true237, %if.else234
-  %274 = load i32* @Current_state, align 4
-  %cmp242 = icmp eq i32 %274, 1
-  br i1 %cmp242, label %if.then244, label %if.else300
+if.else281:                                       ; preds = %land.lhs.true277, %if.else274
+  %412 = load i32* @Current_state, align 4
+  %cmp282 = icmp eq i32 %412, 1
+  br i1 %cmp282, label %if.then284, label %if.else332
 
-if.then244:                                       ; preds = %if.else241
+if.then284:                                       ; preds = %if.else281
   store i32 2, i32* @Current_state, align 4
   store i32 0, i32* @Cycle_Number, align 4
-  %275 = load i32* @Frequency_number, align 4
-  %add245 = add nsw i32 %275, 28
-  %conv246 = sitofp i32 %add245 to float
-  store float %conv246, float* %in.addr.i388, align 4
-  %276 = load float* %in.addr.i388, align 4
-  %conv.i391 = fptosi float %276 to i128
-  %and.i392 = and i128 %conv.i391, 8388607
-  %or.i393 = or i128 %and.i392, 1056964608
-  %conv1.i394 = sitofp i128 %or.i393 to float
-  store float %conv1.i394, float* %In_Reduced.i389, align 4
-  %277 = load float* %In_Reduced.i389, align 4
-  %mul.i395 = fmul float 0x3FFE1E1E20000000, %277
-  %sub.i396 = fsub float 0x40069696A0000000, %mul.i395
-  store float %sub.i396, float* %x.i390, align 4
-  %278 = load float* %x.i390, align 4
-  %279 = load float* %In_Reduced.i389, align 4
-  %280 = load float* %x.i390, align 4
-  %mul2.i397 = fmul float %279, %280
-  %sub3.i398 = fsub float 2.000000e+00, %mul2.i397
-  %mul4.i399 = fmul float %278, %sub3.i398
-  store float %mul4.i399, float* %x.i390, align 4
-  %281 = load float* %x.i390, align 4
-  %282 = load float* %In_Reduced.i389, align 4
-  %283 = load float* %x.i390, align 4
-  %mul5.i400 = fmul float %282, %283
-  %sub6.i401 = fsub float 2.000000e+00, %mul5.i400
-  %mul7.i402 = fmul float %281, %sub6.i401
-  store float %mul7.i402, float* %x.i390, align 4
-  %284 = load float* %x.i390, align 4
-  %285 = load float* %In_Reduced.i389, align 4
-  %286 = load float* %x.i390, align 4
-  %mul8.i403 = fmul float %285, %286
-  %sub9.i404 = fsub float 2.000000e+00, %mul8.i403
-  %mul10.i405 = fmul float %284, %sub9.i404
-  store float %mul10.i405, float* %x.i390, align 4
-  %287 = load float* %x.i390, align 4
-  %conv11.i406 = fptosi float %287 to i128
-  %and12.i407 = and i128 %conv11.i406, 8388607
-  %288 = load float* %in.addr.i388, align 4
-  %conv13.i408 = fptosi float %288 to i128
-  %neg.i409 = xor i128 %conv13.i408, -1
-  %and14.i410 = and i128 %neg.i409, 4286578688
-  %or15.i411 = or i128 %and12.i407, %and14.i410
-  %conv16.i412 = sitofp i128 %or15.i411 to float
-  %mul17.i413 = fmul float %conv16.i412, -2.500000e-01
-  %mul248 = fmul float 2.949120e+07, %mul17.i413
-  %289 = load i32* @s25EnableUnderSampling, align 4
-  %conv249 = sitofp i32 %289 to float
-  %mul250 = fmul float 1.000000e+00, %conv249
-  %add251 = fadd float %mul250, 6.250000e-02
-  %mul252 = fmul float %mul248, %add251
-  store float %mul252, float* @f32DDS_Frequency, align 4
-  %290 = load float* @f32DDS_Frequency, align 4
-  %cmp253 = fcmp ole float %290, 3.700000e+06
-  br i1 %cmp253, label %if.then255, label %if.end256
+  %413 = load i32* @Frequency_number, align 4
+  %add285 = add nsw i32 %413, 28
+  %conv286 = sitofp i32 %add285 to float
+  store float %conv286, float* %in.addr.i342, align 4
+  %414 = load float* %in.addr.i342, align 4
+  %conv.i345 = fptosi float %414 to i128
+  %and.i346 = and i128 %conv.i345, 8388607
+  %or.i347 = or i128 %and.i346, 1056964608
+  %conv1.i348 = sitofp i128 %or.i347 to float
+  store float %conv1.i348, float* %In_Reduced.i343, align 4
+  %415 = load float* %In_Reduced.i343, align 4
+  %mul.i349 = fmul float 0x3FFE1E1E20000000, %415
+  %sub.i350 = fsub float 0x40069696A0000000, %mul.i349
+  store float %sub.i350, float* %x.i344, align 4
+  %416 = load float* %x.i344, align 4
+  %417 = load float* %In_Reduced.i343, align 4
+  %418 = load float* %x.i344, align 4
+  %mul2.i351 = fmul float %417, %418
+  %sub3.i352 = fsub float 2.000000e+00, %mul2.i351
+  %mul4.i353 = fmul float %416, %sub3.i352
+  store float %mul4.i353, float* %x.i344, align 4
+  %419 = load float* %x.i344, align 4
+  %420 = load float* %In_Reduced.i343, align 4
+  %421 = load float* %x.i344, align 4
+  %mul5.i354 = fmul float %420, %421
+  %sub6.i355 = fsub float 2.000000e+00, %mul5.i354
+  %mul7.i356 = fmul float %419, %sub6.i355
+  store float %mul7.i356, float* %x.i344, align 4
+  %422 = load float* %x.i344, align 4
+  %423 = load float* %In_Reduced.i343, align 4
+  %424 = load float* %x.i344, align 4
+  %mul8.i357 = fmul float %423, %424
+  %sub9.i358 = fsub float 2.000000e+00, %mul8.i357
+  %mul10.i359 = fmul float %422, %sub9.i358
+  store float %mul10.i359, float* %x.i344, align 4
+  %425 = load float* %x.i344, align 4
+  %conv11.i360 = fptosi float %425 to i128
+  %and12.i361 = and i128 %conv11.i360, 8388607
+  %426 = load float* %in.addr.i342, align 4
+  %conv13.i362 = fptosi float %426 to i128
+  %neg.i363 = xor i128 %conv13.i362, -1
+  %and14.i364 = and i128 %neg.i363, 4286578688
+  %or15.i365 = or i128 %and12.i361, %and14.i364
+  %conv16.i366 = sitofp i128 %or15.i365 to float
+  %mul17.i367 = fmul float %conv16.i366, -2.500000e-01
+  %mul288 = fmul float 2.949120e+07, %mul17.i367
+  %427 = load i32* @s25EnableUnderSampling, align 4
+  %conv289 = sitofp i32 %427 to float
+  %mul290 = fmul float 1.000000e+00, %conv289
+  %add291 = fadd float %mul290, 6.250000e-02
+  %mul292 = fmul float %mul288, %add291
+  store float %mul292, float* @f32DDS_Frequency, align 4
+  %428 = load float* @f32DDS_Frequency, align 4
+  %cmp293 = fcmp ole float %428, 3.700000e+06
+  br i1 %cmp293, label %if.then295, label %if.end296
 
-if.then255:                                       ; preds = %if.then244
+if.then295:                                       ; preds = %if.then284
   store i32 7, i32* @s25DAC_CONF_MODE, align 4
-  br label %if.end256
+  br label %if.end296
 
-if.end256:                                        ; preds = %if.then255, %if.then244
-  %291 = load float* @f32DDS_Frequency, align 4
-  %cmp257 = fcmp ole float %291, 2.000000e+06
-  br i1 %cmp257, label %if.then259, label %if.end260
+if.end296:                                        ; preds = %if.then295, %if.then284
+  %429 = load float* @f32DDS_Frequency, align 4
+  %cmp297 = fcmp ole float %429, 2.000000e+06
+  br i1 %cmp297, label %if.then299, label %if.end300
 
-if.then259:                                       ; preds = %if.end256
+if.then299:                                       ; preds = %if.end296
   store i32 6, i32* @s25DAC_CONF_MODE, align 4
-  br label %if.end260
+  br label %if.end300
 
-if.end260:                                        ; preds = %if.then259, %if.end256
-  %292 = load float* @f32DDS_Frequency, align 4
-  %cmp261 = fcmp ole float %292, 1.000000e+06
-  br i1 %cmp261, label %if.then263, label %if.end264
+if.end300:                                        ; preds = %if.then299, %if.end296
+  %430 = load float* @f32DDS_Frequency, align 4
+  %cmp301 = fcmp ole float %430, 1.000000e+06
+  br i1 %cmp301, label %if.then303, label %if.end304
 
-if.then263:                                       ; preds = %if.end260
+if.then303:                                       ; preds = %if.end300
   store i32 5, i32* @s25DAC_CONF_MODE, align 4
-  br label %if.end264
+  br label %if.end304
 
-if.end264:                                        ; preds = %if.then263, %if.end260
-  %293 = load float* @f32DDS_Frequency, align 4
-  %cmp265 = fcmp ole float %293, 5.000000e+05
-  br i1 %cmp265, label %if.then267, label %if.end268
+if.end304:                                        ; preds = %if.then303, %if.end300
+  %431 = load float* @f32DDS_Frequency, align 4
+  %cmp305 = fcmp ole float %431, 5.000000e+05
+  br i1 %cmp305, label %if.then307, label %if.end308
 
-if.then267:                                       ; preds = %if.end264
+if.then307:                                       ; preds = %if.end304
   store i32 4, i32* @s25DAC_CONF_MODE, align 4
-  br label %if.end268
+  br label %if.end308
 
-if.end268:                                        ; preds = %if.then267, %if.end264
-  %294 = load float* @f32DDS_Frequency, align 4
-  %cmp269 = fcmp ole float %294, 2.000000e+05
-  br i1 %cmp269, label %if.then271, label %if.end272
+if.end308:                                        ; preds = %if.then307, %if.end304
+  %432 = load float* @f32DDS_Frequency, align 4
+  %cmp309 = fcmp ole float %432, 2.000000e+05
+  br i1 %cmp309, label %if.then311, label %if.end312
 
-if.then271:                                       ; preds = %if.end268
+if.then311:                                       ; preds = %if.end308
   store i32 3, i32* @s25DAC_CONF_MODE, align 4
-  br label %if.end272
+  br label %if.end312
 
-if.end272:                                        ; preds = %if.then271, %if.end268
-  %295 = load float* @f32DDS_Frequency, align 4
-  %cmp273 = fcmp ole float %295, 1.000000e+05
-  br i1 %cmp273, label %if.then275, label %if.end276
+if.end312:                                        ; preds = %if.then311, %if.end308
+  %433 = load float* @f32DDS_Frequency, align 4
+  %cmp313 = fcmp ole float %433, 1.000000e+05
+  br i1 %cmp313, label %if.then315, label %if.end316
 
-if.then275:                                       ; preds = %if.end272
+if.then315:                                       ; preds = %if.end312
   store i32 2, i32* @s25DAC_CONF_MODE, align 4
-  br label %if.end276
+  br label %if.end316
 
-if.end276:                                        ; preds = %if.then275, %if.end272
-  %296 = load float* @f32DDS_Frequency, align 4
-  %cmp277 = fcmp ole float %296, 5.000000e+04
-  br i1 %cmp277, label %if.then279, label %if.end280
+if.end316:                                        ; preds = %if.then315, %if.end312
+  %434 = load float* @f32DDS_Frequency, align 4
+  %cmp317 = fcmp ole float %434, 5.000000e+04
+  br i1 %cmp317, label %if.then319, label %if.end320
 
-if.then279:                                       ; preds = %if.end276
+if.then319:                                       ; preds = %if.end316
   store i32 1, i32* @s25DAC_CONF_MODE, align 4
-  br label %if.end280
+  br label %if.end320
 
-if.end280:                                        ; preds = %if.then279, %if.end276
-  %297 = load float* @f32DDS_Frequency, align 4
-  %cmp281 = fcmp ole float %297, 1.000000e+04
-  br i1 %cmp281, label %if.then283, label %if.end284
+if.end320:                                        ; preds = %if.then319, %if.end316
+  %435 = load float* @f32DDS_Frequency, align 4
+  %cmp321 = fcmp ole float %435, 1.000000e+04
+  br i1 %cmp321, label %if.then323, label %if.end324
 
-if.then283:                                       ; preds = %if.end280
+if.then323:                                       ; preds = %if.end320
   store i32 0, i32* @s25DAC_CONF_MODE, align 4
-  br label %if.end284
+  br label %if.end324
 
-if.end284:                                        ; preds = %if.then283, %if.end280
-  %298 = load i128** @UA_DDS_REG_IN6_regptr, align 8
-  store i128 1023, i128* %298, align 16
-  %299 = load float* @f32DDS_Frequency, align 4
-  %mul285 = fmul float 0x401921FB60000000, %299
-  %mul286 = fmul float %mul285, 4.300000e+05
-  store float %mul286, float* %in.addr.i362, align 4
-  %300 = load float* %in.addr.i362, align 4
-  %conv.i365 = fptosi float %300 to i128
-  %and.i366 = and i128 %conv.i365, 8388607
-  %or.i367 = or i128 %and.i366, 1056964608
-  %conv1.i368 = sitofp i128 %or.i367 to float
-  store float %conv1.i368, float* %In_Reduced.i363, align 4
-  %301 = load float* %In_Reduced.i363, align 4
-  %mul.i369 = fmul float 0x3FFE1E1E20000000, %301
-  %sub.i370 = fsub float 0x40069696A0000000, %mul.i369
-  store float %sub.i370, float* %x.i364, align 4
-  %302 = load float* %x.i364, align 4
-  %303 = load float* %In_Reduced.i363, align 4
-  %304 = load float* %x.i364, align 4
-  %mul2.i371 = fmul float %303, %304
-  %sub3.i372 = fsub float 2.000000e+00, %mul2.i371
-  %mul4.i373 = fmul float %302, %sub3.i372
-  store float %mul4.i373, float* %x.i364, align 4
-  %305 = load float* %x.i364, align 4
-  %306 = load float* %In_Reduced.i363, align 4
-  %307 = load float* %x.i364, align 4
-  %mul5.i374 = fmul float %306, %307
-  %sub6.i375 = fsub float 2.000000e+00, %mul5.i374
-  %mul7.i376 = fmul float %305, %sub6.i375
-  store float %mul7.i376, float* %x.i364, align 4
-  %308 = load float* %x.i364, align 4
-  %309 = load float* %In_Reduced.i363, align 4
-  %310 = load float* %x.i364, align 4
-  %mul8.i377 = fmul float %309, %310
-  %sub9.i378 = fsub float 2.000000e+00, %mul8.i377
-  %mul10.i379 = fmul float %308, %sub9.i378
-  store float %mul10.i379, float* %x.i364, align 4
-  %311 = load float* %x.i364, align 4
-  %conv11.i380 = fptosi float %311 to i128
-  %and12.i381 = and i128 %conv11.i380, 8388607
-  %312 = load float* %in.addr.i362, align 4
-  %conv13.i382 = fptosi float %312 to i128
-  %neg.i383 = xor i128 %conv13.i382, -1
-  %and14.i384 = and i128 %neg.i383, 4286578688
-  %or15.i385 = or i128 %and12.i381, %and14.i384
-  %conv16.i386 = sitofp i128 %or15.i385 to float
-  %mul17.i387 = fmul float %conv16.i386, -2.500000e-01
-  %mul288 = fmul float 0x426D1A94A0000000, %mul17.i387
-  store float %mul288, float* @f32OneOn_WR, align 4
-  store float 0.000000e+00, float* @f32OneOn_W2L, align 4
-  %313 = load float* @f32DDS_Frequency, align 4
-  %mul289 = fmul float 0x401921FB60000000, %313
-  store float %mul289, float* %in.addr.i336, align 4
-  %314 = load float* %in.addr.i336, align 4
-  %conv.i339 = fptosi float %314 to i128
-  %and.i340 = and i128 %conv.i339, 8388607
-  %or.i341 = or i128 %and.i340, 1056964608
-  %conv1.i342 = sitofp i128 %or.i341 to float
-  store float %conv1.i342, float* %In_Reduced.i337, align 4
-  %315 = load float* %In_Reduced.i337, align 4
-  %mul.i343 = fmul float 0x3FFE1E1E20000000, %315
-  %sub.i344 = fsub float 0x40069696A0000000, %mul.i343
-  store float %sub.i344, float* %x.i338, align 4
-  %316 = load float* %x.i338, align 4
-  %317 = load float* %In_Reduced.i337, align 4
-  %318 = load float* %x.i338, align 4
-  %mul2.i345 = fmul float %317, %318
-  %sub3.i346 = fsub float 2.000000e+00, %mul2.i345
-  %mul4.i347 = fmul float %316, %sub3.i346
-  store float %mul4.i347, float* %x.i338, align 4
-  %319 = load float* %x.i338, align 4
-  %320 = load float* %In_Reduced.i337, align 4
-  %321 = load float* %x.i338, align 4
-  %mul5.i348 = fmul float %320, %321
-  %sub6.i349 = fsub float 2.000000e+00, %mul5.i348
-  %mul7.i350 = fmul float %319, %sub6.i349
-  store float %mul7.i350, float* %x.i338, align 4
-  %322 = load float* %x.i338, align 4
-  %323 = load float* %In_Reduced.i337, align 4
-  %324 = load float* %x.i338, align 4
-  %mul8.i351 = fmul float %323, %324
-  %sub9.i352 = fsub float 2.000000e+00, %mul8.i351
-  %mul10.i353 = fmul float %322, %sub9.i352
-  store float %mul10.i353, float* %x.i338, align 4
-  %325 = load float* %x.i338, align 4
-  %conv11.i354 = fptosi float %325 to i128
-  %and12.i355 = and i128 %conv11.i354, 8388607
-  %326 = load float* %in.addr.i336, align 4
-  %conv13.i356 = fptosi float %326 to i128
-  %neg.i357 = xor i128 %conv13.i356, -1
-  %and14.i358 = and i128 %neg.i357, 4286578688
-  %or15.i359 = or i128 %and12.i355, %and14.i358
-  %conv16.i360 = sitofp i128 %or15.i359 to float
-  %mul17.i361 = fmul float %conv16.i360, -2.500000e-01
-  %mul291 = fmul float 0x426D1A94A0000000, %mul17.i361
-  %327 = load float* @f32DDS_Frequency, align 4
-  %mul292 = fmul float 0x401921FB60000000, %327
-  store float %mul292, float* %in.addr.i310, align 4
-  %328 = load float* %in.addr.i310, align 4
-  %conv.i313 = fptosi float %328 to i128
-  %and.i314 = and i128 %conv.i313, 8388607
-  %or.i315 = or i128 %and.i314, 1056964608
-  %conv1.i316 = sitofp i128 %or.i315 to float
-  store float %conv1.i316, float* %In_Reduced.i311, align 4
-  %329 = load float* %In_Reduced.i311, align 4
-  %mul.i317 = fmul float 0x3FFE1E1E20000000, %329
-  %sub.i318 = fsub float 0x40069696A0000000, %mul.i317
-  store float %sub.i318, float* %x.i312, align 4
-  %330 = load float* %x.i312, align 4
-  %331 = load float* %In_Reduced.i311, align 4
-  %332 = load float* %x.i312, align 4
-  %mul2.i319 = fmul float %331, %332
-  %sub3.i320 = fsub float 2.000000e+00, %mul2.i319
-  %mul4.i321 = fmul float %330, %sub3.i320
-  store float %mul4.i321, float* %x.i312, align 4
-  %333 = load float* %x.i312, align 4
-  %334 = load float* %In_Reduced.i311, align 4
-  %335 = load float* %x.i312, align 4
-  %mul5.i322 = fmul float %334, %335
-  %sub6.i323 = fsub float 2.000000e+00, %mul5.i322
-  %mul7.i324 = fmul float %333, %sub6.i323
-  store float %mul7.i324, float* %x.i312, align 4
-  %336 = load float* %x.i312, align 4
-  %337 = load float* %In_Reduced.i311, align 4
-  %338 = load float* %x.i312, align 4
-  %mul8.i325 = fmul float %337, %338
-  %sub9.i326 = fsub float 2.000000e+00, %mul8.i325
-  %mul10.i327 = fmul float %336, %sub9.i326
-  store float %mul10.i327, float* %x.i312, align 4
-  %339 = load float* %x.i312, align 4
-  %conv11.i328 = fptosi float %339 to i128
-  %and12.i329 = and i128 %conv11.i328, 8388607
-  %340 = load float* %in.addr.i310, align 4
-  %conv13.i330 = fptosi float %340 to i128
-  %neg.i331 = xor i128 %conv13.i330, -1
-  %and14.i332 = and i128 %neg.i331, 4286578688
-  %or15.i333 = or i128 %and12.i329, %and14.i332
-  %conv16.i334 = sitofp i128 %or15.i333 to float
-  %mul17.i335 = fmul float %conv16.i334, -2.500000e-01
-  %mul294 = fmul float %mul291, %mul17.i335
-  store float 0x3FB16872C0000000, float* %in.addr.i308, align 4
-  %341 = load float* %in.addr.i308, align 4
-  %conv.i309 = fptosi float %341 to i128
-  %and.i = and i128 %conv.i309, 8388607
+if.end324:                                        ; preds = %if.then323, %if.end320
+  %436 = load i128** @UA_DDS_REG_IN6_regptr, align 8
+  store i128 1023, i128* %436, align 16
+  %437 = load float* @f32DDS_Frequency, align 4
+  %mul325 = fmul float 0x401921FB60000000, %437
+  %mul326 = fmul float %mul325, 4.300000e+04
+  store float %mul326, float* %in.addr.i340, align 4
+  %438 = load float* %in.addr.i340, align 4
+  %conv.i341 = fptosi float %438 to i128
+  %and.i = and i128 %conv.i341, 8388607
   %or.i = or i128 %and.i, 1056964608
   %conv1.i = sitofp i128 %or.i to float
   store float %conv1.i, float* %In_Reduced.i, align 4
-  %342 = load float* %In_Reduced.i, align 4
-  %mul.i = fmul float 0x3FFE1E1E20000000, %342
+  %439 = load float* %In_Reduced.i, align 4
+  %mul.i = fmul float 0x3FFE1E1E20000000, %439
   %sub.i = fsub float 0x40069696A0000000, %mul.i
   store float %sub.i, float* %x.i, align 4
-  %343 = load float* %x.i, align 4
-  %344 = load float* %In_Reduced.i, align 4
-  %345 = load float* %x.i, align 4
-  %mul2.i = fmul float %344, %345
+  %440 = load float* %x.i, align 4
+  %441 = load float* %In_Reduced.i, align 4
+  %442 = load float* %x.i, align 4
+  %mul2.i = fmul float %441, %442
   %sub3.i = fsub float 2.000000e+00, %mul2.i
-  %mul4.i = fmul float %343, %sub3.i
+  %mul4.i = fmul float %440, %sub3.i
   store float %mul4.i, float* %x.i, align 4
-  %346 = load float* %x.i, align 4
-  %347 = load float* %In_Reduced.i, align 4
-  %348 = load float* %x.i, align 4
-  %mul5.i = fmul float %347, %348
+  %443 = load float* %x.i, align 4
+  %444 = load float* %In_Reduced.i, align 4
+  %445 = load float* %x.i, align 4
+  %mul5.i = fmul float %444, %445
   %sub6.i = fsub float 2.000000e+00, %mul5.i
-  %mul7.i = fmul float %346, %sub6.i
+  %mul7.i = fmul float %443, %sub6.i
   store float %mul7.i, float* %x.i, align 4
-  %349 = load float* %x.i, align 4
-  %350 = load float* %In_Reduced.i, align 4
-  %351 = load float* %x.i, align 4
-  %mul8.i = fmul float %350, %351
+  %446 = load float* %x.i, align 4
+  %447 = load float* %In_Reduced.i, align 4
+  %448 = load float* %x.i, align 4
+  %mul8.i = fmul float %447, %448
   %sub9.i = fsub float 2.000000e+00, %mul8.i
-  %mul10.i = fmul float %349, %sub9.i
+  %mul10.i = fmul float %446, %sub9.i
   store float %mul10.i, float* %x.i, align 4
-  %352 = load float* %x.i, align 4
-  %conv11.i = fptosi float %352 to i128
+  %449 = load float* %x.i, align 4
+  %conv11.i = fptosi float %449 to i128
   %and12.i = and i128 %conv11.i, 8388607
-  %353 = load float* %in.addr.i308, align 4
-  %conv13.i = fptosi float %353 to i128
+  %450 = load float* %in.addr.i340, align 4
+  %conv13.i = fptosi float %450 to i128
   %neg.i = xor i128 %conv13.i, -1
   %and14.i = and i128 %neg.i, 4286578688
   %or15.i = or i128 %and12.i, %and14.i
   %conv16.i = sitofp i128 %or15.i to float
   %mul17.i = fmul float %conv16.i, -2.500000e-01
-  %mul296 = fmul float %mul294, %mul17.i
-  store float %mul296, float* @f32OneOn_W2L, align 4
-  %354 = load float* @f32DDS_Frequency, align 4
-  %mul297 = fmul float %354, 0x4022345680000000
-  %conv298 = fptosi float %mul297 to i32
-  store i32 %conv298, i32* @s25DDSInkr, align 4
-  %355 = load i32* @s25DDSInkr, align 4
-  %conv299 = sext i32 %355 to i128
-  %356 = load i128** @UA_DDS_REG_IN1_regptr, align 8
-  store i128 %conv299, i128* %356, align 16
-  br label %if.end302
+  %mul328 = fmul float 0x426D1A94A0000000, %mul17.i
+  store float %mul328, float* @f32OneOn_WR, align 4
+  store float 0.000000e+00, float* @f32OneOn_W2L, align 4
+  %451 = load float* @f32DDS_Frequency, align 4
+  %mul329 = fmul float %451, 0x4022345680000000
+  %conv330 = fptosi float %mul329 to i32
+  store i32 %conv330, i32* @s25DDSInkr, align 4
+  %452 = load i32* @s25DDSInkr, align 4
+  %conv331 = sext i32 %452 to i128
+  %453 = load i128** @UA_DDS_REG_IN1_regptr, align 8
+  store i128 %conv331, i128* %453, align 16
+  br label %if.end334
 
-if.else300:                                       ; preds = %if.else241
-  %357 = load i32* @Cycle_Number, align 4
-  %inc301 = add nsw i32 %357, 1
-  store i32 %inc301, i32* @Cycle_Number, align 4
-  br label %if.end302
+if.else332:                                       ; preds = %if.else281
+  %454 = load i32* @Cycle_Number, align 4
+  %inc333 = add nsw i32 %454, 1
+  store i32 %inc333, i32* @Cycle_Number, align 4
+  br label %if.end334
 
-if.end302:                                        ; preds = %if.else300, %if.end284
-  br label %if.end303
+if.end334:                                        ; preds = %if.else332, %if.end324
+  br label %if.end335
 
-if.end303:                                        ; preds = %if.end302, %if.then240
-  br label %if.end304
+if.end335:                                        ; preds = %if.end334, %if.then280
+  br label %if.end336
 
-if.end304:                                        ; preds = %if.end303, %if.end233
-  br label %if.end305
+if.end336:                                        ; preds = %if.end335, %if.end273
+  br label %if.end337
 
-if.end305:                                        ; preds = %if.end304, %if.end201
-  br label %if.end306
+if.end337:                                        ; preds = %if.end336, %if.end240
+  br label %if.end338
 
-if.end306:                                        ; preds = %if.end305, %if.end82
-  br label %if.end307
+if.end338:                                        ; preds = %if.end337, %if.end79
+  br label %if.end339
 
-if.end307:                                        ; preds = %if.end306, %if.end7
-  %358 = load i128** @UA_OUTPUT_TOGGLE_regptr, align 8
-  store i128 2048, i128* %358, align 16
-  %359 = load i128** @UA_ENABLE_regptr, align 8
-  store i128 0, i128* %359, align 16
+if.end339:                                        ; preds = %if.end338, %if.end7
+  %455 = load i128** @UA_OUTPUT_TOGGLE_regptr, align 8
+  store i128 2048, i128* %455, align 16
+  %456 = load i128** @UA_ENABLE_regptr, align 8
+  store i128 0, i128* %456, align 16
   br label %while.body
 
 return:                                           ; No predecessors!

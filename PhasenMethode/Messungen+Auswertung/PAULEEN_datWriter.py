@@ -3,10 +3,12 @@ import matplotlib.pyplot as plt
 import sys
 import os
 import numpy as np
+import pandas as pd
 import locale
 import copy
 import math
 import matplotlib.patches as mpatches
+import datetime
 from math import pi
 from math import atan2
 from locale import atof
@@ -20,275 +22,107 @@ RESISTANCE = 430000 #OhmRESISTANCE = 43000 #Ohm
 INDUCTANCE = 68*pow(10, (-3)) #H
 PAULEEN_CLK_IN_HZ = 29491200
 fileName = 'Messungen/ST_0412/Sweep430k68mH_correctWL.csv'
-CSTM_TITLE = "\t0-921kHz-Frequencies (Board_v1)" #Anti-Aliasing T=2min, step=1bar/10s, 0-10bar 
-NUM_FREQUENCIES = 229 + 448 - 6
 NUM_MOV_AVG = 100
-NUM_COND = 2
 
 L=68*pow(10, (-3)) #H
 C0 = 99*pow(10, (-12)) #F
 Cmax = 114*pow(10, (-12)) #F
 
-def annot_max(x,y, ax=None):
-    xmax = x[np.argmax(y)]
-    ymax = np.array(y).max()
-    text= "f={:.3f}, $\Delta$={:.3f}".format(xmax, ymax)
-    if not ax:
-        ax=plt.gca()
-    bbox_props = dict(boxstyle="square,pad=0.3", fc="w", ec="k", lw=0.72)
-    arrowprops=dict(arrowstyle="->",connectionstyle="angle,angleA=0,angleB=60")
-    kw = dict(xycoords='data',textcoords="axes fraction",
-              arrowprops=arrowprops, bbox=bbox_props, ha="right", va="top")
-    ax.annotate(text, xy=(xmax, ymax), xytext=(0.94,0.96), **kw)
-
-markers_on = [442, 446] 
- 
-#              [int(14400),
-#               int(28800),     
-#               int(57600)]   
-            #   int(115000), 
-            #   int(230000),
-            #   int(461000),
-            #   int(921000),
-            #   int(1843200)]
-
-
-LEGEND_POS_X = 1.005
-LEGEND_POS_Y = 1.04
-
-dataFrame = {'Date': [], 
-             'Time': [],
-             'CNTRL_VAL_1': [],
-             'INDEX_1:': [],
-             'CNTRL_VAL_2':[],
-             'INDEX_2':[],
-             'pref1_Value':[],
-             'pref1_Unit':[],
-             'DIG1_MEAN':[],
-             'DIG1_STD':[],
-             'DIG1_MIN':[],
-             'DIG1_MAX':[],
-             'DIG2_MEAN':[],
-             'DIG2_STD':[],
-             'DIG2_MIN':[],
-             'DIG2_MAX':[],
-             'DIG3_MEAN':[],
-             'DIG3_STD':[],
-             'DIG3_MIN':[],
-             'DIG3_MAX':[],
-             'DIG4_MEAN':[],
-             'DIG4_STD':[],
-             'DIG4_MIN':[],
-             'DIG4_MAX':[],
-             'S0':[],
-             'S1':[],
-             'S2':[],
-             'S3':[],
-             'S4':[],
-             'S5':[],
-             'S6':[],
-             'S7':[],
-             'S8':[],
-             'S9':[],}
-
-Cr_A = [0]*NUM_FREQUENCIES
-Cr_P = [0]*NUM_FREQUENCIES
-Cp_A = [0]*NUM_FREQUENCIES
-Cp_P = [0]*NUM_FREQUENCIES
-test = []
-
-Cr_A_m = []
-Cr_P_m = []
-Cp_A_m = []
-Cp_P_m = []
-
-STD_Cr_A = []
-STD_Cr_P = []
-STD_Cp_A = []
-STD_Cp_P = []
-test_m = []
+df = []
 
 filePath = 'Auswertung/' + fileName.rsplit('/')[-2] + '/' + fileName.rsplit('/')[-1].replace('csv', 'png')
 directory = os.path.dirname(filePath)
 if not os.path.exists(directory):
     os.makedirs(directory)
 
-
 with open(fileName,'r', newline='') as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
     
-    Cap = 0
     f = 0
     for row in reader:
-        Cap += 1
-        test.append(row[3])
         if(row[2] == "0"): #Cp
-            try:
-                Cp_A[f % NUM_FREQUENCIES] = atof(row[0]) #+1 because there is the first word
-            except:
-                Cp_A[f % NUM_FREQUENCIES] = 0
-                
-            try:
-                Cp_P[f % NUM_FREQUENCIES] = atof(row[1]) #+9 Because after 8 frequencies the next var starts
-            except:
-                Cp_P[f % NUM_FREQUENCIES] = 0
-            
-            if NUM_COND == 1: # if 2 capacities are used then make this step later after extracting cr
-                f += 1
-                if f % NUM_FREQUENCIES == 0:
-                    #Cr_A_m.append(copy.copy(Cr_A))
-                    #Cr_P_m.append(copy.copy(Cr_P))
-                    Cp_A_m.append(copy.copy(Cp_A))
-                    Cp_P_m.append(copy.copy(Cp_P))
-                
-            
+                Cp_A = atof(row[0]) #+1 because there is the first word
+                Cp_P = atof(row[1]) #+9 Because after 8 frequencies the next var starts        
         else: #row[2] == "1" -> Cr
-            try:
-                Cr_A[f % NUM_FREQUENCIES] = atof(row[0]) #+9*2(next var)
-            except:  
-                Cr_A[f % NUM_FREQUENCIES] = 0
-            
-            try:
-                Cr_P[f % NUM_FREQUENCIES] = atof(row[1]) #+9*3(next var) and +2 because there a two vars, that doesn't matter.
-            except:
-                Cr_P[f % NUM_FREQUENCIES] = 0
-                
-            f += 1
-            if f % NUM_FREQUENCIES == 0:
-                Cr_A_m.append(copy.copy(Cr_A))
-                Cr_P_m.append(copy.copy(Cr_P))
-                Cp_A_m.append(copy.copy(Cp_A))
-                Cp_P_m.append(copy.copy(Cp_P))
-                test_m.append(copy.copy(test))
-                test = []
-    Cr_A_m = np.array(Cr_A_m).T.tolist()
-    Cr_P_m = np.array(Cr_P_m).T.tolist()
-    Cp_A_m = np.array(Cp_A_m).T.tolist()
-    Cp_P_m = np.array(Cp_P_m).T.tolist()
-    
-    #StdAbw jedes kompletten Kapazitätspakets
-    for f in range(len(Cp_A_m)):
-        if NUM_COND == 2:
-            STD_Cr_A.append(np.std(Cr_A_m[f]))
-            STD_Cr_P.append(np.std(Cr_P_m[f]))
-            Cr_A_m[f] = np.average(Cr_A_m[f])
-            Cr_P_m[f] = np.average(Cr_P_m[f])
-        STD_Cp_A.append(np.std(Cp_A_m[f]))
-        STD_Cp_P.append(np.std(Cp_P_m[f]))
-        Cp_A_m[f] = np.average(Cp_A_m[f])
-        Cp_P_m[f] = np.average(Cp_P_m[f])
+                Cr_A = atof(row[0]) #+9*2(next var)
+                Cr_P = atof(row[1]) #+9*3(next var) and +2 because there a two vars, that doesn't matter.
+                CV = (Cp_A - Cr_A)/Cp_A
+                dt = datetime.datetime.strptime(row[4], "%Y-%m-%d %H:%M:%S.%f")
+                df.append({ 'Date': [dt.strftime("%d.%m.%Y")], 
+                            'Time': [dt.strftime("%H:%M:%S")],
+                            'CNTRL_VAL_1': [0],
+                            'INDEX_1:': [0],
+                            'CNTRL_VAL_2':[0],
+                            'INDEX_2':[0],
+                            'pref1_Value':[0],
+                            'pref1_Unit':["bar"],
+                            'DIG1_MEAN':[0.0],
+                            'DIG1_STD':[0.0],
+                            'DIG1_MIN':[0.0],
+                            'DIG1_MAX':[0.0],
+                            'DIG2_MEAN':[0.0],
+                            'DIG2_STD':[0.0],
+                            'DIG2_MIN':[0.0],
+                            'DIG2_MAX':[0.0],
+                            'DIG3_MEAN':[0.0],
+                            'DIG3_STD':[0.0],
+                            'DIG3_MIN':[0.0],
+                            'DIG3_MAX':[0.0],
+                            'DIG4_MEAN':[0],
+                            'DIG4_STD':[0],
+                            'DIG4_MIN':[0],
+                            'DIG4_MAX':[0],
+                            'S0':[0],
+                            'S1':[0],
+                            'S2':[0],
+                            'S3':[0],
+                            'S4':[0],
+                            'S5':[0],
+                            'S6':[0],
+                            'S7':[0],
+                            'S8':[0],
+                            'S9':[0],
+                            'S10':[0],
+                            'S11':[0],
+                            'S12':[0],
+                            'S13':[0],
+                            'S14':[0],
+                            'S15':[0],
+                            'S16':[200],
+                            'S17':[0],
+                            'S18':[0],
+                            'S19':[0],
+                            'S20':[0],
+                            'S21':[0],
+                            'S22':[0],
+                            'S23':[200],
+                            'AMOUNT':[100],
+                            'legal_framepairs':[100],
+                            'illegal_framepairs':[0],
+                            'frame1_only':[False],
+                            'digout1_pysical':[None],
+                            'digout2_pysical':[None],
+                            'digout3_pysical':[None],
+                            'digout4_pysical':[None],
+                            'pref2_Value':[0],
+                            'pref2_Unit':["bar"],
+                            'ACTL_VAL_2':[0],
+                            'V_Supply_Value':[0],
+                            'V_Supply_Unit':["V"],
+                            'I_Supply_Value':[0],
+                            'I_Supply_Unit':["mA"],
+                            'p_set_Value':[0],
+                            'p_set_Unit':["bar"],
+                            'T_set_Value':[0],
+                            'T_set_Unit':["celsius"],
+                            'ACTL_VAL_1':[0],
+                            'dp_Michell_Value':[0],
+                            'dp_Michell_Unit':["celsius"],
+                            'p_Laboratory_Value':[0],
+                            'p_Laboratory_Unit':["mbar"]
+                            })
+                #print(pd.DataFrame(df))
+    df = pd.DataFrame(df)
+
         
-    ## Plotting
-    xticks = [PAULEEN_CLK_IN_HZ/((f+28))*(1+1/16) for f in range(6, 448, +1)] + [PAULEEN_CLK_IN_HZ/((f+28))*(1/16) for f in range(0, 229, +1)]
-    
-    plt.figure(layout="constrained")
-    ax = plt.gca()
-    fig1 = plt.gcf()
-    ax2 = ax.twinx()  
-    ax3 = ax.twinx() 
-    ax.set_title("Amplitude Computation, R = " + str(RESISTANCE) + "$ \mathrm{\Omega}$ , L =" + str(INDUCTANCE) + "$ \mathrm{H}$" + CSTM_TITLE, fontsize=20)
-    
-    ax.plot(xticks, Cp_A_m, '-b')#, label="$C_\mathrm{R}\ /\ \mathrm{pF}$")
-    if NUM_COND == 2:
-        ax.plot(xticks, Cr_A_m, '-r')#, label="$C_\mathrm{P}\ /\ \mathrm{pF}$")
-    
-    ax2.plot(xticks, STD_Cp_A, '-cD', markevery=markers_on, label="$C_\mathrm{P}\ /\ \mathrm{pF}$")
-    if NUM_COND == 2:
-        ax2.plot(xticks, STD_Cr_A, '-yD', markevery=markers_on, label="$C_\mathrm{R}\ /\ \mathrm{pF}$")
-    
-    ax.set_xlabel('f/Hz')
-    ax.xaxis.set_label_coords(0.975, -0.05)
-    
-    ax.legend(handles=[mpatches.Patch(color='blue', label='$C_\mathrm{P}$'),
-                       mpatches.Patch(color='red', label='$C_\mathrm{R}$'),
-                       mpatches.Patch(color='cyan', label='$\sigma_{C_\mathrm{P}}$'),
-                       mpatches.Patch(color='yellow', label='$\sigma_{C_\mathrm{P}}$'),
-                       mpatches.Patch(color='green', label='\Delta H')])
-    #ax.legend(loc='upper right', bbox_to_anchor=(LEGEND_POS_X, LEGEND_POS_Y), fancybox=True, shadow=True)
-    ax.grid()
-    ax.minorticks_on()
-    ax.grid(which='minor', alpha=0.3) 
-    
-    # Best Amplitude
-    H0=[]
-    Hmax=[]
-    for freq in xticks:
-        H0.append(1 / (math.sqrt(1 + pow(2*pi*freq * RESISTANCE * C0 - RESISTANCE/(freq*2*pi*L), 2)))) # - R/(freq*2*pi*L)
-        Hmax.append(1 / (math.sqrt(1 + pow((2*pi*freq * RESISTANCE * Cmax - RESISTANCE/(freq*2*pi*L)), 2)))) # - R/(freq*2*pi*L)
-        
-    deltaH = [H0[x] - Hmax[x] for x in range(len(H0))]
-    
-    ax3.spines.right.set_position(("axes", 1.05))
-    ax3.plot(xticks, deltaH, '-gD', markevery=markers_on, label="$\Delta H$")
-    
-    ax.set(ylabel="Capacity / pF")
-    ax2.set(ylabel="$\sigma / pF$")
-    ax3.set(ylabel="$\Delta H\ /\ mV/V$")
-    
-    ax.set_ylim([0, 2000])
-    ax2.set_ylim([0, 1])
-    #ax3.set_ylim([0, 0.16])
-    
 
-    # Fullscreen
-    manager = plt.get_current_fig_manager()
-    manager.window.showMaximized()
-
-    plt.figure(layout="constrained")
-    ax = plt.gca()
-    fig2 = plt.gcf()
-    ax2 = ax.twinx()
-    ax3 = ax.twinx()  
-    ax.set_title("Phase Computation, R = " + str(RESISTANCE) + "$ \mathrm{\Omega}$ , L =" + str(INDUCTANCE) + "$ \mathrm{H}$" + CSTM_TITLE, fontsize=20)
-    #, yerr=STD_Cp_P,
-    ax.plot(xticks, Cp_P_m, '-b')#, label="$C_\mathrm{R}\ /\ \mathrm{pF}$")
-    if NUM_COND == 2:
-        ax.plot(xticks, Cr_P_m, '-r')#, label="$C_\mathrm{P}\ /\ \mathrm{pF}$")
-    
-    ax2.plot(xticks, STD_Cp_P, '-cD', markevery=markers_on, label="$C_\mathrm{P}\ /\ \mathrm{pF}$")
-    if NUM_COND == 2:
-        ax2.plot(xticks, STD_Cr_P, '-yD', markevery=markers_on, label="$C_\mathrm{R}\ /\ \mathrm{pF}$")
-    
-    ax.set_xlabel('f/Hz')
-    ax.xaxis.set_label_coords(0.975, -0.05)
-    
-    ax.legend(handles=[mpatches.Patch(color='blue', label='$C_\mathrm{P}$'),
-                    mpatches.Patch(color='red', label='$C_\mathrm{R}$'),
-                    mpatches.Patch(color='cyan', label='$\sigma_{C_\mathrm{P}}$'),
-                    mpatches.Patch(color='yellow', label='$\sigma_{C_\mathrm{P}}$'),
-                    mpatches.Patch(color='green', label='$\Delta \Phi$')])
-    ax.grid()
-    ax.minorticks_on()
-    ax.grid(which='minor', alpha=0.3)  
-    
-    #Plot ideal Kurve
-    Phi0=[]
-    Phimax=[]
-    for freq in xticks:
-        Phi0.append(-atan2(freq*2*pi*RESISTANCE*C0 - RESISTANCE/(freq*2*pi*L) , 1) / (2*pi) * 360 ) #- R/(freq*2*pi*L)
-        Phimax.append(-atan2(freq*2*pi*RESISTANCE*Cmax - RESISTANCE/(freq*2*pi*L), 1) / (2*pi) * 360) # - R/(freq*2*pi*L)
-    
-    deltaPhi = [Phi0[x] - Phimax[x] for x in range(len(Phi0))]
-    
-    ax3.spines.right.set_position(("axes", 1.05))
-    ax3.plot(xticks, deltaPhi, '-gD', markevery=markers_on, label="$\Delta \Phi$")
-    
-    ax.set(ylabel="Capacity / pF")
-    ax2.set(ylabel="$\sigma / pF$")
-    ax3.set(ylabel="$\Delta \Phi$ / °")
-    
-    #ax.set_ylim([-400, 400])
-    ax2.set_ylim([0, 1])
-    #ax3.set_ylim([0, 32])
-    
-
-    filePathAmplitude = filePath.replace('.', '_Amplitude.')
-    filePathPhase = filePath.replace('.', '_Phase.')
-
-    # Fullscreen
-    manager = plt.get_current_fig_manager()
-    manager.window.showMaximized()
-    plt.show()
-
-    fig1.savefig(filePathAmplitude, dpi=500)
-    fig2.savefig(filePathPhase, dpi=500)

@@ -1,17 +1,16 @@
 /****************************************************************************
  * Author		Romuald Girardey/Maximilian Hagios
  * Department	TTD
- * Date			16.11.2021
+ * Date			14.12.2023
  ***************************************************************************/
   
 /**********************************
 * Settings:
 *   - 29.4912 MHz
 *   - 28.8 kHz cycle
-*   - CDI: 57.6 kBaud
+*   - CARMENIF: 230.4 kBaud
 *   - ADC: 230.4 kSps
-*   - CDI enabled
-*   - 1 Piezo realization -> Analog switch of input circuit for 50 cycles
+*   - CARMENIF: enabled
 *   - SMEM will be read during bootup
 *   - HMEM enabled
 *   - ENPMEM enabled
@@ -173,9 +172,9 @@ ua_float_t		f_Kapazitaet_P = 0.0f; //Variablen fuer Messung der Phasenverschiebu
 ua_int_t        s25_Switch_CP_CR = 0; // 0=CP  1=CR		//Festlegung des Switch Signals fuer die jeweilige Messung von CP oder CR
 
 //Computation
-const ua_int_t		cs25Resistance = 430000; //Ohm
+const ua_int_t		cs25Resistance = 43000; //Ohm
 const ua_float_t 	cf32Inductivity = 0.068f; //mH
-const ua_int_t		cs25Averaging = 1;//16;
+const ua_int_t		cs25Averaging = 16;//16;
 ua_int_t			s25AvgNum = 0;
 ua_int_t 			s25debugCounter = 0;
 ua_float_t f32DDS_Frequency = 0.0f; //Hz
@@ -189,7 +188,7 @@ ua_int_t s25DDSInkr = 0.0f;
 
 //Undersampling
 ua_int_t s25EnableUnderSampling = 0; 
-const ua_int_t cs25EnableRLC = 1;
+const ua_int_t cs25EnableRLC = 0;
 
 // Temperature
 ua_float_t f32TGrad = 0;
@@ -239,25 +238,30 @@ void ua_main()
 			UA_CONFIG_DDS = UA_DDS_MODE_SINE_SAW_PSK_FSK | UA_DDS_PHASE1_SELECT | UA_DDS_FREQUENCY1_SELECT | UA_DDS1_SINE | UA_DDS_ENABLE;
 			Last_ADC_Pointer = (ua_int_t)UA_ADC_MEM_PTR-1;
 			
+			Cycle_Number++;
 			UA_ADC_CONVERSION_TIME = (ua_word_t)Frequency_number;
 			UA_ADC_CONVERSION_CONF = ((ua_word_t)UA_ADC_ENABLE) | ((ua_word_t)ADC_CONVERSION_CONF_VINPO);
-			
-			Cycle_Number++;
-			//+1.0f to componsate the computation time of the first cycle -> This fixes the Problem of not enough ADC-Values
-			MAX_UA_Cycle = 2 + 1 + 130; 
+			MAX_UA_Cycle = 2 + 3; // Compensate for missing 12 first ADC Values and coputation time
 		}
+		// else if ((Cycle_Number == 3) && (Current_state == ST_MEASURE))						
+		// {
+		// 	UA_ADC_CONVERSION_TIME = (ua_word_t)Frequency_number;
+		// 	UA_ADC_CONVERSION_CONF = ((ua_word_t)UA_ADC_ENABLE) | ((ua_word_t)ADC_CONVERSION_CONF_VINPO);
+		// 	Cycle_Number++;
+		// }
 		else if ((Cycle_Number >= MAX_UA_Cycle) && (Current_state == ST_MEASURE))
 		{
 			UA_ADC_CONVERSION_CONF = (ua_word_t)UA_ADC_DISABLE;
 			UA_CONFIG_DDS = UA_DDS_MODE_SINE_SAW_PSK_FSK | UA_DDS_PHASE1_SELECT | UA_DDS_FREQUENCY1_SELECT | UA_DDS1_SINE | UA_DDS_RESTART | UA_DDS_DISABLE;
 			
+			//***********************************************************************************************************************
+			//	Auslesen des ADC Memories
+			//***********************************************************************************************************************
 			Cycle_Number = 0;
-
 			Temp = 0;
-			//Auslesen des ADC Memories
 			for (Value_index = 0; Value_index < 16; Value_index++)
 			{
-				Temp = UA_ADC_MEM[(Last_ADC_Pointer - Value_index - 160) & 0x3FF];
+				Temp = UA_ADC_MEM[(Last_ADC_Pointer - Value_index - 12) & 0x3FF];
 				Zeroline[Current_signal + 2 * s25_Switch_CP_CR] = Zeroline[Current_signal + 2 * s25_Switch_CP_CR] + Temp;
 
 				//Zuweisung: Entweder Referenz-/ oder Signalvariable
@@ -271,9 +275,15 @@ void ua_main()
 				}
 			}
 
+
+			//***********************************************************************************************************************
+			//	CP <> CR --- REF <> Signal --- Statemachine 
+			//***********************************************************************************************************************
+
 			// Toggle between EN_CP <> EN_CR
 			if (Current_signal == EN_REFERENCE)
 			{
+				// Inkrement Averaging Counter
 				if(s25_Switch_CP_CR == EN_CR)
 				{
 					s25AvgNum++;
@@ -282,12 +292,16 @@ void ua_main()
 			}
 
 			Current_signal ^= 1; // Toggle between EN_SIGNAL <> EN_REFERENCE
+			//Determine end of measurement
 			if(s25AvgNum >= cs25Averaging)
 			{
 				Current_state = ST_COMPUTE;		
 				cpCr = 0;
+				s25AvgNum = 0;
 				
-				if((s25AvgNum * 4 * 3)  < (f32uartTime * 115200)) //If Measurement is faster then UART Transmission
+				//Check if computation can be made, or if uart Transimission is still ongoing
+				//If it is still going a new package can not be sent. So the Programm must wait here for it to finish.
+				if((cs25Averaging * 4 * 3)  < (f32uartTime * 115200)) //If Measurement is faster then UART Transmission
 				{
 					//Adjust waiting Time until the last transimssion is finished 
 					MAX_UA_Cycle = UA_ceil(	(f32uartTime * 115200) - (s25AvgNum * 4 * 3) ); // Waiting Time = Overall Transmission Time - Measurement Time
@@ -296,17 +310,17 @@ void ua_main()
 				{
 					MAX_UA_Cycle = 0;
 				}
-
-				s25AvgNum = 0;
 			}
+			//***********************************************************************************************************************
 		}
 		else if ((Cycle_Number >= MAX_UA_Cycle) && Current_state == ST_COMPUTE)
 		{
 			// *********************************************************************************************************
 			// ********   Calculate Offset                                                                           ***
-			// *********************************************************************************************************
-			//Zeroline[Current_signal] = Zeroline_Temp * INV_c_SAMPLE_POINTS;
-			
+			// *********************************************************************************************************		
+			Zeroline[EN_SIGNAL + 2 * cpCr] = Zeroline[EN_SIGNAL + 2 * cpCr] * INV_c_SAMPLE_POINTS;
+			Zeroline[EN_REFERENCE + 2 * cpCr] = Zeroline[EN_REFERENCE + 2 * cpCr] * INV_c_SAMPLE_POINTS;
+
 			// *********************************************************************************************************
 			// ********   y(t) = Sampled Signal                                                                      ***
 			// ********     Q1 = y(t) * sin (wt)                                                                     ***
@@ -326,10 +340,6 @@ void ua_main()
 			f_Amplitude_Temp = 0.0f;
 			f_Q1m = 0.0f;
 			f_Q2m = 0.0f;
-			
-			Zeroline[EN_SIGNAL + 2 * cpCr] = Zeroline[EN_SIGNAL + 2 * cpCr] * INV_c_SAMPLE_POINTS;
-			Zeroline[EN_REFERENCE + 2 * cpCr] = Zeroline[EN_REFERENCE + 2 * cpCr] * INV_c_SAMPLE_POINTS;
-
 			for (Value_index=0; Value_index < c_SAMPLE_POINTS; Value_index++)
 			{
 				//Signal
@@ -346,6 +356,7 @@ void ua_main()
 			Q2mSig	= 	f_Q2m;
 			Q1mSig	= 	f_Q1m;
 			Amplitude[EN_SIGNAL]  = UA_sqrt( f_Amplitude_Temp * INV_c_SAMPLE_POINTSO2 );
+			Phase[EN_SIGNAL] = __PI - UA_atan(Q2mSig * FloatInverse(Q1mSig));
 
 			f_Amplitude_Temp = 0.0f;
 			f_Q1m = 0.0f;
@@ -365,49 +376,53 @@ void ua_main()
 
 			Q2mRef	=	f_Q2m;
 			Q1mRef	=	f_Q1m;
-			Amplitude[EN_REFERENCE]  = UA_sqrt( f_Amplitude_Temp * INV_c_SAMPLE_POINTSO2 );
+			Amplitude[EN_REFERENCE]  = UA_sqrt( f_Amplitude_Temp * INV_c_SAMPLE_POINTSO2 );			
+			Phase[EN_REFERENCE] = __PI - UA_atan(Q2mRef * FloatInverse(Q1mRef));
 
 			f_Kapazitaet_A = C_GainAmp_pF * (f32OneOn_WR * UA_sqrt(Amplitude[EN_REFERENCE] * Amplitude[EN_REFERENCE] * FloatInverse(Amplitude[EN_SIGNAL] * Amplitude[EN_SIGNAL]) - 1) + f32OneOn_W2L - C_OffsetAmp_pF);
 			f_Kapazitaet_P = C_GainPhase_pF * (f32OneOn_WR * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) + f32OneOn_W2L - C_OffsetPhase_pF);
-			// UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_A;
-			// UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_P;
+			UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_A;
+			UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_P;
 
 			// //Send Package with postfix to indicate Cp/Cr
-			// if (cpCr == EN_CP) 
-			// {//CP
-			// 	UA_SERIAL_OUT3 = ((s25debugCounter) << 1)|(0b0); //Frequency_number and Code for CP;
-			// }	
-			// else
-			// {//CR				
-			// 	UA_SERIAL_OUT3 = ((s25debugCounter) << 1)|(0b1); //Frequency_number and Code for CR;
-			// 	s25debugCounter++;
-			// }
+			if (cpCr == EN_CP) 
+			{//CP
+				UA_SERIAL_OUT3 = ((Frequency_number) << 1)|(0b0); //Frequency_number and Code for CP;
+			}	
+			else
+			{//CR				
+				UA_SERIAL_OUT3 = ((Frequency_number) << 1)|(0b1); //Frequency_number and Code for CR;
+				//s25debugCounter++;
+			}
 
-			//Clear last values
-			// for (Value_index = 0; Value_index < 16; Value_index++)
-			// {
-			// 	ADC_values_sig[Value_index + 16 * cpCr] = 0;
-			// 	ADC_values_ref[Value_index + 16 * cpCr] = 0;
-			// }	
-			// Zeroline[EN_SIGNAL + 2 * cpCr] = 0;
-			// Zeroline[EN_REFERENCE + 2 * cpCr] = 0;
+			//***********************************************************************************************************************
+			//	Reset Vars --- Statemachine
+			//***********************************************************************************************************************
+			for (Value_index = 0; Value_index < 16; Value_index++)
+			{
+				ADC_values_sig[Value_index + 16 * cpCr] = 0;
+				ADC_values_ref[Value_index + 16 * cpCr] = 0;
+			}	
+			Zeroline[EN_SIGNAL + 2 * cpCr] = 0;
+			Zeroline[EN_REFERENCE + 2 * cpCr] = 0;
 
 			Cycle_Number = 0;
 			if(cpCr >= 1)
 			{
-				//Current_state = ST_MEASURE;
-				//MAX_UA_Cycle = 0; //TODO: TEST
+				Current_state = ST_MEASURE;
+				MAX_UA_Cycle = 0; //TODO: TEST
 
 				//*************DEBUG***********************
-				Current_state = ST_READOUT_ADC_VALS; //DEBUG
-				Value_index = 0;
-				MAX_UA_Cycle = 130;					//DEBUG
+				// Current_state = ST_READOUT_ADC_VALS; //DEBUG
+				// Value_index = 0;
+				// MAX_UA_Cycle = 130;					//DEBUG
 			}
 			else
 			{
-				cpCr++;
-				MAX_UA_Cycle = 130;
+				cpCr++;	//Switch Cp <> Cr
+				MAX_UA_Cycle = 130; //Delay the next computation until UART-Transmission is done
 			}
+			//***********************************************************************************************************************
 		}
 		else if (Current_state == ST_READOUT_ADC_VALS && (Cycle_Number >= MAX_UA_Cycle) ) //Übergang in den Messzustand
 		{

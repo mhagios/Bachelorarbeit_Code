@@ -16,11 +16,11 @@ def moving_average(x, w):
     return np.convolve(x, np.ones(w), "valid") / w
 
 # USER Parameter
-RESISTANCE = 430000 #Ohm
-INDUCTANCE = 68 #mH
+RESISTANCE = 43000 #Ohm
+INDUCTANCE = 0 #mH
 PAULEEN_CLK_IN_HZ = 29491200
-fileName = 'Messungen/ST_0412/StdAwb430k68mH_correctWL.csv'
-CSTM_TITLE = "\t65,8286 kHz" #Anti-Aliasing T=2min, step=1bar/10s, 0-10bar 
+fileName = 'Messungen/HO_1312_Rauschuntersuchung/05_InterleavingCodeRC_avg16_lange Messung.csv'
+CSTM_TITLE = "\t65,8286 kHz Interleaving Cp Mittelwertdivision(Capacity range not measured again)" #Anti-Aliasing T=2min, step=1bar/10s, 0-10bar 
 
 averaging_time = [2.5,  #ms
                   5,    #ms
@@ -82,16 +82,18 @@ with open(fileName,'r', newline='') as csvfile:
                 Cr_P.append(0)
     
     #Zero-line fit
-    #Averages for R=43k und L=68mH
-    avg_p_A = np.average(Cp_A) ## R=43k/L=0: 90.554..104.232 ## R=43k/ L=68m:269.041..279.450  ## R=430k/ L=68m:
-    avg_p_P = np.average(Cp_P) ## R=43k/L=0: 88.523..102.885 ## R=43k/ L=68m:113.611..122.135  ## R=430k/ L=68m:
-    avg_r_A = np.average(Cr_A) ## R=43k/L=0: 91.315..93.367 ## R=43k/ L=68m:269.600..271.949  ## R=430k/ L=68m:
-    avg_r_P = np.average(Cr_P) ## R=43k/L=0: 89.202..91.839 ## R=43k/ L=68m:113.952..115.954  ## R=430k/ L=68m:
+    avg_p_A = np.average(Cp_A) ## R=43k/L=0: 90.554..104.232 ## R=43k/ L=68m:269.041..279.450  ## R=430k/ L=68m:132.590..159.917
+    avg_p_P = np.average(Cp_P) ## R=43k/L=0: 88.523..102.885 ## R=43k/ L=68m:113.611..122.135  ## R=430k/ L=68m:95.992..104.065
+    avg_r_A = np.average(Cr_A) ## R=43k/L=0: 91.315..93.367 ## R=43k/ L=68m:269.600..271.949  ## R=430k/ L=68m:133.444..137.841
+    avg_r_P = np.average(Cr_P) ## R=43k/L=0: 89.202..91.839 ## R=43k/ L=68m:113.952..115.954  ## R=430k/ L=68m:96.359..97.462
     CAPACITY_RANGE_RC = 15 #pF
-    CAPACITY_RANGE_CP_A = 159.917 -132.590
-    CAPACITY_RANGE_CP_P = 104.065 -95.992
-    CAPACITY_RANGE_CR_A = 137.841 -133.444
-    CAPACITY_RANGE_CR_P = 97.462 -96.359
+    CAPACITY_RANGE_CP_A = 104.232-90.554
+    CAPACITY_RANGE_CP_P = 102.885-88.523
+    CAPACITY_RANGE_CR_A = 93.367-91.315
+    CAPACITY_RANGE_CR_P = 91.839-89.202
+    
+    CV_P = [(Cp_P[x] - Cr_P[x]) / Cp_P[x] for x in range(len(Cp_P) - 1)]
+    CV_A = [(Cp_A[x] - Cr_A[x]) / Cp_A[x] for x in range(len(Cp_A) - 1)]
     
     for cp in range(len(Cp_A)):
         Cp_A[cp] =  (Cp_A[cp] - avg_p_A) * 100 / CAPACITY_RANGE_CP_A
@@ -101,17 +103,15 @@ with open(fileName,'r', newline='') as csvfile:
         Cr_A[cr] =  (Cr_A[cr] - avg_r_A) * 100 / CAPACITY_RANGE_CR_A
     for cr in range(len(Cr_P)):
         Cr_P[cr] =  (Cr_P[cr] - avg_r_P) * 100 / CAPACITY_RANGE_CR_P
-        
-    CV_P = [(Cp_P[x] - Cr_P[x]) / Cp_P[x] for x in range(len(Cp_P) - 1)]
-    CV_A = [(Cp_A[x] - Cr_A[x]) / Cp_A[x] for x in range(len(Cp_A) - 1)]
+
     
     
-    #CV_AVG_A: R=43k/ L=0: -0.0084..0.1042 ## R=43k/ L=68m: -0.0021..0.02684 ## R=430k/ L=68m:
-    #CV_AVG_P: R=43k/ L=0: -0.0077..0.1074 ## R=43k/ L=68m: -0.0030..0.05061 ## R=430k/ L=68m:
+    #CV_AVG_A: R=43k/ L=0: -0.0084..0.1042 ## R=43k/ L=68m: -0.0021..0.02684 ## R=430k/ L=68m:0.00643..0.1380
+    #CV_AVG_P: R=43k/ L=0: -0.0077..0.1074 ## R=43k/ L=68m: -0.0030..0.05061 ## R=430k/ L=68m:0.00383..0.0643
     CV_AVG_A = np.average(CV_A)
     CV_AVG_P = np.average(CV_P) 
-    CV_RANGE_A = 0.1380 + 0.00643
-    CV_RANGE_P = 0.0643 + 0.00383
+    CV_RANGE_A = 0.1042 + 0.0084
+    CV_RANGE_P = 0.1074 + 0.0077
     
     #Zero-line fit
     for cvp in range(len(CV_P)):

@@ -10,7 +10,7 @@ import os
 END_FREQ_CODE = 0
 START_FREQ_CODE = 0
 NUM_COND = 2
-fileName = 'Messungen/HO_0712/Interleaving_AmplitudeValues_t5_ADCafter160Points.csv'
+fileName = 'Messungen/HO_1312_Rauschuntersuchung/05_InterleavingCodeRC_avg16_lange Messung.csv'
 
 
 def connectPAULEEN():
@@ -134,8 +134,8 @@ with open(fileName, "w", newline='') as fileWriter:
                     # fnext = (byteBuf[10 + NUM_COND*13]<<7)|(byteBuf[9 + NUM_COND*13] >> 1)
                     f = END_FREQ_CODE
                     fnext = START_FREQ_CODE
-                    #f = (byteBuf[10])
-                    #fnext = (byteBuf[10 + NUM_COND*13])
+                    f = (byteBuf[10])
+                    fnext = (byteBuf[10 + NUM_COND*13])
                     if not((byteBuf[9]&(0x01) == 0) and (f == END_FREQ_CODE) and fnext == START_FREQ_CODE):
                     #if not((byteBuf[9] == 0) and (f == END_FREQ_CODE)):
                         startPos += 13
@@ -192,14 +192,14 @@ with open(fileName, "w", newline='') as fileWriter:
                     print("\n\n")
                     raise(IOError("CRC-Failed"))
                 #Convert in Cr/Cp and Frequency and save in File                
-                #cA = (struct.unpack('f', byteBuf[p * 13 + 1 : p * 13 + 5])[0])
-                #cP = (struct.unpack('f', byteBuf[p * 13 + 5 : p * 13 + 9]))[0]
-                cA = (struct.unpack('I', byteBuf[p * 13 + 1 : p * 13 + 5])[0])
-                cP = (struct.unpack('I', byteBuf[p * 13 + 5 : p * 13 + 9]))[0]
-                C = byteBuf[p * 13 + 9]
-                f = (byteBuf[p * 13 + 10])
-                # C = byteBuf[p * 13 + 9] & 0x01
-                # f = (byteBuf[p * 13 + 10]<<7)|(byteBuf[p * 13 + 9]>>1)
+                cA = (struct.unpack('f', byteBuf[p * 13 + 1 : p * 13 + 5])[0])
+                cP = (struct.unpack('f', byteBuf[p * 13 + 5 : p * 13 + 9]))[0]
+                # cA = (struct.unpack('I', byteBuf[p * 13 + 1 : p * 13 + 5])[0])
+                # cP = (struct.unpack('I', byteBuf[p * 13 + 5 : p * 13 + 9]))[0]
+                # C = byteBuf[p * 13 + 9]
+                # f = (byteBuf[p * 13 + 10])
+                C = byteBuf[p * 13 + 9] & 0x01
+                f = (byteBuf[p * 13 + 10]<<7)|(byteBuf[p * 13 + 9]>>1)
                 csvWriter.writerow([cA, cP, C, f, datetime.datetime.now(), packageNum])
                 
 

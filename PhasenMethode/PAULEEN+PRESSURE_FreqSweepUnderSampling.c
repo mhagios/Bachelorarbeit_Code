@@ -164,7 +164,7 @@ ua_float_t		f_Kapazitaet_P = 0.0f; //Variablen fuer Messung der Phasenverschiebu
 ua_int_t        s25_Switch_CP_CR = 0; // 0=CP  1=CR		//Festlegung des Switch Signals fuer die jeweilige Messung von CP oder CR
 
 //Computation
-const ua_int_t cs25Resistance = 430000; //Ohm
+const ua_int_t cs25Resistance = 43000; //Ohm
 const ua_float_t cf32Inductivity = 0.068f; //mH
 ua_float_t f32DDS_Frequency = 0.0f; //Hz
 ua_float_t f32OneOn_WR = 0.0f;
@@ -177,7 +177,7 @@ ua_int_t s25DDSInkr = 0.0f;
 
 //Undersampling
 ua_int_t s25EnableUnderSampling = 0; 
-const ua_int_t cs25EnableRLC = 1;
+const ua_int_t cs25EnableRLC = 0;
 
 // Temperature
 ua_float_t f32TGrad = 0;
@@ -369,8 +369,8 @@ void ua_main()
 			{
 				f_Kapazitaet_A = C_GainAmp_pF * (f32OneOn_WR * UA_sqrt(Amplitude[EN_REFERENCE] * Amplitude[EN_REFERENCE] * FloatInverse(Amplitude[EN_SIGNAL] * Amplitude[EN_SIGNAL]) - 1) + f32OneOn_W2L - C_OffsetAmp_pF);
 				f_Kapazitaet_P = C_GainPhase_pF * (f32OneOn_WR * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) + f32OneOn_W2L - C_OffsetPhase_pF);
-				UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_A;
-				UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_P;
+				UA_SERIAL_OUT = (ua_word_t) Phase[EN_SIGNAL];
+				UA_SERIAL_OUT2 = (ua_word_t) Phase[EN_REFERENCE];
 						
 				if (s25_Switch_CP_CR == 0)  //Toggle of Switch N6 on GPIO13 and assignment of capacity variables
 				{//CP

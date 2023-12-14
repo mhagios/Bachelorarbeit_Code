@@ -1,6 +1,24 @@
 Microarchitecure Suite Version 3.20.20
 UAC Compiler Version 2.5 @ 16.12.2022 15:14:30
 
+==========================C-Compiler===========================
+Selected Strategy: backlog,1 - Additional Option: -l
+Compiling C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_FreqSweepUnderSampling.ll
+
+Optimization:
+          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+          |||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Parallelization:
+          0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%
+          |----|----|----|----|----|----|----|----|----|----|
+          |||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Info: Selected path: path928; VLIW count: 596
+
+Compilation successful in 20,092 s
+
 ===========================Assembler===========================
 Analyzing ASM finished.
 Note: Variable "UA_INIT_ADC_CONVERSION_CONF" declared but not used.
@@ -24,10 +42,10 @@ Start creating output files...
 All files generated successfully.
 
 -------------Memory usage:-------------------------------------
-IMEM:	670 of 2048
-DMEM:	207 of 1024	(98 checked param. + 1 CRC)
+IMEM:	596 of 2048
+DMEM:	198 of 1024	(97 checked param. + 1 CRC)
 ---------------------------------------------------------------
-Workload AU: 43,0%; LU: 19,6%; LD/ST: 93,1% (Concurr.: 27,8%)
+Workload AU: 40,4%; LU: 18,5%; LD/ST: 92,8% (Concurr.: 25,8%)
 
 
 ===================Longest Path Analyzation====================
@@ -258,6 +276,6 @@ Verifying Memory ...Successful
 
 Programming of:
 C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_FreqSweepUnderSampling.bin
-successful in 34274 ms
+successful in 35268 ms
 Disconnecting Programmer...Done
 
