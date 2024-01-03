@@ -267,7 +267,7 @@ void ua_main()
 			UA_ADC_CONVERSION_CONF = ((ua_word_t)UA_ADC_ENABLE) | ((ua_word_t)ADC_CONVERSION_CONF_VINPO);
 			
 			Cycle_Number++;
-			MAX_UA_Cycle = UA_ceil((Current_ADC_divider + 28.0f + 1.0f) * 0.25f); //28 because of data output latency
+			MAX_UA_Cycle = UA_ceil((Current_ADC_divider + 28.0f + 1.0f)) //* 0.25f ); //28 because of data output latency
 			
 			//UA_SERIAL_OUT = (ua_int_t)(f32DDS_Frequency * 9.10222222222f);
 			//UA_SERIAL_OUT2 = (f32DDS_Frequency * 9.10222222222f);

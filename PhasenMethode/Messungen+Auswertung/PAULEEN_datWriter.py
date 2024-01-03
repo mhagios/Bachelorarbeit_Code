@@ -46,29 +46,29 @@ with open(fileName,'r', newline='') as csvfile:
         else: #row[2] == "1" -> Cr
                 Cr_A = atof(row[0]) #+9*2(next var)
                 Cr_P = atof(row[1]) #+9*3(next var) and +2 because there a two vars, that doesn't matter.
-                CV = (Cp_A - Cr_A)/Cp_A
+                CV = (Cp_A - Cr_A) / Cp_A
                 dt = datetime.datetime.strptime(row[4], "%Y-%m-%d %H:%M:%S.%f")
                 df.append({ 'Date': [dt.strftime("%d.%m.%Y")], 
                             'Time': [dt.strftime("%H:%M:%S")],
-                            'CNTRL_VAL_1': [0],
-                            'INDEX_1:': [0],
-                            'CNTRL_VAL_2':[0],
+                            'CNTRL_VAL_1': [0], #sollT
+                            'INDEX_1:': [0],    
+                            'CNTRL_VAL_2':[0],  #sollP
                             'INDEX_2':[0],
-                            'pref1_Value':[0],
+                            'pref1_Value':[0],  #RefP1
                             'pref1_Unit':["bar"],
-                            'DIG1_MEAN':[0.0],
+                            'DIG1_MEAN':[0.0],  #CV-Mean-Write
                             'DIG1_STD':[0.0],
                             'DIG1_MIN':[0.0],
                             'DIG1_MAX':[0.0],
-                            'DIG2_MEAN':[0.0],
+                            'DIG2_MEAN':[0.0],  #T-mean-Write
                             'DIG2_STD':[0.0],
                             'DIG2_MIN':[0.0],
                             'DIG2_MAX':[0.0],
-                            'DIG3_MEAN':[0.0],
+                            'DIG3_MEAN':[0.0],  # -
                             'DIG3_STD':[0.0],
                             'DIG3_MIN':[0.0],
                             'DIG3_MAX':[0.0],
-                            'DIG4_MEAN':[0],
+                            'DIG4_MEAN':[0],    # -
                             'DIG4_STD':[0],
                             'DIG4_MIN':[0],
                             'DIG4_MAX':[0],
@@ -96,30 +96,30 @@ with open(fileName,'r', newline='') as csvfile:
                             'S21':[0],
                             'S22':[0],
                             'S23':[200],
-                            'AMOUNT':[100],
-                            'legal_framepairs':[100],
+                            'AMOUNT':[100],             # Mittelungsanzahl
+                            'legal_framepairs':[100],   # Mittelungsanzahl
                             'illegal_framepairs':[0],
                             'frame1_only':[False],
-                            'digout1_pysical':[None],
-                            'digout2_pysical':[None],
-                            'digout3_pysical':[None],
-                            'digout4_pysical':[None],
-                            'pref2_Value':[0],
+                            #'digout1_pysical':[None],
+                            #'digout2_pysical':[None],
+                            #'digout3_pysical':[None],
+                            #'digout4_pysical':[None],
+                            'pref2_Value':[0],          #RefP2
                             'pref2_Unit':["bar"],
-                            'ACTL_VAL_2':[0],
-                            'V_Supply_Value':[0],
+                            'ACTL_VAL_2':[0],           #RefP Mean (RefP2 and RefP1)
+                            'V_Supply_Value':[3.3],
                             'V_Supply_Unit':["V"],
-                            'I_Supply_Value':[0],
+                            'I_Supply_Value':[0.6],
                             'I_Supply_Unit':["mA"],
-                            'p_set_Value':[0],
+                            'p_set_Value':[0],          # ^= CTRL_VAL_2
                             'p_set_Unit':["bar"],
                             'T_set_Value':[0],
                             'T_set_Unit':["celsius"],
-                            'ACTL_VAL_1':[0],
-                            'dp_Michell_Value':[0],
-                            'dp_Michell_Unit':["celsius"],
-                            'p_Laboratory_Value':[0],
-                            'p_Laboratory_Unit':["mbar"]
+                            'ACTL_VAL_1':[0],               #RefMeasurementT
+                            'dp_Michell_Value':[0],         # -
+                            'dp_Michell_Unit':["celsius"],  # -
+                            #'p_Laboratory_Value':[0],       
+                            #'p_Laboratory_Unit':["mbar"]
                             })
                 #print(pd.DataFrame(df))
     df = pd.DataFrame(df)

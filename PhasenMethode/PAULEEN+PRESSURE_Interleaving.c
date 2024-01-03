@@ -3,11 +3,17 @@
  * Department	TTD
  * Date			14.12.2023
  ***************************************************************************/
-  
+
+/****************************************************************************
+ * This Code ONLY works for a DDS-Frequency of 65828.57143 Hz.
+ * Most of the parameters are optimized for this frequency!
+ * Documentation can be found in the bachelor thesis of Maximilian Hagios.
+ ***************************************************************************/
+
 /**********************************
 * Settings:
 *   - 29.4912 MHz
-*   - 28.8 kHz cycle
+*   - 115.2 kHz cycle
 *   - CARMENIF: 230.4 kBaud
 *   - ADC: 230.4 kSps
 *   - CARMENIF: enabled
@@ -176,7 +182,7 @@ const ua_int_t		cs25Resistance = 43000; //Ohm
 const ua_float_t 	cf32Inductivity = 0.068f; //mH
 const ua_int_t		cs25Averaging = 16;//16;
 ua_int_t			s25AvgNum = 0;
-ua_int_t 			s25debugCounter = 0;
+//ua_int_t 			s25debugCounter = 0;
 ua_float_t f32DDS_Frequency = 0.0f; //Hz
 ua_float_t f32OneOn_WR = 0.0f;
 ua_float_t f32OneOn_W2L = 0.0f;

@@ -147,7 +147,6 @@ target triple = "x86_64-pc-windows-gnu"
 @cf32Inductivity = constant float 0x3FB16872C0000000, align 4
 @cs25Averaging = constant i32 16, align 4
 @s25AvgNum = global i32 0, align 4
-@s25debugCounter = global i32 0, align 4
 @f32DDS_Frequency = global float 0.000000e+00, align 4
 @f32OneOn_WR = global float 0.000000e+00, align 4
 @f32OneOn_W2L = global float 0.000000e+00, align 4

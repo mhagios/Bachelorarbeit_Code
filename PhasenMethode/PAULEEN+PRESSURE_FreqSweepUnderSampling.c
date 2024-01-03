@@ -1,17 +1,23 @@
 /****************************************************************************
  * Author		Romuald Girardey/Maximilian Hagios
  * Department	TTD
- * Date			16.11.2021
+ * Date			14.12.2023
  ***************************************************************************/
-  
+
+/****************************************************************************
+This Code is optimized for analyzing a wide frequency spectrum with 
+Undersampling. The Undersampling is only used to sample higher frequencies
+not to improve the frequencyresolution.
+Documentation can be found in the bachelor thesis of Maximilian Hagios.
+***************************************************************************/
+
 /**********************************
 * Settings:
 *   - 29.4912 MHz
 *   - 28.8 kHz cycle
-*   - CDI: 57.6 kBaud
+*   - CARMEN-IF: 230.4 kBaud
 *   - ADC: 230.4 kSps
-*   - CDI enabled
-*   - 1 Piezo realization -> Analog switch of input circuit for 50 cycles
+*   - CARMEN-IF enabled
 *   - SMEM will be read during bootup
 *   - HMEM enabled
 *   - ENPMEM enabled
@@ -272,7 +278,7 @@ void ua_main()
 			
 			Cycle_Number++;
 			//+1.0f to componsate the computation time of the first cycle -> This fixes the Problem of not enough ADC-Values
-			MAX_UA_Cycle = UA_ceil((Current_ADC_divider + 28.0f) * 0.25f + 1.0f); //28  because of data output latency
+			MAX_UA_Cycle = UA_ceil((Current_ADC_divider + 28.0f)); //* 0.25f + 1.0f); //28  because of data output latency
 			
 		}
 		else if ((Cycle_Number >= MAX_UA_Cycle) && (Current_state == ST_MEASURE))
@@ -369,8 +375,8 @@ void ua_main()
 			{
 				f_Kapazitaet_A = C_GainAmp_pF * (f32OneOn_WR * UA_sqrt(Amplitude[EN_REFERENCE] * Amplitude[EN_REFERENCE] * FloatInverse(Amplitude[EN_SIGNAL] * Amplitude[EN_SIGNAL]) - 1) + f32OneOn_W2L - C_OffsetAmp_pF);
 				f_Kapazitaet_P = C_GainPhase_pF * (f32OneOn_WR * (Q2mRef * Q1mSig - Q2mSig * Q1mRef) * FloatInverse(Q1mSig * Q1mRef + Q2mSig * Q2mRef) + f32OneOn_W2L - C_OffsetPhase_pF);
-				UA_SERIAL_OUT = (ua_word_t) Phase[EN_SIGNAL];
-				UA_SERIAL_OUT2 = (ua_word_t) Phase[EN_REFERENCE];
+				UA_SERIAL_OUT = (ua_word_t) f_Kapazitaet_A;
+				UA_SERIAL_OUT2 = (ua_word_t) f_Kapazitaet_P;
 						
 				if (s25_Switch_CP_CR == 0)  //Toggle of Switch N6 on GPIO13 and assignment of capacity variables
 				{//CP

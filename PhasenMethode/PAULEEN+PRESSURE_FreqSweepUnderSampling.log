@@ -15,9 +15,9 @@ Parallelization:
           |----|----|----|----|----|----|----|----|----|----|
           |||||||||||||||||||||||||||||||||||||||||||||||||||
 
-Info: Selected path: path928; VLIW count: 596
+Info: Selected path: path920; VLIW count: 594
 
-Compilation successful in 20,092 s
+Compilation successful in 44,921 s
 
 ===========================Assembler===========================
 Analyzing ASM finished.
@@ -42,10 +42,10 @@ Start creating output files...
 All files generated successfully.
 
 -------------Memory usage:-------------------------------------
-IMEM:	596 of 2048
-DMEM:	198 of 1024	(97 checked param. + 1 CRC)
+IMEM:	594 of 2048
+DMEM:	197 of 1024	(96 checked param. + 1 CRC)
 ---------------------------------------------------------------
-Workload AU: 40,4%; LU: 18,5%; LD/ST: 92,8% (Concurr.: 25,8%)
+Workload AU: 40,2%; LU: 18,5%; LD/ST: 92,8% (Concurr.: 25,8%)
 
 
 ===================Longest Path Analyzation====================
@@ -276,6 +276,6 @@ Verifying Memory ...Successful
 
 Programming of:
 C:\Users\i40014121\Desktop\Bachelorarbeit_Code\PhasenMethode\PAULEEN+PRESSURE_FreqSweepUnderSampling.bin
-successful in 35268 ms
+successful in 35503 ms
 Disconnecting Programmer...Done
 

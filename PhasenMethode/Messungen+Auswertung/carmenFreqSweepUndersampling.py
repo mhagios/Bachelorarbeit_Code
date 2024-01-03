@@ -16,10 +16,10 @@ def moving_average(x, w):
     return np.convolve(x, np.ones(w), "valid") / w
 
 # USER Parameter
-RESISTANCE = 430000 #OhmRESISTANCE = 43000 #Ohm
+RESISTANCE = 43000 #OhmRESISTANCE = 43000 #Ohm
 INDUCTANCE = 68*pow(10, (-3)) #H
 PAULEEN_CLK_IN_HZ = 29491200
-fileName = 'Messungen/ST_0412/Sweep430k68mH_correctWL.csv'
+fileName = 'Messungen/HO_1412_SweepFürBericht/02_LängereAufnahme.csv'
 CSTM_TITLE = "\t0-921kHz-Frequencies (Board_v1)" #Anti-Aliasing T=2min, step=1bar/10s, 0-10bar 
 NUM_FREQUENCIES = 229 + 448 - 6
 NUM_MOV_AVG = 100
@@ -40,6 +40,7 @@ def annot_max(x,y, ax=None):
     kw = dict(xycoords='data',textcoords="axes fraction",
               arrowprops=arrowprops, bbox=bbox_props, ha="right", va="top")
     ax.annotate(text, xy=(xmax, ymax), xytext=(0.94,0.96), **kw)
+
 
 markers_on = [442, 446] 
  
@@ -159,7 +160,7 @@ with open(fileName,'r', newline='') as csvfile:
     
     ax2.plot(xticks, STD_Cp_A, '-cD', markevery=markers_on, label="$C_\mathrm{P}\ /\ \mathrm{pF}$")
     if NUM_COND == 2:
-        ax2.plot(xticks, STD_Cr_A, '-yD', markevery=markers_on, label="$C_\mathrm{R}\ /\ \mathrm{pF}$")
+       ax2.plot(xticks, STD_Cr_A, '-yD', markevery=markers_on, label="$C_\mathrm{R}\ /\ \mathrm{pF}$")
     
     ax.set_xlabel('f/Hz')
     ax.xaxis.set_label_coords(0.975, -0.05)
@@ -169,7 +170,7 @@ with open(fileName,'r', newline='') as csvfile:
                        mpatches.Patch(color='cyan', label='$\sigma_{C_\mathrm{P}}$'),
                        mpatches.Patch(color='yellow', label='$\sigma_{C_\mathrm{P}}$'),
                        mpatches.Patch(color='green', label='\Delta H')])
-    #ax.legend(loc='upper right', bbox_to_anchor=(LEGEND_POS_X, LEGEND_POS_Y), fancybox=True, shadow=True)
+    ax.legend(loc='upper right', bbox_to_anchor=(LEGEND_POS_X, LEGEND_POS_Y), fancybox=True, shadow=True)
     ax.grid()
     ax.minorticks_on()
     ax.grid(which='minor', alpha=0.3) 
@@ -178,10 +179,11 @@ with open(fileName,'r', newline='') as csvfile:
     H0=[]
     Hmax=[]
     for freq in xticks:
-        H0.append(1 / (math.sqrt(1 + pow(2*pi*freq * RESISTANCE * C0 - RESISTANCE/(freq*2*pi*L), 2)))) # - R/(freq*2*pi*L)
-        Hmax.append(1 / (math.sqrt(1 + pow((2*pi*freq * RESISTANCE * Cmax - RESISTANCE/(freq*2*pi*L)), 2)))) # - R/(freq*2*pi*L)
+        H0.append(1 / (math.sqrt(1 + pow(2*pi*freq * RESISTANCE * C0, 2)))) # - R/(freq*2*pi*L)
+        Hmax.append(1 / (math.sqrt(1 + pow((2*pi*freq * RESISTANCE * Cmax), 2)))) # - R/(freq*2*pi*L)
         
-    deltaH = [H0[x] - Hmax[x] for x in range(len(H0))]
+        
+    deltaH = [H0[x] / Hmax[x] for x in range(len(H0))]
     
     ax3.spines.right.set_position(("axes", 1.05))
     ax3.plot(xticks, deltaH, '-gD', markevery=markers_on, label="$\Delta H$")
@@ -190,8 +192,8 @@ with open(fileName,'r', newline='') as csvfile:
     ax2.set(ylabel="$\sigma / pF$")
     ax3.set(ylabel="$\Delta H\ /\ mV/V$")
     
-    ax.set_ylim([0, 2000])
-    ax2.set_ylim([0, 1])
+    #ax.set_ylim([0, 2000])
+    #ax2.set_ylim([0, 1])
     #ax3.set_ylim([0, 0.16])
     
 
@@ -212,7 +214,7 @@ with open(fileName,'r', newline='') as csvfile:
     
     ax2.plot(xticks, STD_Cp_P, '-cD', markevery=markers_on, label="$C_\mathrm{P}\ /\ \mathrm{pF}$")
     if NUM_COND == 2:
-        ax2.plot(xticks, STD_Cr_P, '-yD', markevery=markers_on, label="$C_\mathrm{R}\ /\ \mathrm{pF}$")
+       ax2.plot(xticks, STD_Cr_P, '-yD', markevery=markers_on, label="$C_\mathrm{R}\ /\ \mathrm{pF}$")
     
     ax.set_xlabel('f/Hz')
     ax.xaxis.set_label_coords(0.975, -0.05)
@@ -242,9 +244,9 @@ with open(fileName,'r', newline='') as csvfile:
     ax2.set(ylabel="$\sigma / pF$")
     ax3.set(ylabel="$\Delta \Phi$ / °")
     
-    #ax.set_ylim([-400, 400])
+    ax.set_ylim([-400, 400])
     ax2.set_ylim([0, 1])
-    #ax3.set_ylim([0, 32])
+    ax3.set_ylim([0, 32])
     
 
     filePathAmplitude = filePath.replace('.', '_Amplitude.')

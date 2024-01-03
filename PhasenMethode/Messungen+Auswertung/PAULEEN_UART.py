@@ -5,12 +5,14 @@ import struct
 import csv
 import os
 
-#END_FREQ_CODE = 228
-#START_FREQ_CODE = 6
-END_FREQ_CODE = 0
-START_FREQ_CODE = 0
+#Use these defines to set the beginning number of your sweep and the end number, so
+#the script can detect these frequencies
+END_FREQ_CODE = 228
+START_FREQ_CODE = 6 
+#END_FREQ_CODE = 0
+#START_FREQ_CODE = 0
 NUM_COND = 2
-fileName = 'Messungen/HO_1312_Rauschuntersuchung/05_InterleavingCodeRC_avg16_lange Messung.csv'
+fileName = 'Messungen/HO_1412_SweepFürBericht/02_LängereAufnahme.csv'
 
 
 def connectPAULEEN():
@@ -130,12 +132,12 @@ with open(fileName, "w", newline='') as fileWriter:
                 #Check if the package is the beginning with the start frequency and c0
                 while startFound == False and len(byteBuf) > (13 + NUM_COND*13):
                     startFound = True
-                    # f = (byteBuf[10]<<7)|(byteBuf[9]>>1)
-                    # fnext = (byteBuf[10 + NUM_COND*13]<<7)|(byteBuf[9 + NUM_COND*13] >> 1)
-                    f = END_FREQ_CODE
-                    fnext = START_FREQ_CODE
-                    f = (byteBuf[10])
-                    fnext = (byteBuf[10 + NUM_COND*13])
+                    f = (byteBuf[10]<<7)|(byteBuf[9]>>1)
+                    fnext = (byteBuf[10 + NUM_COND*13]<<7)|(byteBuf[9 + NUM_COND*13] >> 1)
+                    # f = END_FREQ_CODE
+                    # fnext = START_FREQ_CODE
+                    # f = (byteBuf[10])
+                    # fnext = (byteBuf[10 + NUM_COND*13])
                     if not((byteBuf[9]&(0x01) == 0) and (f == END_FREQ_CODE) and fnext == START_FREQ_CODE):
                     #if not((byteBuf[9] == 0) and (f == END_FREQ_CODE)):
                         startPos += 13
