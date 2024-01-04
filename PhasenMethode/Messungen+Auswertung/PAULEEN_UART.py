@@ -5,14 +5,20 @@ import struct
 import csv
 import os
 
+#################################################################################################
 #Use these defines to set the beginning number of your sweep and the end number, so
-#the script can detect these frequencies
-END_FREQ_CODE = 228
-START_FREQ_CODE = 6 
-#END_FREQ_CODE = 0
-#START_FREQ_CODE = 0
+#the script can detect these frequencies (in pauleen these variable is called Frequency_number)
+# Frequency sweep 
+#END_FREQ_CODE = 228
+#START_FREQ_CODE = 6 
+
+# Only one Frequency (Frequency_number = 0)
+END_FREQ_CODE = 0
+START_FREQ_CODE = 0
+#################################################################################################
+
 NUM_COND = 2
-fileName = 'Messungen/HO_1412_SweepFürBericht/02_LängereAufnahme.csv'
+fileName = 'Messungen/HO_0401_RauschFürBericht/05_80ms.csv'
 
 
 def connectPAULEEN():
@@ -55,6 +61,7 @@ startFound = False
 packageFound = False
 
 numCrcErrors = 0
+numData = 0
 
 directory = os.path.dirname(fileName)
 if not os.path.exists(directory):
@@ -66,7 +73,7 @@ with open(fileName, "w", newline='') as fileWriter:
     serialPort.reset_input_buffer() #flush input buffer, discarding all its contents
     packageNum = 0
     print("Start Measurement!")
-    while 1:#packageNum < 100:
+    while numData < (1992 * 80):
         ###############################################
         # Package Size = 13bytes * 8bit/byte = 104bit
         # Package time = 104 bit / 23040baud = 451.38 us
@@ -138,7 +145,8 @@ with open(fileName, "w", newline='') as fileWriter:
                     # fnext = START_FREQ_CODE
                     # f = (byteBuf[10])
                     # fnext = (byteBuf[10 + NUM_COND*13])
-                    if not((byteBuf[9]&(0x01) == 0) and (f == END_FREQ_CODE) and fnext == START_FREQ_CODE):
+                    #if not((byteBuf[9]&(0x01) == 0) and (f == END_FREQ_CODE) and fnext == START_FREQ_CODE):
+                    if not((byteBuf[9]&(0x01) == 0) and (f == END_FREQ_CODE)):
                     #if not((byteBuf[9] == 0) and (f == END_FREQ_CODE)):
                         startPos += 13
                         startFound = False
@@ -203,6 +211,7 @@ with open(fileName, "w", newline='') as fileWriter:
                 C = byteBuf[p * 13 + 9] & 0x01
                 f = (byteBuf[p * 13 + 10]<<7)|(byteBuf[p * 13 + 9]>>1)
                 csvWriter.writerow([cA, cP, C, f, datetime.datetime.now(), packageNum])
+                numData += 1
                 
 
     

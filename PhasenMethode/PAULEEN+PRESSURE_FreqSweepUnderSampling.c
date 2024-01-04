@@ -278,7 +278,7 @@ void ua_main()
 			
 			Cycle_Number++;
 			//+1.0f to componsate the computation time of the first cycle -> This fixes the Problem of not enough ADC-Values
-			MAX_UA_Cycle = UA_ceil((Current_ADC_divider + 28.0f)); //* 0.25f + 1.0f); //28  because of data output latency
+			MAX_UA_Cycle = UA_ceil((Current_ADC_divider + 28.0f)* 0.25f + 1.0f); //28  because of data output latency
 			
 		}
 		else if ((Cycle_Number >= MAX_UA_Cycle) && (Current_state == ST_MEASURE))
