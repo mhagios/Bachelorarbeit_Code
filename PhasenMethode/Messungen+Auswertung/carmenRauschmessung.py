@@ -71,11 +71,18 @@ df.plot(kind='line', y=dfDataColumnStr, label=dfMeasLabel, ax=ax)
 ax.grid()
 ax.minorticks_on()
 ax.grid(which='minor', alpha=0.3) 
-ax.set(ylabel="CV in %URV")
+ax.set_ylabel("$\mathrm{CV_{URV}}$", fontsize=14)
+ax.set_xlabel("Messwertindex", fontsize=14)
+ax.set_xlim(0, 1992)
+ax.set_ylim(-0.0185, 0.0185)
+ax.legend(prop={'size': 10}, ncol=2,
+                         loc='upper right')
 
-# Fullscreen
-#manager = plt.get_current_fig_manager()
-#manager.window.showMaximized()
+## % Percentage
+vals = ax.get_yticks()
+ax.set_yticklabels([f'{x:.3f} %' for x in vals])
 
 plt.show()
+
+plt.savefig("C:\\Users\\i40014121\\Desktop\\PgfPlots\\CarmenRauschmessung.pgf", format='pgf')
 
